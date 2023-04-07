@@ -1,0 +1,89 @@
+<div class="dashbord">
+    dashbord
+</div>
+<div class="main-admin">
+    <div class="ajout-recette">
+        <form method="post" action="testphp.php" class="" id="ajout-recette-form" enctype="multipart/form-data">
+            <div class="TitleAjoutRecette">Ajouter une recette</div>
+            <input class = "ajout-input" type="text" id = "nom" name="nom" placeholder="Entrer le nom de la recette">
+            <input type="file" class="file" id="photo_recette" name="photo_recette">
+            
+            <div id="ingredients">
+                <div class="titleIngredient">Ingrédients</div>
+                <div id="listeIngredient">
+                   
+                </div>
+            <input class = "ajout-input" type="text" id = "nom-ingredient" name="nom-ingredient[]" placeholder="Entrer le nom de l'ingredient" value = "">
+            <input class = "ajout-input" type="text" id = "unite" name="unite[]" placeholder="unite" value = "">
+            <input type="number" id = "qte" name="quantite[]" placeholder="Quantité" value = "">
+            <input type="file" class="file" id="photo_ingredient" name="photo_ingredient[]" multiple>
+
+            <button type="button" id="ajouter-ingredient">Ajouter un ingrédient</button>
+            <button type="submit" id = "ajout-recette" value="Ajouter la recette">Ajouter la recette</button>
+            </div>
+  
+        </form>
+
+    </div>
+    <div class="supprimer-recette">
+        <div class="titleSuppression">Supprimer une recette</div>
+        <form method="post" action="" class="" id="supprimer-recette-form">
+            <input class = "input-search" type="text" id="fname" name="fname" placeholder="recherche supprimer">
+            <input class= "btn search-btn" type="submit" value="Search">
+        </form>
+        <div class="supp">
+            <div class="recette-aSupprimer centrer">
+                <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
+                <form class="cadre-aSupprimer">
+                    <img class = "image-supprimer" src="images/recettes/Banana_Pudding_Dessert.png" alt="" />
+                    <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
+                </form>
+            </div>
+
+            <div class="recette-aSupprimer centrer">
+                <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
+                <form class="cadre-aSupprimer">
+                    <img class = "image-supprimer" src="images/recettes/Banana_Pudding_Dessert.png" alt="" />
+                    <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
+                </form>
+            </div>
+
+            <div class="recette-aSupprimer centrer">
+                <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
+                <form class="cadre-aSupprimer">
+                    <img class = "image-supprimer" src="images/recettes/Banana_Pudding_Dessert.png" alt="" />
+                    <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
+                </form>
+            </div>
+
+            <div class="recette-aSupprimer centrer">
+                <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
+                <form class="cadre-aSupprimer">
+                    <img class = "image-supprimer" src="images/recettes/Banana_Pudding_Dessert.png" alt="" />
+                    <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
+                </form>
+            </div>
+
+            <div class="recette-aSupprimer centrer">
+                <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
+                <form class="cadre-aSupprimer">
+                    <img class = "image-supprimer" src="images/recettes/Banana_Pudding_Dessert.png" alt="" />
+                    <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
+                </form>
+            </div>
+
+            <div class="recette-aSupprimer centrer">
+                <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
+                <form class="cadre-aSupprimer">
+                    <img class = "image-supprimer" src="images/recettes/Banana_Pudding_Dessert.png" alt="" />
+                    <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
+                </form>
+            </div>
+            
+        </div>
+      
+
+    </div>
+    <script src = "Javascript/supprimer_recette.js"></script>
+                
+</div>

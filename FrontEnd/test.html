@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Ajouter une recette</title>
+    <style>
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type="text"], textarea {
+        display: block;
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+      .ingredient {
+        margin-bottom: 10px;
+      }
+      .ingredient input[type="text"] {
+        display: inline-block;
+        width: 70%;
+        margin-right: 5px;
+      }
+      .ingredient input[type="number"] {
+        display: inline-block;
+        width: 20%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ajouter une recette</h1>
+    <form>
+      <label for="nom">Nom de la recette :</label>
+      <input type="text" id="nom" name="nom" required>
+      
+      <label for="description">Description :</label>
+      <textarea id="description" name="description"></textarea>
+      
+      <label for="temps">Temps de préparation (en minutes) :</label>
+      <input type="number" id="temps" name="temps" required>
+      
+      <h2>Ingrédients</h2>
+      <div id="ingredients">
+        <div class="ingredient">
+          <input type="text" name="ingredient[]" placeholder="Nom de l'ingrédient" required>
+          <input type="number" name="quantite[]" placeholder="Quantité" required>
+          <input type="text" name="unite[]" placeholder="Unité">
+        </div>
+      </div>
+      <button type="button" id="ajouter-ingredient">Ajouter un ingrédient</button>
+      
+      <input type="submit" value="Ajouter la recette">
+    </form>
+    
+    <script>
+      const ajouterIngredientBtn = document.querySelector("#ajouter-ingredient");
+      const ingredientsContainer = document.querySelector("#ingredients");
+      
+      ajouterIngredientBtn.addEventListener("click", () => {
+        const ingredientDiv = document.createElement("div");
+        ingredientDiv.classList.add("ingredient");
+        
+        const ingredientInput = document.createElement("input");
+        ingredientInput.type = "text";
+        ingredientInput.name = "ingredient[]";
+        ingredientInput.placeholder = "Nom de l'ingrédient";
+        ingredientInput.required = true;
+        
+        const quantiteInput = document.createElement("input");
+        quantiteInput.type = "number";
+        quantiteInput.name = "quantite[]";
+        quantiteInput.placeholder = "Quantité";
+        quantiteInput.required = true;
+        
+        const uniteInput = document.createElement("input");
+        uniteInput.type = "text";
+        uniteInput.name = "unite[]";
+        uniteInput.placeholder = "Unité";
+        
+        ingredientDiv.appendChild(ingredientInput);
+        ingredientDiv.appendChild(quantiteInput);
+        ingredientDiv.appendChild(uniteInput);
+        
+        ingredientsContainer.appendChild(ingredientDiv);
+      });
+    
