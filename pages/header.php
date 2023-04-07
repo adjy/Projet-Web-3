@@ -2,7 +2,7 @@
 <header id = "header">
 
     <div class="part1">
-        <div class="title centrer"><img src ="<?= $GLOBALS['IMG_DIR']?>src/logo.jpeg"/></div>
+       <div class="title centrer"><img class="img-logo" src ="<?= $GLOBALS['IMG_DIR']?>src/logo.jpeg"/></div>
         <div class="menu centrer">
 
             <a class = " item-menu" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>">sale</a>

@@ -13,14 +13,13 @@ class AjoutFormulaire{
                 <div id="ingredients">
                     <div class="titleIngredient">Ingrédients</div>
                     <div id="listeIngredient"></div>
-                    <button type="submit" id = "ajout-recette" class="btn" value="Ajouter la recette">Ajouter la recette</button>
+
                 </div>
 
                 <script src = "<?= $GLOBALS['JS_DIR']?>admin.js"></script>
             </form>
 
-
-            <form  method="post" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
+            <form  method="post" id = "ajout-ingredient-form" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
 
                 <input class = "ajout-input" type="text" id = "nom-ingredient" name="nom-ingredient" placeholder="Entrer le nom de l'ingredient" value = "">
                 <input class = "ajout-input" type="text" id = "unite" name="unite" placeholder="unite" value = "">
@@ -33,6 +32,7 @@ class AjoutFormulaire{
                 <button type="submit" id="ajouter-ingredient" class = "btn" >Ajouter un ingrédient</button>
 
             </form>
+            <button type="submit" id = "ajout-recette" class="btn" value="Ajouter la recette">Ajouter la recette</button>
         </div>
         <?php
     }
