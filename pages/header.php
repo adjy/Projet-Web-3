@@ -2,21 +2,21 @@
 <header id = "header">
 
     <div class="part1">
-       <div class="title centrer"><img class="img-logo" src ="<?= $GLOBALS['IMG_DIR']?>src/logo.jpeg"/></div>
+       <div class="title centrer"><img class="img-logo" src ="<?= $GLOBALS['IMG_DIR']?>src/logo.png"/></div>
         <div class="menu centrer">
 
-            <a class = " item-menu" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>">sale</a>
-            <a class = " item-menu" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>">sucre</a>
-            <a class = " item-menu" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>">sale</a>
-            <a class = " item-menu" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>">sale</a>
-            <a class = " item-menu" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>">sale</a>
-            <a class = " item-menu" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>">sale</a>
-            <a class = " item-menu" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>">sale</a>
-            <a class = " item-menu" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>">sale</a>
+<!--            <a class = " item-menu" href="--><?php //echo $GLOBALS['DOCUMENT_DIR'] ?><!--">sale</a>-->
+<!--            <a class = " item-menu" href="--><?php //echo $GLOBALS['DOCUMENT_DIR'] ?><!--">sucre</a>-->
+<!--            <a class = " item-menu" href="--><?php //echo $GLOBALS['DOCUMENT_DIR'] ?><!--">sale</a>-->
+<!--            <a class = " item-menu" href="--><?php //echo $GLOBALS['DOCUMENT_DIR'] ?><!--">sale</a>-->
+<!--            <a class = " item-menu" href="--><?php //echo $GLOBALS['DOCUMENT_DIR'] ?><!--">sale</a>-->
+<!--            <a class = " item-menu" href="--><?php //echo $GLOBALS['DOCUMENT_DIR'] ?><!--">sale</a>-->
+<!--            <a class = " item-menu" href="--><?php //echo $GLOBALS['DOCUMENT_DIR'] ?><!--">sale</a>-->
+<!--            <a class = " item-menu" href="--><?php //echo $GLOBALS['DOCUMENT_DIR'] ?><!--">sale</a>-->
 
         </div>
 
-        <div class="logMenu centrer">
+        <div class="logMenu">
 
             <?php
 

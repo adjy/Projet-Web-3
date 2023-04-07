@@ -1,5 +1,5 @@
 :root {
-    --couleurPrincipale: rgba(39,1,0,255); /*couleur principale */
+    --couleurPrincipale: rgba(241,238,235,255); /*couleur principale */
 }
 
 /* essentiel */
@@ -10,6 +10,7 @@ body {
 }
 html, body {
     height: 100vh;
+    background-color: var(--couleurPrincipale);
 }
 .centrer{
     justify-content: center;
@@ -29,17 +30,22 @@ html, body {
     /* margin-top: 20px;
     margin-bottom: 10px; */
     cursor: pointer;
+    margin: 2%;
 }
 .btn:hover{
     opacity: 1;
 }
+.info{
+    font-size: 25px;
 
+    width: 80vw;
+    text-align: center;
+}
 
 
 /* main content */
 #main-content{
     display: flex;
-    padding: auto;
     flex-direction: column;
     margin: auto;
  
@@ -57,19 +63,20 @@ html, body {
     box-shadow: 0px 2px 10px rgba(163, 21, 21, 0.2);
     background-color:var(--couleurPrincipale);
     position: relative;
+
 }
 
 #header a{
     text-decoration: none;
-    color: white;
+    /*color: white;*/
 }
 
 /* logo et nom  */
 .part1{
     display: flex;
     align-content: center;
-    border: 1px solid gray;
-    color: white;
+    border-bottom: 1px solid gray;
+    /*color: white;*/
 }
 
 /* bouton de connection */
@@ -85,7 +92,7 @@ html, body {
     margin: 2%;
     width: 20vw;
     height: 5vh;
-    background-color: #4CAF50;
+    /*background-color: #4CAF50;*/
 }
 .img-logo{
 
@@ -145,6 +152,7 @@ html, body {
     width: 15vw;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 }
 .logMenu-item{
     /* background-color: aliceblue; */
@@ -188,7 +196,8 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
+    /*color: white;*/
+    text-align: center;
     
     min-height: 10vh;
 }
@@ -198,8 +207,9 @@ html, body {
 }
 
 #footer a{
+    text-align: center;
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 .lien-source{
@@ -211,7 +221,13 @@ html, body {
 
 /* ================================================================= */
 
-
+.banner{
+    width: 85vw;
+}
+.index{
+    display: flex;
+    flex-direction: column;
+}
 .categorieRecettes{
     display: flex;
     flex-direction: column;
@@ -485,11 +501,8 @@ html, body {
 
 
 .log-connection{
-
     display: flex;
-
    flex-direction: column;
-    background-color: #4CAF50;
     width: 50vw;
 }
 #login-form{
@@ -519,12 +532,15 @@ html, body {
 
 #ajout-ingredient-form{
     margin-top: 2px;
-
     background-color: yellow;
 }
 .formulaire-login{
     /* background-color: aqua; */
 
+}
+.admin-Log{
+    font-size: 30px;
+    margin-bottom: 5%;
 }
 .title-form{
     /* background-color: blue; */
