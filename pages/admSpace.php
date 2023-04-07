@@ -18,7 +18,7 @@ if(isset($_SESSION['username'])){?>
         dashbord
     </div>
 
-    <a href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>pages/ajoutRecette.php" style="font-size: 0.5cm;text-decoration: none">Ajout</a>
+    <a href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>pages/ajout.php" style="font-size: 0.5cm;text-decoration: none">Ajout</a>
     <a href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>pages/retirerRecette.php" style="font-size: 0.5cm;text-decoration: none">Retirer</a>
     <?php
 }
