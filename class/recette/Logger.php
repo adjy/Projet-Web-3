@@ -6,11 +6,11 @@ class Logger
 {
 
     public function generateLoginForm(string $action): void{?>
-        <form method="post" action="<?php $action ?>" class="magic-card" id="login-form">
-            <div class="form-group">
-                <input type="text" name="username" placeholder="login">
-                <input type="password" name="password" placeholder="password">
-            </div>
+        <form method="post" action="<?php $action ?>" class="centrer" id="login-form">
+
+                <input type="text" class = "input-form-log" name="username" placeholder="login">
+                <input type="password" class = "input-form-log" name="password" placeholder="password">
+
             <button type="submit" class="btn btn-primary">LOGIN</button>
         </form>
         <?php

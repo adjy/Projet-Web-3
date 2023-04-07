@@ -17,10 +17,10 @@ if(isset($_POST['username']) && isset($_POST['password']) ){
     $tab = $instance->log($username,$password);
 
     if( $tab['granted'] == false){?>
-        <div class="log-connection">
-        <span class="error" style="color: red"> <?php echo $tab['error'];?> </span>
-        <?php
-        $instance->generateLoginForm(""); ?>
+        <div class="log-connection centrer">
+            <span class="error" style="color: red"> <?php echo $tab['error'];?> </span>
+            <?php
+            $instance->generateLoginForm(""); ?>
         </div>
         <?php }
 
@@ -36,8 +36,12 @@ if(isset($_POST['username']) && isset($_POST['password']) ){
 }
 
 else{/*ce n est pas bon donc on retourne vers la page*/
-    $instance->generateLoginForm("");
+    ?>
+<div class="log-connection centrer">
+   <?php $instance->generateLoginForm(""); ?>
 
+</div>
+<?php
 }
 
 

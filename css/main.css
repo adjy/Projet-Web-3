@@ -477,15 +477,43 @@ html, body {
 
 
 
+.log-connection{
+
+    display: flex;
+
+   flex-direction: column;
+    background-color: #4CAF50;
+    width: 50vw;
+}
+#login-form{
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    height: 55vh;
+    width: 45vw;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.ajout-input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
 
 
 .formulaire-login{
     /* background-color: aqua; */
-    height: 70vh;
-    width: 80vw;
-    display: grid;
-    grid-template-rows: 20% 80%;
-    place-items: center;
+
 }
 .title-form{
     /* background-color: blue; */
@@ -507,13 +535,7 @@ html, body {
     height: 40vh;
 }
 .login-form{
-    background-color: var( --couleurPrincipale);;
-    height: 40vh;
-    width: 35vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
 }
 
 .input-form-log{
