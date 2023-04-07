@@ -5,10 +5,10 @@ namespace recette ;
 class Logger
 {
 
-    public function generateLoginForm(string $action): void{?>
+    public function generateLoginForm(string $action, $erreur): void{?>
 
         <form method="post" action="<?php $action ?>" class="centrer" id="login-form">
-
+            <span class="error" style="color: red"> <?php echo $erreur?> </span>
                 <input type="text" class = "input-form-log" name="username" placeholder="login">
                 <input type="password" class = "input-form-log" name="password" placeholder="password">
 

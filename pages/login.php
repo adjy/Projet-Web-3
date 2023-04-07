@@ -18,9 +18,9 @@ if(isset($_POST['username']) && isset($_POST['password']) ){
 
     if( $tab['granted'] == false){?>
         <div class="log-connection centrer">
-            <span class="error" style="color: red"> <?php echo $tab['error'];?> </span>
+
             <?php
-            $instance->generateLoginForm(""); ?>
+            $instance->generateLoginForm("",$tab['error']); ?>
         </div>
         <?php }
 
@@ -38,7 +38,7 @@ if(isset($_POST['username']) && isset($_POST['password']) ){
 else{/*ce n est pas bon donc on retourne vers la page*/
     ?>
 <div class="log-connection centrer">
-   <?php $instance->generateLoginForm(""); ?>
+   <?php $instance->generateLoginForm("",""); ?>
 
 </div>
 <?php
