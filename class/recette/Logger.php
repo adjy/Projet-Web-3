@@ -12,7 +12,7 @@ class Logger
                 <input type="text" class = "input-form-log" name="username" placeholder="login">
                 <input type="password" class = "input-form-log" name="password" placeholder="password">
 
-            <button type="submit" class="btn btn-primary">LOGIN</button>
+            <button type="submit" class="btn">LOGIN</button>
         </form>
         <?php
     }
