@@ -6,6 +6,7 @@ class Logger
 {
 
     public function generateLoginForm(string $action): void{?>
+
         <form method="post" action="<?php $action ?>" class="centrer" id="login-form">
 
                 <input type="text" class = "input-form-log" name="username" placeholder="login">
