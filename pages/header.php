@@ -28,7 +28,6 @@
             }
             else{?>
                 <a class = "btn" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>pages/login.php">Sign in</a>
-
                 <?php
             }
             ?>
