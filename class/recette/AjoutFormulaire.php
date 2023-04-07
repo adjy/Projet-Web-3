@@ -4,7 +4,7 @@ namespace recette;
 class AjoutFormulaire{
     public function generateAjoutForm(): void{?>
         <div class="ajout-recette">
-            <form method="post" class="" id="ajout-recette-form"  enctype="multipart/form-data" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutTraitement.php">
+            <form method="post" class="" id="ajout-recette-form"  enctype="multipart/form-data" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutRecetteTraitement.php">
                 <div class="TitleAjoutRecette">Ajouter une recette</div>
                 <input class = "ajout-input" type="text" id = "nom" name="nom" placeholder="Entrer le nom de la recette">
                 <label for="le_fichier" class="form-label">Nom de l'image avec l'extension :</label>
@@ -20,7 +20,7 @@ class AjoutFormulaire{
             </form>
 
 
-            <form  method="post" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>AjoutIngredient.php"  enctype="multipart/form-data">
+            <form  method="post" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
 
                 <input class = "ajout-input" type="text" id = "nom-ingredient" name="nom-ingredient" placeholder="Entrer le nom de l'ingredient" value = "">
                 <input class = "ajout-input" type="text" id = "unite" name="unite" placeholder="unite" value = "">

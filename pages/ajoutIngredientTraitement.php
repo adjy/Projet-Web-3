@@ -1,8 +1,8 @@
 <?php
 session_start();
+require_once "../config.php" ;
 
 if(isset($_POST['nom-ingredient']) && isset($_POST['unite']) && isset($_POST['quantite']) && isset($_FILES['photo_ingredient']) ){
-
 
         if(empty($_FILES['photo_ingredient'])) die("<span style='color : red'>Il n'y a pas de photo d'ingrédients !</span>") ;
         $file = $_FILES['photo_ingredient'];
@@ -24,23 +24,9 @@ if(isset($_POST['nom-ingredient']) && isset($_POST['unite']) && isset($_POST['qu
                 'mesure' => $_POST['quantite']
             );
 
-            if(isset($_SESSION['listeIngredients'])) {
-                array_push($_SESSION['listeIngredients'], $data);
-                var_dump($_SESSION['listeIngredients']);
-            }
-
+            array_push( $_SESSION['listeIngredients'], $data);
 
         }
-        else{
-            ?>
-            <div style="color:red">
-                <?php
-                if($file['error'] != 0 ) echo "Une erreur dans l'insertion de recettes !! ";
-                ?>.
-                Le fichier n'a pas été correctement uploadé.
-            </div>
-            <?php
-        }
-
-
 }
+header("Location:".$GLOBALS['DOCUMENT_DIR']."pages/ajout.php");
+exit();
