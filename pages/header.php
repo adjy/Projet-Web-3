@@ -37,7 +37,7 @@
     </div>
 
     <div class="search centrer">
-        <form id = "searchID-form" class = "form-search centrer" action="" method="POST">
+        <form id = "searchID-form" class = "form-search centrer"  action="<?php $GLOBALS['DOCUMENT_DIR'] ?>pages/rechercheTraitement.php" method="POST">
             <input class = "input-search" type="text" id="searchID" name="fname" placeholder="dessert / chocolat / fruit " required>
             <button class= "btn search-btn" type="submit" value="Search">Search</button>
         </form>

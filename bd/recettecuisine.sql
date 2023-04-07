@@ -20,7 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `recettecuisine`
 --
-
+DROP DATABASE IF EXISTS lrandria;
+create database lrandria;
+use lrandria;
 -- --------------------------------------------------------
 
 --
@@ -131,7 +133,6 @@ INSERT INTO `listesingredients` (`ID_ingredient`, `ID_recette`, `Qte`, `mesure`)
 (24, 4, ' 2', 'teasponn');
 
 -- --------------------------------------------------------
-
 --
 -- Structure de la table `listestag`
 --
@@ -256,3 +257,32 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+/*
+select titre, photo from recette where ID_recette in (
+    select ID_recette from recette where titre like "%sugar%"
+    UNION
+    select ID_recette from listesingredients inner join ingredient A using (ID_ingredient) where A.nom like "%sugar%"
+    );
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
