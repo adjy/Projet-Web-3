@@ -29,13 +29,27 @@ class Recette extends PdoConnexion {
     }
 
 
-    public function ajoutRecette($IdRecette, $titre , $photo){
-        $statement = parent::getPdo()->prepare("INSERT INTO recette (ID_recette, titre,photo) VALUES (:id, :titre, :photo)") ;
-        $statement->bindValue(':id', $IdRecette) ;
+    public function ajoutRecette( $ID_recette,$titre , $photo){
+        $statement = parent::getPdo()->prepare("INSERT INTO recette ( ID_recette,titre,photo) VALUES ( :ID_recette,:titre, :photo)") ;
+        $statement->bindValue(':ID_recette', $ID_recette) ;
         $statement->bindValue(':titre', $titre) ;
         $statement->bindValue(':photo', $photo) ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
     }
+
+    public function ajoutIngredient( $nom , $photo){
+        $statement = parent::getPdo()->prepare("INSERT INTO ingredient ( nom,photo) VALUES ( :nom, :photo)") ;
+        $statement->bindValue(':nom', $nom) ;
+        $statement->bindValue(':photo', $photo) ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+    }
+
+
+
+
+
+
+
 
 }
 
