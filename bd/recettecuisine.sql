@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 03 avr. 2023 à 21:45
+-- Généré le : ven. 07 avr. 2023 à 13:12
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -20,10 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `recettecuisine`
 --
-DROP DATABASE IF EXISTS lrandria;
--- Creation de la base de donnee
-CREATE DATABASE lrandria;
-use lrandria;
+
 -- --------------------------------------------------------
 
 --
@@ -32,11 +29,11 @@ use lrandria;
 
 DROP TABLE IF EXISTS `ingredient`;
 CREATE TABLE IF NOT EXISTS `ingredient` (
-  `ID_ingredient` int NOT NULL,
+  `ID_ingredient` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(20) NOT NULL,
   `photo` varchar(20) NOT NULL,
   PRIMARY KEY (`ID_ingredient`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `ingredient`
@@ -44,16 +41,29 @@ CREATE TABLE IF NOT EXISTS `ingredient` (
 
 INSERT INTO `ingredient` (`ID_ingredient`, `nom`, `photo`) VALUES
 (1, 'eggs', 'eggs.png'),
-(2, 'chocolat', 'eggs.png'),
-(3, 'unsweetened powder', ''),
-(4, 'sugar', ''),
-(5, 'salt', ''),
-(6, 'butter', ''),
-(7, 'Corn syrup', ''),
-(8, 'Vanilla', ''),
-(9, 'Cream cheese', ''),
-(10, ' Heavy cream', ''),
-(11, 'Banana', '');
+(2, 'chocolat', 'chocolate.png'),
+(3, 'unsweetened powder', 'unsweetened powder.p'),
+(4, 'sugar', 'sugar.png'),
+(5, 'salt', 'salt.png'),
+(6, 'butter', 'butter.png'),
+(7, 'Corn syrup', 'cornsyrop.png'),
+(8, 'Vanilla', 'vanilla.png'),
+(9, 'Cream cheese', 'creamcheese.png'),
+(10, ' Heavy cream', ' Heavy cream.png'),
+(11, 'Banana', 'banana.png'),
+(12, 'butter', 'tablespoons butter m'),
+(13, 'cream thawed', 'tub whipped cream th'),
+(14, 'Pudding Layer', 'Pudding Layer.png'),
+(15, 'milk', 'milk.png'),
+(16, 'cornstarch', 'cup cornstarch.png'),
+(17, 'graham crackers', 'graham crackercrumbs'),
+(18, 'all-purpose flour', 'all-purpose flour.pn'),
+(19, 'baking powder', 'tsp baking powder.pn'),
+(20, 'cocoa powder', 'unsweetened cocoa po'),
+(21, 'Oreo cookies', 'oreo.png'),
+(22, 'Pinch of Salt', 'Pinch of Salt.png'),
+(23, 'coffee powder', 'coffeepowder.png'),
+(24, 'olive oil', 'oliveoil.png');
 
 -- --------------------------------------------------------
 
@@ -76,21 +86,49 @@ CREATE TABLE IF NOT EXISTS `listesingredients` (
 --
 
 INSERT INTO `listesingredients` (`ID_ingredient`, `ID_recette`, `Qte`, `mesure`) VALUES
-(1, 1, '4', ''),
-(7, 1, '2', 'tbsp'),
-(2, 1, '16', 'oz'),
-(3, 1, '1/3', 'cup'),
-(4, 1, '1 1/2', 'cup'),
-(5, 1, '1/2', 'tsp'),
-(8, 1, '1', 'tbsp'),
-(6, 1, '8', 'tbsp'),
-(9, 1, '24', 'oz'),
-(10, 1, '3/4', 'cup'),
-(8, 2, '2', 'cup'),
+(1, 1, '', ''),
+(1, 2, '2', ''),
+(2, 1, '', ''),
+(2, 2, '8', 'oz'),
+(3, 1, '', ''),
 (4, 2, '2', 'tablespoon'),
-(6, 2, '2', 'tablespoon'),
-(9, 2, '', ''),
-(11, 2, '2', 'large');
+(4, 3, '3/4', 'oz'),
+(4, 4, '75', 'grams'),
+(5, 1, ' 1/2', 'tsp'),
+(5, 2, ' 1/2', ''),
+(5, 3, ' 1/8', 'tsp'),
+(5, 4, ' pinch', 'tsp'),
+(6, 1, '8', 'tbsp'),
+(6, 2, '2', ''),
+(6, 3, '5', 'oz'),
+(6, 4, '50', 'grams'),
+(7, 3, '3/4', 'oz'),
+(7, 3, '50', 'gram'),
+(8, 1, '1', 'tbsp'),
+(8, 2, '1', 'cup'),
+(8, 4, '2', 'teaspoon'),
+(9, 1, '24', 'oz'),
+(9, 2, '8', 'oz'),
+(10, 1, '3/4', 'cup'),
+(10, 4, '500', 'ml'),
+(11, 2, '2', 'cup'),
+(12, 2, '8', 'oz'),
+(13, 2, '', ''),
+(14, 2, '2', 'cup'),
+(14, 4, '60', 'ml'),
+(15, 2, '1/4', 'cup'),
+(15, 4, '25', 'gram'),
+(16, 2, '1/2', 'cup'),
+(17, 3, '1/4', 'oz'),
+(18, 2, '2', 'tablespoon'),
+(19, 1, '1/3', 'cup'),
+(19, 3, '3/4', 'oz'),
+(19, 4, '50', 'grams'),
+(20, 1, '1/2', 'cups'),
+(20, 4, '28', ''),
+(22, 4, ' ', ''),
+(23, 4, ' 2', 'teaspoon'),
+(24, 4, ' 2', 'teasponn');
 
 -- --------------------------------------------------------
 
@@ -110,10 +148,32 @@ CREATE TABLE IF NOT EXISTS `listestag` (
 -- Déchargement des données de la table `listestag`
 --
 
-INSERT INTO `listestag` (`ID_recette`,`ID_tag`) VALUES
-(1, 1),(1, 4),(2,1),(2,4),(3,1),(3,4),(4,1),(4,4),(5,1),
-(5,4),(6, 2),(6, 3),(7, 2),(7, 3),(8,2),(8,3),(9, 2),(9, 3),(10,2),
-(10,3),(11,2),(12, 4),(12, 1),(13, 4),(14, 4);
+INSERT INTO `listestag` (`ID_tag`, `ID_recette`) VALUES
+(1, 1),
+(4, 1),
+(1, 2),
+(4, 2),
+(1, 3),
+(4, 3),
+(1, 4),
+(4, 4),
+(1, 5),
+(4, 5),
+(2, 6),
+(3, 6),
+(2, 7),
+(3, 7),
+(2, 8),
+(3, 8),
+(2, 9),
+(3, 9),
+(2, 10),
+(3, 10),
+(2, 11),
+(4, 12),
+(1, 12),
+(4, 13),
+(4, 14);
 
 -- --------------------------------------------------------
 
@@ -123,38 +183,32 @@ INSERT INTO `listestag` (`ID_recette`,`ID_tag`) VALUES
 
 DROP TABLE IF EXISTS `recette`;
 CREATE TABLE IF NOT EXISTS `recette` (
-  `ID_recette` int NOT NULL,
+  `ID_recette` int NOT NULL AUTO_INCREMENT,
   `titre` varchar(100) NOT NULL,
   `photo` varchar(100) NOT NULL,
   PRIMARY KEY (`ID_recette`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `recette`
 --
 
 INSERT INTO `recette` (`ID_recette`, `titre`, `photo`) VALUES
--- LES DESSERTS --
 (1, 'Triple Chocolate Cheesecake', 'Triple_Chocolate_Cheesecake.jpeg'),
 (2, 'Banana Pudding Dessert', 'Banana_Pudding_Dessert.png'),
 (3, 'Ultimate Fudgy Chocolate Brownies', 'ultimate-fudgy-chocolate-brownies.jpg'),
 (4, 'NO BAKE DARK CHOCOLATE TART', 'no-bake-chocolate-tart-1.jpg'),
 (5, 'Pudding Layer', 'pudding.jpg'),
-
--- LES PLATS CHAUDS  --
 (6, 'Petits croustillants chèvres et olives', 'petits_croustillants.png'),
 (7, 'Marlyzen, cuisine revisitée', 'marlyzen.jpg'),
 (8, 'Blanquette de filet mignon aux petits légumes', 'Blanquette_de_filet_mignon.png'),
 (9, 'Filet mignon de porc caramélisé à la sauce soja - Les Délices Légers de Zabou', 'Filet_mignon_de_porc.jpg'),
-
--- LES ENTREES SUCREES/SALEES --
 (10, 'Cheesecake au saumon fumé - Les Gourmandises de Lou', 'Cheesecake_au_saumon.jpg'),
 (11, 'Cookies salés aux tomates séchées et chorizo - Amandine Cooking', 'Cookies-sales.jpg'),
 (12, 'CROUSTILLANT CHOCO NOISETTE', 'CROUSTILLANT-CHOCO-NOISETTE.jpg'),
 (13, 'Recette tropézienne vanille et framboises', 'tropezienne-vanille-framboises.jpg'),
-(14, 'Bavarois Poire, Sablé breton et Sauce caramel onctueuse', 'Bavarois-Poire.jpg');
-
-
+(14, 'Bavarois Poire, Sablé breton et Sauce caramel onctueuse', 'Bavarois-Poire.jpg'),
+(15, 'test2', 'texts');
 
 -- --------------------------------------------------------
 
@@ -164,10 +218,10 @@ INSERT INTO `recette` (`ID_recette`, `titre`, `photo`) VALUES
 
 DROP TABLE IF EXISTS `tag`;
 CREATE TABLE IF NOT EXISTS `tag` (
-  `ID_tag` int NOT NULL,
+  `ID_tag` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(20) NOT NULL,
   PRIMARY KEY (`ID_tag`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `tag`
@@ -177,8 +231,8 @@ INSERT INTO `tag` (`ID_tag`, `nom`) VALUES
 (1, 'Dessert'),
 (2, 'Salé'),
 (3, 'Chaud'),
-(4, 'Sucré');
-
+(4, 'Sucré'),
+(5, 'tagTest');
 
 --
 -- Contraintes pour les tables déchargées
