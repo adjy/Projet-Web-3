@@ -16,6 +16,7 @@ ob_start() ;
 $recettes = $gdb->getRecettes();
 $tags = $gdb->getTagRecettes();
 $listesTags = $gdb->getListesTagRecettes();
+//$_SESSION['tag'] = $tags;
 
 ?>
 
@@ -23,7 +24,7 @@ $listesTags = $gdb->getListesTagRecettes();
     <img class="banner" src="<?=$GLOBALS['IMG_DIR']?>src/banner.png " alt="banner">
     <span class="info">Découvrez notre sélection de délicieuses recettes, simples à réaliser chez vous,
         pour régaler vos papilles et épater vos convives !</span>
-<?php  foreach ($tags as $t) : ?>
+<?php  foreach ($tags as $t) :?>
     <div class="categorieRecettes centrer"><!-- genere un block de categorie -->
         <h1 class="title-Recette-index"> <?= $t->nom ?> </h1>
 

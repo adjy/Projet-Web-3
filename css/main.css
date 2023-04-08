@@ -24,13 +24,17 @@ html, body {
     color: #fff;
     border: none;
     border-radius: 5px;
-    /* padding: 10px; */
+
     font-size: 16px;
-    /* margin: auto; */
+     margin: auto;
     /* margin-top: 20px;
     margin-bottom: 10px; */
     cursor: pointer;
-    margin: 2%;
+    /*margin: 2%;*/
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    min-height: 40px;
 }
 .btn:hover{
     opacity: 1;
@@ -68,7 +72,7 @@ html, body {
 
 #header a{
     text-decoration: none;
-    /*color: white;*/
+    /*color: black;*/
 }
 
 /* logo et nom  */
@@ -76,13 +80,14 @@ html, body {
     display: flex;
     align-content: center;
     border-bottom: 1px solid gray;
-    /*color: white;*/
+    color: white;
+
 }
 
 /* bouton de connection */
 .part1 div:last-of-type {
     margin-left: auto; /* aligner cet élément à droite */
-    margin-right:10px ;
+    margin-right:1% ;
 }
 
 .title{
@@ -131,11 +136,12 @@ html, body {
        
     }
 }
-.menu{
+#menu{
     display: flex;
     flex-direction: row;
     list-style: none;
     width: 60vw;
+
 }
 @media screen and (max-width: 767px) {
     #menu{
@@ -146,6 +152,7 @@ html, body {
 .item-menu{
     font-size: 20px;    
     margin: 2%;
+    color: black;
 }
 
 .logMenu{
@@ -153,7 +160,9 @@ html, body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    height: 50px;
 }
+
 .logMenu-item{
     /* background-color: aliceblue; */
 }
@@ -162,12 +171,14 @@ html, body {
 .search{
     display: flex;
     flex-direction: column;
+    margin-top: 2% ;
+    /*background-color: #f44336;*/
 }
 .form-search{
     width: 50vw;
     display: flex;
-    min-height: 5vh;
-    justify-content: space-between;
+    height: 6vh;
+    justify-content: space-around;
 }
 .input-search{
     width: 40vw;
@@ -180,12 +191,15 @@ html, body {
 .input-search,
 .search-btn{
     height: 65%;
+    margin: 1%;
 }
 
 .search-btn{
-    margin: auto;
-}
 
+}
+#searchID{
+    margin-left: 2%;
+}
 
 
 /* ================================================================= */
@@ -465,9 +479,13 @@ html, body {
     top:1px;
     right: 0;
     background-color: var( --couleurPrincipale);
-    height: 20px;
     display: grid;
     place-content: center;
+    color: black;
+    height: 17px;
+    width: 30px;
+    padding: 0;
+    margin: 0;
 }
 
 .image-supprimer{
@@ -482,6 +500,7 @@ html, body {
     flex-direction: row;
     flex-wrap: wrap; 
 }
+
 
 /* ================================================================= */
 

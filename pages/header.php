@@ -1,11 +1,17 @@
 
 <header id = "header">
 
-    <div class="part1">
-       <div class="title centrer"><img class="img-logo" src ="<?= $GLOBALS['IMG_DIR']?>src/logo.png"/></div>
-        <div class="menu centrer">
+    <div class="part1 centrer">
+       <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php" class="title centrer"><img class="img-logo" src ="<?= $GLOBALS['IMG_DIR']?>src/logo.png"/></a>
+        <div id="menu" class="centrer">
+<!--            --><?php
+//                if(isset($_SESSION['tag'])){
+//                    foreach ($_SESSION['tag'] as $tag){ ?>
+<!--                        <a class = "item-menu" href="#ID_--><?php //echo trim($tag->nom," ")?><!--">--><?php //echo $tag->nom ?><!--</a>-->
+<!--                 --><?php // }
+//                }?>
 
-<!--            <a class = " item-menu" href="--><?php //echo $GLOBALS['DOCUMENT_DIR'] ?><!--">sale</a>-->
+
 <!--            <a class = " item-menu" href="--><?php //echo $GLOBALS['DOCUMENT_DIR'] ?><!--">sucre</a>-->
 <!--            <a class = " item-menu" href="--><?php //echo $GLOBALS['DOCUMENT_DIR'] ?><!--">sale</a>-->
 <!--            <a class = " item-menu" href="--><?php //echo $GLOBALS['DOCUMENT_DIR'] ?><!--">sale</a>-->

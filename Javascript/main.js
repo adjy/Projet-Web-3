@@ -1,12 +1,15 @@
 function addMenu(){
-    let categorie = document.querySelectorAll('.categorieRecettes');
-    let Mn = document.getElementById('menu');
-    // console.log(menu);
-
+    let categorie= document.querySelectorAll('.categorieRecettes');
+    let Mn = document.getElementById("menu")
     categorie.forEach((menu, indice) => {
-    // console.log(menu.children[0].innerHTML);
+        // menu.setAttribute('id', "ID_"+ menu.children[0].innerHTML.split(" ").join(""));
+        // let test = "    aaaa";
+        // console.log();
+
+        // console.log(menu.children[0].innerHTML);
     let new_node = document.createElement('a');
-    let text_n = menu.children[0].innerHTML;
+    let text_n = menu.children[0].innerHTML.split(" ").join("");
+    console.log(text_n)
     new_node.innerHTML = text_n;
 
     new_node.classList.add("item-menu");
@@ -15,7 +18,7 @@ function addMenu(){
     // console.log(new_node);
 
     Mn.append(new_node);
-    console.log(menu.children[0]);
+    // console.log(menu.children[0]);
     let lienIdText = "ID_"+text_n;
     menu.children[0].setAttribute('id', lienIdText)
     })
@@ -25,6 +28,7 @@ function addMenu(){
 
 
 document.addEventListener('DOMContentLoaded',function (){
-//    addMenu();
+
+    addMenu();
 
 })

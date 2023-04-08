@@ -20,7 +20,7 @@ if(isset($_SESSION['username'])){?>
             <div class="recette-aSupprimer centrer">
                 <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
                 <form class="cadre-aSupprimer">
-                    <img class = "image-supprimer" src="images/recettes/Banana_Pudding_Dessert.png" alt="" />
+                    <img class = "image-supprimer" src="../images/recettes/Banana_Pudding_Dessert.png" alt="" />
                     <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
                 </form>
             </div>
@@ -28,7 +28,7 @@ if(isset($_SESSION['username'])){?>
             <div class="recette-aSupprimer centrer">
                 <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
                 <form class="cadre-aSupprimer">
-                    <img class = "image-supprimer" src="images/recettes/Banana_Pudding_Dessert.png" alt="" />
+                    <img class = "image-supprimer" src="../images/recettes/Banana_Pudding_Dessert.png" alt="" />
                     <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
                 </form>
             </div>
@@ -36,7 +36,7 @@ if(isset($_SESSION['username'])){?>
             <div class="recette-aSupprimer centrer">
                 <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
                 <form class="cadre-aSupprimer">
-                    <img class = "image-supprimer" src="images/recettes/Banana_Pudding_Dessert.png" alt="" />
+                    <img class = "image-supprimer" src="../images/recettes/Banana_Pudding_Dessert.png" alt="" />
                     <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
                 </form>
             </div>
@@ -44,7 +44,7 @@ if(isset($_SESSION['username'])){?>
             <div class="recette-aSupprimer centrer">
                 <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
                 <form class="cadre-aSupprimer">
-                    <img class = "image-supprimer" src="images/recettes/Banana_Pudding_Dessert.png" alt="" />
+                    <img class = "image-supprimer" src="../images/recettes/Banana_Pudding_Dessert.png" alt="" />
                     <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
                 </form>
             </div>
@@ -52,7 +52,7 @@ if(isset($_SESSION['username'])){?>
             <div class="recette-aSupprimer centrer">
                 <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
                 <form class="cadre-aSupprimer">
-                    <img class = "image-supprimer" src="images/recettes/Banana_Pudding_Dessert.png" alt="" />
+                    <img class = "image-supprimer" src="../images/recettes/Banana_Pudding_Dessert.png" alt="" />
                     <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
                 </form>
             </div>
@@ -60,7 +60,7 @@ if(isset($_SESSION['username'])){?>
             <div class="recette-aSupprimer centrer">
                 <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
                 <form class="cadre-aSupprimer">
-                    <img class = "image-supprimer" src="images/recettes/Banana_Pudding_Dessert.png" alt="" />
+                    <img class = "image-supprimer" src="../images/recettes/Banana_Pudding_Dessert.png" alt="" />
                     <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
                 </form>
             </div>
@@ -69,8 +69,8 @@ if(isset($_SESSION['username'])){?>
 
 
     </div>
-    <script src = "Javascript/supprimer_recette.js"></script>
-    <script src = "Javascript/admin.js"></script>
+    <script src = "<?= $GLOBALS['JS_DIR'] ?>supprimer_recette.js"></script>
+    <script src = "<?= $GLOBALS['JS_DIR'] ?>admin.js"></script>
 
 
     <?php
