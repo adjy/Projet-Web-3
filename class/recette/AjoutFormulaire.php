@@ -13,13 +13,12 @@ class AjoutFormulaire{
                 <div id="ingredients">
                     <div class="titleIngredient">Ingrédients</div>
                     <div id="listeIngredient"></div>
-
                 </div>
 
-                <script src = "<?= $GLOBALS['JS_DIR']?>admin.js"></script>
+
             </form>
 
-            <form  method="post" id = "ajout-ingredient-form" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
+            <form  method="post" id = "ajout-ingredient-form" action=""  enctype="multipart/form-data">
 
                 <input class = "ajout-input" type="text" id = "nom-ingredient" name="nom-ingredient" placeholder="Entrer le nom de l'ingredient" value = "">
                 <input class = "ajout-input" type="text" id = "unite" name="unite" placeholder="unite" value = "">
@@ -28,11 +27,18 @@ class AjoutFormulaire{
                     <label for="photo-ingredient"> Photo de l'ingredient</label>
                     <input type="file" class="file" id="photo_ingredient" name="photo_ingredient">
                 </div>
-
-                <button type="submit" id="ajouter-ingredient" class = "btn" >Ajouter un ingrédient</button>
-
+                <button type="button" id="ajouter-ingredient-button" class = "btn" >Ajouter un ingrédient</button>
             </form>
             <button type="submit" id = "ajout-recette" class="btn" value="Ajouter la recette">Ajouter la recette</button>
+            <script src = "<?= $GLOBALS['JS_DIR']?>admin.js"></script>
+            <script>
+                let bt= document.getElementById("ajouter-ingredient-button");
+                bt.addEventListener("click", function(event){
+                    <?php echo 'alert("Ceci est une fenêtre pop-up !");'; ?>
+
+
+                })
+            </script>
         </div>
         <?php
     }
