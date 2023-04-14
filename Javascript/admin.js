@@ -37,6 +37,8 @@ function ajoutIngredients(){
         divIngredient.append(divNodeQte);
         divIngredient.append(divNodeUnite);
 
+        divIngredient.classList.add("ingredientClass")
+
         liste.append(divIngredient);
 
     })
@@ -58,6 +60,7 @@ function ajoutTags(){
         let divNodeNom = document.createElement("div");
         divNodeNom.innerHTML =  nom.value;
         nom.value = "";
+        divNodeNom.classList.add("tagClass");
         liste.append(divNodeNom);
     })
 
@@ -73,8 +76,8 @@ function submitRecette(){
 }
 
 document.addEventListener('DOMContentLoaded',function (){
-    ajoutIngredients();
+    // ajoutIngredients();
     submitRecette();
-    ajoutTags();
+    // ajoutTags();
 
 })
