@@ -9,8 +9,7 @@ class AjoutFormulaire{
                 <div class="TitleAjoutRecette">Ajouter une recette</div>
                 <?php
                 $nom_recette = "";
-                if(isset($_SESSION['recette']))
-//                    $nom_recette = $_SESSION['recette'])->nom;
+                if(isset($_SESSION['recette'])) $nom_recette = $_SESSION['recette']['titre'];
                 ?>
 
                 <input class = "ajout-input" type="text" id = "nom" name="nom" placeholder="Entrer le nom de la recette" value = "<?= $nom_recette ?>" <!-- nom de la recette -->
@@ -18,29 +17,29 @@ class AjoutFormulaire{
                 <input type="file" class="file" id="photo_recette" name="photo_recette">
 
 <!--                liste des ingredients de la recette-->
+
                 <div id="ingredients">
                     <div class="titleIngredient">Ingrédients</div>
                     <div id="listeIngredient">
-                        <div class="ingredientClass">
-                            <div>banana</div>
-                            <div>15</div>
-                            <div></div>
-                        </div>
+                    <?php
+                        if( isset( $_SESSION['listeIngredients'])) {
+                          $ingredients =  $_SESSION['listeIngredients'];
+                            foreach ( $ingredients  as $lists): ?>
+                                <div class="ingredientClass">
+                                    <div> <?= $lists['nom'] ?></div>
+                                    <div><?= $lists['Qte'] ?></div>
+                                    <div><?= $lists['mesure'] ?></div>
+                                </div>
+                            <?php endforeach;
+                        }
 
-                        <div class="ingredientClass">
-                            <div>sucre</div>
-                            <div>2</div>
-                            <div>grammes</div>
-                        </div>
-
-                        <div class="ingredientClass">
-                            <div>sel</div>
-                            <div>3</div>
-                            <div>grammes</div>
-                        </div>
+                    ?>
                     </div>
                 </div>
-<!--                liste des tags de la recette-->
+
+
+<!--                liste des tags de la recette             -->
+
                 <div id="tags">
                     <div class="titleTag">Tags</div>
                     <div class="divTags">
@@ -51,12 +50,13 @@ class AjoutFormulaire{
 
                     </div>
                 </div>
+
             </form>
 
 
             <div class="ajout-tag-ingredient">
     <!--            Pour gerer l'ajout des ingredients-->
-                <form  method="post" id = "ajout-ingredient-form" action=""  enctype="multipart/form-data">
+                <form  method="post" id = "ajout-ingredient-form" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
 
                     <input class = "ajout-input" type="text" id = "nom-ingredient" name="nom-ingredient" placeholder="Entrer le nom de l'ingredient" value = "">
                     <input class = "ajout-input" type="text" id = "unite" name="unite" placeholder="unite" value = "">
@@ -69,7 +69,7 @@ class AjoutFormulaire{
                 </form>
 
     <!--            Pour gerer l'ajout des tags-->
-                <form  method="post" id = "ajout-tag-form" action=""  enctype="multipart/form-data">
+                <form  method="post" id = "ajout-tag-form" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutTagTraitement.php"  enctype="multipart/form-data">
                     <input class = "ajout-input" type="text" id = "nom-tag" name="nom-tag" placeholder="Entrer un tag" value = "">
                     <button type="submit" id="ajouter-tag-button" class = "btn" >Ajouter un tag</button>
                 </form>

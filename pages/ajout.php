@@ -14,7 +14,6 @@ use recette\AjoutFormulaire;
 ob_start() ;
 $formajout = new AjoutFormulaire();
 $formajout->generateAjoutForm();
-
 $content = ob_get_clean();
 
 Template::render($content, $title = "Ajout Recette");
