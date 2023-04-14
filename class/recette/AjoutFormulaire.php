@@ -18,8 +18,11 @@ class AjoutFormulaire{
                 </div>
 <!--                liste des tags de la recette-->
                 <div id="tags">
-                    <div class="titleTags">Tags</div>
-                    <div id="listeTags"></div>
+                    <div class="titleTag">Tags</div>
+                    <div class="divTags">
+                        <div id="listeTags"></div>
+
+                    </div>
                 </div>
             </form>
 
