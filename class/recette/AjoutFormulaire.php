@@ -52,26 +52,26 @@ class AjoutFormulaire{
                     </div>
                 </div>
             </form>
+            <div class="ajout-tag-ingredient">
+    <!--            Pour gerer l'ajout des ingredients-->
+                <form  method="post" id = "ajout-ingredient-form" action=""  enctype="multipart/form-data">
 
-<!--            Pour gerer l'ajout des ingredients-->
-            <form  method="post" id = "ajout-ingredient-form" action=""  enctype="multipart/form-data">
+                    <input class = "ajout-input" type="text" id = "nom-ingredient" name="nom-ingredient" placeholder="Entrer le nom de l'ingredient" value = "">
+                    <input class = "ajout-input" type="text" id = "unite" name="unite" placeholder="unite" value = "">
+                    <input type="number" id = "qte" name="quantite" placeholder="Quantité" value = "" min = 0>
+                    <div class="photo-in">
+                        <label for="photo-ingredient"> Photo de l'ingredient</label>
+                        <input type="file" class="file" id="photo_ingredient" name="photo_ingredient">
+                    </div>
+                    <button type="button" id="ajouter-ingredient-button" class = "btn" >Ajouter un ingrédient</button>
+                </form>
 
-                <input class = "ajout-input" type="text" id = "nom-ingredient" name="nom-ingredient" placeholder="Entrer le nom de l'ingredient" value = "">
-                <input class = "ajout-input" type="text" id = "unite" name="unite" placeholder="unite" value = "">
-                <input type="number" id = "qte" name="quantite" placeholder="Quantité" value = "">
-                <div class="photo-in">
-                    <label for="photo-ingredient"> Photo de l'ingredient</label>
-                    <input type="file" class="file" id="photo_ingredient" name="photo_ingredient">
-                </div>
-                <button type="button" id="ajouter-ingredient-button" class = "btn" >Ajouter un ingrédient</button>
-            </form>
-
-<!--            Pour gerer l'ajout des tags-->
-            <form  method="post" id = "ajout-tag-form" action=""  enctype="multipart/form-data">
-                <input class = "ajout-input" type="text" id = "nom-tag" name="nom-tag" placeholder="Entrer un tag" value = "">
-                <button type="button" id="ajouter-tag-button" class = "btn" >Ajouter un tag</button>
-            </form>
-
+    <!--            Pour gerer l'ajout des tags-->
+                <form  method="post" id = "ajout-tag-form" action=""  enctype="multipart/form-data">
+                    <input class = "ajout-input" type="text" id = "nom-tag" name="nom-tag" placeholder="Entrer un tag" value = "">
+                    <button type="button" id="ajouter-tag-button" class = "btn" >Ajouter un tag</button>
+                </form>
+            </div class = "ajout-tag-ingredient">
 <!--            bouton pour l'ajout de la recette-->
             <button type="button" id = "ajout-recette" class="btn" value="Ajouter la recette">Ajouter la recette</button>
 
