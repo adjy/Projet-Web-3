@@ -362,10 +362,9 @@ html, body {
 /* ================================================================= */
 /* ajout recette */
 #ajout-recette-form,
-#ajout-ingredient-form{
+#ajout-ingredient-form,
+#ajout-tag-form{
     margin: auto;
-    /* width: 80%; */
-    /* max-width: 800px; */
     background-color: #fff;
     padding: 20px;
     /*border-radius: 10px;*/
@@ -390,7 +389,9 @@ html, body {
     margin-bottom: 20px;
 }
 
-.ajout-input {
+.ajout-input,
+#qte,
+.photo-in{
     width: 100%;
     margin-bottom: 10px;
     padding: 10px;
@@ -401,24 +402,42 @@ html, body {
 }
 
 #ajouter-ingredient {
-    background-color: #4CAF50;
+
     
 }
 
-.titleIngredient {
+.titleIngredient,
+.titleTag{
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
 }
-
+#ingredients,
+#tags{
+    margin: 2% 0;
+}
     /* Style du bouton Ajouter la recette */
 #ajout-recette {
     margin:2% 0 ;
-    background-color: #f44336;
-    
+    background-color: #4CAF50;
+    width: auto;
+    display: flex;
+    justify-content: center;
 }
-#listeIngredient > div {
-    /*background-color:yellow;*/
+.ajout-tag-ingredient{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+#ajout-ingredient-form{
+    background-color: red;
+}
+#ajout-tag-form{
+    background-color: #0069d9;
+}
+.ingredientClass{
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -426,9 +445,45 @@ html, body {
     justify-content: space-between;
     align-items: center;
 }
-#ajout-recette-form,
-#ajout-ingredient-form{
+.tagClass,
+.ingredientClass{
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+#listeTags{
+    display: flex;
+    flex-direction: row;
+
+}
+/*#ajout-recette-form,*/
+/*#ajout-ingredient-form,*/
+/*#ajout-tag-form{*/
+/*    width: 70vw;*/
+/*}*/
+
+#ajout-recette-form{
     width: 70vw;
+}
+
+
+#ajout-ingredient-form,
+#ajout-tag-form{
+    width: 35vw;
+}
+.photo-in{
+    margin: 2% 0;
+    display: flex;
+    flex-direction: column;
+    /*background-color: #4CAF50;*/
+}
+
+#ajouter-ingredient-button,
+#ajouter-tag-button{
+    margin: 0;
 }
 /* ================================================================= */
 
@@ -559,10 +614,7 @@ html, body {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-#ajout-ingredient-form{
-    /*margin-top: 2px;*/
-    /*background-color: yellow;*/
-}
+
 .formulaire-login{
     /* background-color: aqua; */
 
