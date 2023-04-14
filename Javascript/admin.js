@@ -61,3 +61,13 @@ boutonIngredient.addEventListener("click", function(event){
 
     
 })
+
+document.addEventListener("DOMContentLoaded", function (event){
+    let form = document.getElementById("ajout-recette-form") ;
+    let button = document.getElementById("ajout-recette")
+
+    button.addEventListener('click', function (e){
+        form.submit()
+    })
+
+})

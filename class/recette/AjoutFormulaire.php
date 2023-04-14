@@ -14,8 +14,6 @@ class AjoutFormulaire{
                     <div class="titleIngredient">Ingrédients</div>
                     <div id="listeIngredient"></div>
                 </div>
-
-
             </form>
 
             <form  method="post" id = "ajout-ingredient-form" action=""  enctype="multipart/form-data">
@@ -28,13 +26,15 @@ class AjoutFormulaire{
                     <input type="file" class="file" id="photo_ingredient" name="photo_ingredient">
                 </div>
                 <button type="button" id="ajouter-ingredient-button" class = "btn" >Ajouter un ingrédient</button>
+                <button type="button" id = "ajout-recette" class="btn" value="Ajouter la recette">Ajouter la recette</button>
+
             </form>
-            <button type="submit" id = "ajout-recette" class="btn" value="Ajouter la recette">Ajouter la recette</button>
             <script src = "<?= $GLOBALS['JS_DIR']?>admin.js"></script>
             <script>
+
                 let bt= document.getElementById("ajouter-ingredient-button");
                 bt.addEventListener("click", function(event){
-                    <?php echo 'alert("Ceci est une fenêtre pop-up !");'; ?>
+                    <?php //echo 'alert("Ceci est une fenêtre pop-up !");'; ?>
 
 
                 })
