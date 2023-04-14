@@ -34,6 +34,7 @@ class AjoutFormulaire{
 
                 let bt= document.getElementById("ajouter-ingredient-button");
                 bt.addEventListener("click", function(event){
+                    // mets les codes php ici pour gerer l'ajout d'un ingredient
                     <?php //echo 'alert("Ceci est une fenêtre pop-up !");'; ?>
 
 
