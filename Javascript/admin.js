@@ -1,18 +1,17 @@
 function ajoutIngredients(){
-    let boutonIngredient= document.getElementById("ajouter-ingredient-button");
+    // Pour la creation des divs pour afficher la liste des ingredients
+    let boutonIngredient= document.getElementById("ajouter-ingredient-button");  // Recupere le button
+    let liste = document.getElementById('listeIngredient'); //Recupere la liste des ingredients
 
-    let liste = document.getElementById('listeIngredient');
     boutonIngredient.addEventListener("click", function(event){
         // pour le nom de l'ingredient
         let nom = document.getElementById("nom-ingredient"); // recupre le nom du formulaire
-        if(nom.value === "")
+        if(nom.value === "") // Verifie si le nom n'est pas vide
             return;
 
         let divNodeNom = document.createElement("div");
         divNodeNom.innerHTML =  nom.value;
         nom.value = "";
-
-
 
         // pour la qte
         let qte = document.getElementById("qte"); // recupre le nom du formulaire
@@ -26,13 +25,12 @@ function ajoutIngredients(){
         divNodeUnite.innerHTML =  unite.value;
         unite.value="";
 
-        //  // pour la photo de l'ingredient
+        // pour la photo de l'ingredient
         let photo = document.getElementById("photo_ingredient"); // recupre le nom du formulaire
         let nodePhoto = document.createElement("file"); // creation d'un input
         nodePhoto.name = "photo_ingredient[]"; // ajoute ce nom dans la liste de name nom-ingredient
         nodePhoto.value = photo.value; // donne comme valeur la valeur de nom
         nodePhoto.type = "hidden"; // met le input a hidden pour ne pas l'afficher
-
 
         let divIngredient = document.createElement("div");// creation d'un div pour afficher l'ingredient ajouter
         divIngredient.append(divNodeNom);
@@ -42,27 +40,25 @@ function ajoutIngredients(){
         liste.append(divIngredient);
 
     })
-
 }
 
 function ajoutTags(){
-    let boutonTags= document.getElementById("ajouter-tag-button");
+    // Pour la creation des divs pour afficher la liste des tags
 
-    let liste = document.getElementById('listeTags');
+    let boutonTags= document.getElementById("ajouter-tag-button"); // recupere le button tag
+    let liste = document.getElementById('listeTags'); //Recupere la liste des tags
+
+
     boutonTags.addEventListener("click", function(event){
         // pour le nom de l'ingredient
-        let nom = document.getElementById("nom-tag"); // recupre le nom du formulaire
-        if(nom.value === "")
+        let nom = document.getElementById("nom-tag"); // recupre le nom du tag
+        if(nom.value === "") // verifie si le nom est vide
             return;
 
         let divNodeNom = document.createElement("div");
         divNodeNom.innerHTML =  nom.value;
         nom.value = "";
-
-        let divIngredient = document.createElement("div");// creation d'un div pour afficher l'ingredient ajouter
-        divIngredient.append(divNodeNom);
-        liste.append(divIngredient);
-
+        liste.append(divNodeNom);
     })
 
 }
@@ -77,7 +73,6 @@ function submitRecette(){
 }
 
 document.addEventListener('DOMContentLoaded',function (){
-
     ajoutIngredients();
     submitRecette();
     ajoutTags();
