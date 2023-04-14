@@ -8,7 +8,7 @@ class AjoutFormulaire{
 <!--                Ajout des informations de la recette-->
                 <div class="TitleAjoutRecette">Ajouter une recette</div>
                 <?php
-                $nom_recette = "poulet";
+                $nom_recette = "";
                 if(isset($_SESSION['recette']))
 //                    $nom_recette = $_SESSION['recette'])->nom;
                 ?>
@@ -52,6 +52,8 @@ class AjoutFormulaire{
                     </div>
                 </div>
             </form>
+
+
             <div class="ajout-tag-ingredient">
     <!--            Pour gerer l'ajout des ingredients-->
                 <form  method="post" id = "ajout-ingredient-form" action=""  enctype="multipart/form-data">
@@ -63,15 +65,18 @@ class AjoutFormulaire{
                         <label for="photo-ingredient"> Photo de l'ingredient</label>
                         <input type="file" class="file" id="photo_ingredient" name="photo_ingredient">
                     </div>
-                    <button type="button" id="ajouter-ingredient-button" class = "btn" >Ajouter un ingrédient</button>
+                    <button type="submit" id="ajouter-ingredient-button" class = "btn" >Ajouter un ingrédient</button>
                 </form>
 
     <!--            Pour gerer l'ajout des tags-->
                 <form  method="post" id = "ajout-tag-form" action=""  enctype="multipart/form-data">
                     <input class = "ajout-input" type="text" id = "nom-tag" name="nom-tag" placeholder="Entrer un tag" value = "">
-                    <button type="button" id="ajouter-tag-button" class = "btn" >Ajouter un tag</button>
+                    <button type="submit" id="ajouter-tag-button" class = "btn" >Ajouter un tag</button>
                 </form>
-            </div class = "ajout-tag-ingredient">
+            </div>
+
+
+
 <!--            bouton pour l'ajout de la recette-->
             <button type="button" id = "ajout-recette" class="btn" value="Ajouter la recette">Ajouter la recette</button>
 
