@@ -5,7 +5,7 @@
 /* essentiel */
 body {
    display: flex;
-   flex-direction: column;  
+   flex-direction: column;
    /*background-color: gold;*/
 }
 html, body {
@@ -14,7 +14,7 @@ html, body {
 }
 .centrer{
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 
 .btn{
@@ -52,12 +52,12 @@ html, body {
     display: flex;
     flex-direction: column;
     margin: auto;
- 
+
 }
 /* ================================================================= */
 
 /* header */
-#header{    
+#header{
 
     /*display: flex;*/
     /*flex-direction: column;*/
@@ -121,19 +121,19 @@ html, body {
 @media screen and (max-width: 936px) {
     .title{
         font-size: 30px;
-       
+
     }
 }
 @media screen and (max-width: 875px) {
     .title{
         font-size: 25px;
-       
+
     }
 }
 @media screen and (max-width: 666px) {
     .title{
         font-size: 20px;
-       
+
     }
 }
 #menu{
@@ -150,9 +150,9 @@ html, body {
         display: none;
     }
 }
- 
+
 .item-menu{
-    font-size: 20px;    
+    font-size: 20px;
     margin: 2%;
     color: black;
 }
@@ -214,7 +214,7 @@ html, body {
     align-items: center;
     /*color: white;*/
     text-align: center;
-    
+
     min-height: 10vh;
     box-shadow: 0 2px 10px rgba(163, 21, 21, 0.2);
     background-color:var(--couleurPrincipale);
@@ -254,7 +254,7 @@ html, body {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    
+
 }
 .title-Recette-index{
     font-size: 50px;
@@ -294,7 +294,7 @@ html, body {
     height: 70vh;
     display: grid;
     grid-template-rows: 20% 80%;
-    
+
 }
 .nom-recette{
     /* background-color: blue; */
@@ -327,7 +327,7 @@ html, body {
     flex-direction: column;
     /* align-items: center; */
     /* justify-content: center; */
-    
+
 }
 .image-ingredient{
     width: 4vh;
@@ -361,37 +361,38 @@ html, body {
 }
 /* ================================================================= */
 /* ajout recette */
-.cadre{
+#ajout-recette-form,
+#ajout-ingredient-form,
+#ajout-tag-form{
     margin: 2% auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     height: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    width: 70vw;
+    background-color: #0069d9;
 
 }
-/*margin: 50px auto;*/
-/*display: flex;*/
-/*flex-direction: column;*/
-/*background-color: #fff;*/
-/*height: 55vh;*/
-/*width: 45vw;*/
-/*justify-content: center;*/
-/*align-items: center;*/
+/*.ajout-recette{*/
+/*    background-color: #fff;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    padding: 20px;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);*/
 
-.TitleAjout {
+/*}*/
+
+ /* Style du titre du formulaire */
+.TitleAjoutRecette {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
-    margin-right: auto;
 }
 
-.ajout-input{
+.ajout-input,
+#qte,
+.photo-in{
     width: 100%;
     margin-bottom: 10px;
     padding: 10px;
@@ -399,12 +400,44 @@ html, body {
     border-radius: 5px;
     border: none;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-left:0 ;
+
 }
-.subTitle{
+
+#ajouter-ingredient {
+
+
+}
+
+.titleIngredient,
+.titleTag{
     font-size: 20px;
-    margin-bottom: 1%;
-    margin-right: auto;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+#ingredients,
+#tags{
+    margin: 2% 0;
+}
+    /* Style du bouton Ajouter la recette */
+#ajout-recette {
+    margin:2% 0 ;
+    background-color: #4CAF50;
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+.ajout-tag-ingredient{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+#ajout-ingredient-form{
+    /*background-color: red;*/
+}
+#ajout-tag-form{
+    /*background-color: #0069d9;*/
 }
 .ingredientClass{
     padding: 10px;
@@ -423,97 +456,26 @@ html, body {
     border: none;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-#ingredients,
-#tags{
-
-    width: 70vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 2% 0;
-
-}
-#listeIngredient{
-    width: 100%;
-    margin-bottom: 2%;
-}
-#ajout-ingre,
-#ajout-tag{
-    margin-left: 0;
-}
 #listeTags{
     display: flex;
     flex-direction: row;
-    margin-right: auto;
+
 }
-#ajout-recette {
-    margin:2% 0 ;
-    background-color: #4CAF50;
-    width: auto;
-    display: flex;
-    justify-content: center;
-}
-/*.ajout-recette{*/
-/*    background-color: #fff;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    padding: 20px;*/
-/*    border-radius: 10px;*/
-/*    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);*/
-
-/*}*/
-
- /* Style du titre du formulaire */
-
-
-
-
-/*#ajouter-ingredient {*/
-
-/*    */
-/*}*/
-
-/*.titleIngredient,*/
-/*.titleTag{*/
-/*    font-size: 20px;*/
-/*    font-weight: bold;*/
-/*    margin-bottom: 10px;*/
-/*}*/
-
-/*    !* Style du bouton Ajouter la recette *!*/
-
-/*.ajout-tag-ingredient{*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    flex-wrap: wrap;*/
-/*    justify-content: center;*/
-
-/*}*/
-/*#ajout-ingredient-form{*/
-/*    !*background-color: red;*!*/
-/*}*/
-/*#ajout-tag-form{*/
-/*    !*background-color: #0069d9;*!*/
-/*}*/
-
-
-
 /*#ajout-recette-form,*/
 /*#ajout-ingredient-form,*/
 /*#ajout-tag-form{*/
 /*    width: 70vw;*/
 /*}*/
 
-/*#ajout-recette-form{*/
-/*    width: 70vw;*/
-/*}*/
+#ajout-recette-form{
+    width: 70vw;
+}
 
 
-/*#ajout-ingredient-form,*/
-/*#ajout-tag-form{*/
-/*    width: 35vw;*/
-/*}*/
+#ajout-ingredient-form,
+#ajout-tag-form{
+    width: 35vw;
+}
 /*.photo-in{*/
 /*    margin: 2% 0;*/
 /*    display: flex;*/
@@ -575,7 +537,7 @@ html, body {
     position: relative;
     /*background-color: yellow;*/
     width: 170px;
-    height: 170px;   
+    height: 170px;
 }
 
 .btn-supp{
@@ -599,11 +561,11 @@ html, body {
 
 .btn-supp:hover{
     background-color: red;
-} 
+}
 .supp{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
 
@@ -708,7 +670,7 @@ html, body {
         display: flex;
         flex-direction: row;
         justify-content:  center;
-    
+
         /* flex-wrap: wrap;
         align-items: center; */
     }

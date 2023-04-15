@@ -3,119 +3,79 @@
 namespace recette;
 class AjoutFormulaire{
     public function generateAjoutForm(): void{?>
-        <div class="ajout-recette">
-            <form method="post" class="" id="ajout-recette-form"  enctype="multipart/form-data" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutRecetteTraitement.php">
+<!--        <div class="ajout-recette">-->
+            <form method="post" class="cadre" id="ajout-recette-form"  enctype="multipart/form-data" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutRecetteTraitement.php">
 <!--                Ajout des informations de la recette-->
-                <div class="TitleAjoutRecette">Ajouter une recette</div>
-                <?php
-                $nom_recette = "";
-                if(isset($_SESSION['recette'])) $nom_recette = $_SESSION['recette']['titre'];
-                ?>
+                <div class="TitleAjout">Ajouter une recette</div>
 
-                <input class = "ajout-input" type="text" id = "nom" name="nom" placeholder="Entrer le nom de la recette" value = "<?= $nom_recette ?>" <!-- nom de la recette -->
-                <label for="le_fichier" class="form-label">Nom de l'image avec l'extension :</label> <!-- Image de la recette -->
-                <input type="file" class="file" id="photo_recette" name="photo_recette">
+                <input class = "ajout-input" type="text" id = "nom" name="nom" placeholder="Entrer le nom de la recette" value = ""> <!-- nom de la recette -->
+                <label for="le_fichier" class="subTitle">Photo de l'ingredient</label> <!-- Image de la recette -->
+                <input type="file" class="ajout-input" id="photo_recette" name="photo_recette">
 
 <!--                liste des ingredients de la recette-->
-
                 <div id="ingredients">
-                    <div class="titleIngredient">Ingrédients</div>
-                    <div id="listeIngredient">
-                    <?php
-                        if( isset( $_SESSION['listeIngredients'])) {
-                          $ingredients =  $_SESSION['listeIngredients'];
-                            foreach ( $ingredients  as $lists): ?>
-                                <div class="ingredientClass">
-                                    <div> <?= $lists['nom'] ?></div>
-                                    <div><?= $lists['Qte'] ?></div>
-                                    <div><?= $lists['mesure'] ?></div>
-                                </div>
-                            <?php endforeach;
-                        }
+                    <div class="subTitle">Ingrédients</div>
+                    <div id="listeIngredient"></div>
 
-                    ?>
-                    </div>
+                    <input class = "ajout-input" type="text" id = "nom-ingredient" name="" placeholder="Entrer le nom de l'ingredient" value = "" onkeyup="rehercher()">
+                    <div id="erreur-ingredient">Ingrédient introuvable. Veuillez l'ajouter dans la rubrique "ajout d'ingrédient"</div>
+
+                    <select id="choixIngredients" name="">
+<!--                        generes moi ici les id dans value et le nom des ingredients de la base de donnees-->
+                        <option value="1">butter</option>
+                        <option value="2">salt</option>
+                        <option value="3">sugar</option>
+                    </select>
+
+                    <input class = "ajout-input" type="text" id = "unite" name="" placeholder="unite" value = "">
+                    <input type="number" class = "ajout-input" id = "qte" name="" placeholder="Quantité" value = "" min = 0>
+
+                    <button type="button" class = "btn" id="ajout-ingre" >Ajouter un ingrédient</button>
                 </div>
 
 
-<!--                liste des tags de la recette             -->
-
+                <!--                liste des tags de la recette             -->
                 <div id="tags">
-                    <div class="titleTag">Tags</div>
-                    <div class="divTags">
+                    <div class="subTitle">Tags</div>
+
                         <div id="listeTags">
-                            <div class="tagClass">dessert</div>
-                            <div class="tagClass">chocolat</div>
+<!--                            <div class="tagClass"></div>-->
                         </div>
 
-                    </div>
+                        <input class = "ajout-input" type="text" id = "nom-tag" name="" placeholder="Ajout un tag" value = "" onkeyup="rehercherTag()" required>
+                         <div id="erreur-tag">Tag introuvable. Veuillez l'ajouter dans la rubrique "ajout de tag"</div>
+<!--                    generes moi ici les id dans value et le nom des tags de la base de donnees-->
+                        <select id="choixTags" name="">
+                            <option value="1">dessert</option>
+                            <option value="2">chocolat</option>
+                            <option value="3">sucre</option>
+                        </select>
+                        <button type="button" id="ajout-tag" class = "btn" >Ajouter un tag</button>
                 </div>
-
+                <button type="button" id = "ajout-recette" class="btn" value="Ajouter la recette">Ajouter la recette</button>
             </form>
 
 
-            <div class="ajout-tag-ingredient">
-    <!--            Pour gerer l'ajout des ingredients-->
-                <form  method="post" id = "ajout-ingredient-form" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
 
-                    <input class = "ajout-input" type="text" id = "nom-ingredient" name="nom-ingredient" placeholder="Entrer le nom de l'ingredient" value = "">
-                    <input class = "ajout-input" type="text" id = "unite" name="unite" placeholder="unite" value = "">
-                    <input type="number" id = "qte" name="quantite" placeholder="Quantité" value = "" min = 0>
-                    <div class="photo-in">
-                        <label for="photo-ingredient"> Photo de l'ingredient</label>
-                        <input type="file" class="file" id="photo_ingredient" name="photo_ingredient">
-                    </div>
-                    <button type="submit" id="ajouter-ingredient-button" class = "btn" >Ajouter un ingrédient</button>
-                </form>
+    <!--            Pour ajouter les ingredients-->
+        <form  method="post" class = "cadre" id = "ajout-ingredient-form" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
+            <div class="TitleAjout">Ajouter un ingredient</div>
+            <input class = "ajout-input" type="text" id = "nom-ingredient" name="nom-ingredient" placeholder="Entrer le nom de l'ingredient" value = "" required>
+            <label for="photo-ingredient" class="subTitle"> Photo de l'ingredient</label>
+            <input type="file" class="ajout-input" id="photo_ingredient" name="photo_ingredient">
+            <button type="submit" id="ajouter-ingredient-button" class = "btn" >Ajouter un ingrédient</button>
+        </form>
 
-    <!--            Pour gerer l'ajout des tags-->
-                <form  method="post" id = "ajout-tag-form" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutTagTraitement.php"  enctype="multipart/form-data">
-                    <input class = "ajout-input" type="text" id = "nom-tag" name="nom-tag" placeholder="Entrer un tag" value = "">
-                    <button type="submit" id="ajouter-tag-button" class = "btn" >Ajouter un tag</button>
-                </form>
-            </div>
+    <!--            Pour  ajouter les tags-->
+        <form  method="post" class="cadre" id = "ajout-tag-form" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutTagTraitement.php"  >
+            <div class="TitleAjout">Ajouter un tag</div>
+            <input class = "ajout-input" type="text" id = "nom-tag" name="nom-tag" placeholder="Entrer un tag" value = "" required>
+            <button type="submit" id="ajouter-tag-button" class = "btn" >Ajouter un tag</button>
+        </form>
 
-
-
-<!--            bouton pour l'ajout de la recette-->
-            <button type="button" id = "ajout-recette" class="btn" value="Ajouter la recette">Ajouter la recette</button>
 
             <script src = "<?= $GLOBALS['JS_DIR']?>admin.js"></script>
-            <script>
-                // Script pour gerer l'ajout des tags et des recettes
-                // let btIngredients= document.getElementById("ajouter-ingredient-button");
-                // btIngredients.addEventListener("click", function(event){
-                //     // mets les codes php ici pour gerer l'ajout d'un ingredient
-                //
-                //     let ingredient = document.getElementById("ajout-ingredient-form");
-                //     let val = ingredient.querySelectorAll('.ajout-input');
-                //     let qt = document.getElementById("qte");
-                //     let imgage_ingredient = document.getElementById("photo_ingredient") ;
-                //
-                //     let name_Ingredient = val[0].value;
-                //     let unite_Ingredient = val[1].value;
-                //     let quantite_Ingredient = qt.value;
 
-                    //Faire le upload ici
-
-                    // let image_ingredient = imgage_ingredient.files[0].name;
-
-
-                    <?php //echo 'alert("Ceci est une fenêtre ajout ingredients");'; ?>
-                })
-
-                // let btTags= document.getElementById("ajouter-tag-button");
-                // btTags.addEventListener("click", function(event){
-                //     // mets les codes php ici pour gerer l'ajout des tags
-                //     let tag = document.getElementById("ajout-tag-form");
-                //     let val = tag.querySelectorAll('.ajout-input');
-                //
-                //     let tag_name = val[0].value; // nom du tag
-
-                    <?php //echo 'alert("Ceci est une fenêtre Ajout tags !");'; ?>
-                })
-            </script>
-        </div>
         <?php
     }
 
