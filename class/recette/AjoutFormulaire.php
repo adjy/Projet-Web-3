@@ -8,7 +8,7 @@ class AjoutFormulaire{
 <!--                Ajout des informations de la recette-->
                 <div class="TitleAjout">Ajouter une recette</div>
 
-                <input class = "ajout-input" type="text" id = "nom" name="nom" placeholder="Entrer le nom de la recette" value = ""> <!-- nom de la recette -->
+                <input class = "ajout-input" type="text" id = "nom" name="nom" placeholder="Entrer le nom de la recette" required> <!-- nom de la recette -->
                 <label for="le_fichier" class="subTitle">Photo de l'ingredient</label> <!-- Image de la recette -->
                 <input type="file" class="ajout-input" id="photo_recette" name="photo_recette">
 
@@ -22,7 +22,7 @@ class AjoutFormulaire{
 
                     <select id="choixIngredients" name="">
 <!--                        generes moi ici les id dans value et le nom des ingredients de la base de donnees-->
-                        <option value="1">butter</option>
+                        <option value="1">lait de vache</option>
                         <option value="2">salt</option>
                         <option value="3">sugar</option>
                     </select>
