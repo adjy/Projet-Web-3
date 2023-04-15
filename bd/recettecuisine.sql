@@ -187,6 +187,8 @@ CREATE TABLE IF NOT EXISTS `recette` (
   `ID_recette` int NOT NULL AUTO_INCREMENT,
   `titre` varchar(100) NOT NULL,
   `photo` varchar(100) NOT NULL,
+  `description` TEXT,
+
   PRIMARY KEY (`ID_recette`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
@@ -210,6 +212,12 @@ INSERT INTO `recette` (`ID_recette`, `titre`, `photo`) VALUES
 (13, 'Recette tropézienne vanille et framboises', 'tropezienne-vanille-framboises.jpg'),
 (14, 'Bavarois Poire, Sablé breton et Sauce caramel onctueuse', 'Bavarois-Poire.jpg'),
 (15, 'test2', 'texts');
+
+
+
+UPDATE recette SET description =
+    "Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!"
+               WHERE ID_recette = 1;
 
 -- --------------------------------------------------------
 

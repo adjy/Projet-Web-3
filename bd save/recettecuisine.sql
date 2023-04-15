@@ -20,10 +20,15 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `recettecuisine`
 --
-DROP DATABASE IF EXISTS lrandria;
+-- DROP DATABASE IF EXISTS lrandria;
+-- -- Creation de la base de donnee
+-- CREATE DATABASE lrandria;
+-- use lrandria;
+
+DROP DATABASE IF EXISTS recettecuisine;
 -- Creation de la base de donnee
-CREATE DATABASE lrandria;
-use lrandria;
+CREATE DATABASE recettecuisine;
+use recettecuisine;
 -- --------------------------------------------------------
 
 --
@@ -126,6 +131,7 @@ CREATE TABLE IF NOT EXISTS `recette` (
   `ID_recette` int NOT NULL,
   `titre` varchar(100) NOT NULL,
   `photo` varchar(100) NOT NULL,
+
   PRIMARY KEY (`ID_recette`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -135,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `recette` (
 
 INSERT INTO `recette` (`ID_recette`, `titre`, `photo`) VALUES
 -- LES DESSERTS --
-(1, 'Triple Chocolate Cheesecake', 'Triple_Chocolate_Cheesecake.jpeg'),
+(1, 'Ttriple Chocolate Cheesecake', 'Triple_Chocolate_Cheesecake.jpeg'),
 (2, 'Banana Pudding Dessert', 'Banana_Pudding_Dessert.png'),
 (3, 'Ultimate Fudgy Chocolate Brownies', 'ultimate-fudgy-chocolate-brownies.jpg'),
 (4, 'NO BAKE DARK CHOCOLATE TART', 'no-bake-chocolate-tart-1.jpg'),
@@ -153,7 +159,6 @@ INSERT INTO `recette` (`ID_recette`, `titre`, `photo`) VALUES
 (12, 'CROUSTILLANT CHOCO NOISETTE', 'CROUSTILLANT-CHOCO-NOISETTE.jpg'),
 (13, 'Recette tropézienne vanille et framboises', 'tropezienne-vanille-framboises.jpg'),
 (14, 'Bavarois Poire, Sablé breton et Sauce caramel onctueuse', 'Bavarois-Poire.jpg');
-
 
 
 -- --------------------------------------------------------
