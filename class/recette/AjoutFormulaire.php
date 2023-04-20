@@ -9,7 +9,7 @@ class AjoutFormulaire{
                 <div class="TitleAjout">Ajouter une recette</div>
 
                 <input class = "ajout-input" type="text" id = "nom" name="nom" placeholder="Entrer le nom de la recette" required> <!-- nom de la recette -->
-                <label for="le_fichier" class="subTitle">Photo de l'ingredient</label> <!-- Image de la recette -->
+                <label for="le_fichier" class="subTitle">Photo de la recette</label> <!-- Image de la recette -->
                 <input type="file" class="ajout-input" id="photo_recette" name="photo_recette">
 
 <!--                liste des ingredients de la recette-->
