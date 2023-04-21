@@ -6,14 +6,21 @@ class Logger
 {
 
     public function generateLoginForm(string $action, $erreur): void{?>
+        
 
-        <form method="post" action="<?php $action ?>" class="centrer" id="login-form">
-            <span class = "admin-Log">Admin connection</span>
-            <span class="error" style="color: red"> <?php echo $erreur?> </span>
-                <input type="text" class = "input-form-log" name="username" placeholder="login">
-                <input type="password" class = "input-form-log" name="password" placeholder="password">
 
-            <button type="submit" class="btn">LOGIN</button>
+        <form method="post" action="<?php $action ?>" id="login-form">
+            <div class="photo-log">
+                <img src="<?= $GLOBALS['IMG_DIR']?>src/login.jpg"  alt=""/>
+            </div>
+            <div class="admin-info">
+                <span class = "admin-Log">Admin</span>
+                <span class="error"> <?php echo $erreur?> </span>
+                    <input type="text" class = "input-form-log" name="username" placeholder="login">
+                    <input type="password" class = "input-form-log" name="password" placeholder="password">
+
+                <button type="submit" class="btn">LOGIN</button>
+            </div>
         </form>
         <?php
     }
