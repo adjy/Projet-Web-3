@@ -58,7 +58,7 @@ class AfficheRecette{
                         }
                     }
                 }
-                $tab=array_unique($tab);?>
+                $tab = array_unique($tab);?>
                 <div class="categorieRecettes centrer">
                 <div class="title-Recette-index">Quelques recettes de ...</div>
                   <?php foreach  ($tab as $t):?>
@@ -111,8 +111,6 @@ class AfficheRecette{
             </div>
         <?php endforeach;
     }
-
-
 
     public function ListesRecherches($recettesRecherchee): void {
         foreach ($recettesRecherchee as $rec): ?>
