@@ -10,7 +10,6 @@ use recette\Template;
 use recette\AfficheRecette;
 use recette\Recette;
 
-
 $gdb = new Recette() ;
 $affiche = new AfficheRecette();
 $recettes = $gdb->getRecettes();

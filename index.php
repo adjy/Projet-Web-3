@@ -40,6 +40,7 @@ if( isset( $_SESSION['rechercheRecette'])) {
     </div>
 <?php
 
+
 $content = ob_get_clean();
 $title = "The Taste Experience";
 Template::render($content, $title);
