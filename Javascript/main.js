@@ -9,7 +9,7 @@ function addMenu(){
         // console.log(menu.children[0].innerHTML);
     let new_node = document.createElement('a');
     let text_n = menu.children[0].innerHTML.split(" ").join("");
-    console.log(text_n)
+    // console.log(text_n)
     new_node.innerHTML = text_n;
 
     new_node.classList.add("item-menu");
@@ -26,9 +26,19 @@ function addMenu(){
 
 {/* <a class = " item-menu" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>">sale</a> */}
 
+function soumissionRecette(){
+    let recettes_form = document.querySelectorAll('.recette-index');
 
+    recettes_form.forEach((recette, indice) => {
+
+        recette.addEventListener("click", function(event){
+            recette.submit()
+        })
+    })
+}
 document.addEventListener('DOMContentLoaded',function (){
 
     addMenu();
+    soumissionRecette();
 
 })
