@@ -44,13 +44,13 @@ if( isset( $_SESSION['rechercheRecette'])) {
             <div class="categorieRecettes centrer"><!-- genere un block de categorie -->
                 <h1 class="title-Recette-index"> <?= $t->nom ?> </h1>
 
-                <form method="post" class="liste-Recette-index centrer">
+                <div class="liste-Recette-index centrer">
                     <?php  foreach ($listesTags as $listes) : ?>
                         <?php if($listes->ID_tag == $t->ID_tag) : ?>
                             <!-- ensemble de recette qui appartiennent a cette categorie -->
                             <?php foreach ($recettes as $rec): ?>
                                 <?php if($rec->ID_recette == $listes->ID_recette) : ?>
-                                    <div class="recette-index centrer">
+                                    <form method="post"  class="recette-index centrer">
                                         <div class="photo-recette centrer">
                                             <img class = "image-recette-index" src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="" />
                                         </div>
@@ -58,12 +58,12 @@ if( isset( $_SESSION['rechercheRecette'])) {
                                             <?= $rec->titre ?>
                                         </div>
                                         <input type="hidden" id="<?= $rec->ID_recette ?>" value="<?= $rec->ID_recette ?>">
-                                    </div>
+                                    </form>
                                 <?php endif;?>
                             <?php endforeach;?>
                         <?php endif;?>
                     <?php endforeach;?>
-                </form>
+                </div>
             </div>
         <?php endforeach;?>
     </div>
