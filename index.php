@@ -50,7 +50,7 @@ if( isset( $_SESSION['rechercheRecette'])) {
                             <!-- ensemble de recette qui appartiennent a cette categorie -->
                             <?php foreach ($recettes as $rec): ?>
                                 <?php if($rec->ID_recette == $listes->ID_recette) : ?>
-                                    <form method="post"  class="recette-index centrer">
+                                    <form method="post" class="recette-index centrer" action="">
                                         <div class="photo-recette centrer">
                                             <img class = "image-recette-index" src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="" />
                                         </div>
