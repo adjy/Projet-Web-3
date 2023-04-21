@@ -8,8 +8,10 @@ require $GLOBALS['PHP_DIR']."class/Autoloader.php";
 Autoloader::register();
 use recette\Template ;
 use recette\Recette;
+use recette\AfficheRecette;
 
 $gdb = new Recette() ;
+$affiche = new AfficheRecette();
 
 ob_start() ;
 
@@ -22,16 +24,7 @@ $listesTags = $gdb->getListesTagRecettes();
 if( isset( $_SESSION['rechercheRecette'])) {
     //  var_dump( $_SESSION['rechercheRecette']);
     $recettesRecherchee =  $_SESSION['rechercheRecette'];
-    foreach ($recettesRecherchee as $rec): ?>
-        <div class="recette-index centrer">
-            <div class="photo-recette centrer">
-                <img class = "image-recette-index" src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="" />
-            </div>
-            <div class="nom-recette-index centrer">
-                <?= $rec->titre ?>
-            </div>
-        </div>
-    <?php endforeach;
+    $affiche->ListesRecherches($recettesRecherchee);
     unset($_SESSION['rechercheRecette']);//pour effacer automatiquement la recherche apres avoir recherché
 }
 
@@ -40,32 +33,9 @@ if( isset( $_SESSION['rechercheRecette'])) {
         <img class="banner" src="<?=$GLOBALS['IMG_DIR']?>src/banner.png " alt="banner">
         <span class="info">Découvrez notre sélection de délicieuses recettes, simples à réaliser chez vous,
         pour régaler vos papilles et épater vos convives !</span>
-        <?php  foreach ($tags as $t) :?>
-            <div class="categorieRecettes centrer"><!-- genere un block de categorie -->
-                <h1 class="title-Recette-index"> <?= $t->nom ?> </h1>
-
-                <div class="liste-Recette-index centrer">
-                    <?php  foreach ($listesTags as $listes) : ?>
-                        <?php if($listes->ID_tag == $t->ID_tag) : ?>
-                            <!-- ensemble de recette qui appartiennent a cette categorie -->
-                            <?php foreach ($recettes as $rec): ?>
-                                <?php if($rec->ID_recette == $listes->ID_recette) : ?>
-                                    <form method="post" class="recette-index centrer" action="">
-                                        <div class="photo-recette centrer">
-                                            <img class = "image-recette-index" src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="" />
-                                        </div>
-                                        <div class="nom-recette-index centrer">
-                                            <?= $rec->titre ?>
-                                        </div>
-                                        <input type="hidden" id="<?= $rec->ID_recette ?>" value="<?= $rec->ID_recette ?>">
-                                    </form>
-                                <?php endif;?>
-                            <?php endforeach;?>
-                        <?php endif;?>
-                    <?php endforeach;?>
-                </div>
-            </div>
-        <?php endforeach;?>
+        <?php
+            $affiche->ListesRecettes($tags, $listesTags,$recettes);
+        ?>
     </div>
 <?php
 
