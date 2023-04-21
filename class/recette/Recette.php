@@ -29,6 +29,24 @@ class Recette extends PdoConnexion {
         return $results;
     }
 
+    public function getListesIngredients(){
+        $statement = parent::getPdo()->prepare("SELECT * FROM listesingredients") ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+        return $results;
+    }
+
+    public function getIngredient(){
+        $statement = parent::getPdo()->prepare("SELECT * FROM ingredient") ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+        return $results;
+    }
+
+
+
+
+
 
     public function ajoutRecette( $ID_recette,$titre , $photo){
         $statement = parent::getPdo()->prepare("INSERT INTO recette ( ID_recette,titre,photo) VALUES ( :ID_recette,:titre, :photo)") ;

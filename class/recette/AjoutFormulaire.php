@@ -4,7 +4,7 @@ namespace recette;
 class AjoutFormulaire{
     public function generateAjoutForm(): void{?>
 <!--        <div class="ajout-recette">-->
-            <form method="post" class="cadre" id="ajout-recette-form"  enctype="multipart/form-data" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutRecetteTraitement.php">
+            <form method="post" class="cadre" id="ajout-recette-form"  enctype="multipart/form-data" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>ajoutRecetteTraitement.php">
 <!--                Ajout des informations de la recette-->
                 <div class="TitleAjout">Ajouter une recette</div>
                 <?php
@@ -32,7 +32,7 @@ class AjoutFormulaire{
 
 
     <!--            Pour ajouter les ingredients-->
-        <form  method="post" class = "cadre" id = "ajout-ingredient-form" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
+        <form  method="post" class = "cadre" id = "ajout-ingredient-form" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
             <div class="TitleAjout">Ajouter un ingredient</div>
             <input class = "ajout-input" type="text" id = "nom-ingredient" name="nom-ingredient" placeholder="Entrer le nom de l'ingredient" value = "" required>
             <input class = "ajout-input" class="ajout-input" type="text" id = "unite" name="unite" placeholder="unite" value = "" required>
@@ -45,7 +45,7 @@ class AjoutFormulaire{
         </form>
 
     <!--            Pour  ajouter les tags-->
-        <form  method="post" class="cadre" id = "ajout-tag-form" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutTagTraitement.php"  >
+        <form  method="post" class="cadre" id = "ajout-tag-form" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>ajoutTagTraitement.php"  >
             <div class="TitleAjout">Ajouter un tag</div>
             <div>Dessert,Salé,Chaud,Sucré...</div>
             <input class = "ajout-input" type="text" id = "nom-tag" name="nom-tag" placeholder="Entrer un tag" value = "" required>

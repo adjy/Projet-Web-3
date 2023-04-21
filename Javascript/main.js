@@ -38,7 +38,7 @@ function soumissionRecette(){
 }
 document.addEventListener('DOMContentLoaded',function (){
 
-    addMenu();
+    //addMenu();
     soumissionRecette();
 
 })
