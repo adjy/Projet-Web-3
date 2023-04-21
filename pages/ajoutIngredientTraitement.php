@@ -14,8 +14,8 @@ if(isset($_POST['nom-ingredient']) && isset($_POST['unite']) && isset($_POST['qu
             $dir_name = "../images/ingredients/" ;//l'endroit ou on va insérer l'image !!
 
             if(!is_dir($dir_name)) mkdir($dir_name) ;//verification de la repertoire si ca existe déjà
-            $full_name = $dir_name.$file_name ;
-            move_uploaded_file($temp_file_name, $full_name) ;
+           // $full_name = $dir_name.$file_name ;
+           // move_uploaded_file($temp_file_name, $full_name) ;
 
             if(!isset($_SESSION['listeIngredients'])) $_SESSION['listeIngredients'] = array();
             $data = array(

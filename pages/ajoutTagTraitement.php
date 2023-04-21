@@ -9,6 +9,7 @@ if(isset($_POST['nom-tag'])){
         'nom' =>$_POST['nom-tag']
     );
     array_push( $_SESSION['nom-tag'], $data);
+
 }
 header("Location:".$GLOBALS['DOCUMENT_DIR']."pages/ajout.php");
 exit();

@@ -9,10 +9,9 @@ use recette\Template;
 
 ob_start() ;
 
-
+$_SESSION['validation'] = true;
 
 if(isset($_SESSION['username'])){?>
-
 
     <div class="dashbord">
         dashbord

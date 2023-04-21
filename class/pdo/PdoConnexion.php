@@ -23,7 +23,6 @@ class PdoConnexion
                 $db_user =  'lrandria' ;
                 $db_pwd = '06032003' ;
 
-
                 $db_name = "recettecuisine" ;
                 $db_host = '127.0.0.1' ;
                 $db_port = '3306' ;
