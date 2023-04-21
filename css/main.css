@@ -730,9 +730,21 @@ html, body {
     align-items: center;
     flex-direction: column;
     width: 30vw;
-
-
 }
+
+.log-connecte{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    /*background-color: #0069d9;*/
+    width: 70%;
+}
+.log-connecte input:hover{
+    cursor: pointer;
+}
+
+
 .admin-Log{
     font-size: 30px;
     margin-bottom: 10%;

@@ -18,8 +18,12 @@ class Logger
                 <span class="error"> <?php echo $erreur?> </span>
                     <input type="text" class = "input-form-log" name="username" placeholder="login">
                     <input type="password" class = "input-form-log" name="password" placeholder="password">
-
-                <button type="submit" class="btn">LOGIN</button>
+                <div class="log-connecte">
+                    <div class="reste-conn"><label>
+                            <input name="rester-connecter" type="checkbox">
+                        </label>Rester connecté</div>
+                    <button type="submit" class="btn">LOGIN</button>
+                </div>
             </div>
         </form>
         <?php
