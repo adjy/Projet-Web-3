@@ -18,13 +18,13 @@
             <?php
 
             if(isset($_SESSION['username'])){?>
-                <a class = "btn" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>pages/admSpace.php" >Admin</a>
-                <a class = "btn" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>pages/logout.php" >Logout</a>
+                <a class = "btn-head" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>pages/admSpace.php" >Admin</a>
+                <a class = "btn-head" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>pages/logout.php" >Logout</a>
 
                 <?php
             }
             else{?>
-                <a class = "btn" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>pages/login.php">Sign in</a>
+                <a class = "btn-head" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>pages/login.php">Sign in</a>
                 <?php
             }
             ?>
