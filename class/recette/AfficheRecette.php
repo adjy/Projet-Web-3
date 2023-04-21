@@ -61,6 +61,7 @@ class AfficheRecette{
                 $tab = array_unique($tab);?>
                 <div class="categorieRecettes centrer">
                 <div class="title-Recette-index">Quelques recettes de ...</div>
+                    <div class="liste-Recette-index centrer">
                   <?php foreach  ($tab as $t):?>
                          <!-- affichage de Quelques recette qui appartiennet au meme categorie -->
 
@@ -78,6 +79,7 @@ class AfficheRecette{
                           <?php endforeach;?>
 
                 <?php endforeach;?>
+                </div>
                 </div>
 
 <?php
