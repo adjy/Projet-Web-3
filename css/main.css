@@ -20,13 +20,12 @@ html, body {
 .btn{
     /* background-color: transparent;*/
     background-color:gray ;
-
     color: #fff;
     border: none;
     border-radius: 5px;
 
     font-size: 16px;
-     margin: auto;
+
     /* margin-top: 20px;
     margin-bottom: 10px; */
     cursor: pointer;
@@ -34,10 +33,11 @@ html, body {
     padding: 2%;
     display: flex;
     align-items: center;
-    min-height: 40px;
+
+
 }
 .btn:hover{
-    opacity: 1;
+    transform: scale(1.1);
 }
 .info{
     font-size: 25px;
@@ -68,6 +68,10 @@ html, body {
     background-color:var(--couleurPrincipale);
     position: relative;
 
+}
+#toggler,
+#header label{
+    display: none;
 }
 
 #header a{
@@ -108,34 +112,34 @@ html, body {
     transform: translateY(-50%);
 
 }
-@media screen and (max-width: 1094px) {
-    .title{
-        font-size: 35px;
-    }
-}
-@media screen and (max-width: 965px) {
-    .title{
-        font-size: 32px;
-    }
-}
-@media screen and (max-width: 936px) {
-    .title{
-        font-size: 30px;
-       
-    }
-}
-@media screen and (max-width: 875px) {
-    .title{
-        font-size: 25px;
-       
-    }
-}
-@media screen and (max-width: 666px) {
-    .title{
-        font-size: 20px;
-       
-    }
-}
+/*@media screen and (max-width: 1094px) {*/
+/*    .title{*/
+/*        font-size: 35px;*/
+/*    }*/
+/*}*/
+/*@media screen and (max-width: 965px) {*/
+/*    .title{*/
+/*        font-size: 32px;*/
+/*    }*/
+/*}*/
+/*@media screen and (max-width: 936px) {*/
+/*    .title{*/
+/*        font-size: 30px;*/
+/*       */
+/*    }*/
+/*}*/
+/*@media screen and (max-width: 875px) {*/
+/*    .title{*/
+/*        font-size: 25px;*/
+/*       */
+/*    }*/
+/*}*/
+/*@media screen and (max-width: 666px) {*/
+/*    .title{*/
+/*        font-size: 20px;*/
+/*       */
+/*    }*/
+/*}*/
 #menu{
     display: flex;
     flex-direction: row;
@@ -145,13 +149,14 @@ html, body {
     align-items: center;
 
 }
-@media screen and (max-width: 767px) {
-    #menu{
-        display: none;
-    }
-}
+/*@media screen and (max-width: 767px) {*/
+/*    #menu{*/
+/*        display: none;*/
+/*    }*/
+/*}*/
  
-.item-menu{
+.item-menu,
+.logMenu{
     font-size: 20px;    
     margin: 2%;
     color: black;
@@ -163,6 +168,9 @@ html, body {
     flex-direction: row;
     justify-content: space-around;
     height: 50px;
+    /*background-color: #0069d9;*/
+    align-items: center;
+
 }
 
 .logMenu-item{
@@ -203,6 +211,41 @@ html, body {
     margin-left: 2%;
 }
 
+@media screen and (max-width: 845px) {
+    #menu{
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    #toggler,
+    #header label{
+        display: contents;
+    }
+
+    #menu{
+        width: 100%;
+        overflow: hidden;
+        max-height: 0;
+
+    }
+    #header label{
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    #toggler:checked ~ .part1{
+        max-height: 100%;
+    }
+
+    .title{
+        display: none;
+    }
+
+
+
+
+}
 
 /* ================================================================= */
 
@@ -662,102 +705,115 @@ html, body {
    flex-direction: column;
     width: 50vw;
 }
+/*#login-form{*/
+/*    margin: 50px auto;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    background-color: #fff;*/
+/*    height: 55vh;*/
+/*    width: 45vw;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    padding: 20px;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);*/
+/*}*/
+
 #login-form{
     margin: 50px auto;
-    display: flex;
-    flex-direction: column;
     background-color: #fff;
     height: 55vh;
     width: 45vw;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
     border-radius: 10px;
+    display: grid;
+    grid-template-columns: 40% 60%;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.photo-log img{
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
 }
 
 
+.admin-info{
+    /*background-color: #4CAF50;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 30vw;
+
+
+}
+.admin-Log{
+    font-size: 30px;
+    margin-bottom: 10%;
+}
 .input-form-log {
-    width: 100%;
+    width: 70%;
+
     margin-bottom: 10px;
     padding: 10px;
-    font-size: 16px;
+    font-size: 20px;
     border-radius: 5px;
     border: none;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 
-.formulaire-login{
-    /* background-color: aqua; */
-
-}
-.admin-Log{
-    font-size: 30px;
-    margin-bottom: 5%;
-}
-.title-form{
-    /* background-color: blue; */
-    font-size: 50px;
-}
-.form-log{
-    /* background-color: brown; */
-    height: 50vh;
-    width: 80vw;
-    display: flex;
-    flex-direction: row;
-    justify-content:  space-around;
-
-    flex-wrap: wrap;
-    align-items: center;
-}
-.image-form-log{
-    width: 40vh;
-    height: 40vh;
-}
-.login-form{
-
-}
-
-.input-form-log{
-    margin: 5% 0 ;
-    width: 30vw;
-    height: 3vh;
-}
-@media screen and (max-width: 850px) {
-    .image-form-log{
-        width: 30vh;
-        height: 30vh;
+@media screen and (max-width: 1200px) {
+    .photo-log{
+        display: none;
     }
-    .login-form{
-        height: 30vh;
-    }
-}
-@media screen and (max-width: 625px) {
-    .form-log{
-        /* background-color: brown; */
-        /* height: 50vh;
-        width: 80vw; */
+
+    #login-form{
         display: flex;
-        flex-direction: row;
-        justify-content:  center;
-    
-        /* flex-wrap: wrap;
-        align-items: center; */
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
     }
-    .image-form-log{
-        width: 25vh;
-        height: 25vh;
-    }
-    .login-form{
+
+    .admin-info{
+
         width: 100%;
-        height: auto;
+
+
     }
 }
+/*@media screen and (max-width: 625px) {*/
+/*    .form-log{*/
+/*        !* background-color: brown; *!*/
+/*        !* height: 50vh;*/
+/*        width: 80vw; *!*/
+/*        display: flex;*/
+/*        flex-direction: row;*/
+/*        justify-content:  center;*/
+/*    */
+/*        !* flex-wrap: wrap;*/
+/*        align-items: center; *!*/
+/*    }*/
+/*    .image-form-log{*/
+/*        width: 25vh;*/
+/*        height: 25vh;*/
+/*    }*/
+/*    .login-form{*/
+/*        width: 100%;*/
+/*        height: auto;*/
+/*    }*/
+/*}*/
 /* ================================================================= */
 
 #erreur-log,
 #erreur-ingredient{
+    color: red;
+}
+
+.error{
     color: red;
 }
 #choixIngredients,

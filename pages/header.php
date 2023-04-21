@@ -3,13 +3,10 @@
 
     <div class="part1 centrer">
        <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php" class="title centrer"><img class="img-logo" src ="<?= $GLOBALS['IMG_DIR']?>src/logo.png"/></a>
+        <input type="checkbox" id = "toggler">
+        <label for="toggler"><i class = "ri-menu-line"></i></label>
+
         <div id="menu">
-<!--            --><?php
-//                if(isset($_SESSION['tag'])){
-//                    foreach ($_SESSION['tag'] as $tag){ ?>
-<!--                        <a class = "item-menu" href="#ID_--><?php //echo trim($tag->nom," ")?><!--">--><?php //echo $tag->nom ?><!--</a>-->
-<!--                 --><?php // }
-//                }?>
 
         </div>
 
