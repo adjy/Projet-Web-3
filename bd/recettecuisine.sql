@@ -210,8 +210,7 @@ INSERT INTO `recette` (`ID_recette`, `titre`, `photo`) VALUES
 (11, 'Cookies salés aux tomates séchées et chorizo - Amandine Cooking', 'Cookies-sales.jpg'),
 (12, 'CROUSTILLANT CHOCO NOISETTE', 'CROUSTILLANT-CHOCO-NOISETTE.jpg'),
 (13, 'Recette tropézienne vanille et framboises', 'tropezienne-vanille-framboises.jpg'),
-(14, 'Bavarois Poire, Sablé breton et Sauce caramel onctueuse', 'Bavarois-Poire.jpg'),
-(15, 'test2', 'texts');
+(14, 'Bavarois Poire, Sablé breton et Sauce caramel onctueuse', 'Bavarois-Poire.jpg');
 
 
 
@@ -240,8 +239,7 @@ INSERT INTO `tag` (`ID_tag`, `nom`) VALUES
 (1, 'Dessert'),
 (2, 'Salé'),
 (3, 'Chaud'),
-(4, 'Sucré'),
-(5, 'tagTest');
+(4, 'Sucré');
 
 --
 -- Contraintes pour les tables déchargées
