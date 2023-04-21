@@ -53,6 +53,14 @@ class Recette extends PdoConnexion {
         return $results;
     }
 
+    public function rechercheCategorie($id_Cat){
+        $statement = parent::getPdo()->prepare("select photo from recette A inner join listestag B using(ID_recette) where B.ID_tag =" .$id_Cat. " ORDER BY RAND() LIMIT 1") ;
+
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+        return $results;
+    }
+
 }
 
 

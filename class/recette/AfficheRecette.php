@@ -33,6 +33,8 @@ class AfficheRecette{
         <?php endforeach;
     }
 
+
+
     public function ListesRecherches($recettesRecherchee): void {
         foreach ($recettesRecherchee as $rec): ?>
             <div class="recette-index centrer">
