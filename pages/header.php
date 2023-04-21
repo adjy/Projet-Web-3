@@ -3,8 +3,7 @@
 
     <div class="part1 centrer">
        <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php" class="title centrer"><img class="img-logo" src ="<?= $GLOBALS['IMG_DIR']?>src/logo.png"/></a>
-        <input type="checkbox" id = "toggler">
-        <label for="toggler"><i class = "ri-menu-line"></i></label>
+        <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php" class="btn-head home">Home</a>
 
         <div id="menu">
 
