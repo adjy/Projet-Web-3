@@ -83,6 +83,59 @@ class AfficheRecette{
 <?php
     }
 
+public function ParCategorie($Id_tag,$Listestag,$Tags,$ListesRecettes):void{?>
+        <div class="categorieRecettes">
+             <?php  foreach  ($Tags as $tag): ?>
+               <?php if($tag->ID_tag == $Id_tag): ?>
+                    <div class="title-Recette-index"><?= $tag->nom ?></div> <!-- Titre de la categorie-->
+                <?php endif;?>
+             <?php endforeach;?>
+                   <div class="liste-Recette-index">
+                        <?php  foreach  ($Listestag as $ltags): ?>
+                            <?php if($ltags->ID_tag == $Id_tag): ?>
+                                <?php  foreach ($ListesRecettes as $rec): ?>
+                                    <?php if($rec->ID_recette == $ltags->ID_recette): ?>
+                                    <div class="recette-index">
+                                        <div class="photo-recette">
+                                             <img class = "image-recette-index"  src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="Dinosaur" />
+                                        </div>
+                                        <div class="nom-recette-index">
+                                             <?= $rec->titre ?>
+                                        </div>
+                                    </div>
+                                <?php endif;?>
+                            <?php endforeach;?>
+                        <?php endif;?>
+                     <?php endforeach;?>
+                </div>
+            <?php
+    }
+    public function ListesCategories($tags,$gdb):void{?>
+        <div class="categorieRecettes centrer"><!-- genere un block de categorie -->
+            <h1 class="title-Recette-index"> Categories </h1>
+            <div class="listeCate">
+                <?php foreach ($tags as $t) :?>
+                    <?php $image = $gdb->rechercheCategorie($t->ID_tag);
+                    if($image != null ):
+                        $image = $image[0]->photo; ?>
+                        <div class="liste-Recette-index centrer">
+                            <form method="post" class="recette-index centrer" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/afficheCategorie.php">
+                                <div class="photo-recette centrer">
+                                    <img class = "image-recette-index" src="<?= $GLOBALS['IMG_DIR']."recettes/".$image ?>" alt="" />
+                                </div>
+                                <div class="nom-recette-index centrer">
+                                    <?= $t->nom ?>
+                                </div>
+                                <input type="hidden" id="<?= $t->ID_tag?>" value="<?= $t->ID_tag?>" name="Id_Tag">
+                            </form>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach;?>
+            </div>
+        </div>
+        <?php
+    }
+
     public function ListesRecettes($tags, $listesTags,$recettes):void{
            foreach ($tags as $t) :?>
             <div class="categorieRecettes centrer"><!-- genere un block de categorie -->
@@ -111,7 +164,6 @@ class AfficheRecette{
             </div>
         <?php endforeach;
     }
-
 
     public function ListesRecherches($recettesRecherchee): void {
         foreach ($recettesRecherchee as $rec): ?>
