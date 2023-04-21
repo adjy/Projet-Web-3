@@ -44,7 +44,7 @@ if( isset( $_SESSION['rechercheRecette'])) {
             <div class="categorieRecettes centrer"><!-- genere un block de categorie -->
                 <h1 class="title-Recette-index"> <?= $t->nom ?> </h1>
 
-                <div class="liste-Recette-index centrer">
+                <form method="post" class="liste-Recette-index centrer">
                     <?php  foreach ($listesTags as $listes) : ?>
                         <?php if($listes->ID_tag == $t->ID_tag) : ?>
                             <!-- ensemble de recette qui appartiennent a cette categorie -->
@@ -57,12 +57,13 @@ if( isset( $_SESSION['rechercheRecette'])) {
                                         <div class="nom-recette-index centrer">
                                             <?= $rec->titre ?>
                                         </div>
+                                        <input type="radio" id="<?= $rec->ID_recette ?>" value="<?= $rec->ID_recette ?>">
                                     </div>
                                 <?php endif;?>
                             <?php endforeach;?>
                         <?php endif;?>
                     <?php endforeach;?>
-                </div>
+                </form>
             </div>
         <?php endforeach;?>
     </div>
