@@ -50,13 +50,14 @@ if( isset( $_SESSION['rechercheRecette'])) {
                             <!-- ensemble de recette qui appartiennent a cette categorie -->
                             <?php foreach ($recettes as $rec): ?>
                                 <?php if($rec->ID_recette == $listes->ID_recette) : ?>
-                                    <div class="recette-index centrer" id="<?= $rec->ID_recette ?>">
+                                    <div class="recette-index centrer">
                                         <div class="photo-recette centrer">
                                             <img class = "image-recette-index" src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="" />
                                         </div>
                                         <div class="nom-recette-index centrer">
                                             <?= $rec->titre ?>
                                         </div>
+                                        <input type="hidden" id="<?= $rec->ID_recette ?>" value="<?= $rec->ID_recette ?>">
                                     </div>
                                 <?php endif;?>
                             <?php endforeach;?>
