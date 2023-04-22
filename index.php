@@ -28,11 +28,11 @@ if( isset( $_SESSION['rechercheRecette'])) {
 ?>
     <div class="index centrer">
         <img class="banner" src="<?=$GLOBALS['IMG_DIR']?>src/banner.png " alt="banner">
-        <span class="info">Explorez notre collection de recettes de cuisine par catégorie</span>
+        <span id="idCat" class="info">Explorez notre collection de recettes de cuisine par catégorie</span>
         <?php
             $affiche->AfficherListesCategories($tags,$gdb);
         ?>
-        <span class="info">Découvrez notre sélection de délicieuses recettes, simples à réaliser chez vous,
+        <span id="idRec" class="info">Découvrez notre sélection de délicieuses recettes, simples à réaliser chez vous,
         pour régaler vos papilles et épater vos convives !</span>
         <?php
             $affiche->AfficherListesRecettes($tags, $listesTags,$recettes);
