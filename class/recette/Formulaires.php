@@ -76,4 +76,12 @@ class Formulaires{
             <?php
     }
 
+    public function RechecherForm():void{?>
+        <form id = "searchID-form" class = "form-search centrer" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/rechercheTraitement.php" method="POST">
+            <input class = "input-search" type="text" id="searchID" name="fname" placeholder="dessert / chocolat / fruit " required>
+            <button class= "btn search-btn" type="submit" value="Search">Search</button>
+        </form>
+        <?php
+    }
+
 }

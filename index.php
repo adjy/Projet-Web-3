@@ -11,7 +11,7 @@ use recette\Donnees;
 use recette\Affichages;
 
 $gdb = new Donnees() ;
-$affiche = new Affichages();
+$affichage = new Affichages();
 
 ob_start() ;
 
@@ -19,23 +19,18 @@ $recettes = $gdb->getRecettes();
 $tags = $gdb->getTagRecettes();
 $listesTags = $gdb->getListesTagRecettes();
 
-if( isset( $_SESSION['rechercheRecette'])) {
-    $recettesRecherchee =  $_SESSION['rechercheRecette'];
-    $affiche->AfficherListesRecherches($recettesRecherchee);
-    unset($_SESSION['rechercheRecette']);//pour effacer automatiquement la recherche apres avoir recherché
-}
 
 ?>
     <div class="index centrer">
         <img class="banner" src="<?=$GLOBALS['IMG_DIR']?>src/banner.png " alt="banner">
         <span class="info">Explorez notre collection de recettes de cuisine par catégorie</span>
         <?php
-            $affiche->AfficherListesCategories($tags,$gdb);
+        $affichage->AfficherListesCategories($tags,$gdb);
         ?>
         <span class="info">Découvrez notre sélection de délicieuses recettes, simples à réaliser chez vous,
         pour régaler vos papilles et épater vos convives !</span>
         <?php
-            $affiche->AfficherListesRecettes($tags, $listesTags,$recettes);
+        $affichage->AfficherListesRecettes($tags, $listesTags,$recettes);
         ?>
     </div>
 <?php

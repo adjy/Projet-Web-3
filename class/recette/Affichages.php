@@ -141,18 +141,17 @@ class Affichages{
         <?php
     }
 
-    public function AfficherListesRecherches($recettesRecherchee): void {
-        foreach ($recettesRecherchee as $rec): ?>
-            <div class="recette-index centrer">
-                <div class="photo-recette centrer">
-                    <img class = "image-recette-index" src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="" />
-                </div>
-                <div class="nom-recette-index centrer">
-                    <?= $rec->titre ?>
-                </div>
-            </div>
-        <?php endforeach;
+    public function AfficherListesRecherches($recettesRecherchee,$ListesRecettes): void {
+        foreach ($recettesRecherchee as $rec){
+            foreach ($ListesRecettes as $rec1){
+                if($rec->titre == $rec1->titre){
+                     $this->formulaire->RecetteForm($rec1);
+                }
+            }
+        }
     }
+
+
      public function AfficheDonneesTest( $recette , $listeIng, $listeTag): void{
          echo "Nom de la recette est " . $recette['titre'] . " et la photo est " . $recette['photo'] . "<br>";
          foreach ($listeIng as $lg)

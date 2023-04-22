@@ -18,6 +18,8 @@ ob_start() ;
 $formajout = new Formulaires();
 $affichage = new Affichages();
 
+
+
 if(isset($_SESSION['validation']) && !$_SESSION['validation'] ){
     $affichage->AfficherErreur();
 }

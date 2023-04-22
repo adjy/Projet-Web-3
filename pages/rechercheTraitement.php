@@ -12,6 +12,7 @@ if(isset($_POST['fname']) ){
     //var_dump($termes);
     $recherche = $recette->rechercheTerme($termes);
     $_SESSION['rechercheRecette'] = $recherche;
-    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
+    //var_dump($recherche);
+    header("Location:".$_SERVER['HTTP_REFERER']);
     exit();
 }

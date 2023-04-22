@@ -1,4 +1,13 @@
+<?php
+use recette\Formulaires;
+use recette\Affichages;
+use recette\Donnees;
 
+$gdb = new Donnees();
+$recettes = $gdb->getRecettes();
+$formulaire = new Formulaires();
+$affichage = new Affichages();
+?>
 <header id = "header">
 
     <div class="part1 centrer">
@@ -29,16 +38,26 @@
             }
             ?>
 
-
         </div>
     </div>
 
-    <div class="search centrer">
-        <form id = "searchID-form" class = "form-search centrer"  action="<?= $GLOBALS['PAGES'] ?>rechercheTraitement.php" method="POST">
-            <input class = "input-search" type="text" id="searchID" name="fname" placeholder="dessert / chocolat / fruit " required>
-            <button class= "btn search-btn" type="submit" value="Search">Search</button>
-        </form>
+    <div class="search centrer"><?php
+        $formulaire->RechecherForm();
+         ?>
     </div>
+
+    <?php
+        if (isset($_SESSION['rechercheRecette'])) {
+        $recettesRecherchee = $_SESSION['rechercheRecette'];
+        $affichage->AfficherListesRecherches($recettesRecherchee,$recettes);
+        unset($_SESSION['rechercheRecette']);//pour effacer automatiquement la recherche apres avoir recherché
+        }
+    ?>
+
+
+
+
+
 
 
 </header>
