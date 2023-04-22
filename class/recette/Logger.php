@@ -1,9 +1,7 @@
 <?php
-
 namespace recette ;
 
-class Logger
-{
+class Logger{
 
     public function generateLoginForm(string $action, $erreur): void{?>
 

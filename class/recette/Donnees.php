@@ -6,7 +6,6 @@ use pdo\PdoConnexion;
 
 class Donnees extends PdoConnexion {
 
-
     public function getRecettes(){
         $statement = parent::getPdo()->prepare("SELECT * FROM recette") ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
@@ -14,40 +13,30 @@ class Donnees extends PdoConnexion {
         return $results;
         // return parent::getPdo();
     }
-
     public function getListesTagRecettes(){
         $statement = parent::getPdo()->prepare("SELECT * FROM listestag") ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return $results;
     }
-
     public function getTagRecettes(){
         $statement = parent::getPdo()->prepare("SELECT * FROM tag") ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return $results;
     }
-
     public function getListesIngredients(){
         $statement = parent::getPdo()->prepare("SELECT * FROM listesingredients") ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return $results;
     }
-
     public function getIngredient(){
         $statement = parent::getPdo()->prepare("SELECT * FROM ingredient") ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return $results;
     }
-
-
-
-
-
-
     public function ajoutRecette( $ID_recette,$titre , $photo){
         $statement = parent::getPdo()->prepare("INSERT INTO recette ( ID_recette,titre,photo) VALUES ( :ID_recette,:titre, :photo)") ;
         $statement->bindValue(':ID_recette', $ID_recette) ;
@@ -55,14 +44,12 @@ class Donnees extends PdoConnexion {
         $statement->bindValue(':photo', $photo) ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
     }
-
     public function ajoutIngredient( $nom , $photo){
         $statement = parent::getPdo()->prepare("INSERT INTO ingredient ( nom,photo) VALUES ( :nom, :photo)") ;
         $statement->bindValue(':nom', $nom) ;
         $statement->bindValue(':photo', $photo) ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
     }
-
     public function rechercheTerme($terme){
         $statement = parent::getPdo()->prepare("select titre, photo from recette where ID_recette in (select ID_recette from recette where titre like '%".$terme."%' UNION select ID_recette from 
         listesingredients inner join ingredient A using (ID_ingredient) where A.nom like '%".$terme."%')") ;
@@ -70,7 +57,6 @@ class Donnees extends PdoConnexion {
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return $results;
     }
-
     public function rechercheCategorie($id_Cat){
         $statement = parent::getPdo()->prepare("select photo from recette A inner join listestag B using(ID_recette) where B.ID_tag =" .$id_Cat. " ORDER BY RAND() LIMIT 1") ;
 

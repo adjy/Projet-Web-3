@@ -8,7 +8,6 @@ class Affichages{
     public function __construct(){
         $this->formulaire = new \recette\Formulaires();
     }
-
     public function AfficherRecette($Id_Recette,$ListesRecettes,$ListesIngredients,$Ingredients,$Listestag): void{
         ?>
          <!-- affichage de ma recette -->
@@ -82,7 +81,26 @@ class Affichages{
                 </div>
 <?php
     }
-
+    public function AfficherListesRecettes($tags, $listesTags,$recettes):void{
+           foreach ($tags as $t) :?>
+            <div class="categorieRecettes centrer"><!-- genere un block de categorie -->
+                <h1 class="title-Recette-index"> <?= $t->nom ?> </h1>
+                <div class="liste-Recette-index centrer">
+                    <?php  foreach ($listesTags as $listes){
+                         if($listes->ID_tag == $t->ID_tag){?>
+                            <!-- ensemble de recette qui appartiennent a cette categorie -->
+                               <?php foreach ($recettes as $rec){
+                                    if($rec->ID_recette == $listes->ID_recette){
+                                       $this->formulaire->RecetteForm($rec);
+                                    }
+                               }
+                         }
+                    }
+                    ?>
+                </div>
+            </div>
+        <?php endforeach;
+    }
     public function AfficherParCategorie($Id_tag,$Listestag,$Tags,$ListesRecettes):void{?>
             <div class="categorieRecettes">
                  <?php  foreach  ($Tags as $tag): ?>
@@ -121,27 +139,6 @@ class Affichages{
             </div>
         </div>
         <?php
-    }
-
-    public function AfficherListesRecettes($tags, $listesTags,$recettes):void{
-           foreach ($tags as $t) :?>
-            <div class="categorieRecettes centrer"><!-- genere un block de categorie -->
-                <h1 class="title-Recette-index"> <?= $t->nom ?> </h1>
-                <div class="liste-Recette-index centrer">
-                    <?php  foreach ($listesTags as $listes){
-                         if($listes->ID_tag == $t->ID_tag){?>
-                            <!-- ensemble de recette qui appartiennent a cette categorie -->
-                               <?php foreach ($recettes as $rec){
-                                    if($rec->ID_recette == $listes->ID_recette){
-                                       $this->formulaire->RecetteForm($rec);
-                                    }
-                               }
-                         }
-                    }
-                    ?>
-                </div>
-            </div>
-        <?php endforeach;
     }
 
     public function AfficherListesRecherches($recettesRecherchee): void {

@@ -1,9 +1,7 @@
 <?php
-
 namespace recette;
 
 class Formulaires{
-
 
     public function RecetteForm($recette):void{?>
         <form method="post" class="recette-index centrer" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/afficheRecette.php">
@@ -77,15 +75,5 @@ class Formulaires{
             <script src = "<?= $GLOBALS['JS_DIR']?>admin.js"></script>
             <?php
     }
-
-
-
-
-
-
-
-
-
-
 
 }
