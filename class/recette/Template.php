@@ -1,10 +1,7 @@
 <?php
-
 namespace recette;
 
-class Template
-{
-
+class Template{
     public static function render($code, $title) : void{ ?>
 
         <!doctype html>

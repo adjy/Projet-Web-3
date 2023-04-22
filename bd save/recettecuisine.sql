@@ -157,7 +157,7 @@ INSERT INTO `recette` (`ID_recette`, `titre`, `photo`) VALUES
 (10, 'Cheesecake au saumon fumé - Les Gourmandises de Lou', 'Cheesecake_au_saumon.jpg'),
 (11, 'Cookies salés aux tomates séchées et chorizo - Amandine Cooking', 'Cookies-sales.jpg'),
 (12, 'CROUSTILLANT CHOCO NOISETTE', 'CROUSTILLANT-CHOCO-NOISETTE.jpg'),
-(13, 'Recette tropézienne vanille et framboises', 'tropezienne-vanille-framboises.jpg'),
+(13, 'Donnees tropézienne vanille et framboises', 'tropezienne-vanille-framboises.jpg'),
 (14, 'Bavarois Poire, Sablé breton et Sauce caramel onctueuse', 'Bavarois-Poire.jpg');
 
 
