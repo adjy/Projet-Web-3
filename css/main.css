@@ -5,7 +5,7 @@
 /* essentiel */
 body {
    display: flex;
-   flex-direction: column;  
+   flex-direction: column;
    /*background-color: gold;*/
 }
 html, body {
@@ -52,6 +52,8 @@ html, body {
     display: flex;
     flex-direction: column;
     margin: auto;
+
+    padding-top: 20vh;
  
 }
 /* ================================================================= */
@@ -66,7 +68,10 @@ html, body {
     height: 22vh;
     box-shadow: 0 2px 10px rgba(163, 21, 21, 0.2);
     background-color:var(--couleurPrincipale);
-    /*position: relative;*/
+
+    position: fixed;
+    width: 99%;
+    top: 0;
 
 
 }
@@ -277,6 +282,8 @@ html, body {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    justify-content: center;
 }
 .listeCate{
     display: flex;
@@ -289,6 +296,8 @@ html, body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .recette-index{
@@ -815,3 +824,4 @@ html, body {
 #choixTags{
     display: none;
 }
+
