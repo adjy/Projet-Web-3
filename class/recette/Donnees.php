@@ -58,10 +58,7 @@ class Donnees extends PdoConnexion {
         select ID_recette from ingredient B inner join listesingredients using (ID_ingredient) where B.nom like '%".$mot."%'
 )" ;
         $statement = parent::getPdo()->prepare($sql) ;
-        // Exécution de la requête
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
-
-        // Récupération de la réponse sous forme d'un tableau d'objet
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return  $results;
     }
