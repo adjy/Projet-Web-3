@@ -50,13 +50,22 @@ class Donnees extends PdoConnexion {
         $statement->bindValue(':photo', $photo) ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
     }
-    public function rechercheTerme($terme){
-        $statement = parent::getPdo()->prepare("select titre, photo from recette where ID_recette in (select ID_recette from recette where titre like '%".$terme."%' UNION select ID_recette from 
-        listesingredients inner join ingredient A using (ID_ingredient) where A.nom like '%".$terme."%')") ;
+
+    public function rechercheTerme($mot){
+        $sql = "select titre from recette where ID_recette IN(
+        select ID_recette from recette where titre like '%".$mot."%' UNION select ID_recette from tag A inner join listestag using (ID_tag)  where A.nom like '%".$mot."%'
+    UNION
+        select ID_recette from ingredient B inner join listesingredients using (ID_ingredient) where B.nom like '%".$mot."%'
+)" ;
+        $statement = parent::getPdo()->prepare($sql) ;
+        // Exécution de la requête
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
+
+        // Récupération de la réponse sous forme d'un tableau d'objet
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
-        return $results;
+        return  $results;
     }
+
     public function rechercheCategorie($id_Cat){
         $statement = parent::getPdo()->prepare("select photo from recette A inner join listestag B using(ID_recette) where B.ID_tag =" .$id_Cat. " ORDER BY RAND() LIMIT 1") ;
 
