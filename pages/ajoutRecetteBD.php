@@ -5,12 +5,12 @@ require_once "../config.php" ;
 
 require $GLOBALS['PHP_DIR']."class/Autoloader.php";
 Autoloader::register();
-use recette\AjoutFormulaire;
+use recette\Affichages;
 
-$formajout = new AjoutFormulaire();
+$affichage = new Affichages();
 
 if(isset($_SESSION['recette']) && isset($_SESSION['listeIngredients']) && isset($_SESSION['nom-tag'])) {
-    $formajout->AfficheDonneesTest(  $_SESSION['recette'],$_SESSION['listeIngredients'],$_SESSION['nom-tag']);
+    $affichage->AfficheDonneesTest(  $_SESSION['recette'],$_SESSION['listeIngredients'],$_SESSION['nom-tag']);
 }
 else{
     $_SESSION['validation'] = false;

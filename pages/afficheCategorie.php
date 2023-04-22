@@ -7,11 +7,11 @@ require $GLOBALS['PHP_DIR'] . "class/Autoloader.php";
 Autoloader::register();
 
 use recette\Template;
-use recette\AfficheRecette;
-use recette\Recette;
+use recette\Affichages;
+use recette\Donnees;
 
-$gdb = new Recette() ;
-$affiche = new AfficheRecette();
+$gdb = new Donnees() ;
+$affiche = new Affichages();
 $recettes = $gdb->getRecettes();
 $Listestag = $gdb->getListesTagRecettes();
 $tags = $gdb->getTagRecettes();
@@ -23,11 +23,11 @@ ob_start();
 <?php
 
 if(isset($_POST['Id_Tag'])){
-    $affiche->ParCategorie($_POST['Id_Tag'],$Listestag,$tags,$recettes);
+    $affiche->AfficherParCategorie($_POST['Id_Tag'],$Listestag,$tags,$recettes);
 }
 
 
 
 
 $content = ob_get_clean();
-Template::render($content, $title = "Ajout Recette");
+Template::render($content, $title = "Ajout Donnees");

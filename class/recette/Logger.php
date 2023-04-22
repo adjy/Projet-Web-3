@@ -6,8 +6,6 @@ class Logger
 {
 
     public function generateLoginForm(string $action, $erreur): void{?>
-        
-
 
         <form method="post" action="<?php $action ?>" id="login-form">
             <div class="photo-log">

@@ -11,15 +11,17 @@ if(!isset($_SESSION['username'])){
 require $GLOBALS['PHP_DIR']."class/Autoloader.php";
 Autoloader::register();
 use recette\Template;
-use recette\AjoutFormulaire;
+use recette\Formulaires;
+use recette\Affichages;
 
 ob_start() ;
-$formajout = new AjoutFormulaire();
+$formajout = new Formulaires();
+$affichage = new Affichages();
 
 if(isset($_SESSION['validation']) && !$_SESSION['validation'] ){
-    $formajout->AfficheErreur();
+    $affichage->AfficherErreur();
 }
-$formajout->generateAjoutForm();
+$formajout->AjoutForm();
 $content = ob_get_clean();
 
-Template::render($content, $title = "Ajout Recette");
+Template::render($content, $title = "Ajout Donnees");

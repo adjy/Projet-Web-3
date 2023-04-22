@@ -4,7 +4,7 @@ namespace recette;
 use PDO;
 use pdo\PdoConnexion;
 
-class Recette extends PdoConnexion {
+class Donnees extends PdoConnexion {
 
 
     public function getRecettes(){

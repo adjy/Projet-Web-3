@@ -7,11 +7,11 @@ $logged = isset($_SESSION['nickname']) ;
 require $GLOBALS['PHP_DIR']."class/Autoloader.php";
 Autoloader::register();
 use recette\Template ;
-use recette\Recette;
-use recette\AfficheRecette;
+use recette\Donnees;
+use recette\Affichages;
 
-$gdb = new Recette() ;
-$affiche = new AfficheRecette();
+$gdb = new Donnees() ;
+$affiche = new Affichages();
 
 ob_start() ;
 
@@ -21,7 +21,7 @@ $listesTags = $gdb->getListesTagRecettes();
 
 if( isset( $_SESSION['rechercheRecette'])) {
     $recettesRecherchee =  $_SESSION['rechercheRecette'];
-    $affiche->ListesRecherches($recettesRecherchee);
+    $affiche->AfficherListesRecherches($recettesRecherchee);
     unset($_SESSION['rechercheRecette']);//pour effacer automatiquement la recherche apres avoir recherché
 }
 
@@ -30,12 +30,12 @@ if( isset( $_SESSION['rechercheRecette'])) {
         <img class="banner" src="<?=$GLOBALS['IMG_DIR']?>src/banner.png " alt="banner">
         <span class="info">Explorez notre collection de recettes de cuisine par catégorie</span>
         <?php
-            $affiche->ListesCategories($tags,$gdb);
+            $affiche->AfficherListesCategories($tags,$gdb);
         ?>
         <span class="info">Découvrez notre sélection de délicieuses recettes, simples à réaliser chez vous,
         pour régaler vos papilles et épater vos convives !</span>
         <?php
-            $affiche->ListesRecettes($tags, $listesTags,$recettes);
+            $affiche->AfficherListesRecettes($tags, $listesTags,$recettes);
         ?>
     </div>
 <?php

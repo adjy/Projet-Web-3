@@ -7,9 +7,9 @@ $logged = isset($_SESSION['nickname']) ;
 require $GLOBALS['PHP_DIR']."class/Autoloader.php";
 Autoloader::register();
 use recette\Template ;
-use recette\Recette;
+use recette\Donnees;
 
-$gdb = new Recette() ;
+$gdb = new Donnees() ;
 
 ob_start() ;
 

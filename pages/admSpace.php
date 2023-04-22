@@ -5,12 +5,19 @@ session_start();
 require $GLOBALS['PHP_DIR']."class/Autoloader.php";
 Autoloader::register();
 use recette\Template;
+use recette\Affichages;
 
 
 ob_start() ;
 
 $_SESSION['validation'] = true;
 
+$affiche = new Affichages();
+if( isset( $_SESSION['rechercheRecette'])) {
+    $recettesRecherchee =  $_SESSION['rechercheRecette'];
+    $affiche->AfficherListesRecherches($recettesRecherchee);
+    unset($_SESSION['rechercheRecette']);//pour effacer automatiquement la recherche apres avoir recherché
+}
 if(isset($_SESSION['username'])){?>
 
     <div class="dashbord">
