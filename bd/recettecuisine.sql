@@ -32,8 +32,8 @@ use recettecuisine;
 DROP TABLE IF EXISTS `ingredient`;
 CREATE TABLE IF NOT EXISTS `ingredient` (
   `ID_ingredient` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(20) NOT NULL,
-  `photo` varchar(20) NOT NULL,
+  `nom` text NOT NULL,
+  `photo` text NOT NULL,
   PRIMARY KEY (`ID_ingredient`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
@@ -43,29 +43,29 @@ CREATE TABLE IF NOT EXISTS `ingredient` (
 
 INSERT INTO `ingredient` (`ID_ingredient`, `nom`, `photo`) VALUES
 (1, 'eggs', 'eggs.png'),
-(2, 'chocolat', 'chocolate.png'),
-(3, 'unsweetened powder', 'unsweetened powder.p'),
-(4, 'sugar', 'sugar.png'),
-(5, 'salt', 'salt.png'),
-(6, 'butter', 'butter.png'),
-(7, 'Corn syrup', 'cornsyrop.png'),
-(8, 'Vanilla', 'vanilla.png'),
-(9, 'Cream cheese', 'creamcheese.png'),
-(10, ' Heavy cream', ' Heavy cream.png'),
-(11, 'Banana', 'banana.png'),
-(12, 'butter', 'tablespoons butter m'),
-(13, 'cream thawed', 'tub whipped cream th'),
+(2, 'chocolat', 'chocolat.png'),
+(3, 'unsweetened powder', 'unsweetened cocoa powder.jpg'),
+(4, 'sugar', 'sugar.jpg'),
+(5, 'salt', 'salt.jpg'),
+(6, 'butter', 'butter.jpg'),
+(7, 'Corn syrup', 'cornsyrop.jpg'),
+(8, 'Vanilla', 'vanilla.jpg'),
+(9, 'Cream cheese', 'creamcheese.jpg'),
+(10, ' Heavy cream', 'Heavy cream.jpg'),
+(11, 'Banana', 'banana.jpg'),
+(12, 'butter', 'butter.jpg'),
+(13, 'cream thawed', 'tub whipped cream thawed.jpg'),
 (14, 'Pudding Layer', 'Pudding Layer.png'),
-(15, 'milk', 'milk.png'),
-(16, 'cornstarch', 'cup cornstarch.png'),
-(17, 'graham crackers', 'graham crackercrumbs'),
-(18, 'all-purpose flour', 'all-purpose flour.pn'),
-(19, 'baking powder', 'tsp baking powder.pn'),
-(20, 'cocoa powder', 'unsweetened cocoa po'),
-(21, 'Oreo cookies', 'oreo.png'),
-(22, 'Pinch of Salt', 'Pinch of Salt.png'),
-(23, 'coffee powder', 'coffeepowder.png'),
-(24, 'olive oil', 'oliveoil.png');
+(15, 'milk', 'milk.jpg'),
+(16, 'cornstarch', 'cup cornstarch.jpg'),
+(17, 'graham crackers', 'graham crackercrumbs.jpg'),
+(18, 'all-purpose flour', 'all-purpose flour.jpg'),
+(19, 'baking powder', 'tsp baking powder.jpg'),
+(20, 'cocoa powder', 'unsweetened cocoa powder.jpg'),
+(21, 'Oreo cookies', 'oreo.jpg'),
+(22, 'Pinch of Salt', 'salt.jpg'),
+(23, 'coffee powder', 'coffeepowder.jpg'),
+(24, 'olive oil', 'oliveoil.jpg');
 
 -- --------------------------------------------------------
 
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `listesingredients` (
   `ID_ingredient` int NOT NULL,
   `ID_recette` int NOT NULL,
   `Qte` varchar(10) DEFAULT NULL,
-  `mesure` varchar(10) DEFAULT NULL,
+  `mesure` varchar(50) DEFAULT NULL,
   KEY `fk_ingredient_listesIngredients` (`ID_ingredient`),
   KEY `fk_recette_listesIngredients` (`ID_recette`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -185,8 +185,8 @@ INSERT INTO `listestag` (`ID_tag`, `ID_recette`) VALUES
 DROP TABLE IF EXISTS `recette`;
 CREATE TABLE IF NOT EXISTS `recette` (
   `ID_recette` int NOT NULL AUTO_INCREMENT,
-  `titre` varchar(100) NOT NULL,
-  `photo` varchar(100) NOT NULL,
+  `titre` text NOT NULL,
+  `photo` text NOT NULL,
   `description` TEXT,
 
   PRIMARY KEY (`ID_recette`)
@@ -227,7 +227,7 @@ UPDATE recette SET description =
 DROP TABLE IF EXISTS `tag`;
 CREATE TABLE IF NOT EXISTS `tag` (
   `ID_tag` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(20) NOT NULL,
+  `nom` varchar(50) NOT NULL,
   PRIMARY KEY (`ID_tag`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
