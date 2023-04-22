@@ -116,7 +116,9 @@ html, body {
 
 }
 .home{
-    margin-right: 0 ;
+    /*margin-right: 0 ;*/
+    margin: auto;
+
 }
 /*@media screen and (max-width: 1094px) {*/
 /*    .title{*/

@@ -3,7 +3,11 @@
 
     <div class="part1 centrer">
        <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php" class="title centrer"><img class="img-logo" src ="<?= $GLOBALS['IMG_DIR']?>src/logo.png"/></a>
-        <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php" class="btn-head home">Home</a>
+        <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php" class="btn-head home">Accueil</a>
+        <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php#idCat" class="btn-head home">Catégories</a>
+        <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php#idRec" class="btn-head home">Recettes</a>
+
+
 
 <!--        <div id="menu">-->
 <!---->
