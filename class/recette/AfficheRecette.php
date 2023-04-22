@@ -68,21 +68,20 @@ class AfficheRecette{
 
                         <?php foreach ($ListesRecettes as $rec):?>
                              <?php if($rec->titre == $t): ?>
-                                <div class="recette-index centrer">
-                                    <div class="photo-recette">
-                                        <img class = "image-recette-index"  src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="Dinosaur" />
-                                    </div>
-                                    <div class="nom-recette-index">
-                                        <?= $rec->titre ?>
-                                    </div>
-                                </div>
+                               <form method="post" class="recette-index centrer" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/afficheRecette.php">
+                                        <div class="photo-recette centrer">
+                                            <img class = "image-recette-index"  src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="Dinosaur" />
+                                        </div>
+                                        <div class="nom-recette-index centrer">
+                                            <?= $rec->titre ?>
+                                        </div>
+                                        <input type="hidden" name="Id_recette" id="<?= $rec->ID_recette ?>" value="<?= $rec->ID_recette ?>" >
+                               </form>
                              <?php endif;?>
                           <?php endforeach;?>
-
                 <?php endforeach;?>
                 </div>
                 </div>
-
 <?php
     }
 
@@ -98,14 +97,15 @@ public function ParCategorie($Id_tag,$Listestag,$Tags,$ListesRecettes):void{?>
                             <?php if($ltags->ID_tag == $Id_tag): ?>
                                 <?php  foreach ($ListesRecettes as $rec): ?>
                                     <?php if($rec->ID_recette == $ltags->ID_recette): ?>
-                                    <div class="recette-index">
-                                        <div class="photo-recette">
-                                             <img class = "image-recette-index"  src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="Dinosaur" />
+                                      <form method="post" class="recette-index centrer" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/afficheRecette.php">
+                                        <div class="photo-recette centrer">
+                                            <img class = "image-recette-index"  src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="Dinosaur" />
                                         </div>
-                                        <div class="nom-recette-index">
-                                             <?= $rec->titre ?>
+                                        <div class="nom-recette-index centrer">
+                                            <?= $rec->titre ?>
                                         </div>
-                                    </div>
+                                        <input type="hidden" name="Id_recette" id="<?= $rec->ID_recette ?>" value="<?= $rec->ID_recette ?>" >
+                                      </form>
                                 <?php endif;?>
                             <?php endforeach;?>
                         <?php endif;?>
