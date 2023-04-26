@@ -101,6 +101,13 @@ class Affichages{
             </div>
         <?php endforeach;
     }
+
+    public function AfficherListesRecettesMin($recettes):void{
+            foreach ($recettes as $rec){
+                $this->formulaire->RecetteForm($rec);
+            }
+    }
+
     public function AfficherParCategorie($Id_tag,$Listestag,$Tags,$ListesRecettes):void{?>
             <div class="categorieRecettes">
                  <?php  foreach  ($Tags as $tag): ?>
