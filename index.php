@@ -15,10 +15,8 @@ $affichage = new Affichages();
 
 ob_start() ;
 
-$recettes = $gdb->getRecettes();
 $tags = $gdb->getTagRecettes();
 $listesTags = $gdb->getListesTagRecettes();
-
 $recettesMin = $gdb->rechercheRecetteMin();
 
 ?>
