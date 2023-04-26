@@ -10,13 +10,11 @@ $affichage = new Affichages();
 ?>
 <header id = "header">
 
-    <div class="part1 centrer">
-       <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php" class="title centrer"><img class="img-logo" src ="<?= $GLOBALS['IMG_DIR']?>src/logo.png"/></a>
+    <div class="part1">
+       <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php" class="title"><img class="img-logo" src ="<?= $GLOBALS['IMG_DIR']?>src/logo.png"/></a>
         <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php" class="btn-head home">Accueil</a>
         <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php#idCat" class="btn-head home">Catégories</a>
         <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php#idRec" class="btn-head home">Recettes</a>
-
-
 
 <!--        <div id="menu">-->
 <!---->
@@ -41,10 +39,11 @@ $affichage = new Affichages();
         </div>
     </div>
 
-    <div class="search centrer"><?php
+    <div class="search"><?php
         $formulaire->RechecherForm();
          ?>
     </div>
+</header>
 
     <?php
         if (isset($_SESSION['rechercheRecette'])) {
@@ -52,6 +51,7 @@ $affichage = new Affichages();
         $affichage->AfficherListesRecherches($recettesRecherchee,$recettes);
         unset($_SESSION['rechercheRecette']);//pour effacer automatiquement la recherche apres avoir recherché
         }
+
     ?>
 
 
@@ -60,4 +60,3 @@ $affichage = new Affichages();
 
 
 
-</header>

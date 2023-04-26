@@ -4,25 +4,25 @@ namespace recette;
 class Formulaires{
 
     public function RecetteForm($recette):void{?>
-        <form method="post" class="recette-index centrer" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/afficheRecette.php">
-            <div class="photo-recette centrer">
-                <img class = "image-recette-index"  src="<?= $GLOBALS['IMG_DIR']."recettes/".$recette->photo ?>" alt="Dinosaur" />
-            </div>
-            <div class="nom-recette-index centrer">
-                <?= $recette->titre ?>
-            </div>
+        <form method="post" class="item-cadre" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/afficheRecette.php">
+            <figure class="item-infos">
+                <img class = "item-picture"  src="<?= $GLOBALS['IMG_DIR']."recettes/".$recette->photo ?>" alt="Dinosaur" />
+                <figcaption class="item-name">  <?= $recette->titre ?>  </figcaption>
+            </figure>
             <input type="hidden" name="Id_recette" id="<?= $recette->ID_recette ?>" value="<?= $recette->ID_recette ?>" >
+            <?php  if(isset($_SESSION['username'])){?>
+                <a id = "ID-delete-btn" class = "btn-supp btn" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>" onclick="return suppression();" >X</a>
+            <?php } ?>
         </form>
+
         <?php
     }
     public function CategorieForm($image,$tag):void{?>
-        <form method="post" class="recette-index centrer" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/afficheCategorie.php">
-            <div class="photo-recette centrer">
-                <img class = "image-recette-index" src="<?= $GLOBALS['IMG_DIR']."recettes/".$image ?>" alt="" />
-            </div>
-            <div class="nom-recette-index centrer">
-                <?= $tag->nom ?>
-            </div>
+        <form method="post" class="item-cadre" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/afficheCategorie.php">
+                <figure class="item-infos">
+                    <img class = "item-picture" src="<?= $GLOBALS['IMG_DIR']."recettes/".$image ?>" alt="" />
+                    <figcaption class="item-name">  <?= $tag->nom ?> </figcaption>
+                </figure>
             <input type="hidden" id="<?= $tag->ID_tag?>" value="<?= $tag->ID_tag?>" name="Id_Tag">
         </form>
         <?php
@@ -39,7 +39,7 @@ class Formulaires{
                         #photo_recette,#photo-recette-subtitle{
                             display: none;
                         }
-                    </style><?php
+                    </><?php
                 }
                 ?>
                 <?php if(isset($_SESSION['recette'])) :?>

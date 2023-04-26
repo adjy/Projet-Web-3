@@ -20,7 +20,7 @@ $listesTags = $gdb->getListesTagRecettes();
 $recettesMin = $gdb->rechercheRecetteMin();
 
 ?>
-    <div class="index centrer">
+    <div class="index">
         <img class="banner" src="<?=$GLOBALS['IMG_DIR']?>src/banner.png " alt="banner">
         <span id="idCat" class="info">Explorez notre collection de recettes de cuisine par catégorie</span>
         <?php
@@ -28,9 +28,9 @@ $recettesMin = $gdb->rechercheRecetteMin();
         ?>
         <span id="idRec" class="info">Découvrez notre sélection de délicieuses recettes, simples à réaliser chez vous,
         pour régaler vos papilles et épater vos convives !</span>
-        <?php
-        $affichage->AfficherListesRecettesMin($recettesMin);
-        ?>
+
+        <?php $affichage->AfficherListesRecettesMin($recettesMin); ?>
+
     </div>
 <?php
 

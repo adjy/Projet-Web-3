@@ -15,17 +15,24 @@ class Template{
             <link rel="shortcut icon" href="<?= $GLOBALS['IMG_DIR']?>src/tte.png">
 
             <script src="<?= $GLOBALS['JS_DIR']?>main.js" ></script>
+            <script src = "<?= $GLOBALS['JS_DIR'] ?>supprimer_recette.js"></script>
+<!--            <script src = "--><?php //= $GLOBALS['JS_DIR'] ?><!--admin.js"></script>-->
             <link rel="stylesheet" href="<?php echo $GLOBALS['CSS_DIR'] ?>main.css">
             
             <!-- <link rel="stylesheet" href="<?php echo $GLOBALS['CSS_DIR'] ?>mine.css"> -->
         </head>
         <body>
         <?php include $GLOBALS['PHP_DIR']."pages/header.php" ; ?>
-        <div id="main-content" class = "center">
 
-            <?php echo $code ?>
 
-        </div> <!-- #main-content -->
+        <?php if(!isset($_SESSION['rechercheRecette'])){?>
+            <div id="main-content">
+                <?php echo $code ?>
+            </div> <!-- #main-content -->
+        <?php }
+        else{ ?>
+
+        <?php } ?>
         <?php include $GLOBALS['PHP_DIR']."pages/footer.php" ?>
         </body>
         </html

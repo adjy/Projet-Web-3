@@ -11,27 +11,27 @@ class Affichages{
     public function AfficherRecette($Id_Recette,$ListesRecettes,$ListesIngredients,$Ingredients,$Listestag): void{
         ?>
          <!-- affichage de ma recette -->
-        <div class="recette">
+        <div class="recette-cadre">
            <?php foreach ($ListesRecettes as $rec ): ?>
                 <?php if($rec->ID_recette == $Id_Recette): ?>
-                   <div class="nom-recette"> <?= $rec->titre ?> </div> <!--Nom de la recette-->
+                   <div class="recette-name"> <?= $rec->titre ?> </div> <!--Nom de la recette-->
                                                                        <!-- photo de la recette -->
-                   <img class = "image-recette" src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="" />
+                   <img class = "recette-picture" src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="" />
                    <!-- ingredients de la recette  -->
 
-                   <div class="description-recette">
-                       <div class="titleIngredientsRecette"> Ingredients</div>
-                   </div>
-                    <div class="list-ingredients">
+
+                   <div class="title"> Ingredients</div>
+
+                    <div class="ingredients">
                        <?php foreach ($ListesIngredients as $ListIngr): ?>
                             <?php if($ListIngr->ID_recette == $rec->ID_recette ): ?>
                                 <?php foreach  ($Ingredients as $ing): ?>
                                    <?php if($ing->ID_ingredient == $ListIngr->ID_ingredient ): ?>
                                        <li class = "ingredient">
-                                           <img class = "image-ingredient" src="<?= $GLOBALS['IMG_DIR']."ingredients/".$ing->photo ?>" alt="" />
-                                           <div class="infos-ingre"><?= $ListIngr->Qte ?> </div>
-                                           <div class="infos-ingre"><?= $ListIngr->mesure ?></div>
-                                           <div class="infos-ingre"><?= $ing->nom ?></div>
+                                           <img class = "ingredient-picture" src="<?= $GLOBALS['IMG_DIR']."ingredients/".$ing->photo ?>" alt="" />
+                                           <div class="ingredient-info"><?= $ListIngr->Qte ?> </div>
+                                           <div class="ingredient-info"><?= $ListIngr->mesure ?></div>
+                                           <div class="ingredient-info"><?= $ing->nom ?></div>
                                        </li>
                                      <?php endif;?>
                                 <?php endforeach;?>
@@ -64,10 +64,13 @@ class Affichages{
                     }
                 }
                 $tab = array_unique($tab);?>
-                <div class="categorieRecettes centrer">
-                <div class="title-Recette-index">Quelques recettes de ...</div>
+            <span  class="info">Si vous avez aimé cette recette, vous devriez essayer ces autres recettes de la même catégorie.
+                Elles ont toutes des saveurs uniques qui feront saliver vos papilles gustatives !</span>
 
-                <div class="liste-Recette-index">
+
+            <div class="cadre">
+                <div class="items-cadre">
+
                   <?php foreach  ($tab as $t){?>
                          <!-- affichage de Quelques recette qui appartiennet au meme categorie -->
                         <?php foreach ($ListesRecettes as $rec){
@@ -76,9 +79,9 @@ class Affichages{
                            }
                         }
                   }
-                ?>
+                    ?>
                 </div>
-                </div>
+            </div>
 <?php
     }
     public function AfficherListesRecettes($tags, $listesTags,$recettes):void{
@@ -102,20 +105,24 @@ class Affichages{
         <?php endforeach;
     }
 
-    public function AfficherListesRecettesMin($recettes):void{
-            foreach ($recettes as $rec){
-                $this->formulaire->RecetteForm($rec);
-            }
-    }
+    public function AfficherListesRecettesMin($recettes):void{ ?>
+        <div class="cadre">
+            <div class="items-cadre">
+                <?php foreach ($recettes as $rec){
+                    $this->formulaire->RecetteForm($rec);
+                } ?>
+            </div>
+        </div>
+   <?php }
 
     public function AfficherParCategorie($Id_tag,$Listestag,$Tags,$ListesRecettes):void{?>
-            <div class="categorieRecettes">
+            <div class="cadre">
                  <?php  foreach  ($Tags as $tag): ?>
                    <?php if($tag->ID_tag == $Id_tag): ?>
-                        <div class="title-Recette-index"><?= $tag->nom ?></div> <!-- Titre de la categorie-->
+                        <div class="title-cadre"><?= $tag->nom ?></div> <!-- Titre de la categorie-->
                     <?php endif;?>
                  <?php endforeach;?>
-                       <div class="liste-Recette-index">
+                       <div class="items-cadre">
                              <?php
                              foreach  ($Listestag as $ltags){
                                 if($ltags->ID_tag == $Id_tag){
@@ -131,16 +138,15 @@ class Affichages{
                 <?php
         }
     public function AfficherListesCategories($tags,$gdb):void{?>
-        <div class="categorieRecettes centrer"><!-- genere un block de categorie -->
-            <h1 class="title-Recette-index"> Categories </h1>
-            <div class="listeCate">
+        <div class="cadre"><!-- genere un block de categorie -->
+            <h1 class="title-cadre"> Categories </h1>
+            <div class="items-cadre">
                 <?php foreach ($tags as $t) :?>
                     <?php $image = $gdb->rechercheCategorie($t->ID_tag);
                     if($image != null ):
                         $image = $image[0]->photo; ?>
-                        <div class="liste-Recette-index centrer">
                            <?php $this->formulaire->CategorieForm($image,$t);?>
-                        </div>
+
                     <?php endif; ?>
                 <?php endforeach;?>
             </div>
@@ -148,14 +154,25 @@ class Affichages{
         <?php
     }
 
-    public function AfficherListesRecherches($recettesRecherchee,$ListesRecettes): void {
+    public function AfficherListesRecherches($recettesRecherchee,$ListesRecettes): void { ?>
+    <style>
+    #main-content{
+        display: none;
+    }
+</style>
+    <div class="search-results">
+     <div class="items-cadre">
+     <?php
         foreach ($recettesRecherchee as $rec){
             foreach ($ListesRecettes as $rec1){
                 if($rec->titre == $rec1->titre){
                      $this->formulaire->RecetteForm($rec1);
                 }
             }
-        }
+        } ?>
+         </div>
+         </div>
+        <?php
     }
 
 

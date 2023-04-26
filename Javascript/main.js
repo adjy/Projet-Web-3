@@ -27,7 +27,7 @@ function addMenu(){
 {/* <a class = " item-menu" href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>">sale</a> */}
 
 function soumissionRecette(){
-    let recettes_form = document.querySelectorAll('.recette-index');
+    let recettes_form = document.querySelectorAll('.item-cadre');
 
     recettes_form.forEach((recette, indice) => {
 

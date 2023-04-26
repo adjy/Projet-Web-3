@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded',function (){
-    let buttons = document.querySelectorAll('.btn-suppID'); // recupere le bouton a supprimer
+    let buttons = document.querySelectorAll('.btn-supp'); // recupere le bouton a supprimer
     console.log(buttons);
    
     buttons.forEach((button, indice) => {
@@ -11,5 +11,22 @@ document.addEventListener('DOMContentLoaded',function (){
             button.innerHTML = text;
         })
     })
+
+
     
 })
+
+function  suppression(e){
+    var confirmation = confirm("Voulez-vous supprimer cet élément ?"); // la boite de dialogue
+
+
+    if (confirmation)
+        return true;
+
+
+    // Sinon, renvoyer false pour annuler la suppression
+    else {
+        window.location.href = "#";
+    }
+}
+
