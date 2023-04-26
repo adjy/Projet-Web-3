@@ -19,6 +19,7 @@ $recettes = $gdb->getRecettes();
 $tags = $gdb->getTagRecettes();
 $listesTags = $gdb->getListesTagRecettes();
 
+$recettesMin = $gdb->rechercheRecetteMin();
 
 ?>
     <div class="index centrer">
@@ -30,7 +31,7 @@ $listesTags = $gdb->getListesTagRecettes();
         <span id="idRec" class="info">Découvrez notre sélection de délicieuses recettes, simples à réaliser chez vous,
         pour régaler vos papilles et épater vos convives !</span>
         <?php
-        $affichage->AfficherListesRecettes($tags, $listesTags,$recettes);
+        $affichage->AfficherListesRecettesMin($recettesMin);
         ?>
     </div>
 <?php
