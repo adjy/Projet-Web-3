@@ -423,3 +423,9 @@ html, body {
 .btn-supp:hover{
     background-color: red;
 }
+
+
+#choixIngredients,
+#choixTags{
+    display: none;
+}

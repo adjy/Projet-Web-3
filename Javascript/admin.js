@@ -1,6 +1,6 @@
 function ajoutIngredients(){
 
-    let boutonIngredient = document.getElementById("ajout-ingre");
+    let boutonIngredient = document.getElementById("ajout-ingredient-form");
     let form = document.getElementById("ajout-recette-form");
     let nom, unite, qte;
 
@@ -122,7 +122,7 @@ function rehercherTag() {
 }
 function ajoutTag(){
 
-    let boutonTag = document.getElementById("ajout-tag");
+    let boutonTag = document.getElementById("ajout-tag-form");
     let form = document.getElementById("ajout-recette-form");
     let nom;
 
@@ -203,10 +203,10 @@ function submitRecette(){
 }
 
 document.addEventListener('DOMContentLoaded',function (){
-    let mess = document.getElementById("erreur-ingredient");
-    mess.style.display = "none";
-    let mess2 = document.getElementById("erreur-tag");
-    mess2.style.display = "none";
+    // let mess = document.getElementById("erreur-ingredient");
+    // mess.style.display = "none";
+    // let mess2 = document.getElementById("erreur-tag");
+    // mess2.style.display = "none";
 
     ajoutIngredients();
     ajoutTag();

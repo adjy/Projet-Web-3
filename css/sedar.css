@@ -348,8 +348,4 @@
 .error{
     color: red;
 }
-#choixIngredients,
-#choixTags{
-    display: none;
-}
 
