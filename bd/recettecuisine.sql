@@ -245,15 +245,15 @@ INSERT INTO `tag` (`ID_tag`, `nom`) VALUES
 -- Contraintes pour la table `listesingredients`
 --
 ALTER TABLE `listesingredients`
-  ADD CONSTRAINT `fk_ingredient_listesIngredients` FOREIGN KEY (`ID_ingredient`) REFERENCES `ingredient` (`ID_ingredient`),
-  ADD CONSTRAINT `fk_recette_listesIngredients` FOREIGN KEY (`ID_recette`) REFERENCES `recette` (`ID_recette`);
+  ADD CONSTRAINT `fk_ingredient_listesIngredients` FOREIGN KEY (`ID_ingredient`) REFERENCES `ingredient` (`ID_ingredient`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_recette_listesIngredients` FOREIGN KEY (`ID_recette`) REFERENCES `recette` (`ID_recette`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `listestag`
 --
 ALTER TABLE `listestag`
-  ADD CONSTRAINT `fk_recette_listesTag` FOREIGN KEY (`ID_recette`) REFERENCES `recette` (`ID_recette`),
-  ADD CONSTRAINT `fk_tag_listesTag` FOREIGN KEY (`ID_tag`) REFERENCES `tag` (`ID_tag`);
+  ADD CONSTRAINT `fk_recette_listesTag` FOREIGN KEY (`ID_recette`) REFERENCES `recette` (`ID_recette`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_tag_listesTag` FOREIGN KEY (`ID_tag`) REFERENCES `tag` (`ID_tag`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

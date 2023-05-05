@@ -77,6 +77,14 @@ class Donnees extends PdoConnexion {
         return $results;
     }
 
+    public function supprimerRecette($id){
+        $statement = parent::getPdo()->prepare(" delete from recette where  ID_recette = ". $id) ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+
+    }
+
+
 }
 
 
