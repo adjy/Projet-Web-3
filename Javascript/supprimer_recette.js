@@ -8,21 +8,13 @@ document.addEventListener('DOMContentLoaded',function (e){
             button.innerHTML = "&#x1F5D1;"; // change le text en code de poubelle
         })
         button.addEventListener("mouseout", function(event){
-            // button.innerHTML = text;
-            console.log()
-
-
+            button.innerHTML = text;
         })
 
         button.addEventListener("mousedown", function(event){
-            console.log(button)
             button.parentElement.nextElementSibling.submit();
         })
-        // button.addEventListener("click", function(){
-        //     console.log(button);
-        //
-        //     e.preventDefault();
-        // })
+
     })
 
 

@@ -43,7 +43,7 @@ class Formulaires{
                         #photo_recette,#photo-recette-subtitle{
                             display: none;
                         }
-                    </><?php
+                    </style><?php
                 }
                 ?>
                 <?php if(isset($_SESSION['recette'])) :?>
