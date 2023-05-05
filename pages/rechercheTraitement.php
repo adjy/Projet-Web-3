@@ -17,8 +17,7 @@ if(isset($_POST['fname']) ){
             foreach ($recherche as $rch)
                 array_push($_SESSION['rechercheRecette'],$rch);
         }
-        else
-            $_SESSION['rechercheRecette'] = $recherche;
+        else $_SESSION['rechercheRecette'] = $recherche;
     }
     header("Location:".$_SERVER['HTTP_REFERER']);
     exit();
