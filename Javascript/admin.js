@@ -203,11 +203,11 @@ function submitRecette(){
 }
 
 document.addEventListener('DOMContentLoaded',function (){
-    let mess = document.getElementById("erreur-ingredient");
+    /*let mess = document.getElementById("erreur-ingredient");
     mess.style.display = "none";
     let mess2 = document.getElementById("erreur-tag");
     mess2.style.display = "none";
-
+*/
     ajoutIngredients();
     ajoutTag();
     // ajoutTags()

@@ -1,95 +1,74 @@
-<?php
-require_once "../config.php" ;
-session_start();
+<style>
+    #ajax-post-02{
+        color: blue;
+        font-weight: bold;
+    }
+</style>
 
-require $GLOBALS['PHP_DIR']."class/Autoloader.php";
-Autoloader::register();
-use recette\Template;
+<form name="user-infos" id="user-infos" style="width: 300px"
+      action="http://localhost:8080/fetch-test.php"
+      method="POST">
 
-ob_start() ;
-
-if(isset($_SESSION['username'])){?>
-    <style>
-        .search{
-            display: none;
-        }
-    </style>
-
-    <div class="supprimer-recette">
-
-
-        <div class="titleSuppression">Supprimer une recette</div>
-
-
-        <form method="post" action="" class="" id="supprimer-recette-form">
-            <input class = "input-search supp-search" type="text" id="fname" name="fname" placeholder="recherche supprimer">
-            <input class= "btn search-btn" type="submit" value="Search">
-        </form>
-
-
-        <div class="supp">
-            <div class="recette-aSupprimer centrer">
-                <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
-                <form class="cadre-aSupprimer">
-                    <img class = "image-supprimer" src="../images/recettes/Banana_Pudding_Dessert.png" alt="" />
-                    <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
-                </form>
-            </div>
-
-            <div class="recette-aSupprimer centrer">
-                <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
-                <form class="cadre-aSupprimer">
-                    <img class = "image-supprimer" src="../images/recettes/Banana_Pudding_Dessert.png" alt="" />
-                    <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
-                </form>
-            </div>
-
-            <div class="recette-aSupprimer centrer">
-                <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
-                <form class="cadre-aSupprimer">
-                    <img class = "image-supprimer" src="../images/recettes/Banana_Pudding_Dessert.png" alt="" />
-                    <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
-                </form>
-            </div>
-
-            <div class="recette-aSupprimer centrer">
-                <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
-                <form class="cadre-aSupprimer">
-                    <img class = "image-supprimer" src="../images/recettes/Banana_Pudding_Dessert.png" alt="" />
-                    <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
-                </form>
-            </div>
-
-            <div class="recette-aSupprimer centrer">
-                <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
-                <form class="cadre-aSupprimer">
-                    <img class = "image-supprimer" src="../images/recettes/Banana_Pudding_Dessert.png" alt="" />
-                    <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
-                </form>
-            </div>
-
-            <div class="recette-aSupprimer centrer">
-                <div class="nom-recetteSupprimer">Triple Chocolate Cheesecake</div>
-                <form class="cadre-aSupprimer">
-                    <img class = "image-supprimer" src="../images/recettes/Banana_Pudding_Dessert.png" alt="" />
-                    <button type="submit" id = "" class="btn-suppID btn btn-supp">X</button>
-                </form>
-            </div>
-
-        </div>
-
-
+    <div class="form-group">
+        <label for="firstname">Prénom</label>
+        <input type="text" class="form-control" name="firstname" id="firstname" value="Gregory">
     </div>
-    <script src = "<?= $GLOBALS['JS_DIR'] ?>supprimer_recette.js"></script>
-    <script src = "<?= $GLOBALS['JS_DIR'] ?>admin.js"></script>
+
+    <div class="form-group">
+        <label for="lastname">Nom</label>
+        <input type="text" class="form-control" name="lastname" id="lastname" value="Bourguin">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+
+</form>
+
+<hr>
+<p>
+    Nom reçu du serveur : <span id="ajax-post-02" style="width: 50%"></span>
+
+</p>
+
+<script>
+
+    let formulaire = undefined
+    let display = undefined
+
+    let httpRequest = new XMLHttpRequest()
+    httpRequest.onreadystatechange = function (){
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+                let response = JSON.parse(httpRequest.response)
+                display.innerHTML = response.taille + response.nom
+
+            } else {
+                alert('ERREUR avec la requête.');
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function (){
+
+        formulaire = document.querySelector("#user-infos")
+        display = document.querySelector("#ajax-post-02")
+
+        formulaire.addEventListener('submit', function (event){
+
+            event.preventDefault() // bloquer le comportement par défaut du submit
+
+            // s'ils existent, on peut récupérer la méthode et l'action (url) sur les attributs du form
+            let method = formulaire.getAttribute("method")
+            let url = formulaire.getAttribute("action")
+            httpRequest.open(method, url)
+
+            // constructeur avec le formulaire en paramètre
+            let data = new FormData(formulaire)
 
 
-    <?php
-}
-else{?>
-    problem
-    <?php
-}
+            // il faut que les noms des champs du formulaire correspondent à ce qu'attend le serveur !
 
-$content = ob_get_clean();
-Template::render($content, $title = "Supprimer recettes");
+            httpRequest.send(data)
+
+        })
+    })
+</script>
