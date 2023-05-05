@@ -4,8 +4,6 @@ namespace recette;
 class Formulaires{
 
     public function RecetteForm($recette):void{?>
-
-
         <form method="post" class="item-cadre" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/afficheRecette.php">
             <figure class="item-infos">
                 <img class = "item-picture"  src="<?= $GLOBALS['IMG_DIR']."recettes/".$recette->photo ?>" alt="Dinosaur" />
@@ -13,13 +11,14 @@ class Formulaires{
             </figure>
             <input type="hidden" name="Id_recette" id="<?= $recette->ID_recette ?>" value="<?= $recette->ID_recette ?>" >
             <?php  if(isset($_SESSION['username'])){?>
-                <a id = "ID-delete-btn" class = "btn-supp btn"  onclick="return suppression();" >X</a>
+                <a id = "ID-delete-btn" class = "btn-supp btn"  >X</a>
             <?php } ?>
         </form>
+        <form method="post" class="supp" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/supptraitement.php">
+            <input type="hidden" name="Id_recette" id="<?= $recette->ID_recette ?>" value="<?= $recette->ID_recette ?>" >
 
-        <form method="post" id="<?= $recette->ID_recette ?>" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/afficheRecette.php">
-            <input type="button" id="<?= $recette->ID_recette ?>" value="<?= $recette->ID_recette ?>" >
         </form>
+
         <?php
     }
     public function CategorieForm($image,$tag):void{?>
@@ -44,7 +43,7 @@ class Formulaires{
                         #photo_recette,#photo-recette-subtitle{
                             display: none;
                         }
-                    </style><?php
+                    </><?php
                 }
                 ?>
                 <?php if(isset($_SESSION['recette'])) :?>
