@@ -72,7 +72,6 @@ class Donnees extends PdoConnexion {
     }
     public function rechercheRecetteMin(){
         $statement = parent::getPdo()->prepare("select * from recette ORDER BY RAND() LIMIT 5") ;
-
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return $results;

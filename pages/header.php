@@ -48,7 +48,8 @@ $affichage = new Affichages();
     <?php
         if (isset($_SESSION['rechercheRecette'])) {
         $recettesRecherchee = $_SESSION['rechercheRecette'];
-        $affichage->AfficherListesRecherches($recettesRecherchee,$recettes);
+            $tableauUnique = array_unique($recettesRecherchee, SORT_REGULAR);
+        $affichage->AfficherListesRecherches($tableauUnique,$recettes);
         unset($_SESSION['rechercheRecette']);//pour effacer automatiquement la recherche apres avoir recherché
         }
 

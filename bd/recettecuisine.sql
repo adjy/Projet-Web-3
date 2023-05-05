@@ -20,9 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `recettecuisine`
 --
-DROP DATABASE IF EXISTS recettecuisine;
-create database recettecuisine;
-use recettecuisine;
+DROP DATABASE IF EXISTS lrandria;
+create database lrandria;
+use lrandria;
 -- --------------------------------------------------------
 
 --

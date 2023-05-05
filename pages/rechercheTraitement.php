@@ -8,19 +8,18 @@ use recette\Donnees;
 
 $recette = new Donnees();
 if(isset($_POST['fname']) ){
-
-    $mots = $_POST['fname'];
-    var_dump();
-
-
-
-
-
-    $termes = htmlspecialchars($_POST['fname'] );
-    //var_dump($termes);
-    $recherche = $recette->rechercheTerme($termes);
-    $_SESSION['rechercheRecette'] = $recherche;
-    var_dump($recherche);
-//    header("Location:".$_SERVER['HTTP_REFERER']);
-//    exit();
+    $mots = trim($_POST['fname']);
+    $tabMots = explode(" ",$mots);
+    foreach($tabMots as $mot){
+        $termes = htmlspecialchars($mot);
+        $recherche = $recette->rechercheTerme($termes);
+        if(isset($_SESSION['rechercheRecette'])){
+            foreach ($recherche as $rch)
+                array_push($_SESSION['rechercheRecette'],$rch);
+        }
+        else
+            $_SESSION['rechercheRecette'] = $recherche;
+    }
+    header("Location:".$_SERVER['HTTP_REFERER']);
+    exit();
 }
