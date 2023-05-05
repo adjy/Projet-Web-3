@@ -33,62 +33,11 @@ class Formulaires{
     }
 
     public function AjoutForm():void{?>
-<!--        <!--                Ajout des informations de la recette-->-->
-<!--        <form method="post" class="cadre" id="ajout-recette-form"  enctype="multipart/form-data" action="--><?php //= $GLOBALS['DOCUMENT_DIR'] ?><!--pages/ajoutRecetteTraitement.php">-->
-<!--            <div class="TitleAjout">Ajouter une recette</div>-->
-<!--            --><?php
-//            if(isset( $_SESSION['recette'] )){
-//                ?>
-<!--                <style>-->
-<!--                    #photo_recette,#photo-recette-subtitle{-->
-<!--                        display: none;-->
-<!--                    }-->
-<!--                </style>--><?php
-//            }
-//            ?>
-<!--            --><?php //if(isset($_SESSION['recette'])) :?>
-<!--                <input class = "ajout-input" type="text" id = "nom" name="nom_recette" placeholder="Entrer le nom de la recette" value="--><?php //echo $_SESSION['recette']['titre'];?><!-- " required> <!-- nom de la recette -->-->
-<!--            --><?php //else :?>
-<!--                <input class = "ajout-input" type="text" id = "nom" name="nom_recette" placeholder="Entrer le nom de la recette" required> <!-- nom de la recette -->-->
-<!--            --><?php //endif;?>
-<!--            <label for="le_fichier" id="photo-recette-subtitle" class="subTitle">Photo de la recette</label> <!-- Image de la recette -->-->
-<!--            <input type="file" class="ajout-input" id="photo_recette" name="photo_recette">-->
-<!--            <button type="submit" id="ajouter-tag-button" class = "btn" >Insérer</button>-->
-<!--        </form>-->
-<!---->
-<!--        <!--            Pour ajouter les ingredients-->-->
-<!--        <form  method="post" class = "cadre" id = "ajout-ingredient-form" action="--><?php //= $GLOBALS['DOCUMENT_DIR'] ?><!--pages/ajoutIngredientTraitement.php"  enctype="multipart/form-data">-->
-<!--            <div class="TitleAjout">Ajouter un ingredient</div>-->
-<!--            <input class = "ajout-input" type="text" id = "nom-ingredient" name="nom-ingredient" placeholder="Entrer le nom de l'ingredient" value = "" required>-->
-<!--            <input class = "ajout-input" class="ajout-input" type="text" id = "unite" name="unite" placeholder="unite" value = "" required>-->
-<!--            <input type="number" class="ajout-input" id = "qte" name="quantite" placeholder="Quantité" value = "" required>-->
-<!---->
-<!--            <label for="photo-ingredient" class="subTitle"> Photo de l'ingredient</label>-->
-<!--            <input type="file" class="ajout-input" id="photo_ingredient" name="photo_ingredient">-->
-<!--            <button type="submit" id="ajouter-ingredient-button" class = "btn" >Insérer</button>-->
-<!--        </form>-->
-<!---->
-<!--        <!--            Pour  ajouter les tags-->-->
-<!--        <form  method="post" class="cadre" id = "ajout-tag-form" action="--><?php //= $GLOBALS['DOCUMENT_DIR'] ?><!--pages/ajoutTagTraitement.php"  >-->
-<!--            <div class="TitleAjout">Ajouter un tag</div>-->
-<!--            <div>Dessert,Salé,Chaud,Sucré...</div>-->
-<!--            <input class = "ajout-input" type="text" id = "nom-tag" name="nom-tag" placeholder="Entrer un tag" value = "" required>-->
-<!--            <button type="submit" id="ajouter-tag-button" class = "btn" >Insérer</button>-->
-<!--        </form>-->
-<!--        <a id = "ajout-recette" href="--><?php //= $GLOBALS['DOCUMENT_DIR'] ?><!--pages/ajoutRecetteBD.php" style="text-decoration: none; font-size: 0.8cm">Ajouter au recette</a>-->
-<!--        <script src = "--><?php //= $GLOBALS['JS_DIR']?><!--admin.js"></script>-->
-
-
-
-
-
-
-
 
         <!--        <div class="ajout-recette">-->
         <form method="post" class="cadre" id="ajout-recette-form"  enctype="multipart/form-data" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutRecetteTraitement.php">
             <!--                Ajout des informations de la recette-->
-            <div class="TitleAjout">Ajouter une recette</div>
+            <div class="Title-Ajout">Ajouter une recette</div>
 
             <input class = "ajout-input" type="text" id = "nom" name="nom" placeholder="Entrer le nom de la recette" required> <!-- nom de la recette -->
             <label for="le_fichier" class="subTitle">Photo de l'ingredient</label> <!-- Image de la recette -->

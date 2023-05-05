@@ -40,7 +40,7 @@
                 let response = JSON.parse(httpRequest.response)
 
                     display.innerHTML = response.firstname
-                console.log(response);
+                console.
 
 
             } else {

@@ -160,78 +160,10 @@
 /*justify-content: center;*/
 /*align-items: center;*/
 
-.TitleAjout {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    margin-right: auto;
-}
 
-.ajout-input{
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-left:0 ;
-}
-.subTitle{
-    font-size: 20px;
-    margin-bottom: 1%;
-    margin-right: auto;
-}
-.ingredientClass{
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.tagClass,
-.ingredientClass{
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-#ingredients,
-#tags{
 
-    width: 70vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 2% 0;
 
-}
-#listeIngredient{
-    width: 100%;
-    margin-bottom: 2%;
-}
-#ajout-ingre,
-#ajout-tag{
-    margin-left: 0;
-}
-#listeTags{
-    display: flex;
-    flex-direction: row;
-    margin-right: auto;
-}
-#ajout-recette,
-#ajouter-tag-button,
-#ajouter-ingredient-button{
-    margin:2% 0 ;
-    background-color: #4CAF50;
-    width: auto;
-    display: flex;
-    justify-content: center;
-}
+
 
 /* ================================================================= */
 

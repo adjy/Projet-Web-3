@@ -11,7 +11,7 @@ class PdoConnexion
         /*lancement : mysql -h 192.168.22.48 -u john -p
         machine perso :  */
         $db_name = "recettecuisine" ;
-        $db_host = '127.0.0.1' ;
+        $db_host = 'localhost' ;
         $db_port = '3306' ;
         $db_user =  'root' ;
         $db_pwd = '' ;
@@ -23,11 +23,11 @@ class PdoConnexion
                 $db_user =  'lrandria' ;
                 $db_pwd = '06032003' ;
 
-                $db_name = "recettecuisine" ;
-                $db_host = '127.0.0.1' ;
+                $db_name = "lrandria" ;
+                $db_host = '192.168.22.48' ;
                 $db_port = '3306' ;
-                $db_user =  'root' ;
-                $db_pwd = '' ;
+                $db_user =  'lrandria' ;
+                $db_pwd = '06032003' ;
         */
         $dsn = 'mysql:dbname=' . $db_name . ';host='. $db_host. ';port=' . $db_port;
         try{
