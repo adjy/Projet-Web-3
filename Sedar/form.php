@@ -9,7 +9,7 @@ Autoloader::register(); ?>
 
 <link rel="stylesheet" href="../css/main.css">
 <!--        <div class="ajout-recette">-->
-<form method="post" class="cadre" id="ajout-recette-form"  enctype="multipart/form-data" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutRecetteTraitement.php">
+<form method="post" class="cadre" id="ajout-recette-form"  enctype="multipart/form-data" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajout.php">
     <!--                Ajout des informations de la recette-->
     <div class="TitleAjout">Ajouter une recette</div>
 
@@ -22,8 +22,8 @@ Autoloader::register(); ?>
         <div class="subTitle">Ingrédients</div>
         <div id="listeIngredient"></div>
 
-        <input class = "ajout-input" type="text" id = "nom-ingredient" name="" placeholder="Entrer le nom de l'ingredient" value = "" onkeyup="rehercher()">
-        <div id="erreur-ingredient">Ingrédient introuvable. Veuillez l'ajouter dans la rubrique "ajout d'ingrédient"</div>
+<!--        <input class = "ajout-input" type="text" id = "nom-ingredient" name="" placeholder="Entrer le nom de l'ingredient" value = "" onkeyup="rehercher()">-->
+<!--        <div id="erreur-ingredient">Ingrédient introuvable. Veuillez l'ajouter dans la rubrique "ajout d'ingrédient"</div>-->
 
         <select id="choixIngredients" name="">
             <!--     generes moi ici les id dans value et le nom des ingredients de la base de donnees-->
@@ -36,36 +36,38 @@ Autoloader::register(); ?>
         <input type="number" class = "ajout-input" id = "qte" name="" placeholder="Quantité" value = "" min = 0>
 
         <button type="button" class = "btn" id="ajout-ingre" >Ajouter un ingrédient</button>
+        <a href="#ajout-ingredient-form" >Ajouter un nouveau ingrédient</a>
+
     </div>
 
 
     <!--                liste des tags de la recette             -->
     <div id="tags">
-        <div class="subTitle">Tags</div>
-
-        <div id="listeTags">
+<!--        <div class="subTitle">Tags</div>-->
+<!---->
+<!--        <div id="listeTags">-->
             <!--                            <div class="tagClass"></div>-->
         </div>
 
         <input class = "ajout-input" type="text" id = "nom-tag" name="" placeholder="Ajout un tag" value = "" onkeyup="rehercherTag()" required>
-        <div id="erreur-tag">Tag introuvable. Veuillez l'ajouter dans la rubrique "ajout de tag"</div>
-        <!--                    generes moi ici les id dans value et le nom des tags de la base de donnees-->
-        <select id="choixTags" name="">
-            <option value="1">dessert</option>
-            <option value="2">chocolat</option>
-            <option value="3">sucre</option>
-        </select>
-        <button type="button" id="ajout-tag" class = "btn" >Ajouter un tag</button>
+<!--        <div id="erreur-tag">Tag introuvable. Veuillez l'ajouter dans la rubrique "ajout de tag"</div>-->
+<!--        <!--                    generes moi ici les id dans value et le nom des tags de la base de donnees-->-->
+<!--        <select id="choixTags" name="">-->
+<!--            <option value="1">dessert</option>-->
+<!--            <option value="2">chocolat</option>-->
+<!--            <option value="3">sucre</option>-->
+<!--        </select>-->
+<!--        <button type="button" id="ajout-tag" class = "btn" >Ajouter un tag</button>-->
     </div>
-    <button type="button" id = "ajout-recette" class="btn" value="Ajouter la recette">Ajouter la recette</button>
+    <button type="submit" id = "ajout-recette" class="btn" value="Ajouter la recette">Ajouter la recette</button>
 </form>
 
 
 
 <!--            Pour ajouter les ingredients-->
-<form  method="post" class = "cadre" id = "ajout-ingredient-form" action = "execution.php" enctype="multipart/form-data">
+<form  method="post" class = "cadre" id = "ajout-ingredient-form" action = "execution2.php" enctype="multipart/form-data">
     <div class="TitleAjout">Ajouter un ingredient</div>
-    <input class = "ajout-input" type="text" id = "nom-ingredient" name="nom-ingredient" placeholder="Entrer le nom de l'ingredient" value = "" required>
+    <input class = "ajout-input" type="text" id = "nom-ingredient" name="nomIngredient" placeholder="Entrer le nom de l'ingredient" value = "" required>
     <label for="photo-ingredient" class="subTitle"> Photo de l'ingredient</label>
     <input type="file" class="ajout-input" id="photo_ingredient" name="photo_ingredient">
     <button type="submit" id="ajouter-ingredient-button" class = "btn" >Ajouter un ingrédient</button>
@@ -79,3 +81,7 @@ Autoloader::register(); ?>
 </form>
 
 <script src = "js.js"></script>
+
+<?php
+if(isset($_SESSION['sedar'] ))
+    echo $_SESSION['sedar'] ;

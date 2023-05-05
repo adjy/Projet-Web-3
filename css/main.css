@@ -430,8 +430,8 @@ html, body {
 .Title-Ajout {
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 20px;
-    margin-right: auto;
+
+    margin: 2% auto 20px 2%;
 }
 
 .ajout-input{
@@ -469,7 +469,9 @@ html, body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 #ingredients,
-#tags{
+#tags,
+#recette,
+.ingredients-inputs{
 
     width: 70vw;
     display: flex;
@@ -500,4 +502,16 @@ html, body {
     width: auto;
     display: flex;
     justify-content: center;
+}
+.btn-choix{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.btn-choix .btn{
+    font-size: 10px;
+    text-decoration: none;
+
 }
