@@ -81,11 +81,20 @@ class Donnees extends PdoConnexion {
         $statement = parent::getPdo()->prepare(" delete from recette where  ID_recette = ". $id) ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+    }
+
+    public function miseAjourSupprimer(){
+        $statement = parent::getPdo()->prepare("delete from ingredient where ID_ingredient not in( select ID_ingredient from listesingredients)") ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+
+        $statement = parent::getPdo()->prepare("delete from tag where ID_tag not in( select ID_tag from listestag)") ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
 
     }
 
 
 }
+
 
 
 

@@ -22,7 +22,16 @@ $recettesMin = $gdb->rechercheRecetteMin();
 ?>
     <div class="index">
         <img class="banner" src="<?=$GLOBALS['IMG_DIR']?>src/banner.png " alt="banner">
-        <span id="idCat" class="info">Explorez notre collection de recettes de cuisine par catégorie</span>
+<!--        <span id="idCat" class="info">Explorez notre collection de recettes de cuisine par catégorie</span>-->
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;Les recettes de cuisine sont des trésors gastronomiques qui ont traversé les âges et les cultures. Que ce soit pour un plat principal, un dessert, une entrée ou un apéritif, il y a une recette pour chaque occasion et chaque palais. Chaque recette est unique, avec ses propres ingrédients, ses techniques de préparation et ses saveurs distinctes. Les recettes peuvent être transmises de génération en génération, ou partagées entre amis et membres de la famille. Que vous soyez un passionné de cuisine ou que vous cherchiez simplement à élargir votre palette culinaire, les recettes sont une source d'inspiration inépuisable pour tous les gourmets.
+        </p>
+        <br>
+        <blockquote>"La gastronomie est l'art d'utiliser la nourriture pour créer le bonheur"
+            <cite>-Theodore Zeldin</cite>
+        </blockquote>
+        <br>
+        <span>Plongeons dans l'unvers de la cuisine. Explorez ensemble notre collection de recettes de cuisine par catégorie</span>
         <?php
         $affichage->AfficherListesCategories($tags,$gdb);
         ?>

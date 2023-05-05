@@ -8,5 +8,7 @@ use recette\Donnees;
 
 $gdb = new Donnees();
 $gdb->supprimerRecette($_POST['Id_recette']);
-header("Location:".$_SERVER['HTTP_REFERER']);
+$gdb->miseAjourSupprimer();
+header("Location: ".$GLOBALS['DOCUMENT_DIR']."index.php");
+
 exit();
