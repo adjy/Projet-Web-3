@@ -20,9 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `recettecuisine`
 --
-DROP DATABASE IF EXISTS lrandria;
-create database lrandria;
-use lrandria;
+DROP DATABASE IF EXISTS recettecuisine;
+create database recettecuisine;
+use recettecuisine;
 -- --------------------------------------------------------
 
 --
@@ -134,22 +134,22 @@ INSERT INTO `listesingredients` (`ID_ingredient`, `ID_recette`, `Qte`, `mesure`)
 
 -- --------------------------------------------------------
 --
--- Structure de la table `listestag`
+-- Structure de la table `listescategorie`
 --
 
-DROP TABLE IF EXISTS `listestag`;
-CREATE TABLE IF NOT EXISTS `listestag` (
-  `ID_tag` int NOT NULL,
+DROP TABLE IF EXISTS `listescategorie`;
+CREATE TABLE IF NOT EXISTS `listescategorie` (
+  `ID_categorie` int NOT NULL,
   `ID_recette` int NOT NULL,
-  KEY `fk_tag_listesTag` (`ID_tag`),
-  KEY `fk_recette_listesTag` (`ID_recette`)
+  KEY `fk_categorie_listescategorie` (`ID_categorie`),
+  KEY `fk_recette_listescategorie` (`ID_recette`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `listestag`
+-- Déchargement des données de la table `listescategorie`
 --
 
-INSERT INTO `listestag` (`ID_tag`, `ID_recette`) VALUES
+INSERT INTO `listescategorie` (`ID_categorie`, `ID_recette`) VALUES
 (1, 1),
 (4, 1),
 (1, 2),
@@ -176,6 +176,29 @@ INSERT INTO `listestag` (`ID_tag`, `ID_recette`) VALUES
 (4, 13),
 (4, 14);
 
+
+-- --------------------------------------------------------
+--
+-- Structure de la table `listestag`
+--
+
+DROP TABLE IF EXISTS `listestag`;
+CREATE TABLE IF NOT EXISTS `listestag` (
+`ID_tag` int NOT NULL,
+`ID_recette` int NOT NULL,
+ KEY `fk_tag_listestag` (`ID_tag`),
+ KEY `fk_recette_listestag` (`ID_recette`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `listestag`
+--
+
+INSERT INTO `listestag` (`ID_tag`, `ID_recette`) VALUES
+(1, 1);
+
+
+
 -- --------------------------------------------------------
 
 --
@@ -197,21 +220,45 @@ CREATE TABLE IF NOT EXISTS `recette` (
 --
 
 INSERT INTO `recette` (`ID_recette`, `titre`, `photo`,`description`) VALUES
-(1, 'Triple Chocolate Cheesecake', 'Triple_Chocolate_Cheesecake.jpeg',"Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!"),
-(2, 'Banana Pudding Dessert', 'Banana_Pudding_Dessert.png',"Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!"),
-(3, 'Ultimate Fudgy Chocolate Brownies', 'ultimate-fudgy-chocolate-brownies.jpg',"Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!"),
-(4, 'NO BAKE DARK CHOCOLATE TART', 'no-bake-chocolate-tart-1.jpg',"Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!"),
-(5, 'Pudding Layer', 'pudding.jpg',"Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!"),
-(6, 'Petits croustillants chèvres et olives', 'petits_croustillants.png',"Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!"),
-(7, 'Marlyzen, cuisine revisitée', 'marlyzen.jpg',"Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!"),
-(8, 'Blanquette de filet mignon aux petits légumes', 'Blanquette_de_filet_mignon.png',"Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!"),
-(9, 'Filet mignon de porc caramélisé à la sauce soja - Les Délices Légers de Zabou', 'Filet_mignon_de_porc.jpg',"Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!"),
-(10, 'Cheesecake au saumon fumé - Les Gourmandises de Lou', 'Cheesecake_au_saumon.jpg',"Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!"),
-(11, 'Cookies salés aux tomates séchées et chorizo - Amandine Cooking', 'Cookies-sales.jpg',"Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!"),
-(12, 'CROUSTILLANT CHOCO NOISETTE', 'CROUSTILLANT-CHOCO-NOISETTE.jpg',"Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!"),
-(13, 'Recette tropézienne vanille et framboises', 'tropezienne-vanille-framboises.jpg',"Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!"),
-(14, 'Bavarois Poire, Sablé breton et Sauce caramel onctueuse', 'Bavarois-Poire.jpg',"Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!");
+(1, 'Triple Chocolate Cheesecake', 'Triple_Chocolate_Cheesecake.jpeg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
+(2, 'Banana Pudding Dessert', 'Banana_Pudding_Dessert.png','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
+(3, 'Ultimate Fudgy Chocolate Brownies', 'ultimate-fudgy-chocolate-brownies.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
+(4, 'NO BAKE DARK CHOCOLATE TART', 'no-bake-chocolate-tart-1.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
+(5, 'Pudding Layer', 'pudding.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
+(6, 'Petits croustillants chèvres et olives', 'petits_croustillants.png','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
+(7, 'Marlyzen, cuisine revisitée', 'marlyzen.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
+(8, 'Blanquette de filet mignon aux petits légumes', 'Blanquette_de_filet_mignon.png','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
+(9, 'Filet mignon de porc caramélisé à la sauce soja - Les Délices Légers de Zabou', 'Filet_mignon_de_porc.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
+(10, 'Cheesecake au saumon fumé - Les Gourmandises de Lou', 'Cheesecake_au_saumon.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
+(11, 'Cookies salés aux tomates séchées et chorizo - Amandine Cooking', 'Cookies-sales.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
+(12, 'CROUSTILLANT CHOCO NOISETTE', 'CROUSTILLANT-CHOCO-NOISETTE.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
+(13, 'Recette tropézienne vanille et framboises', 'tropezienne-vanille-framboises.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
+(14, 'Bavarois Poire, Sablé breton et Sauce caramel onctueuse', 'Bavarois-Poire.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!');
 
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categorie`
+--
+
+DROP TABLE IF EXISTS `categorie`;
+CREATE TABLE IF NOT EXISTS `categorie` (
+  `ID_categorie` int NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  PRIMARY KEY (`ID_categorie`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `categorie`
+--
+
+INSERT INTO `categorie` (`ID_categorie`, `nom`) VALUES
+(1, 'Dessert'),
+(2, 'Salé'),
+(3, 'Chaud'),
+(4, 'Sucré');
 
 
 -- --------------------------------------------------------
@@ -232,9 +279,9 @@ CREATE TABLE IF NOT EXISTS `tag` (
 --
 
 INSERT INTO `tag` (`ID_tag`, `nom`) VALUES
-(1, 'Dessert'),
-(2, 'Salé'),
-(3, 'Chaud'),
+(1, 'detente'),
+(2, 'ete'),
+(3, 'sunshine'),
 (4, 'Sucré');
 
 --
@@ -252,8 +299,16 @@ ALTER TABLE `listesingredients`
 -- Contraintes pour la table `listestag`
 --
 ALTER TABLE `listestag`
-  ADD CONSTRAINT `fk_recette_listesTag` FOREIGN KEY (`ID_recette`) REFERENCES `recette` (`ID_recette`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_tag_listesTag` FOREIGN KEY (`ID_tag`) REFERENCES `tag` (`ID_tag`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_tag_listestag` FOREIGN KEY (`ID_tag`) REFERENCES `tag` (`ID_tag`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_recette_listestag` FOREIGN KEY (`ID_recette`) REFERENCES `recette` (`ID_recette`) ON DELETE CASCADE;
+
+
+--
+-- Contraintes pour la table `listescategorie`
+--
+ALTER TABLE `listescategorie`
+  ADD CONSTRAINT `fk_recette_listescategorie` FOREIGN KEY (`ID_recette`) REFERENCES `recette` (`ID_recette`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_categorie_listescategorie` FOREIGN KEY (`ID_categorie`) REFERENCES `categorie` (`ID_categorie`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,5 +1,6 @@
 <?php
 
+
 $data = $_POST;
 if(isset($_FILES['photo_ingredient'])) {
     if (empty($_FILES['photo_ingredient'])) die("<span style='color : red'>Il n'y a pas de photo de recettes insérées !</span>");
@@ -21,11 +22,33 @@ if(isset($_FILES['photo_ingredient'])) {
     }
 }
 
+require_once "../config.php";
+require $GLOBALS['PHP_DIR'] . "class/Autoloader.php";
+Autoloader::register();
+
+use recette\Donnees;
+
+$gdb = new Donnees();
+
+/*fonction pour ajouter l'ingredient a la Bd */
+
+
+/*fonction pour rechercher l'id de l'ingredient de la Bd*/
+
+
+//$idIngredient = ;
+//array_push($data,array('idIngredient'=>$idIngredient));
+
+
 header("Content-Type: application/json");
 echo json_encode($data);
 exit();
 
 ?>
+
+
+
+
 
 /*
 session_start();

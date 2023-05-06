@@ -16,7 +16,7 @@ $affiche = new Affichages();
 $recettes = $gdb->getRecettes();
 $ListesIng = $gdb->getListesIngredients();
 $ingredient = $gdb->getIngredient();
-$Listestag = $gdb->getListesTagRecettes();
+$Listescategorie = $gdb->getListescategorieRecettes();
 
 ob_start();
 
@@ -27,7 +27,7 @@ ob_start();
 <?php
 
 if(isset($_POST['Id_recette'])){
-   $affiche->AfficherRecette($_POST['Id_recette'],$recettes,$ListesIng,$ingredient,$Listestag);
+   $affiche->AfficherRecette($_POST['Id_recette'],$recettes,$ListesIng,$ingredient,$Listescategorie);
 }
 
 

@@ -13,14 +13,14 @@ class Donnees extends PdoConnexion {
         return $results;
         // return parent::getPdo();
     }
-    public function getListesTagRecettes(){
-        $statement = parent::getPdo()->prepare("SELECT * FROM listestag") ;
+    public function getListescategorieRecettes(){
+        $statement = parent::getPdo()->prepare("SELECT * FROM listescategorie") ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return $results;
     }
-    public function getTagRecettes(){
-        $statement = parent::getPdo()->prepare("SELECT * FROM tag") ;
+    public function getcategorieRecettes(){
+        $statement = parent::getPdo()->prepare("SELECT * FROM categorie") ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return $results;
@@ -53,7 +53,7 @@ class Donnees extends PdoConnexion {
 
     public function rechercheTerme($mot){
         $sql = "select titre from recette where ID_recette IN(
-        select ID_recette from recette where titre like '%".$mot."%' UNION select ID_recette from tag A inner join listestag using (ID_tag)  where A.nom like '%".$mot."%'
+        select ID_recette from recette where titre like '%".$mot."%' UNION select ID_recette from categorie A inner join listescategorie using (ID_categorie)  where A.nom like '%".$mot."%'
     UNION
         select ID_recette from ingredient B inner join listesingredients using (ID_ingredient) where B.nom like '%".$mot."%'
 )" ;
@@ -64,7 +64,7 @@ class Donnees extends PdoConnexion {
     }
 
     public function rechercheCategorie($id_Cat){
-        $statement = parent::getPdo()->prepare("select photo from recette A inner join listestag B using(ID_recette) where B.ID_tag =" .$id_Cat. " ORDER BY RAND() LIMIT 1") ;
+        $statement = parent::getPdo()->prepare("select photo from recette A inner join listescategorie B using(ID_recette) where B.ID_categorie =" .$id_Cat. " ORDER BY RAND() LIMIT 1") ;
 
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
@@ -87,7 +87,7 @@ class Donnees extends PdoConnexion {
         $statement = parent::getPdo()->prepare("delete from ingredient where ID_ingredient not in( select ID_ingredient from listesingredients)") ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
 
-        $statement = parent::getPdo()->prepare("delete from tag where ID_tag not in( select ID_tag from listestag)") ;
+        $statement = parent::getPdo()->prepare("delete from categorie where ID_categorie not in( select ID_categorie from listescategorie)") ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
 
     }

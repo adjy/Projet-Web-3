@@ -8,7 +8,7 @@ class Affichages{
     public function __construct(){
         $this->formulaire = new \recette\Formulaires();
     }
-    public function AfficherRecette($Id_Recette,$ListesRecettes,$ListesIngredients,$Ingredients,$Listestag): void{
+    public function AfficherRecette($Id_Recette,$ListesRecettes,$ListesIngredients,$Ingredients,$Listescategorie): void{
         ?>
          <!-- affichage de ma recette -->
         <div class="recette-cadre">
@@ -50,12 +50,12 @@ class Affichages{
             <!---->
                 <?php
                 $tab = array();
-                foreach ($Listestag as $ltags){
-                    if($ltags->ID_recette == $Id_Recette){
-                        foreach ($Listestag as $ltags1){
-                            if($ltags1->ID_tag == $ltags->ID_tag){
+                foreach ($Listescategorie as $lcategories){
+                    if($lcategories->ID_recette == $Id_Recette){
+                        foreach ($Listescategorie as $lcategories1){
+                            if($lcategories1->ID_categorie == $lcategories->ID_categorie){
                                 foreach ($ListesRecettes as $rec){
-                                    if($ltags1->ID_recette == $rec->ID_recette  && $rec->ID_recette != $Id_Recette){
+                                    if($lcategories1->ID_recette == $rec->ID_recette  && $rec->ID_recette != $Id_Recette){
                                         $tab[] = $rec->titre;
                                     }
                                 }
@@ -84,13 +84,13 @@ class Affichages{
             </div>
 <?php
     }
-    public function AfficherListesRecettes($tags, $listesTags,$recettes):void{
-           foreach ($tags as $t) :?>
+    public function AfficherListesRecettes($categories, $listescategories,$recettes):void{
+           foreach ($categories as $t) :?>
             <div class="categorieRecettes centrer"><!-- genere un block de categorie -->
                 <h1 class="title-Recette-index"> <?= $t->nom ?> </h1>
                 <div class="liste-Recette-index centrer">
-                    <?php  foreach ($listesTags as $listes){
-                         if($listes->ID_tag == $t->ID_tag){?>
+                    <?php  foreach ($listescategories as $listes){
+                         if($listes->ID_categorie == $t->ID_categorie){?>
                             <!-- ensemble de recette qui appartiennent a cette categorie -->
                                <?php foreach ($recettes as $rec){
                                     if($rec->ID_recette == $listes->ID_recette){
@@ -115,19 +115,19 @@ class Affichages{
         </div>
    <?php }
 
-    public function AfficherParCategorie($Id_tag,$Listestag,$Tags,$ListesRecettes):void{?>
+    public function AfficherParCategorie($Id_categorie,$Listescategorie,$categories,$ListesRecettes):void{?>
             <div class="cadre">
-                 <?php  foreach  ($Tags as $tag): ?>
-                   <?php if($tag->ID_tag == $Id_tag): ?>
-                        <div class="title-cadre"><?= $tag->nom ?></div> <!-- Titre de la categorie-->
+                 <?php  foreach  ($categories as $categorie): ?>
+                   <?php if($categorie->ID_categorie == $Id_categorie): ?>
+                        <div class="title-cadre"><?= $categorie->nom ?></div> <!-- Titre de la categorie-->
                     <?php endif;?>
                  <?php endforeach;?>
                        <div class="items-cadre">
                              <?php
-                             foreach  ($Listestag as $ltags){
-                                if($ltags->ID_tag == $Id_tag){
+                             foreach  ($Listescategorie as $lcategories){
+                                if($lcategories->ID_categorie == $Id_categorie){
                                     foreach ($ListesRecettes as $rec){
-                                        if($rec->ID_recette == $ltags->ID_recette){
+                                        if($rec->ID_recette == $lcategories->ID_recette){
                                             $this->formulaire->RecetteForm($rec);
                                         }
                                     }
@@ -137,12 +137,12 @@ class Affichages{
                     </div>
                 <?php
         }
-    public function AfficherListesCategories($tags,$gdb):void{?>
+    public function AfficherListesCategories($categories,$gdb):void{?>
         <div class="cadre"><!-- genere un block de categorie -->
             <h1 class="title-cadre"> Categories </h1>
             <div class="items-cadre">
-                <?php foreach ($tags as $t) :?>
-                    <?php $image = $gdb->rechercheCategorie($t->ID_tag);
+                <?php foreach ($categories as $t) :?>
+                    <?php $image = $gdb->rechercheCategorie($t->ID_categorie);
                     if($image != null ):
                         $image = $image[0]->photo; ?>
                            <?php $this->formulaire->CategorieForm($image,$t);?>
@@ -176,11 +176,11 @@ class Affichages{
     }
 
 
-     public function AfficheDonneesTest( $recette , $listeIng, $listeTag): void{
+     public function AfficheDonneesTest( $recette , $listeIng, $listecategorie): void{
          echo "Nom de la recette est " . $recette['titre'] . " et la photo est " . $recette['photo'] . "<br>";
          foreach ($listeIng as $lg)
              echo "Nom : " . $lg['nom'] . " Photo : " . $lg['photo'] . " Mesure : " . $lg['mesure'] . " Quantité :" . $lg['Qte'] . "<br>"; // quantite
-         foreach ($listeTag as $lstag) echo $lstag['nom'] . " ";
+         foreach ($listecategorie as $lscategorie) echo $lscategorie['nom'] . " ";
     }
     public function AfficherErreur(): void{
         ?>
@@ -198,8 +198,8 @@ class Affichages{
         if(!isset($_SESSION['listeIngredients'])){?>
             <div class="erreur"> <?php echo "Veuiller remplir le formulaire des ingrédients!!"; ?></div><?php
         }
-        if(!isset($_SESSION['nom-tag'])) {
-            ?> <div class="erreur"> <?php echo "Veuiller remplir le formulaire des tags!!"; ?></div><?php
+        if(!isset($_SESSION['nom-categorie'])) {
+            ?> <div class="erreur"> <?php echo "Veuiller remplir le formulaire des categories!!"; ?></div><?php
         }
     }
 

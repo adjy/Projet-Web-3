@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded',function (e){
         })
 
         button.addEventListener("mousedown", function(event){
-            button.parentElement.nextElementSibling.submit();
+            if (confirm("Voulez-vous supprimer cette recette ?"))
+                button.parentElement.nextElementSibling.submit();
         })
 
     })
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded',function (e){
 })
 
 function  suppression(e){
-    var confirmation = confirm("Voulez-vous supprimer cet élément ?"); // la boite de dialogue
+    // la boite de dialogue
     let recettes = document.querySelectorAll('.item-cadre');
 
 

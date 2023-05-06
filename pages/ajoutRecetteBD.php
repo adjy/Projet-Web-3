@@ -9,8 +9,8 @@ use recette\Affichages;
 
 $affichage = new Affichages();
 
-if(isset($_SESSION['recette']) && isset($_SESSION['listeIngredients']) && isset($_SESSION['nom-tag'])) {
-    $affichage->AfficheDonneesTest(  $_SESSION['recette'],$_SESSION['listeIngredients'],$_SESSION['nom-tag']);
+if(isset($_SESSION['recette']) && isset($_SESSION['listeIngredients']) && isset($_SESSION['nom-categorie'])) {
+    $affichage->AfficheDonneesTest(  $_SESSION['recette'],$_SESSION['listeIngredients'],$_SESSION['nom-categorie']);
 }
 else{
     $_SESSION['validation'] = false;

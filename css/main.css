@@ -459,7 +459,7 @@ html, body {
     justify-content: space-between;
     align-items: center;
 }
-.tagClass,
+.categorieClass,
 .ingredientClass{
     margin-bottom: 10px;
     padding: 10px;
@@ -469,9 +469,11 @@ html, body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 #ingredients,
-#tags,
+#categories,
 #recette,
-.ingredients-inputs{
+.ingredients-inputs,
+#tag,
+.categorie-inputs{
 
     width: 70vw;
     display: flex;
@@ -486,16 +488,12 @@ html, body {
     margin-bottom: 2%;
 }
 #ajout-ingre,
-#ajout-tag{
+#ajout-categorie{
     margin-left: 0;
 }
-#listeTags{
-    display: flex;
-    flex-direction: row;
-    margin-right: auto;
-}
+
 #ajout-recette,
-#ajouter-tag-button,
+#ajouter-categorie-button,
 #ajouter-ingredient-button{
     margin:2% 0 ;
     background-color: #4CAF50;
@@ -513,5 +511,16 @@ html, body {
 .btn-choix .btn{
     font-size: 10px;
     text-decoration: none;
+
+}
+
+#listeCategorie{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.check:hover{
+    cursor: pointer;
 
 }

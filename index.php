@@ -15,8 +15,8 @@ $affichage = new Affichages();
 
 ob_start() ;
 
-$tags = $gdb->getTagRecettes();
-$listesTags = $gdb->getListesTagRecettes();
+$categories = $gdb->getcategorieRecettes();
+$listescategories = $gdb->getListescategorieRecettes();
 $recettesMin = $gdb->rechercheRecetteMin();
 
 ?>
@@ -33,7 +33,7 @@ $recettesMin = $gdb->rechercheRecetteMin();
         <br>
         <span>Plongeons dans l'unvers de la cuisine. Explorez ensemble notre collection de recettes de cuisine par catégorie</span>
         <?php
-        $affichage->AfficherListesCategories($tags,$gdb);
+        $affichage->AfficherListesCategories($categories,$gdb);
         ?>
         <span id="idRec" class="info">Découvrez notre sélection de délicieuses recettes, simples à réaliser chez vous,
         pour régaler vos papilles et épater vos convives !</span>

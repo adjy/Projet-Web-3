@@ -13,8 +13,8 @@ use recette\Donnees;
 $gdb = new Donnees() ;
 $affiche = new Affichages();
 $recettes = $gdb->getRecettes();
-$Listestag = $gdb->getListesTagRecettes();
-$tags = $gdb->getTagRecettes();
+$Listescategorie = $gdb->getListescategorieRecettes();
+$categories = $gdb->getcategorieRecettes();
 
 ob_start();
 ?>
@@ -22,8 +22,8 @@ ob_start();
     <link rel="stylesheet" href="../css/main.css">
 <?php
 
-if(isset($_POST['Id_Tag'])){
-    $affiche->AfficherParCategorie($_POST['Id_Tag'],$Listestag,$tags,$recettes);
+if(isset($_POST['Id_categorie'])){
+    $affiche->AfficherParCategorie($_POST['Id_categorie'],$Listescategorie,$categories,$recettes);
 }
 
 
