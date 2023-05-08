@@ -69,13 +69,14 @@ class Formulaires{
                 <div id="listeIngredient"></div>
 
 <!--                <input class = "ajout-input" type="text" id = "nom-ingredient" name="" placeholder="Entrer le nom de l'ingredient" value = "" onkeyup="rehercher()">-->
-
+                <?php if(isset($_SESSION['Ingredients'])): ?>
                 <select id="choixIngredients" class="ajout-input" name="">
-                    <!--     generes moi ici les id dans value et le nom des ingredients de la base de donnees-->
-                    <option value="1">lait de vache</option>
-                    <option value="2">salt</option>
-                    <option value="3">sugar</option>
+                    <?php  foreach  ($_SESSION['Ingredients'] as $ingredient): ?>
+                        <option value="<?= $ingredient->ID_ingredient?>"><?= $ingredient->nom ?></option>
+                    <?php endforeach;?>
+                <?php endif;?>
                 </select>
+                
 
                 <input class = "ajout-input" type="text" id = "unite" name="" placeholder="unite" value = "">
                 <input type="number" class = "ajout-input" id = "qte" name="" placeholder="Quantité" value = "" min = 0>

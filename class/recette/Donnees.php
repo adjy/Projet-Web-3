@@ -32,7 +32,7 @@ class Donnees extends PdoConnexion {
         return $results;
     }
     public function getIngredient(){
-        $statement = parent::getPdo()->prepare("SELECT * FROM ingredient") ;
+        $statement = parent::getPdo()->prepare("SELECT * FROM ingredient ORDER BY nom ASC") ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return $results;
