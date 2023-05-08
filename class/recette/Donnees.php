@@ -133,11 +133,33 @@ class Donnees extends PdoConnexion {
     }
 
     public function ajoutTagRecette($ID_tag, $ID_recette){
-        $statement = parent::getPdo()->prepare("INSERT INTO listestag (ID_tag, ID_recette) VALUES (:ID_tag, :ID_recette)") ;
-        $statement->bindValue(':ID_recette', $ID_recette) ;
-        $statement->bindValue(':$ID_tag', $ID_tag) ;
+        $statement = parent::getPdo()->prepare("INSERT INTO listestag (ID_tag, ID_recette) VALUES (:ID_tag, :ID_recette)");
+        $statement->bindValue(':ID_recette', $ID_recette);
+        $statement->bindValue(':ID_tag', $ID_tag);
+        $statement->execute() or die(var_dump($statement->errorInfo()));
+    }
+
+
+    public function ajoutTag($nomTag){
+        $statement = parent::getPdo()->prepare("INSERT INTO tag (nom) VALUES (:nom)") ;
+        $statement->bindValue(':nom', $nomTag) ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
     }
+
+    public function getTagId($nomtag){
+        $statement = parent::getPdo()->prepare("select ID_tag from tag  where nom ='".$nomtag."' ") ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+        return $results;
+    }
+
+
+
+
+
+
+
+
 
 
 }
