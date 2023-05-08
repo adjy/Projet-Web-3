@@ -67,13 +67,13 @@ function createCategorie(){
 
 }
 function ajoutIngredients(){
-    let ingredientBtn = document.getElementById("ajout-ingre") // recupere le bouton ajout
+    let ingredientBtn = document.getElementById("ajout-ingre") // recupere le button ajout
 
     let form = document.getElementById("ajout-recette-form"); // recupere le formulaire d'ajout de recette
     let liste = document.getElementById('listeIngredient'); //Recupere la liste des ingredients
 
 
-    ingredientBtn.addEventListener("click", function(event) {
+    ingredientBtn.addEventListener("click", function() {
         /*recupere les informations */
         let name = document.getElementById("choixIngredients");
         let  qte = document.getElementById("qte");
@@ -136,9 +136,7 @@ function createIngredient(){
 
         // constructeur avec le formulaire en paramètre
         let data = new FormData(formulaire)
-        // il faut que les noms des champs du formulaire correspondent à ce qu'attend le serveur !
-        // let nom = formulaire.getElementById("nom-ingredient");
-        // nom.innerText = "";
+
         formulaire.children[1].firstElementChild.value = "";
         formulaire.children[1].firstElementChild.nextElementSibling.nextElementSibling.value = "";
 
@@ -148,118 +146,7 @@ function createIngredient(){
 
 document.addEventListener('DOMContentLoaded',function (){
     createIngredient();
-
     ajoutIngredients();
     createCategorie();
-
-
 })
-
-
-function rehercher() {
-    let nom_ingredient = document.getElementById("nom-ingredient")
-    let mot = nom_ingredient.value;
-    let liste = document.getElementById("choixIngredients");
-    let btn = document.getElementById("ajout-ingre")
-    let tmp = false;
-    let mess = document.getElementById("erreur-ingredient");
-
-
-    let option = liste.getElementsByTagName("option");
-    for (let i = 0; i < option.length; i++) {
-        if (option[i].innerHTML.trim() === mot.trim()) {
-            option[i].style.display = "";
-            tmp = true;
-        }
-        else
-            option[i].style.display = "none";
-    }
-    if(!tmp  ) {
-        btn.style.display = "none"
-        mess.style.display = "";
-    }
-    else {
-        btn.style.display = ""
-        mess.style.display = "none";
-    }
-    if(mot ===""){
-        btn.style.display = ""
-        mess.style.display = "none";
-    }
-
-
-}
-
-function reherchercategorie() {
-    let nom_categorie = document.getElementById("nom-categorie")
-    let mot = nom_categorie.value;
-    let liste = document.getElementById("choixcategories");
-    let btn = document.getElementById("ajout-categorie")
-    let tmp = false;
-    let mess = document.getElementById("erreur-categorie");
-
-
-    let option = liste.getElementsByTagName("option");
-    for (let i = 0; i < option.length; i++) {
-        if (option[i].innerHTML.trim() === mot.trim()) {
-            option[i].style.display = "";
-            tmp = true;
-        } else
-            option[i].style.display = "none";
-    }
-    if (!tmp) {
-        btn.style.display = "none"
-        mess.style.display = "";
-    } else {
-        btn.style.display = ""
-        mess.style.display = "none";
-
-    }
-    if(mot ===""){
-        btn.style.display = ""
-        mess.style.display = "none";
-    }
-}
-
-
-function updateNom(){
-    // let nom_ingredient = document.getElementById("nom-ingredient")
-    // let liste = document.getElementById("choixIngredients");
-    // let opt = liste.getElementsBycategorieName("option")
-    // liste.addEventListener("click", function(event) {
-    // for(let i=0; i< opt.length; i++)
-    //     if(opt[i].selected)
-    //         nom_ingredient.value = opt[i].innerHTML;
-    // })
-}
-function ajoutcategories(){
-    // Pour la creation des divs pour afficher la liste des categories
-
-    let boutoncategories= document.getElementById("ajouter-categorie-button"); // recupere le button categorie
-    let liste = document.getElementById('listecategories'); //Recupere la liste des categories
-
-
-    boutoncategories.addEventListener("click", function(event){
-        // pour le nom de l'ingredient
-        let nom = document.getElementById("nom-categorie"); // recupre le nom du categorie
-        if(nom.value === "") // verifie si le nom est vide
-            return;
-
-        let divNodeNom = document.createElement("div");
-        divNodeNom.innerHTML =  nom.value;
-        nom.value = "";
-        divNodeNom.classList.add("categorieClass");
-        liste.append(divNodeNom);
-    })
-
-}
-
-function submitRecette(){
-    let form = document.getElementById("ajout-recette-form") ;
-    let button = document.getElementById("ajout-recette")
-
-    button.addEventListener('click', function (e){
-        form.submit()
-    })
-}
 
