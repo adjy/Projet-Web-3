@@ -112,6 +112,29 @@ class Donnees extends PdoConnexion {
         return $results;
     }
 
+    public function ajoutCategorieRecette($ID_recette, $ID_categorie){
+        $statement = parent::getPdo()->prepare("INSERT INTO  listescategorie (ID_recette, ID_categorie ) VALUES ( :ID_recette, :ID_categorie )") ;
+        $statement->bindValue(':ID_recette', $ID_recette) ;
+        $statement->bindValue(':ID_categorie', $ID_categorie) ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+    }
+
+
+    public function ajoutIngreientRecette($ID_ingredient, $ID_recette, $qte, $mesure){
+        $statement = parent::getPdo()->prepare("INSERT INTO listesingredients (ID_ingredient, ID_recette, Qte, mesure) VALUES (:ID_ingredient, :ID_recette, :qte, :mesure )") ;
+        $statement->bindValue(':ID_recette', $ID_recette) ;
+        $statement->bindValue(':ID_ingredient', $ID_ingredient) ;
+        $statement->bindValue(':qte', $qte) ;
+        $statement->bindValue(':mesure', $mesure) ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+    }
+
+    public function ajoutTagRecette($ID_tag, $ID_recette){
+        $statement = parent::getPdo()->prepare("INSERT INTO listestag (ID_tag, ID_recette) VALUES (:ID_tag, :ID_recette) )") ;
+        $statement->bindValue(':ID_recette', $ID_recette) ;
+        $statement->bindValue(':$ID_tag', $ID_tag) ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+    }
 
 
 }
