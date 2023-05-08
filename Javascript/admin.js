@@ -19,15 +19,16 @@ function ajoutcategoriesSucces(response){
     nodeCheckBox.type = "checkbox";
     nodeCheckBox.classList.add("form-check-input");
     nodeCheckBox.classList.add("check");
-    nodeCheckBox.name = response.nomCategorie;
+    // nodeCheckBox.name = response.nomCategorie;
     nodeCheckBox.id = response[1].idCategorie;
     nodeCheckBox.value =  response[1].idCategorie;
+    nodeCheckBox.name = "categorie[]";
 
 
     let nodeLabel = document.createElement("label");
     nodeLabel.classList.add("form-check-label")
-    nodeLabel.htmlFor =  nodeCheckBox.name;
-    nodeLabel.innerHTML =  nodeCheckBox.name;
+    nodeLabel.htmlFor =  response.nomCategorie;
+    nodeLabel.innerHTML =  response.nomCategorie;
 
     nodeFormCheck.append(nodeCheckBox)
     nodeFormCheck.append(nodeLabel)
