@@ -1,26 +1,57 @@
 <?php
-session_start();
-if(isset( $_POST['nom_recette'] ) && isset($_FILES['photo_recette'])) {
+require_once "../config.php";
+require $GLOBALS['PHP_DIR'] . "class/Autoloader.php";
+Autoloader::register();
+use recette\Donnees;
+$gdb = new Donnees();
+
+
+if(isset( $_POST['nom_recette'] )
+    && isset($_FILES['photo_recette'])
+    && isset( $_POST['categorie'])
+    && isset($_POST['choixIngredients'])
+    && isset($_POST['Unite'])
+    && isset($_POST['Quantité'])
+    && isset($_POST['Nom-tag'])) {
+
+
     if (empty($_FILES['photo_recette'])) die("<span style='color : red'>Il n'y a pas de photo de recettes insérées !</span>");
 
     $file = $_FILES['photo_recette']; // NB : 'le_fichier' est le name de votre input dans le formulaire
 
+    $nomRecette = htmlspecialchars($_POST['nom_recette']);
     if ($file['error'] == 0) {//tout va bien
         $temp_file_name = $file['tmp_name'];
         $file_name = $file['name'];
-        $dir_name = "../images/recettes/";//l'endroit ou on va insérer l'image !!
-        if (!is_dir($dir_name)) mkdir($dir_name);//verification de la repertoire si ca existe déjà
-      //  $full_name = $dir_name . $file_name;
-       // move_uploaded_file($temp_file_name, $full_name);
 
-        $_SESSION['recette'] = array(
-            'titre' => $_POST['nom_recette'],
-            'photo' => $file_name
-        );
+        $gdb->ajoutRecette($nomRecette,$file_name);
+        $idRecette = $gdb->getIdRecette($nomRecette);
+        /*var_dump($idRecette);
+        var_dump($_POST['choixIngredients']);
+
+        foreach ($_POST['categorie'] as $cat){
+           $gdb->ajoutCategorieRecette($idRecette,$cat);
+        }
+
+        foreach ($_POST['choixIngredients'] as $ing){
+            $gdb->ajoutIngreientRecette($idRecette,);
+        }*/
+
+        var_dump($_POST);
+
+
+
+
+        /*$dir_name = "../images/recettes/";//l'endroit ou on va insérer l'image !!
+        if (!is_dir($dir_name)) mkdir($dir_name);//verification de la repertoire si ca existe déjà
+        $full_name = $dir_name . $file_name;
+        move_uploaded_file($temp_file_name, $full_name);*/
     }
+
+
 }
-header("Location:".$GLOBALS['DOCUMENT_DIR']."ajout.php");
-exit();
+/*header("Location:".$GLOBALS['PAGES']."Ajout-Reussi.php");
+exit();*/
 
 
 
