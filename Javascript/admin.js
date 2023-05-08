@@ -3,6 +3,7 @@ function ajoutIngredientSucces(response){
     let select = document.getElementById("choixIngredients")
     let option = document.createElement("option");
     option.text = response.nomIngredient;
+    option.value = response[1].idIngredient;
     select.options.add(option);
     alert("l'ingredient a ete ajoute")
 }
@@ -17,14 +18,11 @@ function ajoutcategoriesSucces(response){
     let nodeCheckBox = document.createElement("input");
     nodeCheckBox.type = "checkbox";
     nodeCheckBox.classList.add("form-check-input");
-    nodeCheckBox.classList.add("check")
+    nodeCheckBox.classList.add("check");
     nodeCheckBox.name = response.nomCategorie;
-    // nodeCheckBox.id = response.id;
-    // nodeCheckBox.value = response.value;
+    nodeCheckBox.id = response[1].idCategorie;
+    nodeCheckBox.value =  response[1].idCategorie;
 
-
-    nodeCheckBox.id = 13;
-    nodeCheckBox.value = "sale";
 
     let nodeLabel = document.createElement("label");
     nodeLabel.classList.add("form-check-label")
