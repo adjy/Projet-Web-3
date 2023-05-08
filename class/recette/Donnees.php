@@ -130,7 +130,7 @@ class Donnees extends PdoConnexion {
     }
 
     public function ajoutTagRecette($ID_tag, $ID_recette){
-        $statement = parent::getPdo()->prepare("INSERT INTO listestag (ID_tag, ID_recette) VALUES (:ID_tag, :ID_recette) )") ;
+        $statement = parent::getPdo()->prepare("INSERT INTO listestag (ID_tag, ID_recette) VALUES (:ID_tag, :ID_recette)") ;
         $statement->bindValue(':ID_recette', $ID_recette) ;
         $statement->bindValue(':$ID_tag', $ID_tag) ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
