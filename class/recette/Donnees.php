@@ -51,6 +51,13 @@ class Donnees extends PdoConnexion {
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
     }
 
+    public function ajoutCategorie( $nom){
+        $statement = parent::getPdo()->prepare("INSERT INTO categorie (nom) VALUES ( :nom)") ;
+        $statement->bindValue(':nom', $nom) ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+    }
+
+
     public function rechercheTerme($mot){
         $sql = "select titre from recette where ID_recette IN(
         select ID_recette from recette where titre like '%".$mot."%' UNION select ID_recette from categorie A inner join listescategorie using (ID_categorie)  where A.nom like '%".$mot."%'
@@ -91,6 +98,20 @@ class Donnees extends PdoConnexion {
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
 
     }
+    public function getIdIngredient($nomIng){
+        $statement = parent::getPdo()->prepare("select ID_ingredient from ingredient  where nom ='".$nomIng."' ") ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+        return $results;
+    }
+
+    public function getIdCategorie($nomcat){
+        $statement = parent::getPdo()->prepare("select ID_categorie from categorie  where nom ='".$nomcat."' ") ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+        return $results;
+    }
+
 
 
 }

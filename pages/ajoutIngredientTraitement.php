@@ -1,5 +1,11 @@
 <?php
+require_once "../config.php";
+require $GLOBALS['PHP_DIR'] . "class/Autoloader.php";
+Autoloader::register();
 
+use recette\Donnees;
+
+$gdb = new Donnees();
 
 $data = $_POST;
 if(isset($_FILES['photo_ingredient'])) {
@@ -13,41 +19,26 @@ if(isset($_FILES['photo_ingredient'])) {
 
         array_push($data,array('imagesNom'=>$file_name));
 
-        $dir_name = "../images/ingredients/" ;//l'endroit ou on va insérer l'image !!
+        /*fonction pour ajouter l'ingredient a la Bd*/
+        $gdb->ajoutIngredient($_POST['nomIngredient'],$file_name);
 
+        /*fonction pour rechercher l'id de l'ingredient de la Bd*/
+        $id = $gdb->getIdIngredient($_POST['nomIngredient']);
+        //var_dump($id[0]->ID_ingredient);
+        array_push($data,array('idIngredient'=>$id[0]->ID_ingredient));
+
+        $dir_name = "../images/ingredients/" ;//l'endroit ou on va insérer l'image !!
         if (!is_dir($dir_name)) mkdir($dir_name);//verification de la repertoire si ca existe déjà
         $full_name = $dir_name . $file_name;
         move_uploaded_file($temp_file_name, $full_name);
-
     }
 }
-
-require_once "../config.php";
-require $GLOBALS['PHP_DIR'] . "class/Autoloader.php";
-Autoloader::register();
-
-use recette\Donnees;
-
-$gdb = new Donnees();
-
-/*fonction pour ajouter l'ingredient a la Bd */
-
-
-/*fonction pour rechercher l'id de l'ingredient de la Bd*/
-
-
-//$idIngredient = ;
-//array_push($data,array('idIngredient'=>$idIngredient));
-
 
 header("Content-Type: application/json");
 echo json_encode($data);
 exit();
 
 ?>
-
-
-
 
 
 /*

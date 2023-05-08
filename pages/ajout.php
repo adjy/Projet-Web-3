@@ -13,16 +13,19 @@ Autoloader::register();
 use recette\Template;
 use recette\Formulaires;
 use recette\Affichages;
+use recette\Donnees;
 
 ob_start() ;
 $formajout = new Formulaires();
 $affichage = new Affichages();
-
+$gdb = new Donnees();
 
 
 if(isset($_SESSION['validation']) && !$_SESSION['validation'] ){
     $affichage->AfficherErreur();
 }
+
+$_SESSION['Categories'] = $gdb->getcategorieRecettes();//stockage de toutes les categories !
 $formajout->AjoutForm();
 $content = ob_get_clean();
 

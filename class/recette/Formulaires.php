@@ -36,7 +36,7 @@ class Formulaires{
         <script src = "<?= $GLOBALS['JS_DIR']?>admin.js"></script>
 
         <!--        <div class="ajout-recette">-->
-        <form method="post" class="cadre" id="ajout-recette-form"  enctype="multipart/form-data" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutRecetteTraitement.php">
+        <form method="post" class="cadre" id="ajout-recette-form"  enctype="multipart/form-data" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>ajoutRecetteTraitement.php">
             <!--                Ajout des informations de la recette-->
             <div class="Title-Ajout">Ajouter une recette</div>
 
@@ -48,19 +48,20 @@ class Formulaires{
 
             <div id="categories">
                 <div class="subTitle">Categories</div>
-                <div id="listeCategorie">
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input check" name="dessert" id="" value="">
-                        <label class="form-check-label" for="dessert">Dessert</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input check" name="sucre" id="" value="">
-                        <label class="form-check-label" for="mailing">Sucre</label>
+                    <div id="listeCategorie">
+                        <?php if(isset($_SESSION['Categories'])): ?>
+                            <?php  foreach  ($_SESSION['Categories'] as $categorie): ?>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input check" name=" <?= $categorie->nom ?>" id="<?= $categorie->ID_categorie?>" value="<?= $categorie->ID_categorie?>">
+                                    <label class="form-check-label" for="dessert"> <?= $categorie->nom ?> </label>
+                                </div>
+                            <?php endforeach;?>
+                        <?php endif;?>
                     </div>
                 </div>
-<!--                <a type="button" href = "#ajout-categorie-form" class = "btn" >Ajouter un nouveau categorie</a>-->
+<!--  <a type="button" href = "#ajout-categorie-form" class = "btn" >Ajouter un nouveau categorie</a>-->
 
-            </div>
+
 
             <!--                liste des ingredients de la recette-->
             <div id="ingredients">
@@ -98,7 +99,7 @@ class Formulaires{
 
 
         <!--            Pour ajouter les ingredients-->
-        <form  method="post" class = "cadre" id = "ajout-ingredient-form" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
+        <form  method="post" class = "cadre" id = "ajout-ingredient-form" action="<?= $GLOBALS['PAGES'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
             <div class="Title-Ajout">Ajouter un nouveau ingredient</div>
             <div class="ingredients-inputs">
                 <input class = "ajout-input" type="text" id = "nom-ingredient" name="nomIngredient" placeholder="Entrer le nom de l'ingredient" value = "" required>
@@ -109,7 +110,7 @@ class Formulaires{
         </form>
 
         <!--            Pour ajouter les categories-->
-        <form  method="post" class = "cadre" id = "ajout-categorie-form" action="<?php $GLOBALS['DOCUMENT_DIR'] ?>ajoutCategorieTraitement.php" >
+        <form  method="post" class = "cadre" id = "ajout-categorie-form" action="<?= $GLOBALS['PAGES'] ?>ajoutCategorieTraitement.php" >
             <div class="Title-Ajout">Ajouter une nouvelle categorie</div>
             <div class="categorie-inputs">
                 <input class = "ajout-input" type="text" id = "nom-categorie" name="nomCategorie" placeholder="Entrer la categorie" value = "" required>
