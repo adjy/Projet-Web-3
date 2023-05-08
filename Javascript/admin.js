@@ -19,11 +19,9 @@ function ajoutcategoriesSucces(response){
     nodeCheckBox.type = "checkbox";
     nodeCheckBox.classList.add("form-check-input");
     nodeCheckBox.classList.add("check");
-    // nodeCheckBox.name = response.nomCategorie;
     nodeCheckBox.id = response[1].idCategorie;
     nodeCheckBox.value =  response[1].idCategorie;
     nodeCheckBox.name = "categorie[]";
-
 
     let nodeLabel = document.createElement("label");
     nodeLabel.classList.add("form-check-label")
@@ -32,7 +30,6 @@ function ajoutcategoriesSucces(response){
 
     nodeFormCheck.append(nodeCheckBox)
     nodeFormCheck.append(nodeLabel)
-
     listecategorie.append(nodeFormCheck);
 
     alert("La categorie a ete ajoutee");
@@ -83,7 +80,7 @@ function ajoutIngredients(){
         let unite = document.getElementById("unite");
         let idNom = document.getElementById("choixIngredients")
 
-        /*Creation d'un objet d'ingredient */
+        /* Creation d'un objet d'ingredient */
         let monIngredient = {id: idNom.value, unite: unite.value, quantite:qte.value};
 
         let nodeIngredients = document.createElement("input"); // creation d'un input
@@ -94,7 +91,6 @@ function ajoutIngredients(){
 
         let divNode = document.createElement("div");
         divNode.classList.add("ingredientClass");
-
 
         let divNom = document.createElement("div")
         let  divunite = document.createElement("div")
@@ -121,10 +117,9 @@ function createIngredient(){
             if (httpRequest.status === 200) {
                 let response = JSON.parse(httpRequest.response)
                 ajoutIngredientSucces(response) // action a faire si la requette a ete un succes
-
-            } else {
-                alert('ERREUR avec la requête.');
             }
+            else
+                alert('ERREUR avec la requête.');
         }
     }
 

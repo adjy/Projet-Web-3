@@ -2,7 +2,6 @@
 require_once "config.php" ;
 session_start();
 
-$logged = isset($_SESSION['nickname']) ;
 
 require $GLOBALS['PHP_DIR']."class/Autoloader.php";
 Autoloader::register();
