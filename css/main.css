@@ -196,23 +196,55 @@ html, body {
 /* footer  */
 #footer{
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
+    flex-direction: row;
+
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 10vh;
+
+    /*min-height: 10vh;*/
+    min-height: 20vh;
     box-shadow: 0 2px 10px rgba(163, 21, 21, 0.2);
     background-color:var(--couleurPrincipale);
     width: 100%;
 
+    font-size: 10px;
+    letter-spacing: 5px;
+    /*gap: 50px;*/
+    /*color: whitesmoke;*/
+    color: black;
+
 }
+
+/*#footer a{*/
+/*    text-align: center;*/
+/*    text-decoration: none;*/
+/*    color: black;*/
+/*}*/
+
+/*.lien-source{*/
+/*    border-top: 1px solid ;*/
+/*    width: 80%;*/
+/*    text-align: center;*/
+/*    margin-top: 5px;*/
+/*}*/
+
 
 #footer a{
     text-align: center;
     text-decoration: none;
     color: black;
 }
+.footCreateur{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+    font-family: Perpetua;
+    font-size: 0.5cm;
 
+}
 .lien-source{
     border-top: 1px solid ;
     width: 80%;
@@ -220,7 +252,17 @@ html, body {
     margin-top: 5px;
 }
 
-
+.mail{
+    font-size: 10px;
+}
+#footer img{
+    height: 80%;
+    /*width: 15%;*/
+    /*height: 30%*/
+}
+.mail::before {
+    content: "\002709";
+}
 /* ================================================================= */
 /*index*/
 .index{
