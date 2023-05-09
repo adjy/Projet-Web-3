@@ -567,3 +567,9 @@ html, body {
     cursor: pointer;
 
 }
+
+#description textarea{
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+}

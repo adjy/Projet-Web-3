@@ -35,7 +35,6 @@ class Formulaires{
     public function AjoutForm():void{?>
         <script src = "<?= $GLOBALS['JS_DIR']?>ajouter.js"></script>
 
-        <!--        <div class="ajout-recette">-->
         <form method="post" class="cadre" id="ajout-recette-form"  enctype="multipart/form-data" action="<?= $GLOBALS['PAGES'] ?>ajoutRecetteTraitement.php">
             <!--                Ajout des informations de la recette-->
             <div class="Title-Ajout">Ajouter une recette</div>
@@ -45,6 +44,8 @@ class Formulaires{
                 <label for="le_fichier" class="subTitle"> Photo de la recette </label> <!-- Image de la recette -->
                 <input type="file" class="ajout-input" id="photo_recette" name="photo_recette" required>
             </div>
+
+            <!--                liste des categories de la recette-->
 
             <div id="categories">
                 <div class="subTitle">Categories</div>
@@ -59,16 +60,12 @@ class Formulaires{
                         <?php endif;?>
                     </div>
                 </div>
-<!--  <a type="button" href = "#ajout-categorie-form" class = "btn" >Ajouter un nouveau categorie</a>-->
-
-
 
             <!--                liste des ingredients de la recette-->
             <div id="ingredients">
                 <div class="subTitle">Ingrédients</div>
                 <div id="listeIngredient"></div>
 
-<!--                <input class = "ajout-input" type="text" id = "nom-ingredient" name="" placeholder="Entrer le nom de l'ingredient" value = "" onkeyup="rehercher()">-->
                 <?php if(isset($_SESSION['Ingredients'])): ?>
                 <select id="choixIngredients" class="ajout-input" name="choixIngredients">
                     <?php  foreach  ($_SESSION['Ingredients'] as $ingredient): ?>
@@ -83,7 +80,7 @@ class Formulaires{
 
             </div>
 
-            <!--                liste des categories de la recette             -->
+            <!--                liste des Tags de la recette             -->
             <div id="tag">
                 <div class="subTitle">Tag</div>
                 <input class = "ajout-input" type="text" id = "nom-tag" name="Nom-tag" placeholder="Ajout les tags" value = "">
@@ -95,7 +92,6 @@ class Formulaires{
 
             <button type="submit" id = "ajout-recette" class="btn" value="Ajouter la recette" >Ajouter la recette</button>
         </form>
-
 
 
         <!--            Pour ajouter les ingredients-->
