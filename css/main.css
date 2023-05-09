@@ -27,6 +27,7 @@ html, body {
     align-items: center;
 
 }
+
 /* ================================================================= */
 /* button */
 .btn{
@@ -47,7 +48,26 @@ html, body {
 .btn:hover{
     transform: scale(1.1);
 }
+/* ================================================================= */
+/* pen */
 
+.pen{
+    margin-top: auto;
+}
+.pen:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.position-relative{
+    position: relative;
+}
+.super_cadre{
+    position: absolute ;
+    z-index: -1;
+    top : 2%;
+    min-height: 60vh;
+}
 /* ================================================================= */
 /*cadre*/
 .cadre{
@@ -580,9 +600,7 @@ html, body {
     position: relative;
 }
 #ajout-ingredient-form{
-    position: absolute ;
-    z-index: -1;
-    top : 25%;
+
 }
 .affichage{
     z-index: 2;
@@ -598,4 +616,15 @@ html, body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     background-color: white;
 
+}
+
+/* ================================================================= */
+/*Modifier*/
+
+#penImages,
+.ingredientsModifier{
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    background-color: white;
 }
