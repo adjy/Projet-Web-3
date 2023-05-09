@@ -76,22 +76,22 @@ class Formulaires{
                     <?php endforeach;?>
                 <?php endif;?>
                 </select>
-                <input class = "ajout-input" type="text" id = "unite" name="Unite" placeholder="unite" value = "">
                 <input type="number" class = "ajout-input" id = "qte" name="Quantité" placeholder="Quantité" value = "" min = 0>
+                <input class = "ajout-input" type="text" id = "unite" name="Unite" placeholder="unite" value = "">
                 <!--             <div class="btn-choix">-->
                 <button type="button" class = "btn" id="ajout-ingre" >Ajouter un ingrédient</button>
-<!--                    <a type="button" href = "#ajout-ingredient-form" class = "btn" >Ajouter un nouveau ingrédient</a>-->
 
-<!--                </div>-->
             </div>
-
 
             <!--                liste des categories de la recette             -->
             <div id="tag">
                 <div class="subTitle">Tag</div>
                 <input class = "ajout-input" type="text" id = "nom-tag" name="Nom-tag" placeholder="Ajout les tags" value = "">
             </div>
-            <button type="submit" id = "ajout-recette" class="btn" value="Ajouter la recette">Ajouter la recette</button>
+            <div id="description">
+                <input type="text" class="ajout-input" id="description-recette" name="description" placeholder="Description de la recette" required>
+            </div>
+            <button type="submit" id = "ajout-recette" class="btn" value="Ajouter la recette" >Ajouter la recette</button>
         </form>
 
 

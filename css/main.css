@@ -515,7 +515,8 @@ html, body {
 #recette,
 .ingredients-inputs,
 #tag,
-.categorie-inputs{
+.categorie-inputs,
+#description{
 
     width: 70vw;
     display: flex;
