@@ -137,6 +137,10 @@ function createIngredient(){
 
         // constructeur avec le formulaire en paramètre
         let data = new FormData(formulaire)
+        formulaire.style.zIndex = -1;
+        // let test = document.getElementById("test2")
+        // test.style.opacity = 1;
+
 
         formulaire.children[1].firstElementChild.value = "";
         formulaire.children[1].firstElementChild.nextElementSibling.nextElementSibling.value = "";
@@ -145,7 +149,20 @@ function createIngredient(){
     })
 }
 
+function afficherCreate(){
+    let button = document.getElementById("creerIngredient");
+    let formulaire = document.getElementById("ajout-ingredient-form");
+
+    button.addEventListener('click', function (event){
+        formulaire.style.zIndex = 2;
+        // let test = document.getElementById("test2")
+        // test.style.opacity = 0.5;
+        // formulaire.style.opacity = 1;
+
+    })
+}
 document.addEventListener('DOMContentLoaded',function (){
+    afficherCreate();
     createIngredient();
     ajoutIngredients();
     createCategorie();

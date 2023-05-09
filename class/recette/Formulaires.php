@@ -34,7 +34,7 @@ class Formulaires{
 
     public function AjoutForm():void{?>
         <script src = "<?= $GLOBALS['JS_DIR']?>ajouter.js"></script>
-
+        <div id="test2">
         <form method="post" class="cadre" id="ajout-recette-form"  enctype="multipart/form-data" action="<?= $GLOBALS['PAGES'] ?>ajoutRecetteTraitement.php">
             <!--                Ajout des informations de la recette-->
             <div class="Title-Ajout">Ajouter une recette</div>
@@ -77,6 +77,7 @@ class Formulaires{
                 <input class = "ajout-input" type="text" id = "unite" name="Unite" placeholder="unite" value = "">
                 <!--             <div class="btn-choix">-->
                 <button type="button" class = "btn" id="ajout-ingre" >Ajouter un ingrédient</button>
+                <button type="button" class = "btn" id="creerIngredient" >Creer un nouvel ingredient</button>
 
             </div>
 
@@ -113,7 +114,7 @@ class Formulaires{
             </div>
             <button type="submit" id="ajouter-ingredient-button" class = "btn" >Ajouter</button>
         </form>
-
+        </div>
 
         <?php
     }

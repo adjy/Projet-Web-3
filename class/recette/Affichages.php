@@ -45,6 +45,9 @@ class Affichages{
 
                 <?php endif;?>
            <?php endforeach;?>
+            <div id = "test">
+                testtt
+            </div>
         </div>
             <!---->
                 <?php
