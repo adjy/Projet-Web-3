@@ -60,6 +60,8 @@ class Donnees extends PdoConnexion {
         select ID_recette from recette where titre like '%".$mot."%' UNION select ID_recette from categorie A inner join listescategorie using (ID_categorie)  where A.nom like '%".$mot."%'
     UNION
         select ID_recette from ingredient B inner join listesingredients using (ID_ingredient) where B.nom like '%".$mot."%'
+    UNION 
+        select ID_recette from listestag  inner join tag B using (ID_tag) where B.nom like '%".$mot."%'
 )" ;
         $statement = parent::getPdo()->prepare($sql) ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
