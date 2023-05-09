@@ -27,6 +27,7 @@ ob_start();
 <?php
 
 if(isset($_POST['Id_recette'])){
+    $_SESSION['idRecetteModif'] = $_POST['Id_recette'];
    $affiche->AfficherRecette($_POST['Id_recette'],$recettes,$ListesIng,$ingredient,$Listescategorie);
 }
 

@@ -16,7 +16,6 @@ class Formulaires{
         </form>
         <form method="post" class="supp" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/supptraitement.php">
             <input type="hidden" name="Id_recette" id="<?= $recette->ID_recette ?>" value="<?= $recette->ID_recette ?>" >
-
         </form>
 
         <?php

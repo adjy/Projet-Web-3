@@ -156,6 +156,25 @@ class Donnees extends PdoConnexion {
         return $results;
     }
 
+    public function modifNomRecette($idRecette , $newNom){
+        $statement = parent::getPdo()->prepare("UPDATE recette set titre = '".$newNom."' where ID_recette =".$idRecette) ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+    }
+    public function modifPhotoRecette($idRecette , $photo){
+        $statement = parent::getPdo()->prepare("UPDATE recette set photo = '".$photo."' where ID_recette =".$idRecette) ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+    }
+
+    public function getPhotoRecette($idrecette){
+        $statement = parent::getPdo()->prepare("select photo from recette  where ID_recette =".$idrecette) ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+        return $results;
+    }
+
+
+
+
 
 
 

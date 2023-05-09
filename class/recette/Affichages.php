@@ -10,39 +10,39 @@ class Affichages{
     }
     public function AfficherRecette($Id_Recette,$ListesRecettes,$ListesIngredients,$Ingredients,$Listescategorie): void{
         ?>
-
-
-
-
              <!-- affichage de ma recette -->
             <div class="recette-cadre">
                 <script src = "<?= $GLOBALS['JS_DIR']?>modifier.js"></script>
 
-
                <?php foreach ($ListesRecettes as $rec ): ?>
                     <?php if($rec->ID_recette == $Id_Recette): ?>
-                     <form method="post" class="cadre super_cadre" id="modifierNom"  action="">
+                        <form method="post" class="cadre super_cadre" id="modifierNom"  action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/modifierRecette.php">
                             <span>Modifier le nom</span>
                             <input class = "ajout-input" type="text" id = "" name="nom_recette" placeholder="" value="<?= $rec->titre ?>">
                             <button type="submit" class = "btn" id="" >Modifier</button>
                             <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
                         </form>
-                       <div class="recette-name"> <?= $rec->titre ?> <img class = "pen" id="pen_name" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>" /> </div> <!--Nom de la recette-->
+                       <div class="recette-name"> <?= $rec->titre ?>
+                        <?php if(isset($_SESSION['username'])) : ?>
+                            <img class = "pen" id="pen_name" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>" />
+                         <?php endif;?>
+                        </div> <!--Nom de la recette-->
 
+                     <!-- photo de la recette -->
 
-                                                                           <!-- photo de la recette -->
                       <div class="position-relative">
                            <img class = "recette-picture " src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="" />
-                          <img class = "pen" id="penImages" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>" />
+                          <?php if(isset($_SESSION['username'])) : ?>
+                            <img class = "pen" id="penImages" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>" />
+                          <?php endif;?>
+                      </div>
 
-                        </div>
-
-                        <form method="post" class="cadre super_cadre" id="modifierImage" enctype="multipart/form-data" action="">
-                                <span>Modifier l'image</span>
-                                <input class = "ajout-input" type="file" id = "" name="nom_recette" placeholder="">
-                                <button type="submit" class = "btn" id="" >Modifier</button>
-                                <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
-                            </form>
+                        <form method="post" class="cadre super_cadre" id="modifierImage" enctype="multipart/form-data" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/modifierRecette.php">
+                            <span>Modifier l'image</span>
+                            <input class = "ajout-input" type="file" id = "new-photo-recette" name="new-photo-recette" placeholder="">
+                            <button type="submit" class = "btn" id="" >Modifier</button>
+                            <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                        </form>
 
 
 
@@ -63,7 +63,11 @@ class Affichages{
                                                    <div class="ingredient-info"><?= $ListIngr->Qte ?> </div>
                                                    <div class="ingredient-info"><?= $ListIngr->mesure ?></div>
                                                    <div class="ingredient-info"><?= $ing->nom ?></div>
-                                                   <a href="#<?= $ing->nom?>"> <img class = "pen ingredientsModifier" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"/> </a>
+                                                   <a href="#<?= $ing->nom?>">
+                                                    <?php if(isset($_SESSION['username'])) : ?>
+                                                   <img class = "pen ingredientsModifier" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"/>
+                                                    <?php endif;?>
+                                                   </a>
 
                                                </li>
                                                <form method="post" class="cadre super_cadre" id="<?= $ing->nom?>" enctype="multipart/form-data" action="">
