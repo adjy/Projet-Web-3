@@ -89,6 +89,7 @@ class Formulaires{
                 <input class = "ajout-input" type="text" id = "nom-tag" name="Nom-tag" placeholder="Ajout les tags" value = "">
             </div>
             <div id="description">
+                <div class="subTitle">Description</div>
                 <input type="text" class="ajout-input" id="description-recette" name="description" placeholder="Description de la recette" required>
             </div>
             <button type="submit" id = "ajout-recette" class="btn" value="Ajouter la recette" >Ajouter la recette</button>
