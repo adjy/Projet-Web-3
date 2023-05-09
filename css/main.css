@@ -41,7 +41,7 @@ html, body {
     margin-bottom: 10px; */
     cursor: pointer;
     /*margin: 2%;*/
-    padding: 2%;
+    padding: 1%;
     display: flex;
     align-items: center;
 }
@@ -62,11 +62,21 @@ html, body {
 .position-relative{
     position: relative;
 }
+.position-relative a{
+    text-decoration: none;
+}
 .super_cadre{
     position: absolute ;
     z-index: -1;
     top : 2%;
     min-height: 60vh;
+}
+.annulerBtn{
+
+    margin:2% 0 ;
+    width: auto;
+    display: flex;
+    justify-content: center;
 }
 /* ================================================================= */
 /*cadre*/
@@ -579,7 +589,8 @@ html, body {
 
 }
 
-#listeCategorie{
+#listeCategorie,
+.tagListe{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -593,30 +604,41 @@ html, body {
 #description textarea{
     max-width: 100%;
     min-width: 100%;
-    min-height: 100%;
+    min-height: 100px;
 }
 
-#test2{
-    position: relative;
+.btn_class{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
-#ajout-ingredient-form{
-
-}
-.affichage{
-    z-index: 2;
+#creerCategorie{
+    margin: 1px auto 1px 1px;
+    /*font-size: 10px;*/
 }
 
-#test{
-    width: 50%;
-    height: 60vh;
+/*#test2{*/
+/*    position: relative;*/
+/*}*/
+/*#ajout-ingredient-form{*/
+
+/*}*/
+/*.affichage{*/
+/*    z-index: 2;*/
+/*}*/
+
+/*#test{*/
+/*    width: 50%;*/
+/*    height: 60vh;*/
 
 
 
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    background-color: white;
+/*    border-radius: 10px;*/
+/*    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);*/
+/*    background-color: white;*/
 
-}
+/*}*/
 
 /* ================================================================= */
 /*Modifier*/

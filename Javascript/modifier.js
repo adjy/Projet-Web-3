@@ -34,6 +34,7 @@ function modifierIngredient(){
         pen.addEventListener("click", function(event){
             Modifier(pen, pen.parentElement.parentElement.nextElementSibling)
 
+
         })
 
 
@@ -41,8 +42,7 @@ function modifierIngredient(){
 
 }
 document.addEventListener('DOMContentLoaded',function (){
-    let body=  document.body;
-    body.classList.add("position-relative")
+
    modifierNom();
     imagesModifier();
     modifierIngredient();

@@ -42,6 +42,10 @@ function createCategorie(){
             if (httpRequest.status === 200) {
                 let response = JSON.parse(httpRequest.response)
                 ajoutcategoriesSucces(response);
+                let formulaire = document.getElementById("ajout-categorie-form")
+
+                annulerValider(formulaire)
+
             }
             else
                 alert("La categorie n'a pas ete ajoutee");
@@ -145,26 +149,55 @@ function createIngredient(){
         formulaire.children[1].firstElementChild.value = "";
         formulaire.children[1].firstElementChild.nextElementSibling.nextElementSibling.value = "";
 
+        annuler(formulaire)
+
         httpRequest.send(data)
     })
 }
+function Modifier(pen, formulaire){
+    pen.addEventListener("click", function(event){
+        formulaire.style.zIndex = 6;
+    })
+    annuler(formulaire);
+}
+function annuler(form){
 
+    let buttons = document.querySelectorAll(".annulerBtn");
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", function(event){
+            form.style.zIndex = -1;
+        })
+    })
+}
+
+function annulerValider(form){
+
+    let buttons = document.querySelectorAll(".ValiderBtn");
+    buttons.forEach((btn) => {
+        btn.addEventListener("click", function(event){
+            form.style.zIndex = -1;
+        })
+    })
+}
 function afficherCreate(){
     let button = document.getElementById("creerIngredient");
     let formulaire = document.getElementById("ajout-ingredient-form");
+    Modifier(button, formulaire)
+}
 
-    button.addEventListener('click', function (event){
-        formulaire.style.zIndex = 2;
-        // let test = document.getElementById("test2")
-        // test.style.opacity = 0.5;
-        // formulaire.style.opacity = 1;
+function AfficherCreateCategorie(){
+    let button = document.getElementById("creerCategorie");
+    let formulaire = document.getElementById("ajout-categorie-form");
+    Modifier(button, formulaire)
 
-    })
 }
 document.addEventListener('DOMContentLoaded',function (){
+    let body=  document.body;
+    body.classList.add("position-relative")
     afficherCreate();
     createIngredient();
     ajoutIngredients();
     createCategorie();
+    AfficherCreateCategorie();
 })
 
