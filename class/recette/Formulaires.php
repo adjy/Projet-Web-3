@@ -33,7 +33,7 @@ class Formulaires{
 
     public function AjoutForm():void{?>
         <script src = "<?= $GLOBALS['JS_DIR']?>ajouter.js"></script>
-        <div id="test2">
+        <div class="position-relative">
         <form method="post" class="cadre" id="ajout-recette-form"  enctype="multipart/form-data" action="<?= $GLOBALS['PAGES'] ?>ajoutRecetteTraitement.php">
             <!--                Ajout des informations de la recette-->
             <div class="Title-Ajout">Ajouter une recette</div>
@@ -57,7 +57,9 @@ class Formulaires{
                                 </div>
                             <?php endforeach;?>
                         <?php endif;?>
+
                     </div>
+                <a href="#ajout-recette-form" class="btn" id="creerCategorie">Creer une nouvelle Categorie</a>
                 </div>
 
             <!--                liste des ingredients de la recette-->
@@ -71,22 +73,43 @@ class Formulaires{
                         <option value="<?= $ingredient->ID_ingredient?>"><?= $ingredient->nom ?></option>
                     <?php endforeach;?>
                 <?php endif;?>
+
                 </select>
+
                 <input type="number" class = "ajout-input" id = "qte" name="Quantité" placeholder="Quantité" value = "" min = 0>
                 <input class = "ajout-input" type="text" id = "unite" name="Unite" placeholder="unite" value = "">
-                <!--             <div class="btn-choix">-->
-                <button type="button" class = "btn" id="ajout-ingre" >Ajouter un ingrédient</button>
-                <button type="button" class = "btn" id="creerIngredient" >Creer un nouvel ingredient</button>
 
+                <div class="btn_class">
+                    <button type="button" class = "btn" id="ajout-ingre" >Ajouter un ingrédient</button>
+                    <a href="#ajout-recette-form" type="button" class = "btn" id="creerIngredient" >Creer un nouvel ingredient</a>
+                </div>
             </div>
 
             <!--                liste des Tags de la recette             -->
             <div id="tag">
                 <div class="subTitle">Tag</div>
+                <div class="tagListe">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input check" name="tag[]" id="" value="">
+                        <label class="form-check-label" for="dessert"> tag 1 </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input check" name="tag[]" id="" value="">
+                        <label class="form-check-label" for="dessert"> tag 2 </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input check" name="tag[]" id="" value="">
+                        <label class="form-check-label" for="dessert"> tag 3 </label>
+                    </div>
+                </div>
                 <input class = "ajout-input" type="text" id = "nom-tag" name="Nom-tag" placeholder="Ajout les tags" value = "">
             </div>
             <div id="description">
                 <div class="subTitle">Description</div>
+
+
                 <textarea class="ajout-input" id="description-recette" name="description" placeholder="Description de la recette" required></textarea>
             </div>
 
@@ -95,23 +118,30 @@ class Formulaires{
 
 
         <!--            Pour ajouter les ingredients-->
-        <form  method="post" class = "cadre" id = "ajout-ingredient-form" action="<?= $GLOBALS['PAGES'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
+        <form  method="post" class = "cadre super_cadre" id = "ajout-ingredient-form" action="<?= $GLOBALS['PAGES'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
             <div class="Title-Ajout">Ajouter un nouveau ingredient</div>
             <div class="ingredients-inputs">
                 <input class = "ajout-input" type="text" id = "nom-ingredient" name="nomIngredient" placeholder="Entrer le nom de l'ingredient" value = "" required>
                 <label for="photo-ingredient" class="subTitle"> Photo de l'ingredient</label>
                 <input type="file" class="ajout-input" id="photo_ingredient" name="photo_ingredient" required>
             </div>
-            <button type="submit" id="ajouter-ingredient-button" class = "btn" >Ajouter</button>
+
+            <div class="btn_class">
+                <button type="submit" id="ajouter-ingredient-button" class = "btn ValiderBtn" >Ajouter</button>
+                <button type="button" id="creerIngredient" class = "btn annulerBtn"  >Annuler</button>
+            </div>
         </form>
 
         <!--            Pour ajouter les categories    -->
-        <form  method="post" class = "cadre" id = "ajout-categorie-form" action="<?= $GLOBALS['PAGES'] ?>ajoutCategorieTraitement.php" >
+        <form  method="post" class = "cadre super_cadre" id = "ajout-categorie-form" action="<?= $GLOBALS['PAGES'] ?>ajoutCategorieTraitement.php" >
             <div class="Title-Ajout">Ajouter une nouvelle categorie</div>
             <div class="categorie-inputs">
                 <input class = "ajout-input" type="text" id = "nom-categorie" name="nomCategorie" placeholder="Entrer la categorie" value = "" required>
             </div>
-            <button type="submit" id="ajouter-ingredient-button" class = "btn" >Ajouter</button>
+            <div class="btn_class">
+                <button type="submit" id="ajouter-ingredient-button" class = "btn ValiderBtn" >Ajouter</button>
+                <button type="button" class = "btn annulerBtn" id="creerIngredient" >Annuler</button>
+            </div>
         </form>
         </div>
 
