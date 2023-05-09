@@ -123,7 +123,7 @@ class Donnees extends PdoConnexion {
     }
 
 
-    public function ajoutIngreientRecette($ID_ingredient, $ID_recette, $qte, $mesure){
+    public function ajoutIngredientRecette($ID_ingredient, $ID_recette, $qte, $mesure){
         $statement = parent::getPdo()->prepare("INSERT INTO listesingredients (ID_ingredient, ID_recette, Qte, mesure) VALUES (:ID_ingredient, :ID_recette, :qte, :mesure )") ;
         $statement->bindValue(':ID_recette', $ID_recette) ;
         $statement->bindValue(':ID_ingredient', $ID_ingredient) ;

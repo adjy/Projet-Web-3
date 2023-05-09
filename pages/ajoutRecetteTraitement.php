@@ -20,9 +20,10 @@ if(isset( $_POST['nom_recette'] )
         $file_name = $file['name'];
 
         $gdb->ajoutRecette($nomRecette,$file_name);
-        $idRecette = (int)$gdb->getIdRecette($nomRecette);
-        /*var_dump($idRecette);
-        var_dump($_POST['choixIngredients']);*/
+        $idRecette = $gdb->getIdRecette($nomRecette);
+        var_dump($idRecette[0]->ID_recette);
+
+        $idRecette = $idRecette[0]->ID_recette;
 
        foreach ($_POST['categorie'] as $cat){
            $gdb->ajoutCategorieRecette($idRecette,$cat);
@@ -30,14 +31,18 @@ if(isset( $_POST['nom_recette'] )
 
         foreach ($_POST['ingredient'] as $ing){
             $ingredient = json_decode($ing,true);
-            $gdb->ajoutIngreientRecette($ingredient["id"],$idRecette,(int)$ingredient["quantite"],(int)$ingredient["unite"]);
+            var_dump($ingredient["id"]);
+            var_dump($idRecette);
+            $gdb->ajoutIngredientRecette($ingredient["id"],$idRecette,$ingredient["quantite"],$ingredient["unite"]);
         }
 
         $nomtag = htmlspecialchars($_POST['Nom-tag']);
 
-        if(($gdb->getTagId($nomtag))[0]->ID_tag != null){
+
+        if(($gdb->getTagId($nomtag)) != null){
             $gdb->ajoutTagRecette(($gdb->getTagId($nomtag))[0]->ID_tag, $idRecette);
         }
+
         else{
             $gdb->ajoutTag($nomtag);
             $gdb->ajoutTagRecette(($gdb->getTagId($nomtag))[0]->ID_tag, $idRecette);
