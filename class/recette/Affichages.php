@@ -11,8 +11,9 @@ class Affichages{
     public function AfficherRecette($Id_Recette,$ListesRecettes,$ListesIngredients,$Ingredients,$Listescategorie): void{
         ?>
              <!-- affichage de ma recette -->
-            <div class="recette-cadre">
+            <div class="recette-cadre" id="ID_recette">
                 <script src = "<?= $GLOBALS['JS_DIR']?>modifier.js"></script>
+
 
                <?php foreach ($ListesRecettes as $rec ): ?>
                     <?php if($rec->ID_recette == $Id_Recette): ?>
@@ -63,30 +64,49 @@ class Affichages{
                                                    <div class="ingredient-info"><?= $ListIngr->Qte ?> </div>
                                                    <div class="ingredient-info"><?= $ListIngr->mesure ?></div>
                                                    <div class="ingredient-info"><?= $ing->nom ?></div>
-                                                   <a href="#<?= $ing->nom?>">
                                                     <?php if(isset($_SESSION['username'])) : ?>
-                                                   <img class = "pen ingredientsModifier" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"/>
+
+                                                       <a href="#ID_recette" class="ingredientsModifier">
+                                                        <img class = "pen" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"/>
+                                                       </a>
                                                     <?php endif;?>
-                                                   </a>
+
 
                                                </li>
                                                <form method="post" class="cadre super_cadre" id="<?= $ing->nom?>" enctype="multipart/form-data" action="">
                                                         <span>Modifier l'ingredients</span>
-                                                         <label for="nom_Ingredient">Nom de l'ingredient</label>
-                                                        <input class = "ajout-input" type="text" id = "" name="nom_ingredient" placeholder="" value="<?= $ing->nom?>">
+                                                          <div id="ingredients">
+                <div class="subTitle">Ingrédients</div>
+                <div id="listeIngredient"></div>
 
-                                                        <label for="Photo_Ingredient">Photo de l'ingredient</label>
-                                                        <input class = "ajout-input" type="file" id = "" name="nom_recette" placeholder="">
+                <?php if(isset($_SESSION['Ingredients'])): ?>
+                <select id="choixIngredients" class="ajout-input" name="choixIngredients">
+                    <?php  foreach  ($_SESSION['Ingredients'] as $ingredient): ?>
+                            <?php if( $ingredient->nom == $ing->nom): ?>
+                                <option value="<?= $ingredient->ID_ingredient?>" selected><?= $ingredient->nom ?></option>
+                            <?php else: ?>
+                             <option value="<?= $ingredient->ID_ingredient?>"><?= $ingredient->nom ?></option>
+                             <?php endif; ?>
+                    <?php endforeach;?>
+                <?php endif;?>
 
-                                                        <label for="Quantite">Quantite de l'ingredient</label>
-                                                        <input class = "ajout-input" type="text" id = "" name="Qte" placeholder="" value="<?= $ListIngr->Qte ?>">
+                </select>
 
-                                                        <label for="Quantite">Mesure de l'ingredient</label>
-                                                        <input class = "ajout-input" type="text" id = "" name="Qte" placeholder="" value="<?= $ListIngr->mesure?>">
+                <input type="text" class = "ajout-input" id = "qte" name="Quantité" placeholder="Quantité" value ="<?= $ListIngr->Qte ?>" >
+                <input class = "ajout-input" type="text" id = "unite" name="Unite" placeholder="unite" value ="<?= $ListIngr->mesure ?>">
 
-                                                        <button type="submit" class = "btn" id="" >Modifier</button>
-                                                        <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                <div class="btn_class">
+<!--                    <button type="button" class = "btn" id="ajout-ingre" >Ajouter un ingrédient</button>-->
+                     <button type="submit" class = "btn" id="ajout-ingre" >Modifier</button>
+                    <button type="button" class = "btn creerNouveauIngredient" id="" >Creer un nouvel ingredient</button>
+                </div>
+            </div>
+               <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
                                                     </form>
+
+                                                     <!--            Pour un nouvel ingredient-->
+
+
 
                                          <?php endif;?>
                                     <?php endforeach;?>
@@ -104,6 +124,19 @@ class Affichages{
                <?php endforeach;?>
 
             </div>
+             <form  method="post" class = "cadre super_cadre" id = "ajout-ingredient-form" action="<?= $GLOBALS['PAGES'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
+            <div class="Title-Ajout">Ajouter un nouveau ingredient</div>
+            <div class="ingredients-inputs">
+                <input class = "ajout-input" type="text" id = "nom-ingredient" name="nomIngredient" placeholder="Entrer le nom de l'ingredient" value = "" required>
+                <label for="photo-ingredient" class="subTitle"> Photo de l'ingredient</label>
+                <input type="file" class="ajout-input" id="photo_ingredient" name="photo_ingredient" required>
+            </div>
+
+            <div class="btn_class">
+                <button type="submit" id="ajouter-ingredient-button" class = "btn ValiderBtn" >Ajouter</button>
+                <button type="button" id="creerIngredient" class = "btn annulerBtn"  >Annuler</button>
+            </div>
+        </form>
 
 
 
