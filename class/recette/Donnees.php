@@ -13,6 +13,13 @@ class Donnees extends PdoConnexion {
         return $results;
         // return parent::getPdo();
     }
+
+    public function getTag(){
+        $statement = parent::getPdo()->prepare("SELECT * FROM tag") ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+        return $results;
+    }
     public function getListescategorieRecettes(){
         $statement = parent::getPdo()->prepare("SELECT * FROM listescategorie") ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
@@ -171,6 +178,10 @@ class Donnees extends PdoConnexion {
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return $results;
     }
+
+
+
+
 
 
 

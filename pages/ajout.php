@@ -27,6 +27,7 @@ if(isset($_SESSION['validation']) && !$_SESSION['validation'] ){
 
 $_SESSION['Categories'] = $gdb->getcategorieRecettes();//stockage de toutes les categories !
 $_SESSION['Ingredients'] = $gdb->getIngredient();
+$_SESSION['Tags'] = $gdb->getTag();
 
 $formajout->AjoutForm();
 $content = ob_get_clean();
