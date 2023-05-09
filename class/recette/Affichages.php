@@ -39,13 +39,12 @@ class Affichages{
                        <?php endforeach;?>
                    </div>
 
+                   <div class="description">
+                       <?= $rec->description ?>
+                   </div>
+
                 <?php endif;?>
            <?php endforeach;?>
-            <div class="description">
-               DESCRIPITION :::::crust and a rich chocolate
-                glaze is a decadent dessert that is ultra creamy and smooth. If you are
-                a chocolate lover, this cheesecake with THREE different chocolate layers is for you!"
-            </div>
         </div>
             <!---->
                 <?php
