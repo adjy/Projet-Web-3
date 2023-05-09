@@ -37,10 +37,11 @@ class Donnees extends PdoConnexion {
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return $results;
     }
-    public function ajoutRecette( $titre , $photo){
-        $statement = parent::getPdo()->prepare("INSERT INTO recette ( titre,photo) VALUES (:titre, :photo)") ;
+    public function ajoutRecette( $titre , $photo, $description){
+        $statement = parent::getPdo()->prepare("INSERT INTO recette ( titre,photo,description) VALUES (:titre, :photo, :description)") ;
         $statement->bindValue(':titre', $titre) ;
         $statement->bindValue(':photo', $photo) ;
+        $statement->bindValue(':description', $description) ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
     }
     public function ajoutIngredient( $nom , $photo){

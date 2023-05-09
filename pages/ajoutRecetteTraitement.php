@@ -7,7 +7,7 @@ $gdb = new Donnees();
 
 
 if(isset( $_POST['nom_recette'] )
-    && isset($_FILES['photo_recette']) && isset( $_POST['categorie']) && isset($_POST['choixIngredients'])
+    && isset($_FILES['photo_recette']) && isset($_POST['description']) && isset( $_POST['categorie']) && isset($_POST['choixIngredients'])
     && isset($_POST['Unite']) && isset($_POST['Quantité']) && isset($_POST['Nom-tag']) && isset($_POST['ingredient'])) {
 
 
@@ -19,7 +19,9 @@ if(isset( $_POST['nom_recette'] )
         $temp_file_name = $file['tmp_name'];
         $file_name = $file['name'];
 
-        $gdb->ajoutRecette($nomRecette,$file_name);
+        $desc = htmlspecialchars($_POST['description']);
+
+        $gdb->ajoutRecette($nomRecette,$file_name,$desc);
         $idRecette = $gdb->getIdRecette($nomRecette);
         var_dump($idRecette[0]->ID_recette);
 
@@ -31,8 +33,6 @@ if(isset( $_POST['nom_recette'] )
 
         foreach ($_POST['ingredient'] as $ing){
             $ingredient = json_decode($ing,true);
-            var_dump($ingredient["id"]);
-            var_dump($idRecette);
             $gdb->ajoutIngredientRecette($ingredient["id"],$idRecette,$ingredient["quantite"],$ingredient["unite"]);
         }
 
@@ -47,6 +47,9 @@ if(isset( $_POST['nom_recette'] )
             $gdb->ajoutTag($nomtag);
             $gdb->ajoutTagRecette(($gdb->getTagId($nomtag))[0]->ID_tag, $idRecette);
         }
+
+
+
         $dir_name = "../images/recettes/";//l'endroit ou on va insérer l'image !!
         if (!is_dir($dir_name)) mkdir($dir_name);//verification de la repertoire si ca existe déjà
         $full_name = $dir_name . $file_name;
