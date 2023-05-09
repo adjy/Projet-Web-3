@@ -1,7 +1,10 @@
 <?php
 require_once "../config.php" ;
 session_start();
-
+if(!isset($_SESSION['username'])){
+    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
+    exit();
+}
 require $GLOBALS['PHP_DIR']."class/Autoloader.php";
 Autoloader::register();
 use recette\Template;
@@ -10,9 +13,14 @@ use recette\Affichages;
 
 ob_start() ;
 
+
 $_SESSION['validation'] = true;
 
-if(isset($_SESSION['username'])){?>
+header("Location:".$GLOBALS['DOCUMENT_DIR']."pages/ajout.php");
+exit();
+
+?>
+
 
     <div class="dashbord">
         dashbord
@@ -20,11 +28,7 @@ if(isset($_SESSION['username'])){?>
 
     <a href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>pages/ajout.php" style="font-size: 0.5cm;text-decoration: none">Ajout</a>
     <a href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>pages/retirerRecette.php" style="font-size: 0.5cm;text-decoration: none">Retirer</a>
-    <?php
-}
-else{?>
-    problem
-    <?php
-}
+
+<?php
 $content = ob_get_clean();
 Template::render($content, $title = "Admin Space");

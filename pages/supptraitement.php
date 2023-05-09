@@ -10,5 +10,4 @@ $gdb = new Donnees();
 $gdb->supprimerRecette($_POST['Id_recette']);
 $gdb->miseAjourSupprimer();
 header("Location: ".$GLOBALS['DOCUMENT_DIR']."index.php");
-
 exit();

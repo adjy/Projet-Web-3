@@ -16,10 +16,6 @@ $affichage = new Affichages();
         <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php#idCat" class="btn-head home">Catégories</a>
         <a href="<?= $GLOBALS['DOCUMENT_DIR']?>index.php#idRec" class="btn-head home">Recettes</a>
 
-<!--        <div id="menu">-->
-<!---->
-<!--        </div>-->
-
         <div class="logMenu">
 
             <?php

@@ -196,9 +196,6 @@ CREATE TABLE IF NOT EXISTS `listestag` (
 
 INSERT INTO `listestag` (`ID_tag`, `ID_recette`) VALUES
 (1, 1);
-
-
-
 -- --------------------------------------------------------
 
 --
@@ -218,23 +215,6 @@ CREATE TABLE IF NOT EXISTS `recette` (
 --
 -- Déchargement des données de la table `recette`
 --
-
-INSERT INTO `recette` ( `titre`, `photo`,`description`) VALUES
-( 'Triple Chocolate Cheesecake', 'Triple_Chocolate_Cheesecake.jpeg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
-( 'Banana Pudding Dessert', 'Banana_Pudding_Dessert.png','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
-( 'Ultimate Fudgy Chocolate Brownies', 'ultimate-fudgy-chocolate-brownies.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
-( 'NO BAKE DARK CHOCOLATE TART', 'no-bake-chocolate-tart-1.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
-( 'Pudding Layer', 'pudding.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
-( 'Petits croustillants chèvres et olives', 'petits_croustillants.png','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
-( 'Marlyzen, cuisine revisitée', 'marlyzen.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
-( 'Blanquette de filet mignon aux petits légumes', 'Blanquette_de_filet_mignon.png','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
-( 'Filet mignon de porc caramélisé à la sauce soja - Les Délices Légers de Zabou', 'Filet_mignon_de_porc.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
-( 'Cheesecake au saumon fumé - Les Gourmandises de Lou', 'Cheesecake_au_saumon.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
-( 'Cookies salés aux tomates séchées et chorizo - Amandine Cooking', 'Cookies-sales.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
-( 'CROUSTILLANT CHOCO NOISETTE', 'CROUSTILLANT-CHOCO-NOISETTE.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
-( 'Recette tropézienne vanille et framboises', 'tropezienne-vanille-framboises.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!'),
-( 'Bavarois Poire, Sablé breton et Sauce caramel onctueuse', 'Bavarois-Poire.jpg','Triple Chocolate Cheesecake with an Oreo crust and a rich chocolate glaze is a decadent dessert that is ultra creamy and smooth. If you are a chocolate lover, this cheesecake with THREE different chocolate layers is for you!');
-
 
 
 INSERT INTO `recette` (`ID_recette`, `titre`, `photo`,`description`) VALUES
