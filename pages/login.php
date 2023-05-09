@@ -23,12 +23,15 @@ if(isset($_POST['username']) && isset($_POST['password']) ){
 
     else{/*l utilisateur a trouvé le login*/
 
+        if(isset($_POST['rester-connecter'])){
+            $expire = time() + 365*24*3600 ; // durée d'un an
+            setcookie('username', $username, $expire) ;
+        }
         $_SESSION['username'] = $_POST['username'];//On veut afficher l username
-
         $tab['granted'] = false;?>
         <?php
-        header("Location: ".$GLOBALS['DOCUMENT_DIR']."index.php");
-        exit();
+      header("Location: ".$GLOBALS['DOCUMENT_DIR']."index.php");
+       exit();
     }
 }
 

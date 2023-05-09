@@ -15,9 +15,12 @@ class Logger{
                     <input type="text" class = "login-input-form" id = "username" name="username" placeholder="login">
                     <input type="password" class = "login-input-form" id = "password" name="password" placeholder="password">
                 <div class="login-info-footer">
-                    <div class="reste-conn"><label>
+                    <div class="reste-conn">
+                        <label>
                             <input name="rester-connecter" type="checkbox">
-                        </label>Rester connecté</div>
+                        </label>
+                        Rester connecté
+                    </div>
                     <button type="submit" class="btn">LOGIN</button>
                 </div>
             </div>
