@@ -90,8 +90,9 @@ class Formulaires{
             </div>
             <div id="description">
                 <div class="subTitle">Description</div>
-                <input type="text" class="ajout-input" id="description-recette" name="description" placeholder="Description de la recette" required>
+                <textarea class="ajout-input" id="description-recette" name="description" placeholder="Description de la recette" required></textarea>
             </div>
+
             <button type="submit" id = "ajout-recette" class="btn" value="Ajouter la recette" >Ajouter la recette</button>
         </form>
 
