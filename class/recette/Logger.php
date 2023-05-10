@@ -36,7 +36,6 @@ class Logger{
         $tab = array("granted" => false, "nick" => null, "error" => null) ;
         if( $username == "login" && $password == "recette"){
             $tab["granted"] = true;
-            $tab["nick"] = "tony";
         }
 
         else{
