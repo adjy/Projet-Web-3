@@ -18,8 +18,8 @@ $categories = $gdb->getcategorieRecettes();
 
 ob_start();
 ?>
-    <script src="../Javascript/main.js" ></script>
-    <link rel="stylesheet" href="../css/main.css">
+<!--    <script src="../Javascript/main.js" ></script>-->
+<!--    <link rel="stylesheet" href="../css/main.css">-->
 <?php
 
 if(isset($_POST['Id_categorie'])){

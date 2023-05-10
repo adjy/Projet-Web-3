@@ -76,7 +76,7 @@ class Formulaires{
 
                 </select>
 
-                <input type="number" class = "ajout-input" id = "qte" name="Quantité" placeholder="Quantité" value = "" min = 0>
+                <input type="text" class = "ajout-input" id = "qte" name="Quantité" placeholder="Quantité" value = "" min = 0>
                 <input class = "ajout-input" type="text" id = "unite" name="Unite" placeholder="unite" value = "">
 
                 <div class="btn_class">
