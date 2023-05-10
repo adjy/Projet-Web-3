@@ -4,6 +4,7 @@ namespace recette ;
 class Logger{
 
     public function generateLoginForm(string $action, $erreur): void{?>
+        <script src = "<?= $GLOBALS['JS_DIR'] ?>login.js"></script>
 
         <form method="post" action="<?php $action ?>" id="login-form">
 
@@ -12,8 +13,9 @@ class Logger{
             <div class="login-info">
                 <span class = "login-info-title">Admin</span>
                 <span id="erreur-log" class="error-message"> <?php echo $erreur?> </span>
-                    <input type="text" class = "login-input-form" id = "username" name="username" placeholder="login">
-                    <input type="password" class = "login-input-form" id = "password" name="password" placeholder="password">
+                <input type="text" class = "login-input-form" id = "username" name="username" placeholder="login">
+                <input type="password" class = "login-input-form" id = "password" name="password" placeholder="password">
+
                 <div class="login-info-footer">
                     <div class="reste-conn">
                         <label>
@@ -24,7 +26,6 @@ class Logger{
                     <button type="submit" class="btn">LOGIN</button>
                 </div>
             </div>
-            <script src = "<?= $GLOBALS['JS_DIR'] ?>login.js"></script>
 
         </form>
         <?php
