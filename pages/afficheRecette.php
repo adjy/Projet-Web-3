@@ -33,7 +33,16 @@ $_SESSION['Tags'] = $gdb->getTag();
 
 if(isset($_POST['Id_recette'])){
     $_SESSION['idRecetteModif'] = $_POST['Id_recette'];
-   $affiche->AfficherRecette($_POST['Id_recette'],$recettes,$ListesIng,$ingredient,$Listescategorie);
+//   $affiche->AfficherRecette($_POST['Id_recette'],$recettes,$ListesIng,$ingredient,$Listescategorie);
+
+    $recette = $gdb->rechercheRecette($_POST['Id_recette']);
+    $ingredients = $gdb->rechercheIngredientsRecette($_POST['Id_recette']);
+    $recetteMemeCategories = $gdb->rechercheRecetteMemeCategories($_POST['Id_recette']);
+    $tags = $gdb->rechercheTagsRecette($_POST['Id_recette']);
+
+   $affiche->AfficherRecette($recette[0],$ingredients,$recetteMemeCategories,$tags);
+
+
 }
 
 

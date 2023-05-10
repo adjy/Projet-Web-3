@@ -198,6 +198,42 @@ class Donnees extends PdoConnexion {
     }
 
 
+    public function rechercheIngredientsRecette($idRecette){
+        $statement = parent::getPdo()->prepare("select * from ingredient A INNER join listesingredients using (ID_ingredient) where ID_recette ='".$idRecette."' ") ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+        return $results;
+    }
+
+    public function rechercheCategoriesRecette($idRecette){
+        $statement = parent::getPdo()->prepare("select * from categorie A INNER join listescategorie using (ID_categorie) where ID_recette ='".$idRecette."' ") ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+        return $results;
+    }
+
+    public function rechercheTagsRecette($idRecette){
+        $statement = parent::getPdo()->prepare("select * from tag A INNER join listestag using (ID_tag) where ID_recette ='".$idRecette."' ") ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+        return $results;
+    }
+
+    public function rechercheRecette($idRecette){
+        $statement = parent::getPdo()->prepare("select * from recette where ID_recette ='".$idRecette."' ") ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+        return $results;
+    }
+
+    public function rechercheRecetteMemeCategories($idRecette){
+        $statement = parent::getPdo()->prepare("SELECT DISTINCT A.* from recette A  INNER JOIN listescategorie USING (ID_recette) WHERE ID_categorie in(
+select ID_categorie from categorie A INNER join listescategorie using (ID_categorie) where ID_recette ='".$idRecette."') LIMIT 6; ") ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+        return $results;
+    }
+
 
 
 
