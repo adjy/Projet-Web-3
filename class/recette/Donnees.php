@@ -191,7 +191,18 @@ class Donnees extends PdoConnexion {
 //
 //}
 
-
+ public function listeringregientsapartirderecette($ID_recette){
+        $sql = "SELECT i.nom, li.Qte, li.mesure
+FROM listesingredients li
+JOIN ingredient i ON li.ID_ingredient = i.ID_ingredient
+WHERE li.ID_recette = <ID_recette>;
+'
+)" ;
+        $statement = parent::getPdo()->prepare($sql) ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+        return  $results;
+    }
 
 
 
