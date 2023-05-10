@@ -227,15 +227,11 @@ html, body {
 /* ================================================================= */
 /* footer  */
 #footer{
-    display: flex;
-    /*flex-direction: column;*/
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 15% 60% 25%;
+    place-content: center;
+    place-items: center;
 
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    /*min-height: 10vh;*/
     min-height: 20vh;
     box-shadow: 0 2px 10px rgba(163, 21, 21, 0.2);
     background-color:var(--couleurPrincipale);
@@ -247,22 +243,11 @@ html, body {
     /*color: whitesmoke;*/
     color: black;
 
+
 }
-
-/*#footer a{*/
-/*    text-align: center;*/
-/*    text-decoration: none;*/
-/*    color: black;*/
-/*}*/
-
-/*.lien-source{*/
-/*    border-top: 1px solid ;*/
-/*    width: 80%;*/
-/*    text-align: center;*/
-/*    margin-top: 5px;*/
-/*}*/
-
-
+.img-footer{
+    width: 100%;
+}
 #footer a{
     text-align: center;
     text-decoration: none;
@@ -271,12 +256,13 @@ html, body {
 .footCreateur{
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 70%;
+    /*height: 100%;*/
+    width: 100%;
     font-family: Perpetua;
     font-size: 0.5cm;
 
 }
+
 .lien-source{
     border-top: 1px solid ;
     width: 80%;
@@ -289,11 +275,15 @@ html, body {
 }
 #footer img{
     height: 80%;
-    /*width: 15%;*/
-    /*height: 30%*/
 }
 .mail::before {
     content: "\002709";
+}
+
+@media screen and (max-width: 885px) {
+   .info_footer{
+        font-size: 10px;
+   }
 }
 /* ================================================================= */
 /*index*/
