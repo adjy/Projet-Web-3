@@ -27,6 +27,11 @@ if(isset($_POST['choixIngredients']) && isset($_POST['Quantité1']) && isset($_P
     $gdb->modifListesIngredient($idrec , $iding,$unite,$qtte);
 }
 
+else{
+    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
+    exit();
+}
+
 
 
 

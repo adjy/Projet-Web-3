@@ -17,6 +17,10 @@ if(isset($data)){
     $id = $gdb->getIdCategorie($data['nomCategorie']);
     array_push($data,array('idCategorie'=>$id[0]->ID_categorie));
 }
+else{
+    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
+    exit();
+}
 
 header("Content-Type: application/json");
 echo json_encode($data);

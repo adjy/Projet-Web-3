@@ -11,5 +11,10 @@ if(isset($_POST['nom-categorie'])){
     array_push( $_SESSION['nom-categorie'], $data);
 
 }
+else{
+    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
+    exit();
+
+}
 header("Location:".$GLOBALS['DOCUMENT_DIR']."pages/ajout.php");
 exit();

@@ -34,6 +34,12 @@ if(isset($_POST['fname']) ){
         $_SESSION["checked"] = "ok";
     }
 
+}
+
+else{
+    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
+    exit();
+}
+
 header("Location:".$_SERVER['HTTP_REFERER']);
 exit();
-}

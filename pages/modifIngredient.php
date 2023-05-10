@@ -47,3 +47,8 @@ if (isset($_POST['idIngredient'])) {
 
 }
 
+else{
+    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
+    exit();
+}
+

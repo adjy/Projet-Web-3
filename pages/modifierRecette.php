@@ -45,13 +45,9 @@ if(isset($_SESSION['idRecetteModif'])){
             }
         }
     }
-
-
-
-
-
-
-
-
+}
+else{
+    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
+    exit();
 }
 

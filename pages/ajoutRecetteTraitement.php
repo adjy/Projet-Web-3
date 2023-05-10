@@ -58,8 +58,12 @@ if(isset( $_POST['nom_recette'] )
 
 
 }
-/*header("Location:".$GLOBALS['PAGES']."Ajout-Reussi.php");
-exit();*/
+else{
+    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
+    exit();
+}
+header("Location:".$GLOBALS['PAGES']."Ajout-Reussi.php");
+exit();
 
 
 

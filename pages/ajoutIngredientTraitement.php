@@ -33,7 +33,10 @@ if(isset($_FILES['photo_ingredient'])) {
         move_uploaded_file($temp_file_name, $full_name);
     }
 }
-
+else{
+    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
+    exit();
+}
 header("Content-Type: application/json");
 echo json_encode($data);
 exit();

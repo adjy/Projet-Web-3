@@ -7,7 +7,14 @@ Autoloader::register();
 use recette\Donnees;
 
 $gdb = new Donnees();
-$gdb->supprimerRecette($_POST['Id_recette']);
-$gdb->miseAjourSupprimer();
+
+if(isset($_POST['Id_recette'])){
+    $gdb->supprimerRecette($_POST['Id_recette']);
+    $gdb->miseAjourSupprimer();
+}
+else{
+    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
+    exit();
+}
 header("Location: ".$GLOBALS['DOCUMENT_DIR']."index.php");
 exit();

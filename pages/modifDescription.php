@@ -14,3 +14,8 @@ if(isset($_POST['idRecette']) && isset($_POST['description'])){
     $id = (int)$_POST['idRecette'];
     $gdb->modifDescriptionRecette($id , $desc);
 }
+
+else{
+    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
+    exit();
+}
