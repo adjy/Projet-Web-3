@@ -39,17 +39,17 @@ function modifierIngredient(){
 }
 function afficherCreate(){
     let button = document.getElementById("ajouter_Ingredient_message");
+    let formulaire = document.getElementById("formulaire-ajouter-ingredient");
+
+    Modifier(button, formulaire)
+
+}
+
+function afficherNouveauIngredient(){
+    let button = document.getElementById("creerIngredient");
     let formulaire = document.getElementById("ajout-ingredient-form");
+    Modifier(button, formulaire)
 
-
-
-                Modifier(button, formulaire)
-                // console.log("a")
-
-            // Modifier(pen, pen.parentElement.nextElementSibling)
-        // formulaire.style.zIndex = 7;
-        // alert("ss"
-    // annuler(formulaire);
 
 }
 
@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded',function (){
     imagesModifier();
     modifierIngredient();
     afficherCreate();
+    afficherNouveauIngredient();
     // createIngredient();
 
 

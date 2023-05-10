@@ -99,11 +99,33 @@ class Affichages{
                     <?php endif;?>
 
                 <?php endforeach;?>
+                    <form  method="post" id = "formulaire-ajouter-ingredient" class = "cadre super_cadre"  action="" >
+             <div id="ingredients">
+                <div class="subTitle">Ingrédients</div>
+<!--                --><?php //var_dump($ListesIngredients); ?>
 
-            </div>
+                    <select id="choixIngredients" class="ajout-input" name="choixIngredients">
+<!--                    -->
+<!--                        --><?php // foreach  ($ListesIngredients as $ingredient): ?>
+<!--                            <option value="--><?php //= $ingredient->ID_ingredient?><!--">--><?php //= $ingredient->nom ?><!--</option>-->
+                            <option value="2">pomme</option>
+                            <option value="12">prune</option>
+<!--                        --><?php //endforeach;?>
+                    </select>
 
+                <input type="text" class = "ajout-input" id = "qte" name="Quantité" placeholder="Quantité" value = "">
+                <input class = "ajout-input" type="text" id = "unite" name="Unite" placeholder="unite" value = "">
+                <input type="hidden" name="idRecette" value="">
+                <div class="btn_class">
+                    <button type="submit" class = "btn" id="" >Ajouter un ingrédient</button>
+                    <a href="#" type="button" class = "btn" id="creerIngredient" >Creer un nouvel ingredient</a>
+                    <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
 
-             <form  method="post" id = "ajout-ingredient-form" class = "cadre super_cadre"  action="<?= $GLOBALS['PAGES'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
+                </div>
+             </div>
+        </form>
+
+         <form  method="post" class = "cadre super_cadre" id = "ajout-ingredient-form" action="<?= $GLOBALS['PAGES'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
             <div class="Title-Ajout">Ajouter un nouveau ingredient</div>
             <div class="ingredients-inputs">
                 <input class = "ajout-input" type="text" id = "nom-ingredient" name="nomIngredient" placeholder="Entrer le nom de l'ingredient" value = "" required>
@@ -116,6 +138,33 @@ class Affichages{
                 <button type="button" id="creerIngredient" class = "btn annulerBtn"  >Annuler</button>
             </div>
         </form>
+
+            </div>
+
+
+<!--             <form  method="post" id = "ajout-ingredient-form" class = "cadre super_cadre"  action="--><?php //= $GLOBALS['PAGES'] ?><!--ajoutIngredientTraitement.php"  enctype="multipart/form-data">-->
+<!--            <div class="Title-Ajout">Ajouter un nouveau ingredient</div>-->
+<!--            <div class="ingredients-inputs">-->
+<!--                <input class = "ajout-input" type="text" id = "nom-ingredient" name="nomIngredient" placeholder="Entrer le nom de l'ingredient" value = "" required>-->
+<!--                <label for="photo-ingredient" class="subTitle"> Photo de l'ingredient</label>-->
+<!--                <input type="file" class="ajout-input" id="photo_ingredient" name="photo_ingredient" required>-->
+<!--            </div>-->
+<!---->
+<!--            <div class="btn_class">-->
+<!--                <button type="submit" id="ajouter-ingredient-button" class = "btn ValiderBtn" >Ajouter</button>-->
+<!--                <button type="button" id="creerIngredient" class = "btn annulerBtn"  >Annuler</button>-->
+<!--            </div>-->
+<!--        </form>-->
+
+
+
+<!--                <div id="listeIngredient"></div>-->
+<!---->
+<!--                -->
+<!--               -->
+
+<!--
+<!--            </div>-->
 
 
 
