@@ -94,7 +94,7 @@ class Affichages{
                         </div>
 
                         <div class="description">
-                            <?= $rec->description ?>
+                            <?= $rec->description ?> <a href="#ID_recette"> <img class = "pen" id="pen_description" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"  alt="pen icon"/></a>
                         </div>
                     <?php endif;?>
 
@@ -139,36 +139,21 @@ class Affichages{
             </div>
         </form>
 
+        <form method="post" class="cadre super_cadre" id = "modifDescription" action="" >
+            <span>Modifier description</span>
+
+            <textarea class="ajout-input" id="description-recette" name="description" placeholder="" required><?= $rec->description ?></textarea>
+
+
+            <div class="btn_class">
+                <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
+                <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
             </div>
 
+        </form>
 
-<!--             <form  method="post" id = "ajout-ingredient-form" class = "cadre super_cadre"  action="--><?php //= $GLOBALS['PAGES'] ?><!--ajoutIngredientTraitement.php"  enctype="multipart/form-data">-->
-<!--            <div class="Title-Ajout">Ajouter un nouveau ingredient</div>-->
-<!--            <div class="ingredients-inputs">-->
-<!--                <input class = "ajout-input" type="text" id = "nom-ingredient" name="nomIngredient" placeholder="Entrer le nom de l'ingredient" value = "" required>-->
-<!--                <label for="photo-ingredient" class="subTitle"> Photo de l'ingredient</label>-->
-<!--                <input type="file" class="ajout-input" id="photo_ingredient" name="photo_ingredient" required>-->
-<!--            </div>-->
-<!---->
-<!--            <div class="btn_class">-->
-<!--                <button type="submit" id="ajouter-ingredient-button" class = "btn ValiderBtn" >Ajouter</button>-->
-<!--                <button type="button" id="creerIngredient" class = "btn annulerBtn"  >Annuler</button>-->
-<!--            </div>-->
-<!--        </form>-->
+            </div>
 
-
-
-<!--                <div id="listeIngredient"></div>-->
-<!---->
-<!--                -->
-<!--               -->
-
-<!--
-<!--            </div>-->
-
-
-
-            <!---->
                 <?php
                 $tab = array();
                 foreach ($Listescategorie as $lcategories){

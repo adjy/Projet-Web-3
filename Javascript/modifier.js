@@ -95,6 +95,11 @@ function createIngredient(){
 }
 
 
+function modifierDescription(){
+    let pen = document.getElementById('pen_description');
+    let formulaire = document.getElementById("modifDescription");
+    Modifier(pen, formulaire)
+}
 document.addEventListener('DOMContentLoaded',function (){
 
    modifierNom();
@@ -102,6 +107,7 @@ document.addEventListener('DOMContentLoaded',function (){
     modifierIngredient();
     afficherCreate();
     afficherNouveauIngredient();
+    modifierDescription();
     // createIngredient();
 
 
