@@ -26,6 +26,11 @@ ob_start();
     <link rel="stylesheet" href="../css/main.css">
 <?php
 
+
+$_SESSION['Categories'] = $gdb->getcategorieRecettes();//stockage de toutes les categories !
+$_SESSION['Ingredients'] = $gdb->getIngredient();
+$_SESSION['Tags'] = $gdb->getTag();
+
 if(isset($_POST['Id_recette'])){
     $_SESSION['idRecetteModif'] = $_POST['Id_recette'];
    $affiche->AfficherRecette($_POST['Id_recette'],$recettes,$ListesIng,$ingredient,$Listescategorie);

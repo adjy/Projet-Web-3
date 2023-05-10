@@ -21,6 +21,7 @@ if (!empty($_COOKIE['username'])){
     $_SESSION['username'] = $_COOKIE['username'] ;
 }
 
+
 ?>
     <div class="index">
         <img class="banner" src="<?=$GLOBALS['IMG_DIR']?>src/banner.png " alt="banner">

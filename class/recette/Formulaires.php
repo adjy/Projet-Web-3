@@ -90,17 +90,16 @@ class Formulaires{
                 <div class="subTitle">Tag</div>
                 <div class="tagListe">
                     <?php foreach ($_SESSION['Tags'] as $tag):?>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input check" name="tag[]" id="" value="">
-                        <label class="form-check-label" for="dessert"> <?= $tag->nom ?> </label>
-                    </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input check" name="tag[]" id="" value="">
+                            <label class="form-check-label" for="dessert"> <?= $tag->nom ?> </label>
+                        </div>
                     <?php endforeach;?>
                 </div>
                 <input class = "ajout-input" type="text" id = "nom-tag" name="Nom-tag" placeholder="Ajout les tags" value = "">
             </div>
             <div id="description">
                 <div class="subTitle">Description</div>
-
 
                 <textarea class="ajout-input" id="description-recette" name="description" placeholder="Description de la recette" required></textarea>
             </div>

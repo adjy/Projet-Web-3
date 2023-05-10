@@ -32,7 +32,6 @@ class Affichages{
                     </div> <!--Nom de la recette-->
 
                     <!-- photo de la recette -->
-
                     <div class="position-relative">
                         <img class = "recette-picture " src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="photo recette" />
                         <?php if(isset($_SESSION['username'])) : ?>
@@ -71,13 +70,15 @@ class Affichages{
 
                                             </li>
                                                    <!-- Pour modifier un ingredient -->
-                                            <form method="post" class="cadre super_cadre" id="<?= $ing->nom?>" enctype="multipart/form-data" action="">
+                                            <form method="post" class="cadre super_cadre" id="<?= $ing->nom?>" enctype="multipart/form-data" action="<?= $GLOBALS['PAGES'] ?>modifierListesIngredient.php">
                                                 <span>Modifier l'ingredients</span>
     <!--                                            <img class = "ingredient-picture" src="--><?php //= $GLOBALS['IMG_DIR']."ingredients/".$ing->photo ?><!--" alt="" />-->
 
                                                 <div id="ingredients">
                                                     <input type="text" class = "ajout-input" id = "qte" name="Quantité" placeholder="Quantité"value ="<?= $ListIngr->Qte ?>" >
                                                     <input class = "ajout-input" type="text" id = "unite" name="Unite" placeholder="unite" value ="<?= $ListIngr->mesure ?>">
+                                                    <input type="hidden" name="idRecette" value="<?= $Id_Recette ?>">
+                                                     <input type="hidden" name="idIngredient" value="<?= $ing->ID_ingredient ?>">
                                                 </div>
                                                 <div class="btn_class">
                                                     <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
@@ -99,31 +100,32 @@ class Affichages{
                     <?php endif;?>
 
                 <?php endforeach;?>
-                    <form  method="post" id = "formulaire-ajouter-ingredient" class = "cadre super_cadre"  action="" >
-             <div id="ingredients">
-                <div class="subTitle">Ingrédients</div>
-<!--                --><?php //var_dump($ListesIngredients); ?>
+                    <form  method="post" id = "formulaire-ajouter-ingredient" class = "cadre super_cadre"  action=" " >
+                         <div id="ingredients">
+                            <div class="subTitle">Ingrédients</div>
 
-                    <select id="choixIngredients" class="ajout-input" name="choixIngredients">
-<!--                    -->
-<!--                        --><?php // foreach  ($ListesIngredients as $ingredient): ?>
-<!--                            <option value="--><?php //= $ingredient->ID_ingredient?><!--">--><?php //= $ingredient->nom ?><!--</option>-->
-                            <option value="2">pomme</option>
-                            <option value="12">prune</option>
-<!--                        --><?php //endforeach;?>
-                    </select>
+                            <?php if(isset($_SESSION['Ingredients'])): ?>
+                                <select id="choixIngredients" class="ajout-input" name="choixIngredients">
+                                    <?php foreach  ($_SESSION['Ingredients'] as $ingredient): ?>
+            <!--                            <option value="--><?php //= $ingredient->ID_ingredient?><!--">--><?php //= $ingredient->nom ?><!--</option>-->
+                                        <option value="<?= $ingredient->ID_ingredient?>"><?= $ingredient->nom ?></option>
+                                    <?php endforeach;?>
+                                </select>
+                              <?php endif;?>
 
-                <input type="text" class = "ajout-input" id = "qte" name="Quantité" placeholder="Quantité" value = "">
-                <input class = "ajout-input" type="text" id = "unite" name="Unite" placeholder="unite" value = "">
-                <input type="hidden" name="idRecette" value="">
-                <div class="btn_class">
-                    <button type="submit" class = "btn" id="" >Ajouter un ingrédient</button>
-                    <a href="#" type="button" class = "btn" id="creerIngredient" >Creer un nouvel ingredient</a>
-                    <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                            <input type="text" class = "ajout-input" id = "qte" name="Quantité" placeholder="Quantité" value = "">
+                            <input class = "ajout-input" type="text" id = "unite" name="Unite" placeholder="unite" value = "">
+                            <input type="hidden" name="idRecette" value="<?= $Id_Recette ?>">
 
-                </div>
-             </div>
-        </form>
+                            <div class="btn_class">
+                                <button type="submit" class = "btn" id="" >Ajouter un ingrédient</button>
+                                <a href="#" type="button" class = "btn" id="creerIngredient" >Creer un nouvel ingredient</a>
+                                <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                            </div>
+
+                         </div>
+                    </form>
+
 
          <form  method="post" class = "cadre super_cadre" id = "ajout-ingredient-form" action="<?= $GLOBALS['PAGES'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
             <div class="Title-Ajout">Ajouter un nouveau ingredient</div>
@@ -139,12 +141,10 @@ class Affichages{
             </div>
         </form>
 
-        <form method="post" class="cadre super_cadre" id = "modifDescription" action="" >
+        <form method="post" class="cadre super_cadre" id = "modifDescription" action="<?= $GLOBALS['PAGES'] ?>modifDescription.php" >
             <span>Modifier description</span>
-
+            <input type="hidden" name="idRecette" value="<?= $Id_Recette ?>">
             <textarea class="ajout-input" id="description-recette" name="description" placeholder="" required><?= $rec->description ?></textarea>
-
-
             <div class="btn_class">
                 <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
                 <button type="button" class = "btn annulerBtn" id="" >Annuler</button>

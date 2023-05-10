@@ -75,14 +75,13 @@ class Donnees extends PdoConnexion {
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return  $results;
     }
-
     public function rechercheCategorie($id_Cat){
         $statement = parent::getPdo()->prepare("select photo from recette A inner join listescategorie B using(ID_recette) where B.ID_categorie =" .$id_Cat. " ORDER BY RAND() LIMIT 1") ;
-
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return $results;
     }
+
     public function rechercheRecetteMin(){
         $statement = parent::getPdo()->prepare("select * from recette ORDER BY RAND() LIMIT 5") ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
@@ -172,26 +171,31 @@ class Donnees extends PdoConnexion {
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
     }
 
+    public function modifListesIngredient($idRecette , $idIngredient , $unite , $mesure){
+        $statement = parent::getPdo()->prepare("UPDATE listesingredients set Qte='".$unite."',mesure='".$mesure."' where ID_ingredient=".$idIngredient." and ID_recette=".$idRecette) ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+    }
+
+    public function modifDescriptionRecette($idRecette , $descr){
+        $statement = parent::getPdo()->prepare("UPDATE recette set description = '".$descr."' where ID_recette =".$idRecette) ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+    }
+
     public function getPhotoRecette($idrecette){
         $statement = parent::getPdo()->prepare("select photo from recette  where ID_recette =".$idrecette) ;
         $statement->execute() or die(var_dump($statement->errorInfo())) ;
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return $results;
     }
-public function rechercheingredient($idingredient){ 
-  $statement = parent::getPdo()->prepare("SELECT ID_ingredient
-  FROM ingredient
-  WHERE nom LIKE CONCAT('%', $idingredient, '%')
-  LIMIT 1;) ;
-        $statement->execute() or die(var_dump($statement->errorInfo())) ;
-        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
-        return $results;
-
-
-
-}
-
-
+    public function rechercheingredient($idingredient){
+      $statement = parent::getPdo()->prepare("SELECT ID_ingredient
+      FROM ingredient
+      WHERE nom LIKE CONCAT('%', $idingredient, '%')
+      LIMIT 1") ;
+            $statement->execute() or die(var_dump($statement->errorInfo())) ;
+            $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+            return $results;
+    }
 
 
 
