@@ -1,23 +1,17 @@
 <?php
 namespace recette;
+
 use recette\Formulaires;
 
 class Affichages{
-
     private $formulaire;
     public function __construct(){
         $this->formulaire = new \recette\Formulaires();
     }
 
-
-
 //    public function AfficherRecette($Id_Recette,$ListesRecettes,$ListesIngredients,$Ingredients,$Listescategorie): void{
 
     public function AfficherRecette($recette,$ingredients,$recetteMemeCategories,$tags): void{?>
-        <!-- affichage de ma recette -->
-        <script src = "<?= $GLOBALS['JS_DIR']?>modifier.js"></script>
-
-
         <!-- affichage de ma recette -->
         <script src = "<?= $GLOBALS['JS_DIR']?>modifier.js"></script>
 
@@ -101,6 +95,7 @@ class Affichages{
                         <div class="description">
                             <?= $recette->description ?> <a href="#ID_recette"> <img class = "pen" id="pen_description" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"  alt="pen icon"/></a>
                         </div>
+
 
                     <form  method="post" id = "formulaire-ajouter-ingredient" class = "cadre super_cadre"  action=" " >
                          <div id="ingredients">
@@ -433,6 +428,46 @@ class Affichages{
 <!--            </div>-->
 <?php
     }
+
+    public function Afficheingredient($ingredient):void{?>
+            <!-- affichage de ma recette -->
+        <script src = "<?= $GLOBALS['JS_DIR']?>modifier.js"></script>
+
+        <div class="recette-cadre" id="ID_recette">
+                    <form method="post" class="cadre super_cadre" id="modifierNom"  action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/modifIngredient.php">
+                        <span>Modifier le nom</span>
+                        <input class = "ajout-input" type="text" id = "" name="nom_ing" placeholder="" value="<?= $ingredient->nom ?>">
+                          <input type="hidden" name="idIngredient" value="<?= $ingredient->ID_ingredient ?>">
+                        <div class="btn_class">
+                            <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
+                            <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                        </div>
+                    </form>
+
+                    <div class="recette-name"> <?= $ingredient->nom ?>
+
+                            <img class = "pen" id="pen_name" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"  alt="pen icon"/>
+
+                    </div>
+
+                    <div class="position-relative">
+                        <img class = "recette-picture " src="<?= $GLOBALS['IMG_DIR']."ingredients/".$ingredient->photo ?>" alt="photo ing" />
+                        <?php if(isset($_SESSION['username'])) : ?>
+                            <img class = "pen" id="penImages" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"  alt="pen icon"/>
+                        <?php endif;?>
+                    </div>
+
+                    <form method="post" class="cadre super_cadre" id="modifierImage" enctype="multipart/form-data" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/modifIngredient.php">
+                        <span>Modifier l'image</span>
+                        <input class = "ajout-input" type="file" id = "new-photo-ing" name="new-photo-ing" placeholder="">
+                        <div class="btn_class">
+                            <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
+                            <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                        </div>
+                          <input type="hidden" name="idIngredient" value="<?= $ingredient->ID_ingredient ?>">
+                    </form>
+                    <?php
+    }
     public function AfficherListesRecettes($categories, $listescategories,$recettes):void{
            foreach ($categories as $t) :?>
             <div class="categorieRecettes centrer"><!-- genere un block de categorie -->
@@ -454,6 +489,7 @@ class Affichages{
         <?php endforeach;
     }
 
+
     public function AfficherListesRecettesMin($recettes):void{ ?>
         <div class="cadre">
             <div class="items-cadre">
@@ -463,7 +499,6 @@ class Affichages{
             </div>
         </div>
    <?php }
-
     public function AfficherParCategorie($Id_categorie,$Listescategorie,$categories,$ListesRecettes):void{?>
             <div class="cadre">
                  <?php  foreach  ($categories as $categorie): ?>
@@ -502,7 +537,6 @@ class Affichages{
         </div>
         <?php
     }
-
     public function AfficherListesRecherches($recettesRecherchee,$ListesRecettes): void { ?>
     <style>
     #main-content{
@@ -524,7 +558,26 @@ class Affichages{
         <?php
     }
 
-
+     public function AfficherIngredientRecherches($listesing,$ingredients): void { ?>
+        <style>
+        #main-content{
+            display: none;
+        }
+    </style>
+        <div class="search-results">
+         <div class="items-cadre">
+         <?php
+            foreach ($listesing as $rec){
+                foreach ($ingredients as $rec1){
+                    if($rec->nom == $rec1->nom){
+                         $this->formulaire->IngredientForm($rec1);
+                    }
+                }
+            } ?>
+             </div>
+             </div>
+            <?php
+    }
      public function AfficheDonneesTest( $recette , $listeIng, $listecategorie): void{
          echo "Nom de la recette est " . $recette['titre'] . " et la photo est " . $recette['photo'] . "<br>";
          foreach ($listeIng as $lg)
@@ -551,7 +604,5 @@ class Affichages{
             ?> <div class="erreur"> <?php echo "Veuiller remplir le formulaire des categories!!"; ?></div><?php
         }
     }
-
-
 
 }

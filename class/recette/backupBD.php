@@ -1,10 +1,10 @@
 <?php
-namespace recette;
 
+namespace recette;
 use PDO;
 use pdo\PdoConnexion;
 
-class Donnees extends PdoConnexion
+class backupBD
 {
 
     public function getRecettes()
@@ -237,110 +237,4 @@ class Donnees extends PdoConnexion
         $results = $statement->fetchAll(PDO::FETCH_OBJ);
         return $results;
     }
-
-
-    public function rechercheIngredientsRecette($idRecette)
-    {
-        $statement = parent::getPdo()->prepare("select * from ingredient A INNER join listesingredients using (ID_ingredient) where ID_recette ='" . $idRecette . "' ");
-        $statement->execute() or die(var_dump($statement->errorInfo()));
-        $results = $statement->fetchAll(PDO::FETCH_OBJ);
-        return $results;
-    }
-
-    public function rechercheCategoriesRecette($idRecette)
-    {
-        $statement = parent::getPdo()->prepare("select * from categorie A INNER join listescategorie using (ID_categorie) where ID_recette ='" . $idRecette . "' ");
-        $statement->execute() or die(var_dump($statement->errorInfo()));
-        $results = $statement->fetchAll(PDO::FETCH_OBJ);
-        return $results;
-    }
-
-    public function rechercheTagsRecette($idRecette)
-    {
-        $statement = parent::getPdo()->prepare("select * from tag A INNER join listestag using (ID_tag) where ID_recette ='" . $idRecette . "' ");
-        $statement->execute() or die(var_dump($statement->errorInfo()));
-        $results = $statement->fetchAll(PDO::FETCH_OBJ);
-        return $results;
-    }
-
-    public function rechercheRecette($idRecette)
-    {
-        $statement = parent::getPdo()->prepare("select * from recette where ID_recette ='" . $idRecette . "' ");
-        $statement->execute() or die(var_dump($statement->errorInfo()));
-        $results = $statement->fetchAll(PDO::FETCH_OBJ);
-        return $results;
-    }
-
-    public function rechercheRecetteMemeCategories($idRecette)
-    {
-        $statement = parent::getPdo()->prepare("SELECT DISTINCT A.* from recette A  INNER JOIN listescategorie USING (ID_recette) WHERE ID_categorie in(
-select ID_categorie from categorie A INNER join listescategorie using (ID_categorie) where ID_recette ='" . $idRecette . "') LIMIT 6; ");
-        $statement->execute() or die(var_dump($statement->errorInfo()));
-        $results = $statement->fetchAll(PDO::FETCH_OBJ);
-        return $results;
-    }
-
-    public function rechercheIngredientTerme($terme){
-        $statement = parent::getPdo()->prepare("select * from ingredient where nom like '%" . $terme . "%' ");
-        $statement->execute() or die(var_dump($statement->errorInfo()));
-        $results = $statement->fetchAll(PDO::FETCH_OBJ);
-        return $results;
-    }
-
-    public function rechercheIngredientavecId($iding){
-        $statement = parent::getPdo()->prepare("select * from ingredient where ID_ingredient = " . $iding);
-        $statement->execute() or die(var_dump($statement->errorInfo()));
-        $results = $statement->fetchAll(PDO::FETCH_OBJ);
-        return $results;
-    }
-
-    public function modifNomIngredient($idIngredient,$newNom){
-        $statement = parent::getPdo()->prepare("UPDATE ingredient set nom = '" . $newNom . "' where ID_ingredient =" . $idIngredient);
-        $statement->execute() or die(var_dump($statement->errorInfo()));
-    }
-
-    public function modifPhotoIngredient($idIngredient,$newPhoto){
-        $statement = parent::getPdo()->prepare("UPDATE ingredient set photo = '" . $newPhoto . "' where ID_ingredient =" . $idIngredient);
-        $statement->execute() or die(var_dump($statement->errorInfo()));
-    }
-
-    public function getPhotoing($iding){
-        $statement = parent::getPdo()->prepare("select photo from ingredient  where ID_ingredient =" . $iding);
-        $statement->execute() or die(var_dump($statement->errorInfo()));
-        $results = $statement->fetchAll(PDO::FETCH_OBJ);
-        return $results;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

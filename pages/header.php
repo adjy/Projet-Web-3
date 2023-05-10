@@ -5,6 +5,7 @@ use recette\Donnees;
 
 $gdb = new Donnees();
 $recettes = $gdb->getRecettes();
+$ingredients = $gdb->getIngredient();
 $formulaire = new Formulaires();
 $affichage = new Affichages();
 ?>
@@ -37,15 +38,26 @@ $affichage = new Affichages();
 
     <div class="search"><?php
         $formulaire->RechecherForm();
+
          ?>
     </div>
+
 </header>
 
     <?php
         if (isset($_SESSION['rechercheRecette'])) {
-        $recettesRecherchee = $_SESSION['rechercheRecette'];
+            $recettesRecherchee = $_SESSION['rechercheRecette'];
             $tableauUnique = array_unique($recettesRecherchee, SORT_REGULAR);
-        $affichage->AfficherListesRecherches($tableauUnique,$recettes);
+            // if(!isset($_SESSION["checked"])) {
+             if(!isset($_SESSION['checked'])) {
+                $affichage->AfficherListesRecherches($tableauUnique, $recettes);
+            }
+            else {
+                $affichage->AfficherIngredientRecherches($tableauUnique,$ingredients);
+                unset($_SESSION['checked']);
+            }
+      // }
+
         unset($_SESSION['rechercheRecette']);//pour effacer automatiquement la recherche apres avoir recherché
         }
 

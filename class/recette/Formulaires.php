@@ -20,6 +20,20 @@ class Formulaires{
 
         <?php
     }
+
+    public function IngredientForm($ingredient):void{?>
+        <form method="post" class="item-cadre" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/afficheIngredient.php">
+            <figure class="item-infos">
+                <img class = "item-picture"  src="<?= $GLOBALS['IMG_DIR']."ingredients/".$ingredient->photo ?>" alt="Dinosaur" />
+                <figcaption class="item-name">  <?= $ingredient->nom ?>  </figcaption>
+            </figure>
+            <input type="hidden" name="Id_ingredient" id="<?= $ingredient->ID_ingredient ?>" value="<?= $ingredient->ID_ingredient ?>" >
+
+        </form>
+        <?php
+    }
+
+
     public function CategorieForm($image,$categorie):void{?>
         <form method="post" class="item-cadre" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/afficheCategorie.php">
             <figure class="item-infos">
@@ -143,8 +157,18 @@ class Formulaires{
         <form id = "searchID-form" class = "form-search centrer" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/rechercheTraitement.php" method="POST">
             <input class = "input-search" type="text" id="searchID" name="fname" placeholder="dessert / chocolat / fruit " required>
             <button class= "btn search-btn" type="submit" value="Search">Search</button>
+
+            <?php if(isset($_SESSION['username'])) : ?>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input check" name="ingredient" id="ingredient" value="ingredient">
+                    <label class="form-check-label" for="dessert">Ingredient</label>
+                </div>
+            <?php endif;?>
+
         </form>
         <?php
     }
+
+
 
 }

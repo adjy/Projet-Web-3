@@ -8,9 +8,8 @@ Autoloader::register();
 use recette\Donnees;
 $gdb = new Donnees();
 
-//var_dump($_POST);
-//array(2) { ["Quantité"]=> string(1) "2" ["Unite"]=> string(10) "tablespoon" }
 
+//modification d un ingredient !
 if(isset($_POST['Quantité']) && isset($_POST['Unite']) && isset($_POST['idIngredient']) && isset($_POST['idRecette'])){
     $idrec = (int)$_POST['idRecette'];
     $iding = (int)$_POST['idIngredient'];
@@ -18,6 +17,16 @@ if(isset($_POST['Quantité']) && isset($_POST['Unite']) && isset($_POST['idIngre
     $unite = htmlspecialchars($_POST['Unite']);
     $gdb->modifListesIngredient($idrec , $iding,$unite,$qtte);
 }
+
+//ajout des caracteristiques d'un ingredient deja existant !
+if(isset($_POST['choixIngredients']) && isset($_POST['Quantité1']) && isset($_POST['Unite1']) && isset($_POST['idRecette'])){
+    $idrec = (int)$_POST['idRecette'];
+    $iding = (int)$_POST['choixIngredients'];
+    $qtte = htmlspecialchars($_POST['Quantité1']);
+    $unite = htmlspecialchars($_POST['Unite1']);
+    $gdb->modifListesIngredient($idrec , $iding,$unite,$qtte);
+}
+
 
 
 
