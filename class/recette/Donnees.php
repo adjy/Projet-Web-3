@@ -178,7 +178,18 @@ class Donnees extends PdoConnexion {
         $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
         return $results;
     }
+public function rechercheingredient($idingredient){ 
+  $statement = parent::getPdo()->prepare("SELECT ID_ingredient
+  FROM ingredient
+  WHERE nom LIKE CONCAT('%', $idingredient, '%')
+  LIMIT 1;) ;
+        $statement->execute() or die(var_dump($statement->errorInfo())) ;
+        $results = $statement->fetchAll(PDO::FETCH_OBJ) ;
+        return $results;
 
+
+
+}
 
 
 
