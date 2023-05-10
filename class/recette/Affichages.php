@@ -8,123 +8,102 @@ class Affichages{
     public function __construct(){
         $this->formulaire = new \recette\Formulaires();
     }
-    public function AfficherRecette($Id_Recette,$ListesRecettes,$ListesIngredients,$Ingredients,$Listescategorie): void{
-        ?>
-             <!-- affichage de ma recette -->
-            <div class="recette-cadre" id="ID_recette">
-                <script src = "<?= $GLOBALS['JS_DIR']?>modifier.js"></script>
+    public function AfficherRecette($Id_Recette,$ListesRecettes,$ListesIngredients,$Ingredients,$Listescategorie): void{?>
+        <!-- affichage de ma recette -->
+        <script src = "<?= $GLOBALS['JS_DIR']?>modifier.js"></script>
 
+        <div class="recette-cadre" id="ID_recette">
+            <?php foreach ($ListesRecettes as $rec ): ?>
+                <?php if($rec->ID_recette == $Id_Recette): ?>
+                    <form method="post" class="cadre super_cadre" id="modifierNom"  action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/modifierRecette.php">
+                        <span>Modifier le nom</span>
+                        <input class = "ajout-input" type="text" id = "" name="nom_recette" placeholder="" value="<?= $rec->titre ?>">
 
-               <?php foreach ($ListesRecettes as $rec ): ?>
-                    <?php if($rec->ID_recette == $Id_Recette): ?>
-                        <form method="post" class="cadre super_cadre" id="modifierNom"  action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/modifierRecette.php">
-                            <span>Modifier le nom</span>
-                            <input class = "ajout-input" type="text" id = "" name="nom_recette" placeholder="" value="<?= $rec->titre ?>">
-                            <button type="submit" class = "btn" id="" >Modifier</button>
+                        <div class="btn_class">
+                            <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
                             <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
-                        </form>
-                       <div class="recette-name"> <?= $rec->titre ?>
+                        </div>
+                    </form>
+
+                    <div class="recette-name"> <?= $rec->titre ?>
                         <?php if(isset($_SESSION['username'])) : ?>
-                            <img class = "pen" id="pen_name" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>" />
-                         <?php endif;?>
-                        </div> <!--Nom de la recette-->
+                            <img class = "pen" id="pen_name" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"  alt="pen icon"/>
+                        <?php endif;?>
+                    </div> <!--Nom de la recette-->
 
-                     <!-- photo de la recette -->
+                    <!-- photo de la recette -->
 
-                      <div class="position-relative">
-                           <img class = "recette-picture " src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="" />
-                          <?php if(isset($_SESSION['username'])) : ?>
-                            <img class = "pen" id="penImages" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>" />
-                          <?php endif;?>
-                      </div>
+                    <div class="position-relative">
+                        <img class = "recette-picture " src="<?= $GLOBALS['IMG_DIR']."recettes/".$rec->photo ?>" alt="photo recette" />
+                        <?php if(isset($_SESSION['username'])) : ?>
+                            <img class = "pen" id="penImages" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"  alt="pen icon"/>
+                        <?php endif;?>
+                    </div>
 
-                        <form method="post" class="cadre super_cadre" id="modifierImage" enctype="multipart/form-data" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/modifierRecette.php">
-                            <span>Modifier l'image</span>
-                            <input class = "ajout-input" type="file" id = "new-photo-recette" name="new-photo-recette" placeholder="">
-                            <button type="submit" class = "btn" id="" >Modifier</button>
+                    <form method="post" class="cadre super_cadre" id="modifierImage" enctype="multipart/form-data" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/modifierRecette.php">
+                        <span>Modifier l'image</span>
+                        <input class = "ajout-input" type="file" id = "new-photo-recette" name="new-photo-recette" placeholder="">
+                        <div class="btn_class">
+                            <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
                             <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
-                        </form>
+                        </div>
+                    </form>
 
+                    <!-- ingredients de la recette  -->
 
-
-
-                       <!-- ingredients de la recette  -->
-
-
-                       <div class="title"> Ingredients</div>
-
+                    <div class="title"> Ingredients <button type="button" id="ajouter_Ingredient_message">+ Ajouter un ingredient</button></div>
                         <div class="ingredients">
-                           <?php foreach ($ListesIngredients as $ListIngr): ?>
+                            <?php foreach ($ListesIngredients as $ListIngr): ?>
                                 <?php if($ListIngr->ID_recette == $rec->ID_recette ): ?>
                                     <?php foreach  ($Ingredients as $ing): ?>
-                                       <?php if($ing->ID_ingredient == $ListIngr->ID_ingredient ): ?>
+                                        <?php if($ing->ID_ingredient == $ListIngr->ID_ingredient ): ?>
+                                            <li class = "ingredient position-relative">
+                                                <img class = "ingredient-picture" src="<?= $GLOBALS['IMG_DIR']."ingredients/".$ing->photo ?>" alt="photos ingredients" />
+                                                <div class="ingredient-info"><?= $ListIngr->Qte ?> </div>
+                                                <div class="ingredient-info"><?= $ListIngr->mesure ?></div>
+                                                <div class="ingredient-info"><?= $ing->nom ?></div>
 
-                                               <li class = "ingredient position-relative">
-                                                   <img class = "ingredient-picture" src="<?= $GLOBALS['IMG_DIR']."ingredients/".$ing->photo ?>" alt="" />
-                                                   <div class="ingredient-info"><?= $ListIngr->Qte ?> </div>
-                                                   <div class="ingredient-info"><?= $ListIngr->mesure ?></div>
-                                                   <div class="ingredient-info"><?= $ing->nom ?></div>
-                                                    <?php if(isset($_SESSION['username'])) : ?>
+                                                <?php if(isset($_SESSION['username'])) : ?>
+                                                    <a href="#ID_recette" class="ingredientsModifier">
+                                                        <img class = "pen" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>" alt="pen icon"/>
+                                                    </a>
+                                                <?php endif;?>
 
-                                                       <a href="#ID_recette" class="ingredientsModifier">
-                                                        <img class = "pen" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"/>
-                                                       </a>
-                                                    <?php endif;?>
+                                            </li>
+                                                   <!-- Pour modifier un ingredient -->
+                                            <form method="post" class="cadre super_cadre" id="<?= $ing->nom?>" enctype="multipart/form-data" action="">
+                                                <span>Modifier l'ingredients</span>
+    <!--                                            <img class = "ingredient-picture" src="--><?php //= $GLOBALS['IMG_DIR']."ingredients/".$ing->photo ?><!--" alt="" />-->
 
-
-                                               </li>
-                                               <form method="post" class="cadre super_cadre" id="<?= $ing->nom?>" enctype="multipart/form-data" action="">
-                                                        <span>Modifier l'ingredients</span>
-                                                          <div id="ingredients">
-                <div class="subTitle">Ingrédients</div>
-                <div id="listeIngredient"></div>
-
-                <?php if(isset($_SESSION['Ingredients'])): ?>
-                <select id="choixIngredients" class="ajout-input" name="choixIngredients">
-                    <?php  foreach  ($_SESSION['Ingredients'] as $ingredient): ?>
-                            <?php if( $ingredient->nom == $ing->nom): ?>
-                                <option value="<?= $ingredient->ID_ingredient?>" selected><?= $ingredient->nom ?></option>
-                            <?php else: ?>
-                             <option value="<?= $ingredient->ID_ingredient?>"><?= $ingredient->nom ?></option>
-                             <?php endif; ?>
-                    <?php endforeach;?>
-                <?php endif;?>
-
-                </select>
-
-                <input type="text" class = "ajout-input" id = "qte" name="Quantité" placeholder="Quantité" value ="<?= $ListIngr->Qte ?>" >
-                <input class = "ajout-input" type="text" id = "unite" name="Unite" placeholder="unite" value ="<?= $ListIngr->mesure ?>">
-
-                <div class="btn_class">
-<!--                    <button type="button" class = "btn" id="ajout-ingre" >Ajouter un ingrédient</button>-->
-                     <button type="submit" class = "btn" id="ajout-ingre" >Modifier</button>
-                    <button type="button" class = "btn creerNouveauIngredient" id="" >Creer un nouvel ingredient</button>
-                </div>
-            </div>
-               <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
-                                                    </form>
-
-                                                     <!--            Pour un nouvel ingredient-->
+                                                <div id="ingredients">
+                                                    <input type="text" class = "ajout-input" id = "qte" name="Quantité" placeholder="Quantité"value ="<?= $ListIngr->Qte ?>" >
+                                                    <input class = "ajout-input" type="text" id = "unite" name="Unite" placeholder="unite" value ="<?= $ListIngr->mesure ?>">
+                                                </div>
+                                                <div class="btn_class">
+                                                    <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
+                                                    <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                                                </div>
+                                            </form>
 
 
-
-                                         <?php endif;?>
+                                                         <!--            Pour un nouvel ingredient-->
+                                        <?php endif;?>
                                     <?php endforeach;?>
-                                 <?php endif;?>
-                           <?php endforeach;?>
-                       </div>
+                                <?php endif;?>
+                            <?php endforeach;?>
+                        </div>
 
-                       <div class="description">
-                           <?= $rec->description ?>
-                       </div>
-
-
+                        <div class="description">
+                            <?= $rec->description ?>
+                        </div>
                     <?php endif;?>
 
-               <?php endforeach;?>
+                <?php endforeach;?>
 
             </div>
-             <form  method="post" class = "cadre super_cadre" id = "ajout-ingredient-form" action="<?= $GLOBALS['PAGES'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
+
+
+             <form  method="post" id = "ajout-ingredient-form" class = "cadre super_cadre"  action="<?= $GLOBALS['PAGES'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
             <div class="Title-Ajout">Ajouter un nouveau ingredient</div>
             <div class="ingredients-inputs">
                 <input class = "ajout-input" type="text" id = "nom-ingredient" name="nomIngredient" placeholder="Entrer le nom de l'ingredient" value = "" required>

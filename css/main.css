@@ -72,7 +72,8 @@ html, body {
     min-height: 60vh;
 }
 
-.annulerBtn{
+.annulerBtn,
+.modifierBtn{
 
     margin:2% 0 ;
     width: auto;
@@ -650,4 +651,13 @@ html, body {
     top: 1px;
     right: 1px;
     background-color: white;
+}
+
+#ajouter_Ingredient_message{
+    font-size: 10px;
+}
+
+#ajouter_Ingredient_message:hover{
+    transform: scale(1.1);
+    cursor: pointer;
 }

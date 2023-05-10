@@ -38,19 +38,17 @@ function modifierIngredient(){
 
 }
 function afficherCreate(){
-    let buttons = document.querySelectorAll(".creerNouveauIngredient");
+    let button = document.getElementById("ajouter_Ingredient_message");
     let formulaire = document.getElementById("ajout-ingredient-form");
 
-        buttons.forEach((button) => {
-            button.addEventListener("click", function(){
+
+
                 Modifier(button, formulaire)
+                // console.log("a")
 
             // Modifier(pen, pen.parentElement.nextElementSibling)
-
-        })
         // formulaire.style.zIndex = 7;
-        // alert("ss")
-    })
+        // alert("ss"
     // annuler(formulaire);
 
 }
