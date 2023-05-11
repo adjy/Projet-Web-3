@@ -6,6 +6,10 @@ function modifierNom(){
 
 }
 
+function Modifier2(pen, fomulaire, btnSupprimer){
+
+}
+
 function Modifier(pen, formulaire){
     pen.addEventListener("click", function(event){
         formulaire.style.zIndex = 6;
@@ -17,7 +21,11 @@ function imagesModifier(){
     let formulaire = document.getElementById("modifierImage");
     Modifier(pen, formulaire)
 }
-
+function tagModifier(){
+    let pen = document.getElementById('pen_tag');
+    let formulaire = document.getElementById("modifierTag");
+    Modifier(pen, formulaire)
+}
 function annuler(form){
 
     let buttons = document.querySelectorAll(".annulerBtn");
@@ -49,8 +57,6 @@ function afficherNouveauIngredient(){
     let button = document.getElementById("creerIngredient");
     let formulaire = document.getElementById("ajout-ingredient-form");
     Modifier(button, formulaire)
-
-
 }
 
 
@@ -108,6 +114,7 @@ document.addEventListener('DOMContentLoaded',function (){
     afficherCreate();
     afficherNouveauIngredient();
     modifierDescription();
+    tagModifier();
     // createIngredient();
 
 

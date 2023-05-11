@@ -377,10 +377,10 @@ html, body {
     margin-bottom: auto;
 }
 
-/*.recette-picture{*/
-/*    height: 50vh;*/
-/*    width: 50vh;*/
-/*}*/
+.recette-picture{
+    height: 50vh;
+    width: 50vh;
+}
 
 
 .ingredients{
@@ -586,7 +586,8 @@ html, body {
 #description,
 #nom,
 #image-recette,
-#ingredients-modifier{
+#ingredients-modifier,
+#tagModif{
 
     width: 70vw;
     display: flex;

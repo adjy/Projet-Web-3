@@ -44,6 +44,8 @@ class Affichages{
                         <?php foreach  ($tags as $tag): ?>
                             <span class="tag">#<?= $tag->nom ?></span>
                         <?php endforeach; ?>
+                        <img id = "pen_tag" class = "pen" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>" alt="pen icon"/>
+
                     </div>
                 </div>
             </div>
@@ -168,6 +170,25 @@ class Affichages{
                 </div>
             </form>
 
+            <!-- pour les tags -->
+            <?php
+                $EnsembleTag = " ";
+                foreach  ($tags as $tag):
+                    $EnsembleTag = $EnsembleTag . $tag->nom." ";
+                endforeach;
+            ?>
+            <form method="post" id = "modifierTag" class="cadre super_cadre"  action="<?= $GLOBALS['PAGES'] ?>" >
+                <span class="title-modif">Modifier Tag</span>
+                <div id="tagModif">
+                    <input type="hidden" name="idRecette" value="<?= $recette->ID_recette ?>">
+                   <input type="text" class = "ajout-input" name="tag" value="<?= $EnsembleTag ?>">
+                 </div>
+                <div class="btn_class">
+                    <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
+                    <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                </div>
+            </form>
+
 
 
 
@@ -184,6 +205,8 @@ class Affichages{
                 <button type="button" id="creerIngredient" class = "btn annulerBtn"  >Annuler</button>
             </div>
         </form>
+
+
 
 
 
