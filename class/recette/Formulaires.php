@@ -2,9 +2,12 @@
 namespace recette;
 
 class Formulaires{
-
+    private $donnees;
+    public function __construct(){
+        $this->donnees = new \recette\Donnees();
+    }
     public function RecetteForm($recette):void{?>
-        <form method="post" class="item-cadre" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/afficheRecette.php">
+        <form method="post" class="item-cadre" action="<?= $GLOBALS['AFFICHAGES'] ?>afficheRecette.php">
             <figure class="item-infos">
                 <img class = "item-picture"  src="<?= $GLOBALS['IMG_DIR']."recettes/".$recette->photo ?>" alt="Dinosaur" />
                 <figcaption class="item-name">  <?= $recette->titre ?>  </figcaption>
@@ -14,7 +17,7 @@ class Formulaires{
                 <a id = "ID-delete-btn" class = "btn-supp btn"  >X</a>
             <?php } ?>
         </form>
-        <form method="post" class="supp" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/supptraitement.php">
+        <form method="post" class="supp" action="<?= $GLOBALS['SUPPRESSION'] ?>supptraitement.php">
             <input type="hidden" name="Id_recette" id="<?= $recette->ID_recette ?>" value="<?= $recette->ID_recette ?>" >
         </form>
 
@@ -22,7 +25,7 @@ class Formulaires{
     }
 
     public function IngredientForm($ingredient):void{?>
-        <form method="post" class="item-cadre" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/afficheIngredient.php">
+        <form method="post" class="item-cadre" action="<?= $GLOBALS['AFFICHAGES'] ?>afficheIngredient.php">
             <figure class="item-infos">
                 <img class = "item-picture"  src="<?= $GLOBALS['IMG_DIR']."ingredients/".$ingredient->photo ?>" alt="Dinosaur" />
                 <figcaption class="item-name">  <?= $ingredient->nom ?>  </figcaption>
@@ -35,7 +38,7 @@ class Formulaires{
 
 
     public function CategorieForm($image,$categorie):void{?>
-        <form method="post" class="item-cadre" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/afficheCategorie.php">
+        <form method="post" class="item-cadre" action="<?= $GLOBALS['AFFICHAGES'] ?>afficheCategorie.php">
             <figure class="item-infos">
                 <img class = "item-picture" src="<?= $GLOBALS['IMG_DIR']."recettes/".$image ?>" alt="" />
                 <figcaption class="item-name">  <?= $categorie->nom ?> </figcaption>
@@ -48,7 +51,7 @@ class Formulaires{
     public function AjoutForm():void{?>
         <script src = "<?= $GLOBALS['JS_DIR']?>ajouter.js"></script>
         <div class="position-relative">
-        <form method="post" class="cadre" id="ajout-recette-form"  enctype="multipart/form-data" action="<?= $GLOBALS['PAGES'] ?>ajoutRecetteTraitement.php">
+        <form method="post" class="cadre" id="ajout-recette-form"  enctype="multipart/form-data" action="<?= $GLOBALS['AJOUT'] ?>ajoutRecetteTraitement.php">
             <!--                Ajout des informations de la recette-->
             <div class="Title-Ajout">Ajouter une recette</div>
 
@@ -63,14 +66,14 @@ class Formulaires{
             <div id="categories">
                 <div class="subTitle">Categories</div>
                     <div id="listeCategorie">
-                        <?php if(isset($_SESSION['Categories'])): ?>
-                            <?php  foreach  ($_SESSION['Categories'] as $categorie): ?>
+                            <?php $Allcategories = $this->donnees->getcategorieRecettes(); ?>
+                            <?php  foreach  ($Allcategories as $categorie): ?>
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input check" name="categorie[]" id="<?= $categorie->ID_categorie?>" value="<?= $categorie->ID_categorie?>">
                                     <label class="form-check-label" for="dessert"> <?= $categorie->nom ?> </label>
                                 </div>
                             <?php endforeach;?>
-                        <?php endif;?>
+
 
                     </div>
                 <a href="#ajout-recette-form" class="btn" id="creerCategorie">Creer une nouvelle Categorie</a>
@@ -81,13 +84,12 @@ class Formulaires{
                 <div class="subTitle">Ingrédients</div>
                 <div id="listeIngredient"></div>
 
-                <?php if(isset($_SESSION['Ingredients'])): ?>
+
                 <select id="choixIngredients" class="ajout-input" name="choixIngredients">
-                    <?php  foreach  ($_SESSION['Ingredients'] as $ingredient): ?>
+                    <?php $AllIngredients = $this->donnees->getIngredient(); ?>
+                    <?php  foreach  ($AllIngredients as $ingredient): ?>
                         <option value="<?= $ingredient->ID_ingredient?>"><?= $ingredient->nom ?></option>
                     <?php endforeach;?>
-                <?php endif;?>
-
                 </select>
 
                 <input type="text" class = "ajout-input" id = "qte" name="Quantité" placeholder="Quantité" value = "" min = 0>
@@ -123,7 +125,7 @@ class Formulaires{
 
 
         <!--            Pour ajouter les ingredients-->
-        <form  method="post" class = "cadre super_cadre" id = "ajout-ingredient-form" action="<?= $GLOBALS['PAGES'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
+        <form  method="post" class = "cadre super_cadre" id = "ajout-ingredient-form" action="<?= $GLOBALS['AJOUT'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
             <div class="Title-Ajout">Ajouter un nouveau ingredient</div>
             <div class="ingredients-inputs">
                 <input class = "ajout-input" type="text" id = "nom-ingredient" name="nomIngredient" placeholder="Entrer le nom de l'ingredient" value = "" required>
@@ -138,7 +140,7 @@ class Formulaires{
         </form>
 
         <!--            Pour ajouter les categories    -->
-        <form  method="post" class = "cadre super_cadre" id = "ajout-categorie-form" action="<?= $GLOBALS['PAGES'] ?>ajoutCategorieTraitement.php" >
+        <form  method="post" class = "cadre super_cadre" id = "ajout-categorie-form" action="<?= $GLOBALS['AJOUT'] ?>ajoutCategorieTraitement.php" >
             <div class="Title-Ajout">Ajouter une nouvelle categorie</div>
             <div class="categorie-inputs">
                 <input class = "ajout-input" type="text" id = "nom-categorie" name="nomCategorie" placeholder="Entrer la categorie" value = "" required>
@@ -154,7 +156,7 @@ class Formulaires{
     }
 
     public function RechecherForm():void{?>
-        <form id = "searchID-form" class = "form-search centrer" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/rechercheTraitement.php" method="POST">
+        <form id = "searchID-form" class = "form-search centrer" action="<?= $GLOBALS['RECHERCHE'] ?>rechercheTraitement.php" method="POST">
             <input class = "input-search" type="text" id="searchID" name="fname" placeholder="dessert / chocolat / fruit " required>
             <button class= "btn search-btn" type="submit" value="Search">Search</button>
 

@@ -16,18 +16,17 @@ ob_start() ;
 
 $_SESSION['validation'] = true;
 
-header("Location:".$GLOBALS['DOCUMENT_DIR']."pages/ajout.php");
+header("Location:".$GLOBALS['AJOUT']."ajout.php");
 exit();
 
 ?>
-
 
     <div class="dashbord">
         dashbord
     </div>
 
-    <a href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>pages/ajout.php" style="font-size: 0.5cm;text-decoration: none">Ajout</a>
-    <a href="<?php echo $GLOBALS['DOCUMENT_DIR'] ?>pages/retirerRecette.php" style="font-size: 0.5cm;text-decoration: none">Retirer</a>
+    <a href="<?php echo $GLOBALS['AJOUT'] ?>ajout.php" style="font-size: 0.5cm;text-decoration: none">Ajout</a>
+    <a href="<?php echo $GLOBALS['SUPPRESSION'] ?>retirerRecette.php" style="font-size: 0.5cm;text-decoration: none">Retirer</a>
 
 <?php
 $content = ob_get_clean();

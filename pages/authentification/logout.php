@@ -1,5 +1,5 @@
 <?php
-require __DIR__."/../config.php" ;
+require_once "../../config.php";
 
 session_start() ;
 session_destroy() ;

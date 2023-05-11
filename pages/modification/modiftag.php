@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../config.php";
+require_once "../../config.php";
 
 
 require $GLOBALS['PHP_DIR'] . "class/Autoloader.php";
@@ -41,11 +41,8 @@ if(isset($_POST['tag']) && isset($_POST['idRecette'])) {
         $gdb->ajoutTagRecette($idTag[0]->ID_tag , $idRecette);
     }
     $_SESSION['idRecetteRedirection'] = $idRecette;
-    header("Location:".$GLOBALS['DOCUMENT_DIR']."pages/afficheRecette.php");
-    exit();
 
 }
-else{
-    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
-    exit();
-}
+header("Location:".$GLOBALS['AFFICHAGES']."afficheRecette.php");
+exit();
+

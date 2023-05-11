@@ -1,5 +1,5 @@
 <?php
-require_once "../config.php";
+require_once "../../config.php";
 require $GLOBALS['PHP_DIR'] . "class/Autoloader.php";
 Autoloader::register();
 use recette\Donnees;
@@ -62,7 +62,7 @@ else{
     header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
     exit();
 }
-header("Location:".$GLOBALS['PAGES']."Ajout-Reussi.php");
+header("Location:".$GLOBALS['AJOUT']."Ajout-Reussi.php");
 exit();
 
 

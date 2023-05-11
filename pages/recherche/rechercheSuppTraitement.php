@@ -1,5 +1,5 @@
 <?php
-require_once "../config.php" ;
+require_once "../../config.php";
 session_start();
 
 require $GLOBALS['PHP_DIR']."class/Autoloader.php";
@@ -15,6 +15,6 @@ if(isset($_POST['fname']) ){
     //var_dump($termes);
     $recherche = $recette->rechercheTerme($termes);
     $_SESSION['rechercheSuppRecette'] = $recherche;
-    header("Location:".$GLOBALS['DOCUMENT_DIR']."pages/retirerRecette.php");
+    header("Location:".$GLOBALS['SUPPRESSION']."retirerRecette.php");
     exit();
 }

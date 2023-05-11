@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../config.php" ;
+require_once "../../config.php";
 
 
 require $GLOBALS['PHP_DIR']."class/Autoloader.php";
@@ -14,6 +14,6 @@ if(isset($_SESSION['recette']) && isset($_SESSION['listeIngredients']) && isset(
 }
 else{
     $_SESSION['validation'] = false;
-    header("Location:".$GLOBALS['DOCUMENT_DIR']."pages/ajout.php");
+    header("Location:".$GLOBALS['AJOUT']."ajout.php");
     exit();
 }
