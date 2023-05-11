@@ -1,7 +1,6 @@
 <?php
 session_start();
-require_once "../config.php";
-
+require_once "../../config.php";
 
 require $GLOBALS['PHP_DIR'] . "class/Autoloader.php";
 Autoloader::register();
@@ -45,9 +44,9 @@ if(isset($_SESSION['idRecetteModif'])){
             }
         }
     }
-}
-else{
-    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
-    exit();
-}
 
+    $_SESSION['idRecetteRedirection'] = $_SESSION['idRecetteModif'];
+
+}
+header("Location:".$GLOBALS['AFFICHAGES']."afficheRecette.php");
+exit();

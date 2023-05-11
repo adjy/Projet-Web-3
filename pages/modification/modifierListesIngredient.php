@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../config.php";
+require_once "../../config.php";
 
 require $GLOBALS['PHP_DIR'] . "class/Autoloader.php";
 Autoloader::register();
@@ -26,11 +26,9 @@ if(isset($_POST['choixIngredients']) && isset($_POST['Quantité1']) && isset($_P
     $unite = htmlspecialchars($_POST['Unite1']);
     $gdb->modifListesIngredient($idrec , $iding,$unite,$qtte);
 }
+header("Location:".$GLOBALS['AFFICHAGES']."afficheRecette.php");
+exit();
 
-else{
-    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
-    exit();
-}
 
 
 

@@ -5,8 +5,10 @@ use recette\Formulaires;
 
 class Affichages{
     private $formulaire;
+    private $donnees;
     public function __construct(){
         $this->formulaire = new \recette\Formulaires();
+        $this->donnees = new \recette\Donnees();
     }
 
     public function AfficherRecette($recette,$ingredients,$recetteMemeCategories,$tags): void{?>
@@ -36,7 +38,7 @@ class Affichages{
                     </div>
                     <!-- description -->
                     <div class="description">
-                       <?= $recette->description ?> <a href="#ID_recette"> <img class = "pen" id="pen_description" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"  alt="pen icon"/></a>
+                       <?= $recette->description ?> <?php if(isset($_SESSION['username'])) : ?> <a href="#ID_recette"> <img class = "pen" id="pen_description" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"  alt="pen icon"/></a><?php endif;?>
                     </div>
 
                     <!-- tag -->
@@ -44,8 +46,9 @@ class Affichages{
                         <?php foreach  ($tags as $tag): ?>
                             <span class="tag">#<?= $tag->nom ?></span>
                         <?php endforeach; ?>
-                        <img id = "pen_tag" class = "pen" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>" alt="pen icon"/>
-
+                         <?php if(isset($_SESSION['username'])) : ?>
+                            <img id = "pen_tag" class = "pen" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>" alt="pen icon"/>
+                        <?php endif;?>
                     </div>
                 </div>
             </div>
@@ -53,7 +56,10 @@ class Affichages{
             <!-- ingredients de la recette  -->
             <div class="Listes-ingredients">
                 <div class="subTitle">
-                    Ingredients <button type="button" id="ajouter_Ingredient_message">+ Ajouter un ingredient</button>
+                    Ingredients
+                     <?php if(isset($_SESSION['username'])) : ?>
+                        <button type="button" id="ajouter_Ingredient_message">+ Ajouter un ingredient</button>
+                    <?php endif;?>
                 </div>
                 <div class="ingredients">
                     <?php foreach  ($ingredients as $ingredient): ?>
@@ -70,7 +76,7 @@ class Affichages{
                                 <!-- button delete -->
                                 <a id = "ID-delete-btn" class = "btn-supp-Ingredient btn"  >X</a>
 
-                                <form method="post" class="supp" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/supprimerIngredient.php">
+                                <form method="post" class="supp" action="<?= $GLOBALS['SUPPRESSION'] ?>supprimerIngredient.php">
                                     <input type="hidden" name="Id_ingedient[]" id="<?= $ingredient->ID_ingredient ?>" value="<?= $ingredient->ID_ingredient ?>" >
                                     <input type="hidden" name="Id_recette" id="<?= $recette->ID_recette ?>" value="<?= $recette->ID_recette ?>" >
                                 </form>
@@ -78,7 +84,7 @@ class Affichages{
                         </li>
 
                         <!-- Pour modifier un ingredient -->
-                        <form method="post" class="cadre super_cadre" id="<?= $ingredient->nom?>" enctype="multipart/form-data" action="<?= $GLOBALS['PAGES'] ?>modifierListesIngredient.php">
+                        <form method="post" class="cadre super_cadre" id="<?= $ingredient->nom?>" enctype="multipart/form-data" action="<?= $GLOBALS['MODIFICATION'] ?>modifierListesIngredient.php">
                             <span class="title-modif">Modifier l'ingredient</span>
                             <img class = "ingredient-picture-modif" src="<?= $GLOBALS['IMG_DIR']."ingredients/".$ingredient->photo ?>" alt="" />
 
@@ -103,7 +109,7 @@ class Affichages{
             <!-- Formulaire pour modifier les elements -->
 
             <!-- pour le nom -->
-            <form method="post" class="cadre super_cadre" id="modifierNom"  action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/modifierRecette.php">
+            <form method="post" class="cadre super_cadre" id="modifierNom"  action="<?= $GLOBALS['MODIFICATION'] ?>modifierRecette.php">
                 <span class="title-modif">Modifier le nom</span>
                 <div id="nom">
                     <input class = "ajout-input" type="text" id = "" name="nom_recette" placeholder="" value="<?= $recette->titre ?>">
@@ -117,7 +123,7 @@ class Affichages{
 
             <!-- pour l'image de la recette -->
 
-            <form method="post" class="cadre super_cadre" id="modifierImage" enctype="multipart/form-data" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/modifierRecette.php">
+            <form method="post" class="cadre super_cadre" id="modifierImage" enctype="multipart/form-data" action="<?= $GLOBALS['MODIFICATION'] ?>modifierRecette.php">
                 <span class="title-modif">Modifier l'image</span>
                 <img class = "ingredient-picture-modif" src="<?= $GLOBALS['IMG_DIR']."recettes/".$recette->photo ?>" alt="" />
 
@@ -132,7 +138,7 @@ class Affichages{
 
             <!-- pour la description de la recette -->
 
-            <form method="post" class="cadre super_cadre" id = "modifDescription" action="<?= $GLOBALS['PAGES'] ?>modifDescription.php" >
+            <form method="post" class="cadre super_cadre" id = "modifDescription" action="<?= $GLOBALS['MODIFICATION'] ?>modifDescription.php" >
                 <span class="title-modif">Modifier description</span>
                 <div id="description">
                     <input type="hidden" name="idRecette" value="<?= $recette->ID_recette ?>">
@@ -145,16 +151,17 @@ class Affichages{
             </form>
 
             <!-- Ajouter un ingredient existant -->
-            <form  method="post" id = "formulaire-ajouter-ingredient" class = "cadre super_cadre"  action="<?= $GLOBALS['PAGES'] ?>modifierAjoutIngredient.php" >
+            <form  method="post" id = "formulaire-ajouter-ingredient" class = "cadre super_cadre"  action="<?= $GLOBALS['MODIFICATION'] ?>modifierAjoutIngredient.php" >
                 <div id="ingredients">
                     <div class="subTitle">Ingrédients</div>
-                        <?php if(isset($_SESSION['Ingredients'])): ?>
+
+                        <?php $AllIngredients = $this->donnees->getIngredient(); ?>
                             <select id="choixIngredients" class="ajout-input" name="choixIngredients">
-                                <?php foreach  ($_SESSION['Ingredients'] as $ingredient): ?>
+                                <?php foreach  ($AllIngredients as $ingredient): ?>
                                     <option value="<?= $ingredient->ID_ingredient?>"><?= $ingredient->nom ?></option>
                                 <?php endforeach;?>
                             </select>
-                        <?php endif;?>
+
 
                         <input type="text" class = "ajout-input" id = "qte" name="Quantite" placeholder="Quantite" value = "">
                         <input class = "ajout-input" type="text" id = "unite" name="Unite" placeholder="unite" value = "">
@@ -177,7 +184,7 @@ class Affichages{
                     $EnsembleTag = $EnsembleTag . $tag->nom." ";
                 endforeach;
             ?>
-            <form method="post" id = "modifierTag" class="cadre super_cadre"  action="<?= $GLOBALS['PAGES'] ?>modiftag.php" >
+            <form method="post" id = "modifierTag" class="cadre super_cadre"  action="<?= $GLOBALS['MODIFICATION'] ?>modiftag.php" >
                 <span class="title-modif">Modifier Tag</span>
                 <div id="tagModif">
                     <input type="hidden" name="idRecette" value="<?= $recette->ID_recette ?>">
@@ -192,7 +199,7 @@ class Affichages{
 
 
 
-         <form  method="post" class = "cadre super_cadre" id = "ajout-ingredient-form" action="<?= $GLOBALS['PAGES'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
+         <form  method="post" class = "cadre super_cadre" id = "ajout-ingredient-form" action="<?= $GLOBALS['AJOUT'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
             <div class="Title-Ajout">Ajouter un nouveau ingredient</div>
             <div class="ingredients-inputs">
                 <input class = "ajout-input" type="text" id = "nom-ingredient" name="nomIngredient" placeholder="Entrer le nom de l'ingredient" value = "" required>
@@ -238,7 +245,7 @@ class Affichages{
         <script src = "<?= $GLOBALS['JS_DIR']?>modifier.js"></script>
 
         <div class="recette-cadre" id="ID_recette">
-                    <form method="post" class="cadre super_cadre" id="modifierNom"  action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/modifIngredient.php">
+                    <form method="post" class="cadre super_cadre" id="modifierNom"  action="<?= $GLOBALS['MODIFICATION'] ?>modifIngredient.php">
                         <span>Modifier le nom</span>
                         <input class = "ajout-input" type="text" id = "" name="nom_ing" placeholder="" value="<?= $ingredient->nom ?>">
                           <input type="hidden" name="idIngredient" value="<?= $ingredient->ID_ingredient ?>">
@@ -249,16 +256,12 @@ class Affichages{
                     </form>
 
                     <div class="recette-name"> <?= $ingredient->nom ?>
-
                             <img class = "pen" id="pen_name" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"  alt="pen icon"/>
-
                     </div>
 
                     <div class="position-relative">
                         <img class = "recette-picture " src="<?= $GLOBALS['IMG_DIR']."ingredients/".$ingredient->photo ?>" alt="photo ing" />
-                        <?php if(isset($_SESSION['username'])) : ?>
-                            <img class = "pen" id="penImages" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"  alt="pen icon"/>
-                        <?php endif;?>
+                        <img class = "pen" id="penImages" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"  alt="pen icon"/>
                     </div>
 
                     <form method="post" class="cadre super_cadre" id="modifierImage" enctype="multipart/form-data" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/modifIngredient.php">
@@ -272,7 +275,7 @@ class Affichages{
                     </form>
                     <?php
     }
-    public function AfficherListesRecettes($categories, $listescategories,$recettes):void{
+    /*public function AfficherListesRecettes($categories, $listescategories,$recettes):void{
            foreach ($categories as $t) :?>
             <div class="categorieRecettes centrer"><!-- genere un block de categorie -->
                 <h1 class="title-Recette-index"> <?= $t->nom ?> </h1>
@@ -291,8 +294,7 @@ class Affichages{
                 </div>
             </div>
         <?php endforeach;
-    }
-
+    }*/
 
     public function AfficherListesRecettesMin($recettes):void{ ?>
         <div class="cadre">

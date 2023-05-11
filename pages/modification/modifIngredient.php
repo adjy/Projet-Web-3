@@ -1,7 +1,6 @@
 <?php
 session_start();
-require_once "../config.php";
-
+require_once "../../config.php";
 
 require $GLOBALS['PHP_DIR'] . "class/Autoloader.php";
 Autoloader::register();
@@ -45,10 +44,11 @@ if (isset($_POST['idIngredient'])) {
         }
     }
 
+    $_SESSION['idIngredientModif'] = $_POST['idIngredient'];
+
 }
 
-else{
-    header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
-    exit();
-}
+header("Location:".$GLOBALS['AFFICHAGES']."afficheIngredient.php");
+exit();
+
 

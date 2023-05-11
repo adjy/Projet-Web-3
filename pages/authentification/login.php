@@ -1,5 +1,5 @@
 <?php
-require_once "../config.php" ;
+require_once "../../config.php";
 session_start();
 
 require $GLOBALS['PHP_DIR']."class/Autoloader.php";

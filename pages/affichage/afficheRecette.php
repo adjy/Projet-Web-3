@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../config.php";
+require_once "../../config.php";
 
 
 require $GLOBALS['PHP_DIR'] . "class/Autoloader.php";
@@ -21,9 +21,10 @@ $Listescategorie = $gdb->getListescategorieRecettes();
 ob_start();
 
 
-$_SESSION['Categories'] = $gdb->getcategorieRecettes();//stockage de toutes les categories !
+/*$_SESSION['Categories'] = $gdb->getcategorieRecettes();//stockage de toutes les categories !
 $_SESSION['Ingredients'] = $gdb->getIngredient();
-$_SESSION['Tags'] = $gdb->getTag();
+$_SESSION['Tags'] = $gdb->getTag();*/
+
 
 if(isset($_POST['Id_recette'])){
     $_SESSION['idRecetteModif'] = $_POST['Id_recette'];
@@ -38,15 +39,14 @@ if(isset($_POST['Id_recette'])){
 
 }
 
-if(isset($_SESSION['idRecetteRedirection'])){
+else if(isset($_SESSION['idRecetteRedirection'])){
 
-    $recette = $gdb->rechercheRecette($_SESSION['idRe']);
-    $ingredients = $gdb->rechercheIngredientsRecette($_SESSION['idRe']);
-    $recetteMemeCategories = $gdb->rechercheRecetteMemeCategories($_SESSION['idRe']);
-    $tags = $gdb->rechercheTagsRecette($_SESSION['idRe']);
+    $recette = $gdb->rechercheRecette($_SESSION['idRecetteRedirection']);
+    $ingredients = $gdb->rechercheIngredientsRecette($_SESSION['idRecetteRedirection']);
+    $recetteMemeCategories = $gdb->rechercheRecetteMemeCategories($_SESSION['idRecetteRedirection']);
+    $tags = $gdb->rechercheTagsRecette($_SESSION['idRecetteRedirection']);
 
     $affiche->AfficherRecette($recette[0],$ingredients,$recetteMemeCategories,$tags);
-
 }
 
 

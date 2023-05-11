@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../config.php" ;
+require_once "../../config.php";
 
 if(isset($_POST['nom-categorie'])){
 
@@ -16,5 +16,5 @@ else{
     exit();
 
 }
-header("Location:".$GLOBALS['DOCUMENT_DIR']."pages/ajout.php");
+header("Location:".$GLOBALS['PAGES']."ajout.php");
 exit();
