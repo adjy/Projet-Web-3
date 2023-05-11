@@ -91,7 +91,7 @@ class Affichages{
 
                             <div class="btn_class">
                                 <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
-                                <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                                <button type="button" class = "btn annulerBtn annulerButtonIngredient" id="" >Annuler</button>
                             </div>
                         </form>
 
@@ -110,7 +110,7 @@ class Affichages{
                 </div>
                 <div class="btn_class">
                     <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
-                    <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                    <button type="button" class = "btn annulerBtn" id="annulerButtonNom" >Annuler</button>
                 </div>
             </form>
 
@@ -126,7 +126,7 @@ class Affichages{
                 </div>
                 <div class="btn_class">
                     <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
-                    <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                    <button type="button" class = "btn annulerBtn" id="annulerButtonImage" >Annuler</button>
                 </div>
             </form>
 
@@ -140,7 +140,7 @@ class Affichages{
                 </div>
                 <div class="btn_class">
                     <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
-                    <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                    <button type="button" class = "btn annulerBtn" id="annulerButtonDescription" >Annuler</button>
                 </div>
             </form>
 
@@ -163,7 +163,7 @@ class Affichages{
                         <div class="btn_class">
                             <button type="submit" class = "btn" id="" >Ajouter un ingrédient</button>
                             <a href="#" type="button" class = "btn" id="creerIngredient" >Creer un nouvel ingredient</a>
-                            <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                            <button type="button" class = "btn annulerBtn" id="annulerButtonAjoutIngredient" >Annuler</button>
                         </div>
                     </div>
 
@@ -185,7 +185,7 @@ class Affichages{
                  </div>
                 <div class="btn_class">
                     <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
-                    <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                    <button type="button" class = "btn annulerBtn" id="annulerButtonTag" >Annuler</button>
                 </div>
             </form>
 
@@ -202,7 +202,7 @@ class Affichages{
 
             <div class="btn_class">
                 <button type="submit" id="ajouter-ingredient-button" class = "btn ValiderBtn" >Ajouter</button>
-                <button type="button" id="creerIngredient" class = "btn annulerBtn"  >Annuler</button>
+                <button type="button" id="annulerButtonAjoutIngre" class = "btn annulerBtn"  >Annuler</button> <!-- creerIngredient -->
             </div>
         </form>
 
