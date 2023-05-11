@@ -27,14 +27,25 @@ $_SESSION['Tags'] = $gdb->getTag();
 
 if(isset($_POST['Id_recette'])){
     $_SESSION['idRecetteModif'] = $_POST['Id_recette'];
-//   $affiche->AfficherRecette($_POST['Id_recette'],$recettes,$ListesIng,$ingredient,$Listescategorie);
 
+    $_SESSION['idRecetteRedirection'] = $_POST['Id_recette'];
     $recette = $gdb->rechercheRecette($_POST['Id_recette']);
     $ingredients = $gdb->rechercheIngredientsRecette($_POST['Id_recette']);
     $recetteMemeCategories = $gdb->rechercheRecetteMemeCategories($_POST['Id_recette']);
     $tags = $gdb->rechercheTagsRecette($_POST['Id_recette']);
 
    $affiche->AfficherRecette($recette[0],$ingredients,$recetteMemeCategories,$tags);
+
+}
+
+if(isset($_SESSION['idRecetteRedirection'])){
+
+    $recette = $gdb->rechercheRecette($_SESSION['idRe']);
+    $ingredients = $gdb->rechercheIngredientsRecette($_SESSION['idRe']);
+    $recetteMemeCategories = $gdb->rechercheRecetteMemeCategories($_SESSION['idRe']);
+    $tags = $gdb->rechercheTagsRecette($_SESSION['idRe']);
+
+    $affiche->AfficherRecette($recette[0],$ingredients,$recetteMemeCategories,$tags);
 
 }
 

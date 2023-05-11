@@ -1,63 +1,93 @@
-function modifierNom(){
-    let pen = document.getElementById('pen_name');
-    let formulaire = document.getElementById("modifierNom");
-    Modifier(pen, formulaire);
-
-
-}
-
-function Modifier2(pen, fomulaire, btnSupprimer){
-
-}
-
-function Modifier(pen, formulaire){
+function Modifier(pen, formulaire, btnSupprimer){ // fonction pour modifier le nom
     pen.addEventListener("click", function(event){
         formulaire.style.zIndex = 6;
     })
-    annuler(formulaire);
+    annuler(formulaire, btnSupprimer)
+}
+function annuler(formulaire, btnSupprimer){
+
+    btnSupprimer.addEventListener("click", function(event){
+        formulaire.style.zIndex = -1;
+    })
+
+}
+function modifierNom(){
+    let pen = document.getElementById('pen_name');
+    let formulaire = document.getElementById("modifierNom");
+    let btnSupprimer = document.getElementById("annulerButtonNom");
+
+    Modifier(pen, formulaire, btnSupprimer);
 }
 function imagesModifier(){
     let pen = document.getElementById('penImages');
     let formulaire = document.getElementById("modifierImage");
-    Modifier(pen, formulaire)
+    let btnSupprimer = document.getElementById("annulerButtonImage");
+
+    Modifier(pen, formulaire,btnSupprimer);
 }
+
 function tagModifier(){
     let pen = document.getElementById('pen_tag');
     let formulaire = document.getElementById("modifierTag");
-    Modifier(pen, formulaire)
+    let btnSupprimer = document.getElementById("annulerButtonTag");
+    Modifier(pen, formulaire,btnSupprimer);
 }
-function annuler(form){
-
-    let buttons = document.querySelectorAll(".annulerBtn");
-    buttons.forEach((btn) => {
-        btn.addEventListener("click", function(event){
-            form.style.zIndex = -1;
-        })
-    })
-}
-
 function modifierIngredient(){
     let pens = document.querySelectorAll('.ingredientsModifier');
-    pens.forEach((pen) => {
+    let btnsSupprimer = document.querySelectorAll(".annulerButtonIngredient");
+    pens.forEach((pen, indice) => {
 
-            Modifier(pen, pen.parentElement.nextElementSibling)
+        Modifier(pen, pen.parentElement.nextElementSibling,btnsSupprimer[indice]);
 
     })
-
 }
+function modifierDescription(){
+    let pen = document.getElementById('pen_description');
+    let formulaire = document.getElementById("modifDescription");
+    let btnSupprimer = document.getElementById("annulerButtonDescription");
+
+    Modifier(pen, formulaire,btnSupprimer);
+}
+
 function afficherCreate(){
     let button = document.getElementById("ajouter_Ingredient_message");
     let formulaire = document.getElementById("formulaire-ajouter-ingredient");
-
-    Modifier(button, formulaire)
-
+    let btnSupprimer = document.getElementById("annulerButtonAjoutIngredient");
+    Modifier(button, formulaire,btnSupprimer)
 }
 
 function afficherNouveauIngredient(){
     let button = document.getElementById("creerIngredient");
     let formulaire = document.getElementById("ajout-ingredient-form");
-    Modifier(button, formulaire)
+    let btnSupprimer = document.getElementById("annulerButtonAjoutIngre");
+
+    Modifier(button, formulaire,btnSupprimer)
+
 }
+
+// // function annuler(form){
+// //
+// //     let buttons = document.querySelectorAll(".annulerBtn");
+// //     buttons.forEach((btn) => {
+// //         btn.addEventListener("click", function(event){
+// //             form.style.zIndex = -1;
+// //         })
+// //     })
+// // }
+
+
+// function Modifier(pen, formulaire){
+//     pen.addEventListener("click", function(event){
+//         formulaire.style.zIndex = 6;
+//     })
+//     annuler(formulaire);
+// }
+
+//
+
+
+//
+
 
 
 function createIngredient(){
@@ -66,7 +96,8 @@ function createIngredient(){
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
             if (httpRequest.status === 200) {
                 let response = JSON.parse(httpRequest.response)
-                ajoutIngredientSucces(response) // action a faire si la requette a ete un succes
+                alert("Lingredient a ete ajouter")
+                // ajoutIngredientSucces(response) // action a faire si la requette a ete un succes
             }
             else
                 alert("l'ingredient n'a pas ete ajoute");
@@ -94,18 +125,14 @@ function createIngredient(){
         formulaire.children[1].firstElementChild.value = "";
         formulaire.children[1].firstElementChild.nextElementSibling.nextElementSibling.value = "";
 
-        annuler(formulaire)
+        // annuler(formulaire)
 
         httpRequest.send(data)
     })
 }
 
 
-function modifierDescription(){
-    let pen = document.getElementById('pen_description');
-    let formulaire = document.getElementById("modifDescription");
-    Modifier(pen, formulaire)
-}
+
 document.addEventListener('DOMContentLoaded',function (){
 
    modifierNom();
@@ -115,6 +142,10 @@ document.addEventListener('DOMContentLoaded',function (){
     afficherNouveauIngredient();
     modifierDescription();
     tagModifier();
+    createIngredient();
+
+
+
     // createIngredient();
 
 
