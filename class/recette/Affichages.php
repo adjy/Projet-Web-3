@@ -177,7 +177,7 @@ class Affichages{
                     $EnsembleTag = $EnsembleTag . $tag->nom." ";
                 endforeach;
             ?>
-            <form method="post" id = "modifierTag" class="cadre super_cadre"  action="<?= $GLOBALS['PAGES'] ?>" >
+            <form method="post" id = "modifierTag" class="cadre super_cadre"  action="<?= $GLOBALS['PAGES'] ?>modiftag.php" >
                 <span class="title-modif">Modifier Tag</span>
                 <div id="tagModif">
                     <input type="hidden" name="idRecette" value="<?= $recette->ID_recette ?>">
