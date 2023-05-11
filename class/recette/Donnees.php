@@ -328,6 +328,23 @@ select ID_categorie from categorie A INNER join listescategorie using (ID_catego
         $statement->execute() or die(var_dump($statement->errorInfo()));
     }
 
+    public function rechercheIDTag($nameTag){
+        $statement = parent::getPdo()->prepare("select ID_tag from tag where nom = '" . $nameTag . "' ");
+        $statement->execute() or die(var_dump($statement->errorInfo()));
+        $results = $statement->fetchAll(PDO::FETCH_OBJ);
+        return $results;
+    }
+
+
+
+    public function SupprimerTag($ID_tag, $ID_recette){
+        $statement = parent::getPdo()->prepare("delete from listestag where ID_tag =".$ID_tag." AND ID_recette =".$ID_recette);
+        $statement->execute() or die(var_dump($statement->errorInfo()));
+
+
+
+    }
+
 
 
 
