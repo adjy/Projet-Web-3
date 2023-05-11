@@ -126,6 +126,10 @@ class Donnees extends PdoConnexion
         $statement = parent::getPdo()->prepare("delete from categorie where ID_categorie not in( select ID_categorie from listescategorie)");
         $statement->execute() or die(var_dump($statement->errorInfo()));
 
+        $statement = parent::getPdo()->prepare("delete from ingredient where ID_ingredient not in( select ID_ingredient from listesingredients)");
+        $statement->execute() or die(var_dump($statement->errorInfo()));
+
+
     }
 
     public function getIdRecette($nomRecette)
@@ -309,6 +313,13 @@ select ID_categorie from categorie A INNER join listescategorie using (ID_catego
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $results = $statement->fetchAll(PDO::FETCH_OBJ);
         return $results;
+    }
+
+    public function supprimerIngredientRecette($idIngredient, $idRecette){
+
+        $statement = parent::getPdo()->prepare(" delete from listesingredients where ID_recette =".$idRecette." and ID_ingredient = ".$idIngredient);
+        $statement->execute() or die(var_dump($statement->errorInfo()));
+
     }
 
 

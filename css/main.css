@@ -346,19 +346,41 @@ html, body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     background-color: white;
     position: relative;
+
 }
 
+
+.picture-infos-recette{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.picture{
+    width: 30%;
+}
+.infosRecette{
+    width: 70%;
+    height: 100%;
+    margin: 2%;
+    text-align: justify;
+}
+.pen{
+    /*background-color: #f44336;*/
+}
 .recette-name{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 50px;
+    font-size: 40px;
+    margin-bottom: auto;
 }
 
-.recette-picture{
-    height: 50vh;
-    width: 50vh;
-}
+/*.recette-picture{*/
+/*    height: 50vh;*/
+/*    width: 50vh;*/
+/*}*/
 
 
 .ingredients{
@@ -401,8 +423,26 @@ html, body {
     justify-content: center;
     text-align: justify;
 }
-
-
+.tag{
+    /*background-color: #4CAF50;*/
+    padding: 1px;
+    border-radius: 2px;
+    align-items: center;
+}
+.tag:hover{
+    transform: scale(1.1);
+}
+.tags{
+    margin: 2%;
+}
+.ingredient-picture-modif{
+    width: 120px;
+    height: 120px;
+}
+.title-modif{
+    margin: 2%;
+    font-size: large;
+}
 /* ================================================================= */
 /*Login*/
 
@@ -471,7 +511,8 @@ html, body {
     }
 }
 
-.btn-supp{
+.btn-supp,
+.btn-supp-Ingredient{
     position: absolute;
     z-index: 5;
     top:2px;
@@ -486,7 +527,8 @@ html, body {
     margin: 0;
 }
 
-.btn-supp:hover{
+.btn-supp:hover,
+.btn-supp-Ingredient:hover{
     background-color: red;
 }
 
@@ -515,6 +557,7 @@ html, body {
     font-size: 20px;
     margin-bottom: 1%;
     margin-right: auto;
+
 }
 
 .ingredientClass{
@@ -540,7 +583,10 @@ html, body {
 .ingredients-inputs,
 #tag,
 .categorie-inputs,
-#description{
+#description,
+#nom,
+#image-recette,
+#ingredients-modifier{
 
     width: 70vw;
     display: flex;
@@ -639,7 +685,7 @@ html, body {
 .ingredientsModifier{
     position: absolute;
     top: 1px;
-    right: 1px;
+    left: 1px;
     background-color: white;
 }
 
