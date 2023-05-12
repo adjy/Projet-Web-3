@@ -55,18 +55,9 @@ class Affichages{
 
             <!-- ingredients de la recette  -->
             <div class="Listes-ingredients">
-                <div class="subTitle">
-                    Ingredients
-                     <?php if(isset($_SESSION['username'])) : ?>
-
-                     <a href="#ID_recette" >
-                        <button type="button" id="ajouter_Ingredient_message">+ Ajouter un ingredient</button>
-                     </a>
-
-
-
-                    <?php endif;?>
-                </div>
+                <h2 class="subTitle">
+                    Ingrédients
+                </h2>
                 <div class="ingredients">
                     <?php foreach  ($ingredients as $ingredient): ?>
                         <li class = "ingredient position-relative">
@@ -111,6 +102,14 @@ class Affichages{
                     <?php endforeach;?>
 
             </div>
+             <?php if(isset($_SESSION['username'])) : ?>
+             <div id="bouton_ajout_ing">
+                 <a href="#ID_recette" >
+                   <button type="button" class="btn" id="ajouter_Ingredient_message">+ Ajouter un ingredient</button>
+                 </a>
+             </div>
+             <?php endif;?>
+
 
             <!-- Formulaire pour modifier les elements -->
 
@@ -291,6 +290,7 @@ class Affichages{
 
     public function AfficherListesRecettesMin($recettes):void{ ?>
         <div class="cadre">
+         <h1 class="title-cadre"> Recettes </h1>
             <div class="items-cadre">
                 <?php foreach ($recettes as $rec){
                     $this->formulaire->RecetteForm($rec);
@@ -322,6 +322,7 @@ class Affichages{
         }
     public function AfficherListesCategories($categories,$gdb):void{?>
         <div class="cadre"><!-- genere un block de categorie -->
+
             <h1 class="title-cadre"> Categories </h1>
             <div class="items-cadre">
                 <?php foreach ($categories as $t) :?>

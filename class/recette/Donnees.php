@@ -113,7 +113,7 @@ class Donnees extends PdoConnexion
 
     public function rechercheRecetteMin()
     {
-        $statement = parent::getPdo()->prepare("select * from recette ORDER BY RAND() LIMIT 5");
+        $statement = parent::getPdo()->prepare("select * from recette ORDER BY RAND() LIMIT 8");
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $results = $statement->fetchAll(PDO::FETCH_OBJ);
         return $results;
@@ -335,13 +335,9 @@ select ID_categorie from categorie A INNER join listescategorie using (ID_catego
         return $results;
     }
 
-
-
     public function SupprimerTag($ID_tag, $ID_recette){
         $statement = parent::getPdo()->prepare("delete from listestag where ID_tag =".$ID_tag." AND ID_recette =".$ID_recette);
         $statement->execute() or die(var_dump($statement->errorInfo()));
-
-
 
     }
 
