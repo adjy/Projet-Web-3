@@ -11,7 +11,7 @@ class Formulaires{
 
         <form method="post" class="item-cadre" action="<?= $GLOBALS['AFFICHAGES'] ?>afficheRecette.php">
             <figure class="item-infos">
-                <img class = "item-picture"  src="<?= $GLOBALS['IMG_DIR']."recettes/".$recette->photo ?>" alt="Dinosaur" />
+                <img class = "item-picture"  src="<?= $GLOBALS['IMG_DIR']."recettes/".$recette->photo ?>" alt="Photo recette" />
                 <figcaption class="item-name">  <?= $recette->titre ?>  </figcaption>
                 <div class="etoiles">
                     <?php for($i = 0 ; $i < 5 ;$i++) :?>

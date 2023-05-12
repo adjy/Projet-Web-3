@@ -142,9 +142,6 @@ function createIngredient(){
         // constructeur avec le formulaire en paramètre
         let data = new FormData(formulaire)
         formulaire.style.zIndex = -1;
-        // let test = document.getElementById("test2")
-        // test.style.opacity = 1;
-
 
         formulaire.children[1].firstElementChild.value = "";
         formulaire.children[1].firstElementChild.nextElementSibling.nextElementSibling.value = "";
