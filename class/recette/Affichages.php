@@ -337,7 +337,7 @@ class Affichages{
                                 }
                              }
                              ?>
-                    </div>
+                       </div>
                 <?php
         }
     public function AfficherListesCategories($categories,$gdb):void{?>
