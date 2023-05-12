@@ -21,11 +21,6 @@ $Listescategorie = $gdb->getListescategorieRecettes();
 ob_start();
 
 
-/*$_SESSION['Categories'] = $gdb->getcategorieRecettes();//stockage de toutes les categories !
-$_SESSION['Ingredients'] = $gdb->getIngredient();
-$_SESSION['Tags'] = $gdb->getTag();*/
-
-
 if(isset($_POST['Id_recette'])){
     $_SESSION['idRecetteModif'] = $_POST['Id_recette'];
 
@@ -48,8 +43,6 @@ else if(isset($_SESSION['idRecetteRedirection'])){
 
     $affiche->AfficherRecette($recette[0],$ingredients,$recetteMemeCategories,$tags);
 }
-
-
 
 
 $content = ob_get_clean();
