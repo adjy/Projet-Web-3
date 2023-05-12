@@ -97,6 +97,8 @@ function createIngredient(){
             if (httpRequest.status === 200) {
                 let response = JSON.parse(httpRequest.response)
                 alert("Lingredient a ete ajouter")
+                location.reload();
+
                 // ajoutIngredientSucces(response) // action a faire si la requette a ete un succes
             }
             else
