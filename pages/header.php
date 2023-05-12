@@ -53,7 +53,7 @@ $affichage = new Affichages();
                 $affichage->AfficherListesRecherches($tableauUnique, $recettes);
             }
             else {
-                $affichage->AfficherIngredientRecherches($tableauUnique,$ingredients);
+                $affichage->AfficherIngredientRecherches($tableauUnique);
                 unset($_SESSION['checked']);
             }
       // }

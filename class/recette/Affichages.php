@@ -187,7 +187,7 @@ class Affichages{
 
             <!-- pour les tags -->
             <?php
-                $EnsembleTag = " ";
+                $EnsembleTag = "";
                 foreach  ($tags as $tag):
                     $EnsembleTag = $EnsembleTag . $tag->nom." ";
                 endforeach;
@@ -288,26 +288,6 @@ class Affichages{
 
                     <?php
     }
-    /*public function AfficherListesRecettes($categories, $listescategories,$recettes):void{
-           foreach ($categories as $t) :?>
-            <div class="categorieRecettes centrer"><!-- genere un block de categorie -->
-                <h1 class="title-Recette-index"> <?= $t->nom ?> </h1>
-                <div class="liste-Recette-index centrer">
-                    <?php  foreach ($listescategories as $listes){
-                         if($listes->ID_categorie == $t->ID_categorie){?>
-                            <!-- ensemble de recette qui appartiennent a cette categorie -->
-                               <?php foreach ($recettes as $rec){
-                                    if($rec->ID_recette == $listes->ID_recette){
-                                       $this->formulaire->RecetteForm($rec);
-                                    }
-                               }
-                         }
-                    }
-                    ?>
-                </div>
-            </div>
-        <?php endforeach;
-    }*/
 
     public function AfficherListesRecettesMin($recettes):void{ ?>
         <div class="cadre">
@@ -375,7 +355,7 @@ class Affichages{
             }
         }
         if($flag) : ?>
-        <div class="message">Pas de recettes trouver</div>
+        <div class="message">Pas de recette(s) trouvée(s)</div>
         <?php endif;
             ?>
          </div>
@@ -383,7 +363,7 @@ class Affichages{
         <?php
     }
 
-     public function AfficherIngredientRecherches($listesing,$ingredients): void { ?>
+     public function AfficherIngredientRecherches($ingredients): void { ?>
         <style>
         #main-content{
             display: none;
@@ -392,19 +372,15 @@ class Affichages{
         <div class="search-results">
          <div class="items-cadre">
          <?php
-                 $flag = true;
+            $flag = true;
 
-            foreach ($listesing as $rec){
-                foreach ($ingredients as $rec1){
-                    if($rec->nom == $rec1->nom){
-                         $this->formulaire->IngredientForm($rec1);
-                    $flag = false;
-
-                    }
-                }
+            foreach ($ingredients as $ingredient){
+                 $this->formulaire->IngredientForm($ingredient);
+                 $flag = false;
             }
+
              if($flag) : ?>
-                <div class="message">Pas d'ingredients trouver</div>
+                <div class="message">Pas d'ingredient(s) trouve(s)</div>
         <?php endif;?>
              </div>
              </div>
