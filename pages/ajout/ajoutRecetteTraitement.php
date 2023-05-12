@@ -6,9 +6,14 @@ use recette\Donnees;
 $gdb = new Donnees();
 
 
+
 if(isset( $_POST['nom_recette'] )
-    && isset($_FILES['photo_recette']) && isset($_POST['description']) && isset( $_POST['categorie']) && isset($_POST['choixIngredients'])
-    && isset($_POST['Unite']) && isset($_POST['Quantité']) && isset($_POST['Nom-tag']) && isset($_POST['ingredient'])) {
+    && isset($_FILES['photo_recette'])
+    && isset($_POST['description'])
+    && isset($_POST['choixIngredients'])
+    && isset($_POST['Unite'])
+    && isset($_POST['Quantité'])
+    && isset($_POST['ingredient'])) {
 
 
     if (empty($_FILES['photo_recette'])) die("<span style='color : red'>Il n'y a pas de photo de recettes insérées !</span>");
@@ -25,81 +30,56 @@ if(isset( $_POST['nom_recette'] )
         $idRecette = $gdb->getIdRecette($nomRecette);
 
         $idRecette = $idRecette[0]->ID_recette;
-        $_SESSION['idRecetteRedirection'] = $idRecette;
 
-       foreach ($_POST['categorie'] as $cat){
-           $gdb->ajoutCategorieRecette($idRecette,$cat);
-       }
+        if(isset($_POST['categorie'])){
+            foreach ($_POST['categorie'] as $cat){
+                $gdb->ajoutCategorieRecette($idRecette,$cat);
+            }
+        }
+
 
         foreach ($_POST['ingredient'] as $ing){
             $ingredient = json_decode($ing,true);
             $gdb->ajoutIngredientRecette($ingredient["id"],$idRecette,$ingredient["quantite"],$ingredient["unite"]);
         }
 
-        $nomtag = htmlspecialchars($_POST['Nom-tag']);
 
-        $tagsModifs = htmlspecialchars($nomtag);
-        $tagsModifs = trim($tagsModifs); // retirer les espaces
-        $tableTabs = explode(" ", $tagsModifs); // decompose les mots en tableaux
-        $tableTabs = array_unique($tableTabs); // recupere les mots uniques
+        if(isset($_POST['Nom-tag'])){
+            $nomtag = htmlspecialchars($_POST['Nom-tag']);
 
-        foreach ( $tableTabs as $mot){
-            if(($gdb->getTagId($mot)) != null){
-                $gdb->ajoutTagRecette(($gdb->getTagId($mot))[0]->ID_tag, $idRecette);
-            }
+            $tagsModifs = htmlspecialchars($nomtag);
+            $tagsModifs = trim($tagsModifs); // retirer les espaces
+            $tableTabs = explode(" ", $tagsModifs); // decompose les mots en tableaux
+            $tableTabs = array_unique($tableTabs); // recupere les mots uniques
 
-            else{
-                $gdb->ajoutTag($mot);
-                $gdb->ajoutTagRecette(($gdb->getTagId($mot))[0]->ID_tag, $idRecette);
+            foreach ( $tableTabs as $mot){
+                if(($gdb->getTagId($mot)) != null){
+                    $gdb->ajoutTagRecette(($gdb->getTagId($mot))[0]->ID_tag, $idRecette);
+                }
+
+                else{
+                    $gdb->ajoutTag($mot);
+                    $gdb->ajoutTagRecette(($gdb->getTagId($mot))[0]->ID_tag, $idRecette);
+                }
             }
         }
-
 
         $dir_name = "../../images/recettes/";//l'endroit ou on va insérer l'image !!
         if (!is_dir($dir_name)) mkdir($dir_name);//verification de la repertoire si ca existe déjà
         $full_name = $dir_name . $file_name;
         move_uploaded_file($temp_file_name, $full_name);
     }
-
-
-}
-else{
+    //header("Location:".$GLOBALS['AJOUT']."Ajout-Reussi.php");
     header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
     exit();
 }
+else{?>
+  <script>
+      document.addEventListener('DOMContentLoaded',function (){
+        alert("Malheureusement, la recette n'a pas été créée.");
+        window.location.href = <?=  $GLOBALS['PAGES'] ?> + "ajout/ajout.php";
+      })
+  </script>
+<?php
+}
 
-header("Location:".$GLOBALS['AJOUT']."Ajout-Reussi.php");
-//header("Location:".$GLOBALS['AFFICHAGES']."afficheRecette.php");
-exit();
-
-
-
-/*
-if(isset($_POST['nom']) && isset($_FILES['photo_recette'])){
-
-    if(empty($_FILES['photo_recette'])) die("<span style='color : red'>Il n'y a pas de photo de recettes insérées !</span>") ;
-
-    $file = $_FILES['photo_recette']; // NB : 'le_fichier' est le name de votre input dans le formulaire
-
-    if($file['error'] == 0 ){//tout va bien
-        $temp_file_name = $file['tmp_name'];
-        $file_name = $file['name'];
-        $dir_name = "../images/recettes/" ;//l'endroit ou on va insérer l'image !!
-        if(!is_dir($dir_name)) mkdir($dir_name) ;//verification de la repertoire si ca existe déjà
-        $full_name = $dir_name.$file_name ;
-        move_uploaded_file($temp_file_name, $full_name) ;
-
-       /* $_SESSION['recette'] = new stdClass();
-        $_SESSION['recette']-> titre = $_POST['nom'];
-        $_SESSION['recette']-> photo = $file_name;*/
-
-//        $_SESSION['recette'] = array(
-//            'titre' =>  $_POST['nom'],
-//            'photo' => $file_name
-//        );
-
-       //echo $_SESSION['recette']['titre'];
-//    }
-//}
-//header("Location:".$GLOBALS['DOCUMENT_DIR']."ajoutRecetteBD.php");
-//exit();

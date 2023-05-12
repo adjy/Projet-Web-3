@@ -1,5 +1,6 @@
 :root {
     --couleurPrincipale: rgba(241,238,235,255); /*couleur principale */
+    --couleurLogo: rgb(156,44,12);
 }
 
 /* ================================================================= */
@@ -48,6 +49,16 @@ html, body {
 .btn:hover{
     transform: scale(1.1);
 }
+
+.btn-head {
+    transition: transform 400ms;
+    /*font-family: "Calibri Light";*/
+}
+.btn-head:hover {
+    transform: scaleX(1.5);
+    border-bottom: solid var(--couleurLogo);
+}
+
 /* ================================================================= */
 /* pen */
 
@@ -183,6 +194,7 @@ html, body {
     justify-content: space-around;
     height: 50px;
     align-items: center;
+    margin: auto;
 
 }
 
