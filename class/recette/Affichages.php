@@ -168,7 +168,7 @@ class Affichages{
                         <input type="hidden" name="idRecette" value="<?= $recette->ID_recette ?>">
 
                         <div class="btn_class">
-                            <button type="submit" class = "btn" id="" >Ajouter un ingrédient</button>
+                            <button type="submit" class = "btn" id="ajouterIngredientBtn" >Ajouter un ingrédient</button>
                             <a href="#" type="button" class = "btn" id="creerIngredient" >Creer un nouvel ingredient</a>
                             <button type="button" class = "btn annulerBtn" id="annulerButtonAjoutIngredient" >Annuler</button>
                         </div>

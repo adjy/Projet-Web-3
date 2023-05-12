@@ -65,30 +65,6 @@ function afficherNouveauIngredient(){
 
 }
 
-// // function annuler(form){
-// //
-// //     let buttons = document.querySelectorAll(".annulerBtn");
-// //     buttons.forEach((btn) => {
-// //         btn.addEventListener("click", function(event){
-// //             form.style.zIndex = -1;
-// //         })
-// //     })
-// // }
-
-
-// function Modifier(pen, formulaire){
-//     pen.addEventListener("click", function(event){
-//         formulaire.style.zIndex = 6;
-//     })
-//     annuler(formulaire);
-// }
-
-//
-
-
-//
-
-
 
 function createIngredient(){
     let httpRequest = new XMLHttpRequest();

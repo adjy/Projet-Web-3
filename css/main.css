@@ -73,12 +73,17 @@ html, body {
 }
 
 .annulerBtn,
-.modifierBtn{
+.modifierBtn,
+#ajouterIngredientBtn,
+#creerIngredient{
 
     margin:2% 0 ;
     width: auto;
     display: flex;
     justify-content: center;
+}
+.btn_class a {
+    text-decoration: none;
 }
 /* ================================================================= */
 /*cadre*/
