@@ -14,7 +14,6 @@ if(isset($_POST['idRecette']) && isset($_POST['description'])){
     $gdb->modifDescriptionRecette($id , $desc);
     $_SESSION['idRecetteRedirection'] = $_POST['idRecette'];
 
-
 }
 header("Location:".$GLOBALS['AFFICHAGES']."afficheRecette.php");
 exit();

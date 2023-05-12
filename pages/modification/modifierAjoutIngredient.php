@@ -10,16 +10,16 @@ use recette\Donnees;
 $gdb = new Donnees();
 
 if(isset($_POST['choixIngredients']) &&
-    isset($_POST['idRecette']) && $_POST['Unite'] &&  $_POST['Quantité'] ){
+    isset($_POST['idRecette']) && $_POST['Unite'] &&  $_POST['Quantite'] ){
 
     $ID_ingredient = $_POST['choixIngredients'];
     $ID_recette = $_POST['idRecette'];
     $mesure = $_POST['Unite'];
-    $qte = $_POST['Quantité'];
+    $qte = $_POST['Quantite'];
 
     $gdb->ajoutIngredientRecette($ID_ingredient, $ID_recette, $qte, $mesure);
 
-    $_SESSION['idRecetteRedirection'] = $_SESSION['idRecetteModif'];
+    $_SESSION['idRecetteRedirection'] = $_POST['idRecette'];
 
 }
 header("Location:".$GLOBALS['AFFICHAGES']."afficheRecette.php");

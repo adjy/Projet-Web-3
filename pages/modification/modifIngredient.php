@@ -43,9 +43,7 @@ if (isset($_POST['idIngredient'])) {
             }
         }
     }
-
     $_SESSION['idIngredientModif'] = $_POST['idIngredient'];
-
 }
 
 header("Location:".$GLOBALS['AFFICHAGES']."afficheIngredient.php");

@@ -19,11 +19,11 @@ if(isset($_POST['Quantité']) && isset($_POST['Unite']) && isset($_POST['idIngre
 }
 
 //ajout des caracteristiques d'un ingredient deja existant !
-if(isset($_POST['choixIngredients']) && isset($_POST['Quantité1']) && isset($_POST['Unite1']) && isset($_POST['idRecette'])){
+if(isset($_POST['choixIngredients']) && isset($_POST['Quantite']) && isset($_POST['unite']) && isset($_POST['idRecette'])){
     $idrec = (int)$_POST['idRecette'];
     $iding = (int)$_POST['choixIngredients'];
-    $qtte = htmlspecialchars($_POST['Quantité1']);
-    $unite = htmlspecialchars($_POST['Unite1']);
+    $qtte = htmlspecialchars($_POST['Quantité']);
+    $unite = htmlspecialchars($_POST['Unite']);
     $gdb->modifListesIngredient($idrec , $iding,$unite,$qtte);
 }
 header("Location:".$GLOBALS['AFFICHAGES']."afficheRecette.php");
