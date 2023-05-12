@@ -63,8 +63,8 @@ else{
     exit();
 }
 
-//header("Location:".$GLOBALS['AJOUT']."Ajout-Reussi.php");
-header("Location:".$GLOBALS['AFFICHAGES']."afficheRecette.php");
+header("Location:".$GLOBALS['AJOUT']."Ajout-Reussi.php");
+//header("Location:".$GLOBALS['AFFICHAGES']."afficheRecette.php");
 exit();
 
 

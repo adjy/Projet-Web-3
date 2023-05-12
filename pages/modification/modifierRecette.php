@@ -31,14 +31,13 @@ if(isset($_SESSION['idRecetteModif'])){
 
             //modification du photo correspondante
             $gdb->modifPhotoRecette($idRec, $file_name);
-            $dir_name = "../images/recettes/";//l'endroit ou on va insérer l'image !!
+            $dir_name = "../../images/recettes/";//l'endroit ou on va insérer l'image !!
             if (!is_dir($dir_name)) mkdir($dir_name);//verification de la repertoire si ca existe déjà
             $full_name = $dir_name . $file_name;
             move_uploaded_file($temp_file_name, $full_name);
 
             //suppression de l ancienne image dans le serveur
-            var_dump($old_photo[0]->photo);
-            $file_path = "../images/recettes/" . $old_photo[0]->photo;
+            $file_path = "../../images/recettes/" . $old_photo[0]->photo;
             if (file_exists($file_path)) {
                 unlink($file_path);
             }

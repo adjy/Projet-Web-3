@@ -15,7 +15,7 @@ if(isset($_POST['Quantité']) && isset($_POST['Unite']) && isset($_POST['idIngre
     $iding = (int)$_POST['idIngredient'];
     $qtte = htmlspecialchars($_POST['Quantité']);
     $unite = htmlspecialchars($_POST['Unite']);
-    $gdb->modifListesIngredient($idrec , $iding,$unite,$qtte);
+    $gdb->modifListesIngredient($idrec , $iding,$qtte,$unite);
 }
 
 //ajout des caracteristiques d'un ingredient deja existant !
@@ -24,7 +24,7 @@ if(isset($_POST['choixIngredients']) && isset($_POST['Quantite']) && isset($_POS
     $iding = (int)$_POST['choixIngredients'];
     $qtte = htmlspecialchars($_POST['Quantité']);
     $unite = htmlspecialchars($_POST['Unite']);
-    $gdb->modifListesIngredient($idrec , $iding,$unite,$qtte);
+    $gdb->modifListesIngredient($idrec , $iding,$qtte,$unite);
 }
 header("Location:".$GLOBALS['AFFICHAGES']."afficheRecette.php");
 exit();

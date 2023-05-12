@@ -15,6 +15,10 @@ if(isset($_POST['idRecette']) && isset($_POST['description'])){
     $_SESSION['idRecetteRedirection'] = $_POST['idRecette'];
 
 }
+else{
+    header("Location: ".$GLOBALS['DOCUMENT_DIR']."index.php");
+    exit();
+}
 header("Location:".$GLOBALS['AFFICHAGES']."afficheRecette.php");
 exit();
 
