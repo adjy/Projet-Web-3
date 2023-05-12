@@ -387,6 +387,34 @@ class Affichages{
              </div>
             <?php
     }
+
+     public function AfficherTagRecherches($tags): void { ?>
+        <style>
+        #main-content{
+            display: none;
+        }
+        </style>
+        <div class="search-results">
+            <div class="items-cadre">
+                <?php
+                $flag = true;
+                foreach ($tags as $tag){ ?>
+                    <div class="tagAffiche">
+                        <div class="tag-Item">
+                            <?= $tag->nom ?>
+                        </div>
+
+                    </div>
+                    <?php $flag = false;
+                }
+                if($flag) : ?>
+                    <div class="message">Pas de tag(s) trouvé(s)</div>
+                <?php endif;?>
+            </div>
+        </div>
+            <?php
+    }
+
      public function AfficheDonneesTest( $recette , $listeIng, $listecategorie): void{
          echo "Nom de la recette est " . $recette['titre'] . " et la photo est " . $recette['photo'] . "<br>";
          foreach ($listeIng as $lg)

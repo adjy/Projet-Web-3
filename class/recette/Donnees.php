@@ -299,6 +299,13 @@ select ID_categorie from categorie A INNER join listescategorie using (ID_catego
         return $results;
     }
 
+    public function rechercheTagTerme($terme){
+        $statement = parent::getPdo()->prepare("select * from tag where nom like '%" . $terme . "%' ");
+        $statement->execute() or die(var_dump($statement->errorInfo()));
+        $results = $statement->fetchAll(PDO::FETCH_OBJ);
+        return $results;
+    }
+
     public function rechercheIngredientavecId($iding){
         $statement = parent::getPdo()->prepare("select * from ingredient where ID_ingredient = " . $iding);
         $statement->execute() or die(var_dump($statement->errorInfo()));
