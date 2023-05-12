@@ -48,15 +48,17 @@ $affichage = new Affichages();
         if (isset($_SESSION['rechercheRecette'])) {
             $recettesRecherchee = $_SESSION['rechercheRecette'];
             $tableauUnique = array_unique($recettesRecherchee, SORT_REGULAR);
-            // if(!isset($_SESSION["checked"])) {
-             if(!isset($_SESSION['checked'])) {
+            if(isset($_SESSION['checkedIngredient'])) {
+                $affichage->AfficherIngredientRecherches($tableauUnique);
+                unset($_SESSION['checkedIngredient']);
+            }
+            else  if(isset($_SESSION['checkedTag'])) {
+                $affichage->AfficherTagRecherches($tableauUnique);
+                unset($_SESSION['checkedTag']);
+            }
+             else {
                 $affichage->AfficherListesRecherches($tableauUnique, $recettes);
             }
-            else {
-                $affichage->AfficherIngredientRecherches($tableauUnique);
-                unset($_SESSION['checked']);
-            }
-      // }
 
         unset($_SESSION['rechercheRecette']);//pour effacer automatiquement la recherche apres avoir recherché
         }

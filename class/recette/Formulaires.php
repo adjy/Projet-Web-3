@@ -171,8 +171,14 @@ class Formulaires{
             <?php if(isset($_SESSION['username'])) : ?>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input check" name="ingredient" id="ingredient" value="ingredient">
-                    <label class="form-check-label" for="dessert">Ingredient</label>
+                    <label class="form-check-label" for="ingredient">Ingredient</label>
                 </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input check" name="tag" id="ingredient" value="tag">
+                    <label class="form-check-label" for="tag">Tag</label>
+                </div>
+
+
             <?php endif;?>
 
         </form>

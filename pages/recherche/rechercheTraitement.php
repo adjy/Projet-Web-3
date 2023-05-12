@@ -10,7 +10,33 @@ $recette = new Donnees();
 if(isset($_POST['fname']) ){
     $mots = trim($_POST['fname']);
     $tabMots = explode(" ",$mots);
-    if(!isset($_POST['ingredient'])){
+    if(isset($_POST['ingredient'])){
+        foreach($tabMots as $mot){
+            $termes = htmlspecialchars($mot);
+            $recherche = $recette->rechercheIngredientTerme($termes);
+            if(isset($_SESSION['rechercheRecette'])){
+                foreach ($recherche as $rch)
+                    array_push($_SESSION['rechercheRecette'],$rch);
+            }
+            else $_SESSION['rechercheRecette'] = $recherche;
+        }
+        $_SESSION["checkedIngredient"] = "ok";
+    }
+
+    else if(isset($_POST['tag'])){
+            foreach($tabMots as $mot){
+                $termes = htmlspecialchars($mot);
+                $recherche = $recette->rechercheTagTerme($termes);
+                if(isset($_SESSION['rechercheRecette'])){
+                    foreach ($recherche as $rch)
+                        array_push($_SESSION['rechercheRecette'],$rch);
+                }
+                else $_SESSION['rechercheRecette'] = $recherche;
+            }
+            $_SESSION["checkedTag"] = "ok";
+        }
+
+   else{
         foreach($tabMots as $mot){
             $termes = htmlspecialchars($mot);
             $recherche = $recette->rechercheTerme($termes);
@@ -21,18 +47,7 @@ if(isset($_POST['fname']) ){
             else $_SESSION['rechercheRecette'] = $recherche;
         }
     }
-    else {
-        foreach($tabMots as $mot){
-            $termes = htmlspecialchars($mot);
-            $recherche = $recette->rechercheIngredientTerme($termes);
-            if(isset($_SESSION['rechercheRecette'])){
-                foreach ($recherche as $rch)
-                    array_push($_SESSION['rechercheRecette'],$rch);
-            }
-            else $_SESSION['rechercheRecette'] = $recherche;
-        }
-        $_SESSION["checked"] = "ok";
-    }
+
 
 }
 
