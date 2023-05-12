@@ -357,7 +357,8 @@ p{
     justify-content: center;
     align-items: center;
     position: relative;
-
+    background-color: #0069d9;
+    border-radius: 1cm;
 }
 .item-cadre:hover{
     border: 1px solid var( --couleurPrincipale);
