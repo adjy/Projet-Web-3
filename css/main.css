@@ -52,13 +52,45 @@ html, body {
 
 .btn-head {
     transition: transform 400ms;
-    /*font-family: "Calibri Light";*/
+    font-family: "Helvetica";
+    font-size: 0.5cm;
 }
 .btn-head:hover {
     transform: scaleX(1.5);
     border-bottom: solid var(--couleurLogo);
 }
 
+blockquote {
+    margin: 0;
+    padding: 10px;
+    font-style: italic;
+    font-size: 0.8cm;
+    border-left: 2px solid var(--couleurLogo);
+    color: dimgrey;
+}
+
+cite {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    font-style: normal;
+}
+
+
+p{
+    width: 80%;
+    margin: auto;
+    font-size: 0.8cm;
+    color: #894D40;
+    font-family: Century Gothic;
+}
+
+.index span{
+    background-color: #AB8178;
+    color: #cccccc;
+    font-size: 0.6cm;
+
+}
 /* ================================================================= */
 /* pen */
 
@@ -325,6 +357,7 @@ html, body {
     justify-content: center;
     align-items: center;
     position: relative;
+
 }
 .item-cadre:hover{
     border: 1px solid var( --couleurPrincipale);
