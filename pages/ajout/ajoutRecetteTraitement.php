@@ -38,16 +38,21 @@ if(isset( $_POST['nom_recette'] )
 
         $nomtag = htmlspecialchars($_POST['Nom-tag']);
 
+        $tagsModifs = htmlspecialchars($nomtag);
+        $tagsModifs = trim($tagsModifs); // retirer les espaces
+        $tableTabs = explode(" ", $tagsModifs); // decompose les mots en tableaux
+        $tableTabs = array_unique($tableTabs); // recupere les mots uniques
 
-        if(($gdb->getTagId($nomtag)) != null){
-            $gdb->ajoutTagRecette(($gdb->getTagId($nomtag))[0]->ID_tag, $idRecette);
+        foreach ( $tableTabs as $mot){
+            if(($gdb->getTagId($mot)) != null){
+                $gdb->ajoutTagRecette(($gdb->getTagId($mot))[0]->ID_tag, $idRecette);
+            }
+
+            else{
+                $gdb->ajoutTag($mot);
+                $gdb->ajoutTagRecette(($gdb->getTagId($mot))[0]->ID_tag, $idRecette);
+            }
         }
-
-        else{
-            $gdb->ajoutTag($nomtag);
-            $gdb->ajoutTagRecette(($gdb->getTagId($nomtag))[0]->ID_tag, $idRecette);
-        }
-
 
 
         $dir_name = "../../images/recettes/";//l'endroit ou on va insérer l'image !!

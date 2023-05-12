@@ -58,7 +58,13 @@ class Affichages{
                 <div class="subTitle">
                     Ingredients
                      <?php if(isset($_SESSION['username'])) : ?>
+
+                     <a href="#ID_recette" >
                         <button type="button" id="ajouter_Ingredient_message">+ Ajouter un ingredient</button>
+                     </a>
+
+
+
                     <?php endif;?>
                 </div>
                 <div class="ingredients">
@@ -153,6 +159,8 @@ class Affichages{
             <!-- Ajouter un ingredient existant -->
             <form  method="post" id = "formulaire-ajouter-ingredient" class = "cadre super_cadre"  action="<?= $GLOBALS['MODIFICATION'] ?>modifierAjoutIngredient.php" >
                 <div id="ingredients">
+                    <span class="title-modif">Modifier Ingrédient</span>
+
                     <div class="subTitle">Ingrédients</div>
 
                         <?php $AllIngredients = $this->donnees->getIngredient(); ?>
