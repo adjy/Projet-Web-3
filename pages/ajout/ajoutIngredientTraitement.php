@@ -27,7 +27,7 @@ if(isset($_FILES['photo_ingredient'])) {
         //var_dump($id[0]->ID_ingredient);
         array_push($data,array('idIngredient'=>$id[0]->ID_ingredient));
 
-        $dir_name = "../images/ingredients/" ;//l'endroit ou on va insérer l'image !!
+        $dir_name = "../../images/ingredients/" ;//l'endroit ou on va insérer l'image !!
         if (!is_dir($dir_name)) mkdir($dir_name);//verification de la repertoire si ca existe déjà
         $full_name = $dir_name . $file_name;
         move_uploaded_file($temp_file_name, $full_name);

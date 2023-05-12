@@ -198,7 +198,6 @@ class Affichages{
 
 
 
-
          <form  method="post" class = "cadre super_cadre" id = "ajout-ingredient-form" action="<?= $GLOBALS['AJOUT'] ?>ajoutIngredientTraitement.php"  enctype="multipart/form-data">
             <div class="Title-Ajout">Ajouter un nouveau ingredient</div>
             <div class="ingredients-inputs">
@@ -212,9 +211,6 @@ class Affichages{
                 <button type="button" id="annulerButtonAjoutIngre" class = "btn annulerBtn"  >Annuler</button> <!-- creerIngredient -->
             </div>
         </form>
-
-
-
 
 
             </div>
@@ -247,13 +243,17 @@ class Affichages{
         <div class="recette-cadre" id="ID_recette">
                     <form method="post" class="cadre super_cadre" id="modifierNom"  action="<?= $GLOBALS['MODIFICATION'] ?>modifIngredient.php">
                         <span>Modifier le nom</span>
-                        <input class = "ajout-input" type="text" id = "" name="nom_ing" placeholder="" value="<?= $ingredient->nom ?>">
-                          <input type="hidden" name="idIngredient" value="<?= $ingredient->ID_ingredient ?>">
+                        <div id="nom">
+                            <input class = "ajout-input" type="text" id = "" name="nom_ing" placeholder="" value="<?= $ingredient->nom ?>">
+                             <input type="hidden" name="idIngredient" value="<?= $ingredient->ID_ingredient ?>">
+                        </div>
+
                         <div class="btn_class">
                             <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
-                            <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                            <button type="button" class = "btn annulerBtn" id="annulerButtonNom" >Annuler</button>
                         </div>
                     </form>
+
 
                     <div class="recette-name"> <?= $ingredient->nom ?>
                             <img class = "pen" id="pen_name" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"  alt="pen icon"/>
@@ -264,15 +264,20 @@ class Affichages{
                         <img class = "pen" id="penImages" src="<?= $GLOBALS['IMG_DIR']."src/pen.svg"?>"  alt="pen icon"/>
                     </div>
 
-                    <form method="post" class="cadre super_cadre" id="modifierImage" enctype="multipart/form-data" action="<?= $GLOBALS['DOCUMENT_DIR'] ?>pages/modifIngredient.php">
+                    <form method="post" class="cadre super_cadre" id="modifierImage" enctype="multipart/form-data" action="<?= $GLOBALS['MODIFICATION'] ?>modifIngredient.php">
                         <span>Modifier l'image</span>
-                        <input class = "ajout-input" type="file" id = "new-photo-ing" name="new-photo-ing" placeholder="">
+                        <div id="image-recette">
+                            <input class = "ajout-input" type="file" id = "new-photo-ing" name="new-photo-ing" placeholder="">
+                        </div>
+
                         <div class="btn_class">
                             <button type="submit" class = "btn modifierBtn" id="" >Modifier</button>
-                            <button type="button" class = "btn annulerBtn" id="" >Annuler</button>
+                            <button type="button" class = "btn annulerBtn" id="annulerButtonImage" >Annuler</button>
                         </div>
                           <input type="hidden" name="idIngredient" value="<?= $ingredient->ID_ingredient ?>">
                     </form>
+
+
                     <?php
     }
     /*public function AfficherListesRecettes($categories, $listescategories,$recettes):void{
@@ -352,13 +357,19 @@ class Affichages{
     <div class="search-results">
      <div class="items-cadre">
      <?php
+     $flag = true;
         foreach ($recettesRecherchee as $rec){
             foreach ($ListesRecettes as $rec1){
                 if($rec->titre == $rec1->titre){
                      $this->formulaire->RecetteForm($rec1);
+                     $flag = false;
                 }
             }
-        } ?>
+        }
+        if($flag) : ?>
+        <div class="message">Pas de recettes trouver</div>
+        <?php endif;
+            ?>
          </div>
          </div>
         <?php
@@ -373,13 +384,20 @@ class Affichages{
         <div class="search-results">
          <div class="items-cadre">
          <?php
+                 $flag = true;
+
             foreach ($listesing as $rec){
                 foreach ($ingredients as $rec1){
                     if($rec->nom == $rec1->nom){
                          $this->formulaire->IngredientForm($rec1);
+                    $flag = false;
+
                     }
                 }
-            } ?>
+            }
+             if($flag) : ?>
+                <div class="message">Pas d'ingredients trouver</div>
+        <?php endif;?>
              </div>
              </div>
             <?php

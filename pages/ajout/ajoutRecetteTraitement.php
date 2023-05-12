@@ -23,9 +23,9 @@ if(isset( $_POST['nom_recette'] )
 
         $gdb->ajoutRecette($nomRecette,$file_name,$desc);
         $idRecette = $gdb->getIdRecette($nomRecette);
-        var_dump($idRecette[0]->ID_recette);
 
         $idRecette = $idRecette[0]->ID_recette;
+        $_SESSION['idRecetteRedirection'] = $idRecette;
 
        foreach ($_POST['categorie'] as $cat){
            $gdb->ajoutCategorieRecette($idRecette,$cat);
@@ -50,7 +50,7 @@ if(isset( $_POST['nom_recette'] )
 
 
 
-        $dir_name = "../images/recettes/";//l'endroit ou on va insérer l'image !!
+        $dir_name = "../../images/recettes/";//l'endroit ou on va insérer l'image !!
         if (!is_dir($dir_name)) mkdir($dir_name);//verification de la repertoire si ca existe déjà
         $full_name = $dir_name . $file_name;
         move_uploaded_file($temp_file_name, $full_name);
@@ -62,7 +62,9 @@ else{
     header("Location:".$GLOBALS['DOCUMENT_DIR']."index.php");
     exit();
 }
-header("Location:".$GLOBALS['AJOUT']."Ajout-Reussi.php");
+
+//header("Location:".$GLOBALS['AJOUT']."Ajout-Reussi.php");
+header("Location:".$GLOBALS['AFFICHAGES']."afficheRecette.php");
 exit();
 
 
