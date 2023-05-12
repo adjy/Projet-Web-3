@@ -7,11 +7,19 @@ class Formulaires{
         $this->donnees = new \recette\Donnees();
     }
     public function RecetteForm($recette):void{?>
+        <script src = "<?= $GLOBALS['JS_DIR'] ?>etoiles.js"></script>
+
         <form method="post" class="item-cadre" action="<?= $GLOBALS['AFFICHAGES'] ?>afficheRecette.php">
             <figure class="item-infos">
                 <img class = "item-picture"  src="<?= $GLOBALS['IMG_DIR']."recettes/".$recette->photo ?>" alt="Dinosaur" />
                 <figcaption class="item-name">  <?= $recette->titre ?>  </figcaption>
+                <div class="etoiles">
+                    <?php for($i = 0 ; $i < 5 ;$i++) :?>
+                        <span class="etoile" style="color: white">&#9733;</span>
+                    <?php endfor;?>
+                </div>
             </figure>
+
             <input type="hidden" name="Id_recette" id="<?= $recette->ID_recette ?>" value="<?= $recette->ID_recette ?>" >
             <?php  if(isset($_SESSION['username'])){?>
                 <a id = "ID-delete-btn" class = "btn-supp btn"  >X</a>
