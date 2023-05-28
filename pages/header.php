@@ -22,7 +22,7 @@ $affichage = new Affichages();
             <?php
 
             if(isset($_SESSION['username'])){?>
-                <a class = "btn-head" href="<?php echo $GLOBALS['PAGES'] ?>admSpace.php" >Admin</a>
+                <a class = "btn-head" href="<?php echo $GLOBALS['PAGES'] ?>admSpace.php" >Ajout</a>
                 <a class = "btn-head" href="<?php echo $GLOBALS['AUTHENTIFICATION'] ?>logout.php" >Logout</a>
 
                 <?php
