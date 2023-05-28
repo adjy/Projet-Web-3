@@ -7,48 +7,42 @@ Autoloader::register();
 use recette\Donnees;
 
 $recette = new Donnees();
-if(isset($_POST['fname']) ){
+
+if(isset($_POST['fname']) ) {
+
     $mots = trim($_POST['fname']);
-    $tabMots = explode(" ",$mots);
-    if(isset($_POST['ingredient'])){
-        foreach($tabMots as $mot){
+    $tabMots = explode(" ", $mots);// Pour séparer si c'etait une phrase !! et rechercher mot par mot
+
+    if (isset($_POST['ingredient'])) {
+        foreach ($tabMots as $mot) {
             $termes = htmlspecialchars($mot);
             $recherche = $recette->rechercheIngredientTerme($termes);
-            if(isset($_SESSION['rechercheRecette'])){
+            if (isset($_SESSION["checkedIngredient"])) {
                 foreach ($recherche as $rch)
-                    array_push($_SESSION['rechercheRecette'],$rch);
-            }
-            else $_SESSION['rechercheRecette'] = $recherche;
+                    array_push($_SESSION["checkedIngredient"], $rch);
+            } else $_SESSION["checkedIngredient"] = $recherche;
         }
-        $_SESSION["checkedIngredient"] = "ok";
+
+
+    } if (isset($_POST['tag'])) {
+        foreach ($tabMots as $mot) {
+            $termes = htmlspecialchars($mot);
+            $recherche = $recette->rechercheTagTerme($termes);
+            if (isset( $_SESSION["checkedTag"])) {
+                foreach ($recherche as $rch)
+                    array_push( $_SESSION["checkedTag"], $rch);
+            } else $_SESSION["checkedTag"] = $recherche;
+        }
+
     }
-
-    else if(isset($_POST['tag'])){
-            foreach($tabMots as $mot){
-                $termes = htmlspecialchars($mot);
-                $recherche = $recette->rechercheTagTerme($termes);
-                if(isset($_SESSION['rechercheRecette'])){
-                    foreach ($recherche as $rch)
-                        array_push($_SESSION['rechercheRecette'],$rch);
-                }
-                else $_SESSION['rechercheRecette'] = $recherche;
-            }
-            $_SESSION["checkedTag"] = "ok";
-        }
-
-   else{
-        foreach($tabMots as $mot){
+     foreach ($tabMots as $mot) {
             $termes = htmlspecialchars($mot);
             $recherche = $recette->rechercheTerme($termes);
-            if(isset($_SESSION['rechercheRecette'])){
+            if (isset($_SESSION['rechercheRecette'])) {
                 foreach ($recherche as $rch)
-                    array_push($_SESSION['rechercheRecette'],$rch);
-            }
-            else $_SESSION['rechercheRecette'] = $recherche;
-        }
+                    array_push($_SESSION['rechercheRecette'], $rch);
+            } else $_SESSION['rechercheRecette'] = $recherche;
     }
-
-
 }
 
 else{

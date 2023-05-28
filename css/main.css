@@ -792,9 +792,13 @@ p{
     margin: 2% 0;
 }
 
+.IngSearch{
+    display: none;
+}
 
-
-
+.TagSearch{
+    display: none;
+}
 
 
 

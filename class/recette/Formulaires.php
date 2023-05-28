@@ -170,11 +170,11 @@ class Formulaires{
 
             <?php if(isset($_SESSION['username'])) : ?>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input check" name="ingredient" id="ingredient" value="ingredient">
+                    <input type="checkbox" class="form-check-input check" name="ingredient" id="ingredient" value="IngSearch" checked>
                     <label class="form-check-label" for="ingredient">Ingredient</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input check" name="tag" id="ingredient" value="tag">
+                    <input type="checkbox" class="form-check-input check" name="tag" id="ingredient" value="TagSearch" checked>
                     <label class="form-check-label" for="tag">Tag</label>
                 </div>
 
@@ -182,6 +182,54 @@ class Formulaires{
             <?php endif;?>
 
         </form>
+
+        <hr>
+
+        <div></div>
+
+        <script>
+
+            let log = undefined
+            let checkboxes = undefined
+
+            document.addEventListener('DOMContentLoaded', function (){
+
+                let form = document.getElementById("searchID-form")
+
+                log = form.nextElementSibling.nextElementSibling // form -> hr -> div
+
+                // récupération de toutes les checkbox du formulaire
+                checkboxes = form.querySelectorAll("input[type='checkbox']")
+
+                // ajout des écouteurs
+                checkboxes.forEach(check => check.addEventListener('change', function (event){
+                    displayCheckboxes()
+                }))
+
+            })
+
+            /**
+             * Affiche l'état de toutes les checkboxes
+             */
+            function displayCheckboxes() {
+                log.innerHTML = "";
+                checkboxes.forEach(cb => {
+                    let div = document.getElementById(cb.value);
+
+                    if (!cb.checked) {
+                       div.classList.add(cb.value);
+                    }
+
+                    else{
+                        div.classList.remove(cb.value);
+                    }
+
+                });
+            }
+
+        </script>
+
+
         <?php
     }
 
