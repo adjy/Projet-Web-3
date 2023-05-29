@@ -223,6 +223,7 @@ p{
 .img-logo{
     width: 100%;
 }
+
 .home{
     margin: auto;
 }
@@ -800,12 +801,25 @@ p{
     display: none;
 }
 
+.img-filtre{
+  width: 30px;
+    height: 30px;
+}
 
+#type-search{
+    display: flex;
+    gap: 10px;
+    margin: 25vh 50vh 0 50vh;
+}
 
+.hidden-choice{
+    display: none;
+}
 
-
-
-
+#btn-filtre{
+    border: none;
+    background-color: var(--couleurPrincipale);
+}
 
 
 

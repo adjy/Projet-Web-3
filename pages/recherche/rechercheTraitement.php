@@ -10,38 +10,49 @@ $recette = new Donnees();
 
 if(isset($_POST['fname']) ) {
 
+
     $mots = trim($_POST['fname']);
     $tabMots = explode(" ", $mots);// Pour séparer si c'etait une phrase !! et rechercher mot par mot
 
-    if (isset($_POST['ingredient'])) {
+    if(isset($_SESSION['username'])){
+
+        $_SESSION['search'] = "ok";//pour afficher les filtres
+
         foreach ($tabMots as $mot) {
             $termes = htmlspecialchars($mot);
             $recherche = $recette->rechercheIngredientTerme($termes);
+
             if (isset($_SESSION["checkedIngredient"])) {
                 foreach ($recherche as $rch)
                     array_push($_SESSION["checkedIngredient"], $rch);
-            } else $_SESSION["checkedIngredient"] = $recherche;
+            }
+            else
+                $_SESSION["checkedIngredient"] = $recherche;
         }
 
-
-    } if (isset($_POST['tag'])) {
         foreach ($tabMots as $mot) {
             $termes = htmlspecialchars($mot);
             $recherche = $recette->rechercheTagTerme($termes);
+
             if (isset( $_SESSION["checkedTag"])) {
                 foreach ($recherche as $rch)
                     array_push( $_SESSION["checkedTag"], $rch);
-            } else $_SESSION["checkedTag"] = $recherche;
+            }
+            else
+                $_SESSION["checkedTag"] = $recherche;
         }
-
     }
-     foreach ($tabMots as $mot) {
-            $termes = htmlspecialchars($mot);
-            $recherche = $recette->rechercheTerme($termes);
-            if (isset($_SESSION['rechercheRecette'])) {
-                foreach ($recherche as $rch)
-                    array_push($_SESSION['rechercheRecette'], $rch);
-            } else $_SESSION['rechercheRecette'] = $recherche;
+
+    foreach ($tabMots as $mot) {
+        $termes = htmlspecialchars($mot);
+        $recherche = $recette->rechercheTerme($termes);
+
+        if (isset($_SESSION['rechercheRecette'])) {
+            foreach ($recherche as $rch)
+                array_push($_SESSION['rechercheRecette'], $rch);
+        }
+        else
+            $_SESSION['rechercheRecette'] = $recherche;
     }
 }
 

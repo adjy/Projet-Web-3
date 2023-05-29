@@ -44,27 +44,94 @@ $affichage = new Affichages();
 
 </header>
 
-    <?php
-        if (isset($_SESSION['rechercheRecette'])) {
-            $recettesRecherchee = $_SESSION['rechercheRecette'];
-            $tableauUnique = array_unique($recettesRecherchee, SORT_REGULAR);
-            $affichage->AfficherListesRecherches($tableauUnique, $recettes);
-            unset($_SESSION['rechercheRecette']);//pour effacer automatiquement la recherche apres avoir recherché
+<?php if (isset($_SESSION['search'])):?>
+
+<div id="type-search">
+    <img class="img-filtre" src ="<?= $GLOBALS['IMG_DIR']?>src/Filtre-transformed.png"/>
+
+    <button id="btn-filtre">Filtrer</button>
+
+    <div class="form-check hidden-choice">
+        <input type="checkbox" class="form-check-input check" name="ingredient" id="ingredient" value="IngSearch" checked>
+        <label class="form-check-label" for="ingredient">Ingredient</label>
+    </div>
+    <div class="form-check hidden-choice">
+        <input type="checkbox" class="form-check-input check" name="tag" id="tag" value="TagSearch" checked>
+        <label class="form-check-label" for="tag">Tag</label>
+    </div>
+</div>
+
+
+<script>
+        let inputs = undefined
+        let inputArray = undefined
+        document.addEventListener('DOMContentLoaded', function (){
+            let div = document.getElementById("type-search")
+             inputs = div.getElementsByTagName('input')
+            let bouton = document.getElementById("btn-filtre")
+
+
+
+            // Convertir la collection en tableau
+            inputArray = Array.from(inputs);
+
+            bouton.addEventListener('click', function (){
+               let input = document.getElementsByClassName("form-check");
+               array = Array.from(input);
+
+                array.forEach(cb => {
+                    cb.classList.remove("hidden-choice")
+                    bouton.classList.add("hidden-choice")
+                });
+            })
+
+            inputArray.forEach(check => check.addEventListener('change', function (event){
+                displayCheckboxes()
+            }))
+        })
+
+        function displayCheckboxes() {
+            inputArray.forEach(cb => {
+             // console.log(cb.value)
+                let div = document.getElementById(cb.value);
+
+                if (!cb.checked) {
+                    div.classList.add(cb.value);
+                }
+
+                else{
+                    div.classList.remove(cb.value);
+                }
+
+            });
         }
-            if(isset($_SESSION['checkedIngredient'])) {
-                $checkedIngredient = $_SESSION['checkedIngredient'];
-                $tableauUnique = array_unique($checkedIngredient, SORT_REGULAR);
-                $affichage->AfficherIngredientRecherches($tableauUnique);
-                unset($_SESSION['checkedIngredient']);
-            }
-             if(isset($_SESSION['checkedTag'])) {
-                 $checkedTag = $_SESSION['checkedTag'];
-                 $tableauUnique = array_unique($checkedTag, SORT_REGULAR);
-                $affichage->AfficherTagRecherches($tableauUnique);
-                unset($_SESSION['checkedTag']);
-        }
+    </script>
+<?php endif;?>
+
+
+<?php
+    if (isset($_SESSION['rechercheRecette'])) {
+        $recettesRecherchee = $_SESSION['rechercheRecette'];
+        $tableauUnique = array_unique($recettesRecherchee, SORT_REGULAR);
+        $affichage->AfficherListesRecherches($tableauUnique, $recettes);
+        unset($_SESSION['rechercheRecette']);//pour effacer automatiquement la recherche apres avoir recherché
+    }
+    if(isset($_SESSION['checkedIngredient'])) {
+        $checkedIngredient = $_SESSION['checkedIngredient'];
+        $tableauUnique = array_unique($checkedIngredient, SORT_REGULAR);
+        $affichage->AfficherIngredientRecherches($tableauUnique);
+        unset($_SESSION['checkedIngredient']);
+    }
+    if(isset($_SESSION['checkedTag'])) {
+        $checkedTag = $_SESSION['checkedTag'];
+        $tableauUnique = array_unique($checkedTag, SORT_REGULAR);
+        $affichage->AfficherTagRecherches($tableauUnique);
+        unset($_SESSION['checkedTag']);
+    }
+    unset($_SESSION['search'])
 
     ?>
+
 
 
 

@@ -371,7 +371,7 @@ class Affichages{
         }
     </style>
         <div class="search-results" id="IngSearch" >
-         <div class="items-cadre">
+         <div class="items-cadre" >
          <?php
             $flag = true;
 
@@ -394,8 +394,8 @@ class Affichages{
             display: none;
         }
         </style>
-        <div class="search-results" id="TagSearch">
-            <div class="items-cadre">
+        <div class="search-results" id="TagSearch" >
+            <div class="items-cadre" >
                 <?php
                 $flag = true;
                 foreach ($tags as $tag){ ?>
