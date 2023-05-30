@@ -101,6 +101,7 @@ p{
 
 .pen{
     margin-top: auto;
+
 }
 .pen:hover{
     transform: scale(1.1);
@@ -118,15 +119,17 @@ p{
     z-index: -1;
     top : 2%;
     min-height: 30vh;
-    width: 80vw;
-    left: 5%;
+    margin: 2% 0;
+    width: 70vw;
+
 
 }
 
 .annulerBtn,
 .modifierBtn,
 #ajouterIngredientBtn,
-#creerIngredient{
+#creerIngredient,
+#ajout-ingre{
 
     margin:2% 0 ;
     width: auto;
@@ -497,9 +500,11 @@ p{
 
 .description{
     font-size: 20px;
+    display: flex;
     align-items: center;
     justify-content: center;
     text-align: justify;
+    flex-direction: column;
     font-family: "Avantgarde", "TeX Gyre Adventor", "URW Gothic L", "sans-serif";
 }
 .tag{
@@ -513,6 +518,8 @@ p{
 }
 .tags{
     margin: 2%;
+    display: flex;
+    align-items: center;
 }
 .ingredient-picture-modif{
     width: 120px;
@@ -521,6 +528,12 @@ p{
 .title-modif{
     margin: 2%;
     font-size: large;
+}
+#modifierNom,
+#modifierImage,
+#modifDescription,
+#formulaire-ajouter-ingredient{
+    width: 80vw;
 }
 /* ================================================================= */
 /*Login*/
@@ -622,7 +635,7 @@ p{
 }
 
 .ajout-input{
-    width: 90%;
+    min-width: 90%;
     margin-bottom: 10px;
     padding: 10px;
     font-size: 16px;
@@ -731,31 +744,10 @@ p{
     flex-wrap: wrap;
 }
 #creerCategorie{
-    margin: 1px auto 1px 1px;
+    margin: 2px auto 1px 40px;
     /*font-size: 10px;*/
 }
 
-/*#test2{*/
-/*    position: relative;*/
-/*}*/
-/*#ajout-ingredient-form{*/
-
-/*}*/
-/*.affichage{*/
-/*    z-index: 2;*/
-/*}*/
-
-/*#test{*/
-/*    width: 50%;*/
-/*    height: 60vh;*/
-
-
-
-/*    border-radius: 10px;*/
-/*    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);*/
-/*    background-color: white;*/
-
-/*}*/
 
 /* ================================================================= */
 /*Modifier*/
