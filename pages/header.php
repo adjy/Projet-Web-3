@@ -47,17 +47,23 @@ $affichage = new Affichages();
 <?php if (isset($_SESSION['search'])):?>
 
 <div id="type-search">
-    <img class="img-filtre" src ="<?= $GLOBALS['IMG_DIR']?>src/Filtre-transformed.png"/>
-
-    <button id="btn-filtre">Filtrer</button>
-
-    <div class="form-check hidden-choice">
-        <input type="checkbox" class="form-check-input check" name="ingredient" id="ingredient" value="IngSearch" checked>
-        <label class="form-check-label" for="ingredient">Ingredient</label>
+    <div id="filtre">
+        <img class="img-filtre" src ="<?= $GLOBALS['IMG_DIR']?>src/Filtre-transformed.png"/>
+        <span id = "text-filtre">Filtrer</span>
     </div>
-    <div class="form-check hidden-choice">
-        <input type="checkbox" class="form-check-input check" name="tag" id="tag" value="TagSearch" checked>
-        <label class="form-check-label" for="tag">Tag</label>
+    <div class="filtre-choix">
+        <div class="form-check-search hidden-choice">
+            <input type="checkbox" class="check" name="recette" id="" value="IngSearch" checked>
+            <label class="form-check-label" for="recette">Recette</label>
+        </div>
+        <div class="form-check-search hidden-choice">
+            <input type="checkbox" class="check" name="ingredient" id="" value="IngSearch" checked>
+            <label class="form-check-label" for="ingredient">Ingredient</label>
+        </div>
+        <div class="form-check-search hidden-choice">
+            <input type="checkbox" class="check" name="tag" id="" value="TagSearch" checked>
+            <label class="form-check-label" for="tag">Tag</label>
+        </div>
     </div>
 </div>
 
@@ -68,7 +74,8 @@ $affichage = new Affichages();
         document.addEventListener('DOMContentLoaded', function (){
             let div = document.getElementById("type-search")
              inputs = div.getElementsByTagName('input')
-            let bouton = document.getElementById("btn-filtre")
+            let bouton = document.getElementById("filtre")
+            let text = document.getElementById("text-filtre");
 
 
 
@@ -76,12 +83,12 @@ $affichage = new Affichages();
             inputArray = Array.from(inputs);
 
             bouton.addEventListener('click', function (){
-               let input = document.getElementsByClassName("form-check");
+               let input = document.getElementsByClassName("form-check-search");
                array = Array.from(input);
 
                 array.forEach(cb => {
-                    cb.classList.remove("hidden-choice")
-                    bouton.classList.add("hidden-choice")
+                    cb.classList.toggle("hidden-choice")
+                    text.classList.toggle("hidden-choice")
                 });
             })
 

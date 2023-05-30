@@ -8,6 +8,7 @@
 body {
     display: flex;
     flex-direction: column;
+    align-items: center;
     /*background-color: gold;*/
     margin: 0;
 }
@@ -116,7 +117,10 @@ p{
     position: absolute ;
     z-index: -1;
     top : 2%;
-    min-height: 60vh;
+    min-height: 30vh;
+    width: 80vw;
+    left: 5%;
+
 }
 
 .annulerBtn,
@@ -171,7 +175,7 @@ p{
 /*info*/
 .info{
     font-size: 25px;
-    width: 80vw;
+    width: 70vw;
     text-align: center;
 }
 .error-message{
@@ -590,8 +594,8 @@ p{
 .btn-supp-Ingredient{
     position: absolute;
     z-index: 5;
-    top:2px;
-    right: 1px;
+    top:7px;
+    right: 7px;
     background-color: var( --couleurPrincipale);
     display: grid;
     place-content: center;
@@ -793,6 +797,7 @@ p{
     margin: 2% 0;
 }
 
+
 .IngSearch{
     display: none;
 }
@@ -809,18 +814,48 @@ p{
 #type-search{
     display: flex;
     gap: 10px;
-    margin: 25vh 50vh 0 50vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 25vh 50vw 0 50vw;
+    width: 50vw ;
 }
-
+.filtre-choix{
+    width: 50vw ;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.form-check-search{
+    display: flex;
+    flex-direction: row;
+    margin: 1px;
+    padding: 0;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
 .hidden-choice{
     display: none;
 }
 
-#btn-filtre{
+#filtre{
     border: none;
     background-color: var(--couleurPrincipale);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#filtre:hover{
+    cursor: pointer;
 }
 
+#text-filtre{
+    text-align: center;
+    margin-left: 5px;
+}
 
 
 

@@ -300,7 +300,7 @@ select ID_categorie from categorie A INNER join listescategorie using (ID_catego
     }
 
     public function rechercheTagTerme($terme){
-        $statement = parent::getPdo()->prepare("select * from tag where nom like '%" . $terme . "%' ");
+        $statement = parent::getPdo()->prepare("select * from tag where nom like '" . $terme . "' ");
         $statement->execute() or die(var_dump($statement->errorInfo()));
         $results = $statement->fetchAll(PDO::FETCH_OBJ);
         return $results;

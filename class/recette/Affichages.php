@@ -105,7 +105,7 @@ class Affichages{
              <?php if(isset($_SESSION['username'])) : ?>
              <div id="bouton_ajout_ing">
                  <a href="#ID_recette" >
-                   <button type="button" class="btn" id="ajouter_Ingredient_message">+ Ajouter un ingredient</button>
+                   <button type="button" class="btn" id="ajouter_Ingredient_message">+ Ajouter</button>
                  </a>
              </div>
              <?php endif;?>
@@ -114,7 +114,7 @@ class Affichages{
             <!-- Formulaire pour modifier les elements -->
 
             <!-- pour le nom -->
-            <form method="post" class="cadre super_cadre" id="modifierNom"  action="<?= $GLOBALS['MODIFICATION'] ?>modifierRecette.php">
+            <form method="post" id="modifierNom" class="cadre super_cadre"  action="<?= $GLOBALS['MODIFICATION'] ?>modifierRecette.php">
                 <span class="title-modif">Modifier le nom</span>
                 <div id="nom">
                     <input class = "ajout-input" type="text" id = "" name="nom_recette" placeholder="" value="<?= $recette->titre ?>">

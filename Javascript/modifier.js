@@ -72,10 +72,9 @@ function createIngredient(){
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
             if (httpRequest.status === 200) {
                 let response = JSON.parse(httpRequest.response)
-                alert("Lingredient a ete ajouter")
+                alert("Lingredient a ete ajouter dans la liste des ingredient")
                 location.reload();
 
-                // ajoutIngredientSucces(response) // action a faire si la requette a ete un succes
             }
             else
                 alert("l'ingredient n'a pas ete ajoute");

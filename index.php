@@ -34,7 +34,7 @@ if (!empty($_COOKIE['username'])){
             <cite>-Theodore Zeldin</cite>
         </blockquote>
         <br>
-        <span id="idCat">Plongeons dans l'unvers de la cuisine. Explorez ensemble notre collection de recettes de cuisine par catégorie</span>
+        <span id="idCat" class="info">Plongeons dans l'unvers de la cuisine. Explorez ensemble notre collection de recettes de cuisine par catégorie</span>
         <?php
         $affichage->AfficherListesCategories($categories,$gdb);
         ?>
