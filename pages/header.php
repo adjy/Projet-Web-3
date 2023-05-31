@@ -53,10 +53,6 @@ $affichage = new Affichages();
     </div>
     <div class="filtre-choix">
         <div class="form-check-search hidden-choice">
-            <input type="checkbox" class="check" name="recette" id="" value="IngSearch" checked>
-            <label class="form-check-label" for="recette">Recette</label>
-        </div>
-        <div class="form-check-search hidden-choice">
             <input type="checkbox" class="check" name="ingredient" id="" value="IngSearch" checked>
             <label class="form-check-label" for="ingredient">Ingredient</label>
         </div>

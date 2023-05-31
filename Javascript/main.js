@@ -13,7 +13,6 @@ function addMenu(){
     new_node.href = lienText
 
     Mn.append(new_node);
-    // console.log(menu.children[0]);
     let lienIdText = "ID_"+text_n;
     menu.children[0].setAttribute('id', lienIdText)
     })
