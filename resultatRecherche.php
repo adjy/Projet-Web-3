@@ -13,7 +13,6 @@ $gdb = new Donnees() ;
 ob_start() ;
 
 if( isset($_SESSION['rechercheRecette']) ) {
-    //  var_dump( $_SESSION['rechercheRecette']);
     $recettesRecherchee =  $_SESSION['rechercheRecette'];
     foreach ($recettesRecherchee as $rec): ?>
         <div class="recette-index centrer">

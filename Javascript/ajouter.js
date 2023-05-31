@@ -53,7 +53,7 @@ function createCategorie(){
 
         }
     }
-    let formulaire = document.getElementById("ajout-categorie-form")
+    let formulaire = document.getElementById("ajout-categorie-form") // recupere le formulaire
 
     formulaire.addEventListener('submit', function (event) {
 
@@ -67,6 +67,7 @@ function createCategorie(){
         // constructeur avec le formulaire en paramètre
         let data = new FormData(formulaire)
 
+        //pour rien afficher une fois que la categorie est inseree
         formulaire.firstElementChild.nextElementSibling.firstElementChild.value =  "";
         httpRequest.send(data)
     })

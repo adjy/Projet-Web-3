@@ -22,6 +22,7 @@ if(isset($_POST['Id_ingredient'])) {
    $ing = $gdb->rechercheIngredientavecId($id);
    $affiche->Afficheingredient($ing[0]);
 }
+
 else if(isset($_SESSION['idIngredientModif'])){
     $id = (int)$_SESSION['idIngredientModif'];
     $ing = $gdb->rechercheIngredientavecId($id);

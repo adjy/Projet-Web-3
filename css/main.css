@@ -630,8 +630,9 @@ p{
 .Title-Ajout {
     font-size: 24px;
     font-weight: bold;
-
     margin: 2% auto 20px 2%;
+    color: darksalmon;
+
 }
 
 .ajout-input{
